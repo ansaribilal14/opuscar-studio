@@ -60,3 +60,26 @@ Work Log:
 Stage Summary:
 - Infrastructure fully migrated: repo + brain docs + landing page + secret + Pages all live under ansaribilal14.
 - Next task on the board (per BRAIN.md §6): video-003 Isdal Woman full film.
+
+---
+Task ID: 3
+Agent: Super Z (main agent)
+Task: video-003 — full Isdal Woman documentary + 4 vertical shorts, per BRAIN.md §6 and the 10-step pipeline.
+
+Work Log:
+- Research: 11 web searches + full reads of Wikipedia (rev 1377389703) and BBC 13 May 2017; wrote research/SOURCES.md (S1-S3 + upstream list), research/TIMELINE.md (40+ dated entries 1970-2026), research/CLAIMS.md (28 established E-claims, 7 disputed/open D-claims, 5 human-verification items).
+- Treatment: TREATMENT.md — chose "one file, one section" structure over chronological and theory-led candidates; 9-beat sheet ~15-16 min; case-file visual language; compliance checklist.
+- Script: src/narration.json canonical — 40 blocks (38 spoken), 1808 words, every block tagged to claim-ledger IDs; generated SCRIPT-readable form via JSON (single source of truth).
+- TTS: NIM endpoints 404'd (API changed) — documented deviation, pivoted to platform TTS (z-ai tts, voice tongtong, speed 0.95); ASR round-trip QA passed; 38 blocks / 882.6s generated with 429 backoff handling.
+- Images: image-search → 4 assets cached with images/CREDITS.md (BBC Isdalen photo, 1970 police sketch w/ original Norwegian caption, Bane NOR station, Life in Norway street); credits rendered on screen; no AI image used anywhere; Møllendal kept vector to avoid location misrepresentation.
+- Pipeline (rebuilt after container loss): src/engine.mjs (primitives), src/scenes.mjs (40 scenes), src/timeline.js (deterministic; 988s/23,714 frames), src/render_range.mjs (node-canvas, 67ms/frame), src/music.py (D-minor score, narration-aware ducking, float32/O(N) after OOM fix), src/mix.py (ffmpeg adelay placement + loudnorm), build.sh (2-worker render → encode → mux), src/gen_subs.py (148 cues).
+- QA: 14 still frames reviewed across all beats; DNA-scene double-label and end-card collision found and fixed; ASR spot-check at 380-402s matched narration verbatim; loudness −15.9 LUFS / TP −1.5 dBTP; duration 988s = 16.47 min.
+- Shorts: src/shorts.mjs + build_shorts.sh — 4 vertical (720×1280) shorts reusing verified narration: A suitcases 109s, B notebook 70s, C spy 102s, D identity 95s.
+- Release: video-003-isdal-woman-v1.0.0 created with 7 assets (full film 35.3MB, 4 shorts, poster, .srt) — all HTTP 201.
+- Registry: docs/films.json video-003 → released; this worklog; everything pushed.
+
+Stage Summary:
+- Film: work/video-003-isdal-woman/build/isdal-woman-003.mp4 (16:28, 1280×720, −16 LUFS).
+- Release: https://github.com/ansaribilal14/opuscar-studio/releases/tag/video-003-isdal-woman-v1.0.0
+- Compliance: no invented dialogue/evidence; verdict contested on screen; spy/murder/sex-worker theories labelled DISPUTED/UNVERIFIED; 1991/2005 accounts stamped UNVERIFIED; no body depiction; archival images credited; open claims listed in release notes.
+- Method note: NIM TTS deprecated → platform TTS recorded as the new default in future runs; pipeline code now lives in the repo and is reusable for video-004.
