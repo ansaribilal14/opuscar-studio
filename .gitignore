@@ -1,3 +1,5 @@
 skills/
 node_modules/
 .env
+frames/
+build/

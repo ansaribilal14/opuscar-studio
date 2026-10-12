@@ -184,7 +184,7 @@ scenes.valley_intro = (ctx, W, H, b, t, T) => {
   valleySky(ctx, W, H, p);
   camera(ctx, W, H, ease(p) * 0.5, 0.05);
   const im = loadImageSafe(IMG("isdalen_valley.jpg"));
-  if (im) archivePhoto(ctx, im, W * 0.56, H * 0.14, W * 0.38, H * 0.44, "ISDALEN VALLEY — BERGEN", "ARCHIVE · SEE CREDITS", easeOut(clamp((p - 0.45) * 2)));
+  if (im) archivePhoto(ctx, im, W * 0.56, H * 0.14, W * 0.38, H * 0.44, "ISDALEN VALLEY — BERGEN", "PHOTO: BBC", easeOut(clamp((p - 0.45) * 2)));
 };
 
 scenes.valley_date_sting = (ctx, W, H, b, t, T) => {
@@ -297,24 +297,44 @@ scenes.label_cut = (ctx, W, H, b, t) => {
 scenes.interpol_appeal = (ctx, W, H, b, t) => {
   deskBase(ctx, W, H);
   const p = t / b.dur;
-  // europe map dots + radiating rings
-  const cx = W * 0.5, cy = H * 0.40;
-  const rnd = RNG(11);
-  const dots = Array.from({ length: 26 }, () => ({ x: cx - 330 + rnd() * 660, y: cy - 150 + rnd() * 280 }));
-  ctx.save();
-  ctx.strokeStyle = "rgba(93,114,133,0.5)"; ctx.lineWidth = 1.4;
-  ctx.beginPath(); ctx.ellipse(cx, cy, 360, 200, 0, 0, Math.PI * 2); ctx.stroke();
-  dots.forEach((d, i) => {
-    const a = easeOut(clamp(p * 3 - i * 0.05));
-    ctx.fillStyle = `rgba(150,160,170,${a})`;
-    ctx.beginPath(); ctx.arc(d.x, d.y, 2.2, 0, Math.PI * 2); ctx.fill();
-  });
-  for (let r = 0; r < 4; r++) {
-    const rp = ((p * 1.3 + r * 0.25) % 1);
-    ctx.strokeStyle = `rgba(201,163,92,${(1 - rp) * 0.5})`; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.arc(cx, cy, 30 + rp * 260, 0, Math.PI * 2); ctx.stroke();
+  const im = loadImageSafe(IMG("police_sketch.jpg"));
+  if (im) {
+    // the real 1970 police sketch, framed left; radiating reach lines right
+    archivePhoto(ctx, im, W * 0.07, H * 0.13, W * 0.46, H * 0.60, "POLICE SKETCH 1970 — \"UKJENT KVINNE\"", "VIA BBC · SEE CREDITS", easeOut(clamp(p * 2)));
+    const cx = W * 0.78, cy = H * 0.42;
+    ctx.save();
+    ctx.strokeStyle = "rgba(93,114,133,0.6)"; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.ellipse(cx, cy, 150, 150, 0, 0, Math.PI * 2); ctx.stroke();
+    const rnd = RNG(11);
+    for (let i = 0; i < 10; i++) {
+      const a = easeOut(clamp(p * 2.4 - i * 0.06));
+      const ang = rnd() * Math.PI * 2, rr = 90 + rnd() * 130;
+      ctx.strokeStyle = `rgba(201,163,92,${0.55 * a})`;
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + Math.cos(ang) * rr, cy + Math.sin(ang) * rr); ctx.stroke();
+      ctx.fillStyle = `rgba(150,160,170,${a})`;
+      ctx.beginPath(); ctx.arc(cx + Math.cos(ang) * rr, cy + Math.sin(ang) * rr, 2.4, 0, Math.PI * 2); ctx.fill();
+    }
+    text(ctx, "DISTRIBUTED VIA INTERPOL — EUROPE · N. AFRICA · MIDDLE EAST", cx, cy + 190, 12, { family: C.mono, color: "#a49e8f", align: "center", alpha: easeOut(clamp((p - 0.5) * 2)), maxWidth: 320 });
+    ctx.restore();
+  } else {
+    const cx = W * 0.5, cy = H * 0.40;
+    const rnd = RNG(11);
+    const dots = Array.from({ length: 26 }, () => ({ x: cx - 330 + rnd() * 660, y: cy - 150 + rnd() * 280 }));
+    ctx.save();
+    ctx.strokeStyle = "rgba(93,114,133,0.5)"; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.ellipse(cx, cy, 360, 200, 0, 0, Math.PI * 2); ctx.stroke();
+    dots.forEach((d, i) => {
+      const a = easeOut(clamp(p * 3 - i * 0.05));
+      ctx.fillStyle = `rgba(150,160,170,${a})`;
+      ctx.beginPath(); ctx.arc(d.x, d.y, 2.2, 0, Math.PI * 2); ctx.fill();
+    });
+    for (let r = 0; r < 4; r++) {
+      const rp = ((p * 1.3 + r * 0.25) % 1);
+      ctx.strokeStyle = `rgba(201,163,92,${(1 - rp) * 0.5})`; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(cx, cy, 30 + rp * 260, 0, Math.PI * 2); ctx.stroke();
+    }
+    ctx.restore();
   }
-  ctx.restore();
 };
 
 scenes.station = (ctx, W, H, b, t) => {
@@ -322,7 +342,7 @@ scenes.station = (ctx, W, H, b, t) => {
   const p = t / b.dur;
   const im = loadImageSafe(IMG("bergen_station.jpg"));
   if (im) {
-    archivePhoto(ctx, im, W * 0.08, H * 0.16, W * 0.52, H * 0.52, "BERGEN RAILWAY STATION", "ARCHIVE · SEE CREDITS", easeOut(clamp(p * 2)));
+    archivePhoto(ctx, im, W * 0.08, H * 0.16, W * 0.52, H * 0.52, "BERGEN RAILWAY STATION", "PHOTO: BANE NOR", easeOut(clamp(p * 2)));
   } else {
     // vector station hall
     ctx.save();
@@ -461,7 +481,7 @@ scenes.hotel_card = (ctx, W, H, b, t) => {
   const p = t / b.dur;
   deskBase(ctx, W, H);
   const im = loadImageSafe(IMG("bergen_1970s.jpg"));
-  if (im) archivePhoto(ctx, im, W * 0.06, H * 0.14, W * 0.46, H * 0.56, "BERGEN — CITY CENTRE", "ARCHIVE · SEE CREDITS", easeOut(clamp(p * 2)));
+  if (im) archivePhoto(ctx, im, W * 0.06, H * 0.14, W * 0.46, H * 0.56, "BERGEN — CITY CENTRE", "PHOTO: LIFE IN NORWAY", easeOut(clamp(p * 2)));
   else valleySky(ctx, W, H, p, 0.5);
   // room key tag
   ctx.save();
@@ -785,23 +805,17 @@ scenes.isotope_card = (ctx, W, H, b, t) => { deskBase(ctx, W, H); };
 scenes.dna_card = (ctx, W, H, b, t) => {
   deskBase(ctx, W, H);
   const p = t / b.dur;
-  const cx = W / 2, cy = H * 0.40;
+  const cx = W * 0.30, cy = H * 0.42;
   ctx.save();
-  // double helix abstract
+  // double helix abstract (labels come from the generic result cards)
   ctx.globalAlpha = easeOut(clamp(p * 2));
-  ctx.strokeStyle = "rgba(93,114,133,0.8)"; ctx.lineWidth = 2;
-  for (let y = 0; y < 240; y += 4) {
-    const ph = y / 40 + p * 2;
-    const x1 = cx - 90 + Math.sin(ph) * 36, x2 = cx - 90 + Math.sin(ph + Math.PI) * 36;
-    ctx.beginPath(); ctx.moveTo(x1, cy - 120 + y); ctx.lineTo(x2, cy - 120 + y);
-    ctx.strokeStyle = `rgba(93,114,133,${0.25 + 0.2 * Math.sin(y / 24)})`; ctx.stroke();
+  ctx.lineWidth = 2;
+  for (let y = 0; y < 260; y += 5) {
+    const ph = y / 42 + p * 2;
+    const x1 = cx + Math.sin(ph) * 40, x2 = cx + Math.sin(ph + Math.PI) * 40;
+    ctx.strokeStyle = `rgba(93,114,133,${0.35 + 0.25 * Math.sin(y / 26)})`;
+    ctx.beginPath(); ctx.moveTo(x1, cy - 130 + y); ctx.lineTo(x2, cy - 130 + y); ctx.stroke();
   }
-  [["DNA — EUROPEAN DESCENT"], ["mtDNA — HAPLOGROUP H24"]].forEach(([s], i) => {
-    const a = easeOut(clamp((p - 0.3 - i * 0.2) * 2.5));
-    text(ctx, s, cx + 120, cy - 40 + i * 54, 20, { family: C.mono, color: "#e6dfcf", alpha: a });
-    ctx.strokeStyle = `rgba(201,163,92,${a})`;
-    ctx.beginPath(); ctx.moveTo(cx + 116, cy - 34 + i * 54); ctx.lineTo(cx + 116 + textW(ctx, s, 20, C.mono), cy - 34 + i * 54); ctx.stroke();
-  });
   ctx.restore();
 };
 
@@ -878,7 +892,7 @@ scenes.end_card = (ctx, W, H, b, t) => {
   ctx.fillStyle = "#0b0c0e"; ctx.fillRect(0, 0, W, H);
   const p = clamp(t / 1.2);
   drawScreen(ctx, W, H, b, p);
-  text(ctx, "OPUSCAR STUDIO — THE DOCUMENTARY ENGINE · VIDEO-003", W / 2, H - 60, 12, { family: C.mono, color: "#6f6a5e", align: "center", spacing: 2, alpha: clamp((t - 1) * 0.8) });
+  text(ctx, "OPUSCAR STUDIO — THE DOCUMENTARY ENGINE · VIDEO-003", W / 2, H - 30, 12, { family: C.mono, color: "#6f6a5e", align: "center", spacing: 2, alpha: clamp((t - 1) * 0.8) });
 };
 
 // scenes that rely only on generic screen text over deskBase

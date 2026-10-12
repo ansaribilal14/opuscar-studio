@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "query": "Bergen Norway city streets 1970s vintage photograph",
+  "count": 4,
+  "ranked": true,
+  "captioned_count": 3,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/99090c073f7e.jpg",
+      "caption": "A vintage 1970s Norwegian town square with classic cars, colorful buildings, and forested hills behind. Text includes \"TRYGVE DANIELSEN\" and \"A/S HAVEN\".",
+      "source": "Redbubble",
+      "original_width": "1000px",
+      "original_height": "1000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/9dec0b2a295d.jpg",
+      "caption": "Charming cobblestone alley with orange roses, yellow and white wooden houses. Contains Alamy watermarks and text \"POST\". Not suitable for background.",
+      "source": "Alamy",
+      "original_width": "866px",
+      "original_height": "1390px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6b83f9cfb83d.jpg",
+      "caption": "Cobblestone street lined with white wooden Norwegian houses, flags, tourists walking under blue cloudy sky; no watermarks, high clarity.",
+      "source": "Life in Norway",
+      "original_width": "768px",
+      "original_height": "1024px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2971511b8c2a.jpg",
+      "caption": "",
+      "source": "Marla Goes North.",
+      "original_width": "1920px",
+      "original_height": "1920px"
+    }
+  ]
+}

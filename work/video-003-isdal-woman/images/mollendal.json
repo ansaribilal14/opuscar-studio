@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "query": "cemetery graveyard Norway misty headstones solemn",
+  "count": 4,
+  "ranked": true,
+  "captioned_count": 4,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/9c6aca81031b.jpg",
+      "caption": "A black granite headstone for Jeremy C. Crowson (1972–2019) with engraved fishing scene, beside a red rose and white lily vase. Text: \"In Loving Memory of Jeremy C. Crowson, Jan. 09, 1972 – Apr. 02, 2019, Loving Father, Son and Brother, 'It's All Good'.\"",
+      "source": "Etsy",
+      "original_width": "1080px",
+      "original_height": "1080px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/fe0a0ed69f36.jpg",
+      "caption": "A classical columned stone memorial tomb with urn in an overgrown cemetery surrounded by lush green trees.",
+      "source": "The Past",
+      "original_width": "798px",
+      "original_height": "1069px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b3db0ac002d6.jpg",
+      "caption": "Upright gravestones in a sunny cemetery, overlaid with text \"Upright Headstone Sizes\" and Petros Stone logo.",
+      "source": "Petrosstone",
+      "original_width": "1600px",
+      "original_height": "900px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7a8713e06f6c.jpg",
+      "caption": "Vast cemetery with rows of flat gravestones on green grass, trees and misty mountains behind, no visible watermarks or text.",
+      "source": "Busan Trip",
+      "original_width": "1600px",
+      "original_height": "893px"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "query": "Bergen railway station Norway historic train station building",
+  "count": 4,
+  "ranked": true,
+  "captioned_count": 1,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/74f40f17f96b.jpg",
+      "caption": "Historic dark stone railway station facade with large arched window, glowing yellow clock, traffic lights, and storefronts under overcast sky.",
+      "source": "Bane NOR",
+      "original_width": "1920px",
+      "original_height": "1280px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f8a24410948d.jpg",
+      "caption": "",
+      "source": "The New York Times",
+      "original_width": "3000px",
+      "original_height": "1687px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7eaadc976043.jpg",
+      "caption": "",
+      "source": "Tripadvisor",
+      "original_width": "1100px",
+      "original_height": "1100px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/97c3de7e5edc.jpeg",
+      "caption": "",
+      "source": "Rail Voyage",
+      "original_width": "1920px",
+      "original_height": "2560px"
+    }
+  ]
+}

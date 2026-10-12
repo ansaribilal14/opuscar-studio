@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "query": "Isdalen valley Bergen Norway mountain valley landscape moody",
+  "count": 4,
+  "ranked": true,
+  "captioned_count": 4,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/02e93cd8ec32.jpg",
+      "caption": "A mountainous landscape with snow-dusted rocky peaks, evergreen forests, a small calm lake, and green trees in the foreground. High clarity, strong visual impact, no watermark — suitable for background image.",
+      "source": "BBC",
+      "original_width": "2048px",
+      "original_height": "1152px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b357e3d15c3d.jpg",
+      "caption": "A moss-covered rocky hillside with fallen trees and debris, overlooking forested mountains under a clear blue sky. No text or watermarks; suitable for background image.",
+      "source": "BBC",
+      "original_width": "2048px",
+      "original_height": "1152px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b95d27d06163.jpg",
+      "caption": "A forensic sketch of a woman's profile; text reads \"Ukjent kvinne funnet død i Isdalen, Bergen søndag, 29. nov. 1970 kl. 1315.\"",
+      "source": "BBC",
+      "original_width": "2048px",
+      "original_height": "1152px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d84b29e27812.jpg",
+      "caption": "A three-image collage: a conservator examining dark artifacts under studio lighting, blurry monochrome debris, and handwritten alphanumeric notes.",
+      "source": "The Sun",
+      "original_width": "1500px",
+      "original_height": "1000px"
+    }
+  ]
+}
