@@ -1,0 +1,44 @@
+{
+  "studio": "Opuscar Studio — The Documentary Engine",
+  "updated": "2026-10-13",
+  "films": [
+    {
+      "id": "video-003",
+      "slug": "isdal-woman",
+      "title": "The Isdal Woman",
+      "subtitle": "The Woman Who Erased Her Own Identity",
+      "status": "in_production",
+      "format": "documentary",
+      "runtime_minutes": "12-18 (planned)",
+      "year": 2026,
+      "release_tag": null,
+      "poster": null,
+      "description": "In November 1970, a burned body was found in Norway's Isdalen valley. Her fingerprints were filed away, her labels were cut from her clothes, and her identity remains unknown more than five decades later. A sourced, evidence-first documentary."
+    },
+    {
+      "id": "video-002",
+      "slug": "zodiac",
+      "title": "Zodiac",
+      "subtitle": "The Ciphers That Refused to Die",
+      "status": "trailer_only",
+      "format": "documentary",
+      "year": 2026,
+      "release_tag": null,
+      "poster": null,
+      "description": "Trailer for the Zodiac documentary. Full film not yet in production. Previous trailer release was lost in the 2026-10-13 account migration; to be rebuilt from BRAIN.md."
+    },
+    {
+      "id": "ostrich-plate",
+      "slug": "ostrich-plate",
+      "title": "The Ostrich, Engraved",
+      "subtitle": "One plate, one build — a copperplate natural-history short",
+      "status": "rebuild_planned",
+      "format": "natural-history short",
+      "runtime_seconds": 58,
+      "year": 2026,
+      "release_tag": null,
+      "poster": null,
+      "description": "A 58-second copperplate-engraving film: the ostrich drawn as a living plate — burin cuts, three hatch passes, the amber iris wash, and the finished print. Original release lost in account migration; method preserved in BRAIN.md and burin engine partially recovered in tool-results/."
+    }
+  ]
+}

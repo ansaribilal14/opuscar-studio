@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opuscar Studio — The Documentary Engine</title>
+<style>
+  :root{--bg:#0e0f12;--card:#16181d;--ink:#e8e4da;--dim:#9a958a;--acc:#c9a35c;--line:#26292f}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.6;min-height:100vh}
+  .wrap{max-width:960px;margin:0 auto;padding:48px 24px 64px}
+  header{border-bottom:1px solid var(--line);padding-bottom:28px;margin-bottom:36px}
+  .kicker{font-family:'Courier New',monospace;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+  h1{font-size:clamp(30px,5vw,44px);font-weight:400;letter-spacing:.01em}
+  .sub{color:var(--dim);margin-top:8px;font-style:italic}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px 24px;margin-bottom:18px}
+  .card:hover{border-color:var(--acc)}
+  .id{font-family:'Courier New',monospace;font-size:11px;color:var(--acc);letter-spacing:.15em}
+  .card h2{font-size:22px;font-weight:400;margin:6px 0 2px}
+  .card .st{font-family:'Courier New',monospace;font-size:11px;letter-spacing:.1em;color:var(--dim);margin-bottom:10px}
+  .st b{color:var(--acc);font-weight:400}
+  .card p{color:var(--dim);font-size:14.5px}
+  footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+  code{font-family:'Courier New',monospace;font-size:12px;background:var(--card);padding:2px 6px;border-radius:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Opuscar Studio</div>
+    <h1>The Documentary Engine</h1>
+    <div class="sub">Agent-built, evidence-first documentaries — method, decisions and artifacts live in the repo. <a href="https://github.com/ansaribilal14/opuscar-studio/blob/main/BRAIN.md">Read the brain →</a></div>
+  </header>
+  <main id="films">Loading films…</main>
+  <footer>
+    <div>Git is the main brain — <a href="https://github.com/ansaribilal14/opuscar-studio">github.com/ansaribilal14/opuscar-studio</a></div>
+    <div><code>BRAIN.md</code> · <code>worklog.md</code> · <code>films.json</code></div>
+  </footer>
+</div>
+<script>
+const STATUS={in_production:'IN PRODUCTION',trailer_only:'TRAILER ONLY',rebuild_planned:'REBUILD PLANNED',released:'RELEASED'};
+(async()=>{
+  const el=document.getElementById('films');
+  try{
+    const r=await fetch('films.json');const d=await r.json();
+    el.innerHTML=d.films.map(f=>`
+      <article class="card">
+        <div class="id">${f.id} · ${String(f.year||'')}</div>
+        <h2>${f.title}</h2>
+        <div class="st"><b>${STATUS[f.status]||f.status}</b>${f.subtitle?' — '+f.subtitle:''}</div>
+        <p>${f.description||''}</p>
+      </article>`).join('');
+  }catch(e){el.innerHTML='<article class="card"><p>Film registry unavailable — see <a href="https://github.com/ansaribilal14/opuscar-studio/blob/main/docs/films.json">films.json</a> in the repo.</p></article>';}
+})();
+</script>
+</body>
+</html>
