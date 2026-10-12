@@ -45,3 +45,18 @@ Stage Summary:
 - New home: https://github.com/ansaribilal14/opuscar-studio (backup complete: all surviving assets + full method now in git).
 - Pending on this repo: NVIDIA_NIM_API_KEY Actions secret, GitHub Pages enablement (main /docs) — done in this task unless noted otherwise.
 - Lesson encoded in BRAIN.md §0: push after every step; repo is the brain, not the account.
+
+---
+Task ID: 2 (follow-up)
+Agent: Super Z (main agent)
+Task: Complete recovery setup — Actions secret, Pages, sanitized tooling.
+
+Work Log:
+- Registered NVIDIA_NIM_API_KEY as Actions secret on ansaribilal14/opuscar-studio (libsodium sealed box via scripts/set_secret.py).
+- Sanitized set_secret.py to read credentials from env vars only, then committed (safe for repo reuse by any agent).
+- Enabled GitHub Pages: main branch, /docs path -> https://ansaribilal14.github.io/opuscar-studio/
+- Verified pages build + repo file tree via API.
+
+Stage Summary:
+- Infrastructure fully migrated: repo + brain docs + landing page + secret + Pages all live under ansaribilal14.
+- Next task on the board (per BRAIN.md §6): video-003 Isdal Woman full film.
