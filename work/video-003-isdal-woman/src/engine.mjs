@@ -194,7 +194,7 @@ export function loadImageSafe(p) {
   catch { imgCache.set(p, null); return null; }
 }
 // draw an image "cover" inside a frame with white archive border + caption
-export function archivePhoto(ctx, img, x, y, w, h, caption, credit, reveal = 1) {
+export function archivePhoto(ctx, img, x, y, w, h, caption, credit, reveal = 1, gradeTop = 0.18, gradeBottom = 0.42) {
   if (!img) return false;
   const iw = img.width, ih = img.height;
   const s = Math.max(w / iw, h / ih);
@@ -205,7 +205,7 @@ export function archivePhoto(ctx, img, x, y, w, h, caption, credit, reveal = 1) 
   ctx.drawImage(img, x + (w - iw * s) / 2, y + (h - ih * s) / 2, iw * s, ih * s);
   // grade: desaturate-ish dark overlay for cohesion
   const g = ctx.createLinearGradient(0, y, 0, y + h);
-  g.addColorStop(0, "rgba(18,20,23,0.18)"); g.addColorStop(1, "rgba(18,20,23,0.42)");
+  g.addColorStop(0, `rgba(18,20,23,${gradeTop})`); g.addColorStop(1, `rgba(18,20,23,${gradeBottom})`);
   ctx.fillStyle = g; ctx.fillRect(x, y, w, h);
   ctx.restore();
   // caption strip
