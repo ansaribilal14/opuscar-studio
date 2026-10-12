@@ -1,0 +1,47 @@
+[
+  {
+    "url": "https://secret.com",
+    "name": "Secret: Deodorants & Antiperspirants For Women",
+    "snippet": "Learn about Secret deodorants and antiperspirants. designed with your whole body in mind, including your underboob, feet, thighs, chest, and even privates!",
+    "host_name": "secret.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.merriam-webster.com",
+    "name": "SECRET Definition & Meaning",
+    "snippet": "The meaning of SECRET is kept from knowledge or view : hidden. Her secret wish is to become a senator. working in secret as a spy or detective",
+    "host_name": "www.merriam-webster.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://kubernetes.io",
+    "name": "Secrets",
+    "snippet": "A Secret is an object that contains a small amount of sensitive data such as a password, a token, or a key. Such information might otherwise be put in a Pod ...",
+    "host_name": "kubernetes.io",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://podcasts.apple.com",
+    "name": "Matt and Shane's Secret Podcast",
+    "snippet": "Grab onto this fast moving train and witness two comedians rise to victory and splendor. This is easily the funniest podcast out there. Read more",
+    "host_name": "podcasts.apple.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://markmanson.net",
+    "name": "The Staggering Bullshit of \"The Secret\"",
+    "snippet": "The Secret advocates that people assume the identities of the person they wish to become—to actually believe that they are already rich, already skinny and ... Read more",
+    "host_name": "markmanson.net",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  }
+]

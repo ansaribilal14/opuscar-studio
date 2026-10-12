@@ -1,0 +1,83 @@
+[
+  {
+    "url": "https://www.avery.com/category/products/labels",
+    "name": "Blank Labels & Custom Printed Online Labels | Avery.com",
+    "snippet": "Get high-quality, premium blank labels & custom printed labels from Avery. Order your size, your shape & your quantity. Easy to customize online.",
+    "host_name": "www.avery.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.sheetlabels.com/printed/sheet-labels",
+    "name": "Custom Printed Sheet Labels | SheetLabels.com ®",
+    "snippet": "Custom printed sheet labels on various materials with durable & weatherproof options. Free digital proof & art support with low cost shipping options.",
+    "host_name": "www.sheetlabels.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.amazon.com/labels/k=labels",
+    "name": "Labels",
+    "snippet": "Elevate your organization with high-quality, versatile labels . Enjoy smooth printing, strong adhesion, and the flexibility to personalize your labels",
+    "host_name": "www.amazon.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://nolabels.org",
+    "name": "No Labels",
+    "snippet": "No Labels strengthens the commonsense center in Congress and across the country because if we do not do this work, no one will. Read more",
+    "host_name": "nolabels.org",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels",
+    "name": "Create and update labels for projects | Resource Manager",
+    "snippet": "To update labels for a project using gcloud CLI, use the gcloud projects update command with the --update- labels , --remove- labels , or --clear- labels flag. Read more",
+    "host_name": "docs.cloud.google.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.fcc.gov/broadbandlabels",
+    "name": "Broadband Consumer Labels",
+    "snippet": "Broadband Labels are designed to provide clear, easy-to-understand, and accurate information about the cost and performance of high-speed internet services.",
+    "host_name": "www.fcc.gov",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://localcontexts.org/traditional-knowledge-labels",
+    "name": "TK Labels",
+    "snippet": "TK Labels identify cultural material that has community-specific conditions regarding access and use. The Labels promote new standards of respect by embedding ... Read more",
+    "host_name": "localcontexts.org",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.onlinelabels.com",
+    "name": "Blank & Custom Labels | OnlineLabels®",
+    "snippet": "Custom labels , tailored for any job. 2-3 day standard turnaround. Available on sheets, rolls, or die- cut stickers . Discounts on multiple design variations. Read more",
+    "host_name": "www.onlinelabels.com",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://docs.gitlab.com",
+    "name": "Labels | GitLab Docs",
+    "snippet": "Use three types of labels in GitLab: Project labels can be assigned to issues and merge requests in that project only. Group labels can be assigned to issues, ... Read more",
+    "host_name": "docs.gitlab.com",
+    "rank": 8,
+    "date": "",
+    "favicon": ""
+  }
+]

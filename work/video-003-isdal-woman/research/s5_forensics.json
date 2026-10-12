@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://en.wikipedia.org",
+    "name": "University",
+    "snippet": "A university is an institution of tertiary education and research which awards academic degrees in several academic disciplines. University is derived from ... Read more",
+    "host_name": "en.wikipedia.org",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://twin-cities.umn.edu",
+    "name": "University of Minnesota Twin Cities",
+    "snippet": "The University of Minnesota, Twin Cities is among the nation's top public research universities offering a wide range of undergraduate and graduate ...",
+    "host_name": "twin-cities.umn.edu",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  }
+]
