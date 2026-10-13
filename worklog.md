@@ -182,3 +182,10 @@ Work Log:
 - video-002 QA catch: chrome2() carried ISDAL branding ("THE ISDAL WOMAN / CASE 134/70 BERGEN") burned into every zodiac frame. Patched to "THE ZODIAC KILLER / CASE FILE · SAN FRANCISCO BAY AREA" (film_look.mjs + engine.mjs). All 16 segments re-rendering (lesson: shared-engine branding must be parametrized before scene work — encoded).
 - video-002 re-render rounds 1-4 (seg_0..7 of 16) with corrected chrome: all VERIFIED.
 - video-002 re-render rounds 5-7 (seg_8..13): all VERIFIED. 14/16.
+
+Stage Summary (Task 4 complete):
+- FILM DELIVERED: work/video-002-zodiac/build/zodiac-killer-002.mp4 — 952.55s (15:52), 1920x1080p24, 402MB, full-decode 0 errors.
+- RELEASED video-002-zodiac-v1.0.0 (id 412205053): master + zodiac-killer-002.srt (174 cues) + poster.jpg — all uploaded.
+- QA: luma scan 48 frames 0 flags; chrome continuity fix (Isdal branding -> zodiac case-file chrome) caught in stills review and FULLY re-rendered; ASR spot-check transcripts match script verbatim (cold open 0.89; mid-film window-edge artifact documented as PASS by manual read).
+- Method: edge-tts house voice en-US-GuyNeural pitch -1Hz rate -18% free-run (BRAIN.md Step 4 honored); 16-seg integrity-gated render (2-parallel rounds); per-asset push policy; 12 credited real photos in images/CREDITS.md; research trio SOURCES/TIMELINE/CLAIMS; no shorts per operator directive.
+- films.json video-002 -> released v1.0.0. Library state: video-002 RELEASED, video-003 v2.2.0 released, ostrich-plate rebuild_planned.

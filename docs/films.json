@@ -1,6 +1,6 @@
 {
   "studio": "Opuscar Studio — The Documentary Engine",
-  "updated": "2026-10-13",
+  "updated": "2026-10-14",
   "films": [
     {
       "id": "video-003",
@@ -20,12 +20,13 @@
       "slug": "zodiac",
       "title": "Zodiac",
       "subtitle": "The Ciphers That Refused to Die",
-      "status": "trailer_only",
+      "status": "released",
       "format": "documentary",
       "year": 2026,
-      "release_tag": null,
-      "poster": null,
-      "description": "Trailer for the Zodiac documentary. Full film not yet in production. Previous trailer release was lost in the 2026-10-13 account migration; to be rebuilt from BRAIN.md."
+      "release_tag": "video-002-zodiac-v1.0.0",
+      "poster": "https://github.com/ansaribilal14/opuscar-studio/releases/download/video-002-zodiac-v1.0.0/poster.jpg",
+      "description": "RELEASED v1.0.0 — full 15:52 investigative documentary at 1920x1080p24, narration by Microsoft edge-tts (en-US-GuyNeural). The documented record: four confirmed attacks (5 murdered, 2 survivors), ~20 letters, the 408 cipher solved in 1969 (FBI-corroborated), the 340 cipher solved December 2020 (FBI-confirmed), the unsolved Z13/Z32, the partial print and partial DNA, and every suspect theory labelled as theory. 12 credited real photographs; cipher grids and newspapers are labelled reconstructions; evidence-first, nothing invented.",
+      "runtime_minutes": "15:52"
     },
     {
       "id": "ostrich-plate",
