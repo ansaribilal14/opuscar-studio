@@ -3,7 +3,7 @@
 // renderFrame applies: crossfades, base plate, grain, vignette, chrome.
 import {
   PAL, photoPlate, photoCard, grain, basePlate, vignette, chrome2,
-  kicker, display, rule, paper, stamp2, fog2, norwayMap, glow,
+  kicker, display as _display, rule, paper, stamp2, fog2, norwayMap, glow,
 } from "./film_look.mjs";
 import { clamp, lerp, ease, easeOut, text, font, textW } from "./engine.mjs";
 import { RNG } from "./engine.mjs";
@@ -11,6 +11,10 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 const S = PAL; // shorthand
+let FW = 1920; // frame width for display auto-fit
+function display(ctx, str, cx, y, size, p, opts = {}) {
+  return _display(ctx, str, cx, y, size, p, { maxW: FW * 0.92, ...opts });
+}
 
 // ---------- shared composites ----------
 function fileHeader(ctx, W, H, tLoc, label, title) {
@@ -763,7 +767,7 @@ function notebook_intro(ctx, W, H, t, dur) {
 function code_decode(ctx, W, H, t, dur) {
   basePlate(ctx, W, H, t);
   kicker(ctx, "THE CODE, CRACKED", Math.round(W * 0.062), Math.round(H * 0.15), Math.round(H * 0.019));
-  display(ctx, "THE CODE RECORDED JOURNEYS", W / 2, Math.round(H * 0.235), Math.round(H * 0.050), clamp((t - 0.2) / 1));
+  display(ctx, "THE CODE RECORDED JOURNEYS", W / 2, Math.round(H * 0.235), Math.round(H * 0.058), clamp((t - 0.15) / 0.9));
   const rows = [
     ["O22 – O28 · P", "PARIS", "22–28 OCTOBER"],
     ["O29 · PS", "PARIS → STAVANGER", "TRAVEL DAY"],
@@ -777,7 +781,7 @@ function code_decode(ctx, W, H, t, dur) {
     const e = easeOut(rp);
     ctx.save(); ctx.globalAlpha = e;
     // code chip
-    ctx.fillStyle = "rgba(16,20,27,0.85)";
+    ctx.fillStyle = "rgba(36,44,56,0.92)";
     const cw = W * 0.235, chh = H * 0.095;
     const cx = W * 0.075;
     ctx.fillRect(cx, y - chh * 0.55, cw, chh);
@@ -832,7 +836,7 @@ function autopsy_card(ctx, W, H, t, dur) {
   if (sp > 0) {
     ctx.save(); ctx.globalAlpha = easeOut(sp);
     kicker(ctx, "GADES INSTITUTT — AUTOPSY FINDING", Math.round(W * 0.062), Math.round(H * 0.31), Math.round(H * 0.0165));
-    display(ctx, "50 – 70", Math.round(W * 0.062), Math.round(H * 0.52), Math.round(H * 0.170), clamp((t - 0.7) / 1.2), { align: "left", color: S.bone });
+    display(ctx, "50 – 70", Math.round(W * 0.062), Math.round(H * 0.52), Math.round(H * 0.170), clamp((t - 0.3) / 1.0), { align: "left", color: S.bone });
     text(ctx, "FENEMAL SLEEPING PILLS — STILL NOT FULLY", Math.round(W * 0.062), Math.round(H * 0.605), Math.round(H * 0.0235), { family: S.mono, color: S.boneDim, alpha: clamp((t - 1.5) / 0.8) });
     text(ctx, "ABSORBED — A FOREIGN BRAND, IN HER STOMACH", Math.round(W * 0.062), Math.round(H * 0.645), Math.round(H * 0.0235), { family: S.mono, color: S.boneDim, alpha: clamp((t - 1.6) / 0.8) });
     ctx.restore();
@@ -842,11 +846,11 @@ function autopsy_card(ctx, W, H, t, dur) {
   if (rp > 0) {
     ctx.save(); ctx.globalAlpha = easeOut(rp);
     const bx = W * 0.72;
-    ctx.fillStyle = "rgba(12,15,20,0.6)";
+    ctx.fillStyle = "rgba(34,41,52,0.88)";
     ctx.fillRect(bx - W * 0.16, H * 0.30, W * 0.32, H * 0.40);
     ctx.strokeStyle = "rgba(234,227,212,0.22)"; ctx.lineWidth = 1;
     ctx.strokeRect(bx - W * 0.16 + 0.5, H * 0.30 + 0.5, W * 0.32 - 1, H * 0.40 - 1);
-    display(ctx, "+ 12", bx, Math.round(H * 0.43), Math.round(H * 0.095), clamp(rp * 1.5), { align: "center" });
+    display(ctx, "+ 12", bx, Math.round(H * 0.43), Math.round(H * 0.095), clamp(rp * 1.5), { align: "center", color: S.bone });
     text(ctx, "MORE PILLS — BESIDE THE BODY", bx, Math.round(H * 0.485), Math.round(H * 0.0175), { family: S.mono, color: S.boneDim, align: "center" });
     ctx.restore();
   }
@@ -856,7 +860,7 @@ function autopsy_card(ctx, W, H, t, dur) {
 function autopsy_facts(ctx, W, H, t, dur) {
   basePlate(ctx, W, H, t);
   kicker(ctx, "WHAT THE AUTOPSY FOUND", W / 2, Math.round(H * 0.16), Math.round(H * 0.019), { align: "center" });
-  display(ctx, "SHE WAS ALIVE AS THE FIRE REACHED HER", W / 2, Math.round(H * 0.26), Math.round(H * 0.052), clamp((t - 0.2) / 1.1));
+  display(ctx, "SHE WAS ALIVE AS THE FIRE REACHED HER", W / 2, Math.round(H * 0.26), Math.round(H * 0.056), clamp((t - 0.15) / 0.9));
   const panels = [
     { k: "SOOT IN HER LUNGS", b: "Smoke breathed before death — the fire was not instantaneous.", c: S.bone },
     { k: "NECK BRUISE — UNEXPLAINED", b: "Right side. Possibly a fall. Possibly a blow. Never resolved.", c: S.red, border: "rgba(176,64,47,0.6)" },
@@ -868,7 +872,7 @@ function autopsy_facts(ctx, W, H, t, dur) {
     const pw = W * 0.27, phh = H * 0.34;
     const px = W * (0.075 + i * 0.325), py = H * 0.36 + (i % 2) * H * 0.02;
     ctx.save(); ctx.globalAlpha = easeOut(pp);
-    ctx.fillStyle = "rgba(12,15,20,0.62)";
+    ctx.fillStyle = "rgba(30,37,47,0.90)";
     ctx.fillRect(px, py, pw, phh);
     ctx.strokeStyle = p.border || "rgba(234,227,212,0.25)"; ctx.lineWidth = 1.6;
     ctx.strokeRect(px + 0.5, py + 0.5, pw - 1, phh - 1);
@@ -1463,6 +1467,7 @@ function drawScene(c2d, W, H, b, tLoc) {
 const TRANS = 0.9; // crossfade seconds at block starts (not before first)
 
 export function renderFrame(ctx, W, H, tl, t) {
+  FW = W;
   const blocks = tl.blocks;
   // current block: last block whose start <= t (holds through pauses)
   let idx = 0;

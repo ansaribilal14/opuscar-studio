@@ -8,8 +8,8 @@ const fs = require("fs");
 import { RNG, clamp, lerp, ease, easeOut, text, font, textW, C } from "./engine.mjs";
 
 export const PAL = {
-  bgTop: "#1b2027", bgMid: "#141920", bgBot: "#0f1218",
-  lift: "rgba(62,74,90,0.22)",
+  bgTop: "#212730", bgMid: "#1a2028", bgBot: "#141821",
+  lift: "rgba(70,84,102,0.28)",
   bone: "#eae3d4", boneDim: "#b9b1a0", boneFaint: "#8d8677",
   amber: "#d2a85e", amberDim: "rgba(210,168,94,0.55)",
   red: "#b0402f", slate: "#8ba0b4", ink: "#17181a",
@@ -195,10 +195,15 @@ export function kicker(ctx, str, x, y, size, opts = {}) {
   return w;
 }
 
-// big display line with word-by-word rise+fade reveal
+// big display line with word-by-word rise+fade reveal; auto-shrinks to fit maxW
 export function display(ctx, str, cx, y, size, p, opts = {}) {
   const { color = PAL.bone, weight = "bold", family = PAL.serif, tracking = 0, align = "center", shadow = true, maxW = 0 } = opts;
   font(ctx, size, family, weight);
+  // auto-fit: shrink size until the line fits maxW
+  if (maxW > 0) {
+    let w = ctx.measureText(str).width + tracking * (str.length - 1);
+    if (w > maxW) { size = Math.max(12, Math.floor(size * (maxW / w))); font(ctx, size, family, weight); }
+  }
   const words = str.split(" ");
   const spaceW = ctx.measureText(" ").width + tracking;
   const ws = words.map(w => ctx.measureText(w).width);

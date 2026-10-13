@@ -2,6 +2,8 @@
 // usage: node render_encode.mjs <firstFrame> <lastFrame> <outMp4> [--fps 24] [--w 1920] [--h 1080] [--crf 18]
 import { createCanvas } from "canvas";
 import { spawn } from "child_process";
+import fs from "fs";
+import path from "path";
 import { buildTimeline } from "./timeline.js";
 import { renderFrame } from "./scenes2.mjs";
 
@@ -10,12 +12,14 @@ const arg = (name, def) => { const i = process.argv.indexOf(name); return i > -1
 const first = parseInt(firstArg), last = parseInt(lastArg), out = outArg;
 const FPS = arg("--fps", 24), W = arg("--w", 1920), H = arg("--h", 1080), CRF = arg("--crf", 18);
 
+fs.mkdirSync(path.dirname(path.resolve(out)), { recursive: true });
 const tl = buildTimeline();
 const canvas = createCanvas(W, H);
 const ctx = canvas.getContext("2d");
 
+// NOTE: stdin IS the frame pipe here, so -nostdin must NOT be used (it would close stdin).
 const ff = spawn("ffmpeg", [
-  "-nostdin", "-y",
+  "-y",
   "-f", "image2pipe", "-framerate", String(FPS), "-i", "-",
   "-c:v", "libx264", "-preset", "medium", "-crf", String(CRF),
   "-pix_fmt", "yuv420p", "-profile:v", "high",
