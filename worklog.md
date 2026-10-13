@@ -102,3 +102,19 @@ Work Log:
 Stage Summary:
 - DECISION: full visual rebuild (engine v2 + scenes v2 at 1920x1080, photo-first cinematic design, animated grain, Ken Burns on photos, crossfades instead of black dips, streaming encode). Narration/audio/mix/timeline untouched so SRT + durations stay valid.
 - Next: engine film_look additions -> scenes2.mjs (all 40 visuals) -> streaming render_encode -> luma QA -> shorts rebuild -> poster -> release v2.0.0
+
+---
+Task ID: 3-b
+Agent: main (Super Z)
+Task: video-003 v2 visual engine — build + smoke validation
+
+Work Log:
+- Wrote src/film_look.mjs: graded photo cache (desaturate+cool, top-level-await preload), Ken Burns photoPlate/photoCard, animated grain tiles, basePlate luminance floor + halation, vignette, chrome2 w/ progress hairline, kicker/display (word-level reveal)/rule/paper/stamp2/fog2, stylized dot-grid Norway map w/ animated routes, glow
+- Wrote src/scenes2.mjs: all 40 visuals rebuilt photo-first at 1920x1080 scale-relative; renderFrame dispatcher with 0.9s crossfades between blocks + pause gap-holding (v1 black-gap bug eliminated); persistent beat file-tab
+- Wrote src/render_encode.mjs: frames streamed JPEG q93 into ffmpeg stdin (disk-safe: no PNG intermediates)
+- Fixed: package.json type=module regression from npm init; loadImage async preload; norwayMap route destructure; DNA haplogroup overflow; suitcase contrast; end_card text brightness
+- Smoke validation: 53 frames across all 40 scenes inspected visually via contact sheets — photos visible, big type, no voids
+
+Stage Summary:
+- v2 engine validated frame-accurate at 720p smoke scale; ready for full 1080p build
+- Next: build_v2.sh (2-worker segmented stream encode + concat + mux v1 mix), qa_luma.py void check, full render launch
