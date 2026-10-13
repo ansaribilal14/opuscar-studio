@@ -133,3 +133,21 @@ Work Log:
 Stage Summary:
 - Resume point: seg_2 next. Engine/timeline/narration/audio locked; QA fixes committed in 8c51e9a and pushed.
 - Discipline change: worklog now updated at every round boundary, not only at session end.
+
+---
+Task ID: 3-c (cont. 1)
+Agent: main (Super Z)
+Task: video-003 v2 — finish all segments, diagnose + fix corrupt segment, assemble master
+
+Work Log:
+- Post-restart audit: seg_8/seg_9 had actually COMPLETED before the gateway EOF (1977 frames each) — no re-render needed; only seg_10/seg_11 remained.
+- Rendered seg_10 (1977f) + seg_11 (1967f) -> all 12 segments present, 23,714 frames total.
+- FIRST ASSEMBLY FAILED QA: master was 3954 frames/164.75s = only seg_0+seg_1. ffmpeg concat -c copy died with 'Invalid NAL unit size' / 'Error splitting NAL units'.
+- Full-decode audit of all 12 segments (ffmpeg -v error -f null): seg_2 = 948 error lines, other 11 = 0. ROOT CAUSE: the canceled first render attempt (context canceled) left a surviving ffmpeg writing seg_2/seg_3 concurrently with the retry round -> interleaved mdat -> NAL corruption. nb_frames header still said 1977, so frame-count checks alone were insufficient.
+- HARDENING: build_seg.sh now ends with an integrity gate — full-decode error count must be 0 AND frame count must equal FIRST..LAST range, else abort with non-zero exit.
+- Re-rendered seg_2 solo: VERIFIED (0 decode errors, 1977 frames).
+- Assembled master via build_finish.sh: concat -> music.py score -> mix.py -> mux. MASTER VERIFIED: 987.992s (988s timeline), -15.9 LUFS integrated, -1.5 dBTP true peak, poster.jpg written.
+
+Stage Summary:
+- Master: work/video-003-isdal-woman/build/isdal-woman-003.mp4 (1080p24, ~988s, 106MB) — ready for luma QA + visual sampling.
+- Lesson: every rendered segment must pass a FULL-DECODE integrity gate before acceptance; frame counts alone lie after process-kill overlaps.

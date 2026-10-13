@@ -16,3 +16,9 @@ echo "seg_$K: frames $FIRST-$LAST of $TOTAL_FRAMES"
 node src/render_encode.mjs "$FIRST" "$LAST" "build/seg/seg_$K.mp4" --fps $FPS --w 1920 --h 1080 --crf $CRF
 N=$(ffprobe -v error -select_streams v -show_entries stream=nb_frames -of csv=p=0 "build/seg/seg_$K.mp4")
 echo "seg_$K done: $N frames"
+# integrity gate: full decode must be error-free (catches double-write NAL corruption)
+ERRS=$(ffmpeg -nostdin -v error -i "build/seg/seg_$K.mp4" -f null - < /dev/null 2>&1 | wc -l)
+echo "seg_$K decode errors: $ERRS"
+[ "$ERRS" -ne 0 ] && { echo "SEG_$K CORRUPT — aborting (re-run build_seg.sh $K $NSEG)"; exit 1; }
+[ "$N" -ne $(( LAST - FIRST + 1 )) ] && { echo "SEG_$K FRAME COUNT WRONG ($N != $(( LAST - FIRST + 1 )))"; exit 1; }
+echo "seg_$K VERIFIED"
