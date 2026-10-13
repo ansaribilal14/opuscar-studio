@@ -45,7 +45,7 @@ for b in blocks:
         out_srt.append(f"{idx}\n{ts(s)} --> {ts(e)}\n{ln}\n")
         idx += 1
 
-path = os.path.join(ROOT, "build", "isdal-woman-003.srt")
+path = os.path.join(ROOT, "build", "zodiac-killer-002.srt")
 os.makedirs(os.path.dirname(path), exist_ok=True)
 open(path, "w").write("\n".join(out_srt))
 print(f"{path}: {idx-1} cues")
