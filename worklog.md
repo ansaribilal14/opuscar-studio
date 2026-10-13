@@ -169,3 +169,11 @@ Work Log:
 - ASR pronunciation gate (faster-whisper base.en, scripts/asr_spotcheck.py): cold open script-coverage 1.00, mid-film 0.89 -> PASS. Master RMS -16.6 dB at cold open. Release now carries 7 assets (master, srt, poster, shorts A-D).
 - METHOD FIX (permanent): BRAIN.md Step 4 rewritten — edge-tts en-US-GuyNeural pitch -1Hz is the house narrator (recovered from babymonster-documentary-pipeline lineage); gen_tts.mjs replaced with stub delegating to revoice_edge.py; revoice_edge.py gained free-run mode for new blocks. films.json -> v2.2.0 tag/poster/description.
 - Task 3-e COMPLETE: whole video-003 library re-voiced with edge-tts, edit/QA state preserved, all assets live on release video-003-isdal-woman-v2.2.0.
+
+---
+Task ID: 4
+Agent: main (Super Z)
+Task: video-002 — Zodiac Killer FULL documentary (15-18 min target, ~2,200 words), final film only — no shorts, per operator directive. All house rules in force: edge-tts en-US-GuyNeural (pitch -1Hz), real Commons imagery w/ license ledger, evidence-first compliance (408+340 SOLVED, Z13/Z32 unsolved; claims vs confirmed separated), 1920x1080p24, loudnorm -16 LUFS, push-asap to release, worklog per round.
+
+Work Log:
+- Interpreted "final video" = Zodiac full documentary (registry: video-002 trailer_only; Isdal done at v2.2.0). Order pins audience/style/length -> no clarification round, per standing "Execute the production now" directive.
