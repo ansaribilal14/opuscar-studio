@@ -1,0 +1,40 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "Mount Diablo State Park California summit view"
+✅ Got 4 images
+{
+  "success": true,
+  "query": "Mount Diablo State Park California summit view",
+  "count": 4,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f98dccf6c7e2.jpg",
+      "caption": "",
+      "source": "Tripadvisor",
+      "original_width": "1200px",
+      "original_height": "900px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/56403f12a184.jpg",
+      "caption": "",
+      "source": "Visit Tri-Valley",
+      "original_width": "1080px",
+      "original_height": "1349px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/fef23293506d.jpeg",
+      "caption": "",
+      "source": "The Mercury News",
+      "original_width": "2232px",
+      "original_height": "1380px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2aa82ce66979.jpg",
+      "caption": "",
+      "source": "Reddit",
+      "original_width": "4000px",
+      "original_height": "1800px"
+    }
+  ]
+}

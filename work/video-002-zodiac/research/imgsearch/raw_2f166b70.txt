@@ -1,0 +1,40 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "Lake Berryessa California lake aerial"
+✅ Got 4 images
+{
+  "success": true,
+  "query": "Lake Berryessa California lake aerial",
+  "count": 4,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5dc7b8cdd048.jpg",
+      "caption": "",
+      "source": "The Davis Enterprise",
+      "original_width": "1396px",
+      "original_height": "930px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/798b407a960b.jpg",
+      "caption": "",
+      "source": "YouTube",
+      "original_width": "1280px",
+      "original_height": "720px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/952d7a39e409.jpg",
+      "caption": "",
+      "source": "Daily Democrat",
+      "original_width": "2017px",
+      "original_height": "2764px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/720ea031e1da.jpg",
+      "caption": "",
+      "source": "dronestag",
+      "original_width": "1280px",
+      "original_height": "720px"
+    }
+  ]
+}

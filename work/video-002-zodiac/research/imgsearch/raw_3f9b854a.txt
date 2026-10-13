@@ -1,0 +1,40 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "Napa Valley California vineyard hills mist"
+✅ Got 4 images
+{
+  "success": true,
+  "query": "Napa Valley California vineyard hills mist",
+  "count": 4,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/483b9dad2d5a.jpg",
+      "caption": "",
+      "source": "Wine Spectator",
+      "original_width": "1600px",
+      "original_height": "900px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f9f877bfe364.jpg",
+      "caption": "",
+      "source": "Town & Country Magazine",
+      "original_width": "2121px",
+      "original_height": "1414px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/3b4331b35509.jpg",
+      "caption": "",
+      "source": "Domaine de la Rivière",
+      "original_width": "1920px",
+      "original_height": "1080px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/584264389fc6.jpg",
+      "caption": "",
+      "source": "Nomado Travel",
+      "original_width": "1200px",
+      "original_height": "800px"
+    }
+  ]
+}

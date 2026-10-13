@@ -1,0 +1,40 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "Presidio San Francisco historic buildings"
+✅ Got 4 images
+{
+  "success": true,
+  "query": "Presidio San Francisco historic buildings",
+  "count": 4,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/3ca448a8206a.jpg",
+      "caption": "",
+      "source": "National Park Service",
+      "original_width": "1600px",
+      "original_height": "900px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7a3afbf2d911.jpg",
+      "caption": "",
+      "source": "The New York Times",
+      "original_width": "3000px",
+      "original_height": "1688px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0ed0524f7f3d.jpg",
+      "caption": "",
+      "source": "| Advisory Council on Historic Preservation",
+      "original_width": "1942px",
+      "original_height": "652px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e10efcdef9ca.jpg",
+      "caption": "",
+      "source": "Axios",
+      "original_width": "1920px",
+      "original_height": "1080px"
+    }
+  ]
+}

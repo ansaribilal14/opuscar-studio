@@ -1,0 +1,40 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "Golden Gate Bridge 1960s vintage photo fog"
+✅ Got 4 images
+{
+  "success": true,
+  "query": "Golden Gate Bridge 1960s vintage photo fog",
+  "count": 4,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/baabd8000cf5.jpg",
+      "caption": "",
+      "source": "SFGATE",
+      "original_width": "1920px",
+      "original_height": "1283px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/c0aedf958c20.jpg",
+      "caption": "",
+      "source": "highlanderimages photography",
+      "original_width": "1919px",
+      "original_height": "1280px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e2df90aead5d.jpg",
+      "caption": "",
+      "source": "eBay",
+      "original_width": "900px",
+      "original_height": "1200px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/10e2b5f4b36e.jpg",
+      "caption": "",
+      "source": "Reddit",
+      "original_width": "3917px",
+      "original_height": "5515px"
+    }
+  ]
+}

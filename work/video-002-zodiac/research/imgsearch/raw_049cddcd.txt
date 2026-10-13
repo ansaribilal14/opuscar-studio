@@ -1,0 +1,40 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "Vallejo California historic waterfront"
+✅ Got 4 images
+{
+  "success": true,
+  "query": "Vallejo California historic waterfront",
+  "count": 4,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b7c21005d842.jpg",
+      "caption": "",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "956px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/743597e5b248.jpg",
+      "caption": "",
+      "source": "The Vallejo Sun",
+      "original_width": "2000px",
+      "original_height": "1125px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d14f9862819b.jpg",
+      "caption": "",
+      "source": "eBay",
+      "original_width": "1136px",
+      "original_height": "736px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5357078d2d3b.jpg",
+      "caption": "",
+      "source": "YouTube",
+      "original_width": "1280px",
+      "original_height": "720px"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "San Francisco Bay fog aerial vintage"
+✅ Got 4 images
+{
+  "success": true,
+  "query": "San Francisco Bay fog aerial vintage",
+  "count": 4,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/01425dce97c3.jpg",
+      "caption": "",
+      "source": "eBay",
+      "original_width": "1200px",
+      "original_height": "938px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/91ae21bd11f0.jpg",
+      "caption": "",
+      "source": "Alamy",
+      "original_width": "1067px",
+      "original_height": "1390px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/de513b4ff734.jpg",
+      "caption": "",
+      "source": "The Center for Land Use Interpretation",
+      "original_width": "1199px",
+      "original_height": "798px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e43bae407826.jpg",
+      "caption": "",
+      "source": "The Center for Land Use Interpretation",
+      "original_width": "1197px",
+      "original_height": "798px"
+    }
+  ]
+}

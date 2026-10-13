@@ -1,0 +1,40 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "police evidence board case files vintage"
+✅ Got 4 images
+{
+  "success": true,
+  "query": "police evidence board case files vintage",
+  "count": 4,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/79071d907d91.jpg",
+      "caption": "",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "941px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/867ec9512829.jpg",
+      "caption": "",
+      "source": "Unsplash",
+      "original_width": "3000px",
+      "original_height": "2000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/cecc4fe89cf1.jpg",
+      "caption": "",
+      "source": "Unsplash",
+      "original_width": "3000px",
+      "original_height": "2043px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f3144c523565.jpg",
+      "caption": "",
+      "source": "Cryptic Killers",
+      "original_width": "1000px",
+      "original_height": "1001px"
+    }
+  ]
+}

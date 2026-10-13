@@ -1,0 +1,40 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "Benicia California historic main street"
+✅ Got 4 images
+{
+  "success": true,
+  "query": "Benicia California historic main street",
+  "count": 4,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ea5e99350d41.jpg",
+      "caption": "",
+      "source": "TravelAwaits",
+      "original_width": "1024px",
+      "original_height": "768px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6e811c90d4d1.jpg",
+      "caption": "",
+      "source": "YouTube",
+      "original_width": "1280px",
+      "original_height": "720px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7358a33910c0.jpg",
+      "caption": "",
+      "source": "Zillow",
+      "original_width": "1280px",
+      "original_height": "788px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d3088f6b44f8.jpeg",
+      "caption": "",
+      "source": "TravelAwaits",
+      "original_width": "1200px",
+      "original_height": "900px"
+    }
+  ]
+}

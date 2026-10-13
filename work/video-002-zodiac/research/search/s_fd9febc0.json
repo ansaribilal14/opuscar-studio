@@ -1,0 +1,56 @@
+[
+  {
+    "url": "https://eprint.iacr.org/2021/1620.pdf",
+    "name": "Unicity distance of the Zodiac-340 cipher",
+    "snippet": "In December 2020 , David Oranchak , Jarl Van Eycke , and Sam. Blake solved a 51-year old mystery: the Zodiac cipher of 340 symbols. Blake [1] explains their ... Read more 17 pages",
+    "host_name": "eprint.iacr.org",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://eng.vt.edu/magazine/stories/spring-2020/the-new-cryptographers.html",
+    "name": "The new cryptographers",
+    "snippet": "Oranchak , Blake , and Van Eycke had produced their cipher solutions in several steps broken up between them: Blake rearranged the second cipher's 340 symbols ... Read more",
+    "host_name": "eng.vt.edu",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://arxiv.org/abs/2403.17350",
+    "name": "The Solution of the Zodiac Killer's 340-Character Cipher",
+    "snippet": "by D Oranchak · 2024 · Cited by 3 — Title:The Solution of the Zodiac Killer's 340 -Character Cipher . Authors:David Oranchak , Sam Blake , Jarl Van Eycke . View a PDF of the paper ... Read more",
+    "host_name": "arxiv.org",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.reddit.com/r/ZodiacKiller/comments/kb173t/the_340_has_been_solved",
+    "name": "The 340 has been solved! : r/ZodiacKiller",
+    "snippet": "we solved the 340 and submitted it to the FBI. They have confirmed the solution . our heroes Dave Oranchak , Sam Blake , Jarl Van Eycke … two ...",
+    "host_name": "www.reddit.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.discovermagazine.com/how-mathematicians-cracked-the-zodiac-killers-cipher-43137",
+    "name": "Cracking the Zodiac Killer's Cipher – How Mathematicians",
+    "snippet": "Nov 26, 2025 — Discover how mathematicians cracked the Zodiac Killer Z340 cipher , about half a century of relentless pursuit, and why this case remains one ... Read more",
+    "host_name": "www.discovermagazine.com",
+    "rank": 4,
+    "date": "Nov 26, 2025",
+    "favicon": ""
+  },
+  {
+    "url": "https://blog.wolfram.com/2021/03/24/the-solution-of-the-zodiac-killers-340-character-cipher",
+    "name": "The Solution of the Zodiac Killer's 340-Character Cipher",
+    "snippet": "Mar 24, 2021 — I was inspired by a YouTube video by David Oranchak , which looked at the Zodiac Killer's 340 -character cipher ( Z340 ), which is pictured below. Read more",
+    "host_name": "blog.wolfram.com",
+    "rank": 5,
+    "date": "Mar 24, 2021",
+    "favicon": ""
+  }
+]

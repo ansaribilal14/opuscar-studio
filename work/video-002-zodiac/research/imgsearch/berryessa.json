@@ -1,0 +1,47 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "Lake Berryessa Napa County California lake landscape"
+✅ Got 5 images
+{
+  "success": true,
+  "query": "Lake Berryessa Napa County California lake landscape",
+  "count": 5,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2dd9d950a918.jpg",
+      "caption": "",
+      "source": "San Francisco Chronicle",
+      "original_width": "1920px",
+      "original_height": "1073px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/79b5127218f7.jpg",
+      "caption": "",
+      "source": "To Hike California - Substack",
+      "original_width": "5712px",
+      "original_height": "2991px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/279fc8440950.jpg",
+      "caption": "",
+      "source": "Succulents and More™",
+      "original_width": "1600px",
+      "original_height": "749px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7bad7da155cb.jpg",
+      "caption": "",
+      "source": "Shutterstock",
+      "original_width": "1500px",
+      "original_height": "1225px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/706bcab30d99.jpg",
+      "caption": "",
+      "source": "Tripadvisor",
+      "original_width": "1200px",
+      "original_height": "1200px"
+    }
+  ]
+}

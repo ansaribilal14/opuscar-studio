@@ -1,0 +1,40 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "vintage newspaper printing press 1960s newsroom"
+✅ Got 4 images
+{
+  "success": true,
+  "query": "vintage newspaper printing press 1960s newsroom",
+  "count": 4,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ff202add9a4e.jpg",
+      "caption": "",
+      "source": "Alamy",
+      "original_width": "1259px",
+      "original_height": "1390px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7004280a86e5.jpeg",
+      "caption": "",
+      "source": "Mississippi Free Press",
+      "original_width": "1200px",
+      "original_height": "793px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5f9b7df62f2f.jpg",
+      "caption": "",
+      "source": "The Guardian",
+      "original_width": "1200px",
+      "original_height": "900px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5f537c544a06.jpg",
+      "caption": "",
+      "source": "Canva",
+      "original_width": "1131px",
+      "original_height": "1600px"
+    }
+  ]
+}

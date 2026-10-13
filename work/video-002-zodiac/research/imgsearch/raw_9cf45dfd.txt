@@ -1,0 +1,40 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "vintage typewriter keys closeup dark"
+✅ Got 4 images
+{
+  "success": true,
+  "query": "vintage typewriter keys closeup dark",
+  "count": 4,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a1f98a64985a.jpg",
+      "caption": "",
+      "source": "Dreamstime",
+      "original_width": "900px",
+      "original_height": "1690px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/073107f4945d.jpg",
+      "caption": "",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "956px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f4ddfae02b3a.jpg",
+      "caption": "",
+      "source": "StockCake",
+      "original_width": "1024px",
+      "original_height": "1024px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a8cfb883f6fb.jpg",
+      "caption": "",
+      "source": "eBay",
+      "original_width": "1200px",
+      "original_height": "900px"
+    }
+  ]
+}

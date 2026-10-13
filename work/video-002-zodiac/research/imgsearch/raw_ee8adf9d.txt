@@ -1,0 +1,40 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "San Francisco 1960s street scene vintage"
+✅ Got 4 images
+{
+  "success": true,
+  "query": "San Francisco 1960s street scene vintage",
+  "count": 4,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/1672c4ccff19.jpg",
+      "caption": "",
+      "source": "Curbside Classic -",
+      "original_width": "837px",
+      "original_height": "1200px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/dcfe90e7263d.jpg",
+      "caption": "",
+      "source": "The Guardian",
+      "original_width": "1200px",
+      "original_height": "720px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/57b843f1046a.jpg",
+      "caption": "",
+      "source": "City Contrast",
+      "original_width": "2440px",
+      "original_height": "1724px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/3906d5cf8e40.jpg",
+      "caption": "",
+      "source": "Taylor Holmes inc.",
+      "original_width": "1200px",
+      "original_height": "714px"
+    }
+  ]
+}
