@@ -181,3 +181,4 @@ Work Log:
 - video-002 render rounds 4-6 (seg_6..11): all VERIFIED. 12/16 segments complete.
 - video-002 QA catch: chrome2() carried ISDAL branding ("THE ISDAL WOMAN / CASE 134/70 BERGEN") burned into every zodiac frame. Patched to "THE ZODIAC KILLER / CASE FILE · SAN FRANCISCO BAY AREA" (film_look.mjs + engine.mjs). All 16 segments re-rendering (lesson: shared-engine branding must be parametrized before scene work — encoded).
 - video-002 re-render rounds 1-4 (seg_0..7 of 16) with corrected chrome: all VERIFIED.
+- video-002 re-render rounds 5-7 (seg_8..13): all VERIFIED. 14/16.
