@@ -179,3 +179,4 @@ Work Log:
 - Interpreted "final video" = Zodiac full documentary (registry: video-002 trailer_only; Isdal done at v2.2.0). Order pins audience/style/length -> no clarification round, per standing "Execute the production now" directive.
 - video-002 render rounds 1-3 (seg_0..5 of 16): all VERIFIED (full-decode gate 0 errors, frame counts gated). ~5.9 min per 2-parallel round @crf20 1080p24.
 - video-002 render rounds 4-6 (seg_6..11): all VERIFIED. 12/16 segments complete.
+- video-002 QA catch: chrome2() carried ISDAL branding ("THE ISDAL WOMAN / CASE 134/70 BERGEN") burned into every zodiac frame. Patched to "THE ZODIAC KILLER / CASE FILE · SAN FRANCISCO BAY AREA" (film_look.mjs + engine.mjs). All 16 segments re-rendering (lesson: shared-engine branding must be parametrized before scene work — encoded).
