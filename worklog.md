@@ -118,3 +118,18 @@ Work Log:
 Stage Summary:
 - v2 engine validated frame-accurate at 720p smoke scale; ready for full 1080p build
 - Next: build_v2.sh (2-worker segmented stream encode + concat + mux v1 mix), qa_luma.py void check, full render launch
+
+---
+Task ID: 3-c
+Agent: main (Super Z)
+Task: video-003 v2 — resume interrupted render; worklog-discipline fix (log before resume, commit after every step)
+
+Work Log:
+- Session restarted after tool-pipeline outage killed the post-QA-fix re-render. User demanded worklog be updated before any session closes — adopting hard rule: append worklog + push BEFORE and AFTER each render round.
+- State verified before touching anything: seg_0 (frames 0-1976) and seg_1 (1977-3953) complete at 1977 frames each, rendered 04:03 AFTER QA-fix commit 8c51e9a (film_look.mjs base-lift +11, scenes2.mjs code_decode/autopsy brightening +21) -> segments 0-1 valid, no re-render needed.
+- Remaining: seg_2..seg_11 (10 segments, 2-parallel per tool call, ~340-460s per pair), then build_finish.sh (concat 12 -> score -> mix -> mux master -> poster), full-film luma QA (scripts/qa_luma.py), 4 vertical shorts v2 (build_shorts_v2.sh), release video-003-isdal-woman-v2.0.0, films.json + landing page update.
+- Idempotency: every segment re-runnable standalone (build_seg.sh k 12); frame counts verified with ffprobe after each round; partial files simply re-rendered.
+
+Stage Summary:
+- Resume point: seg_2 next. Engine/timeline/narration/audio locked; QA fixes committed in 8c51e9a and pushed.
+- Discipline change: worklog now updated at every round boundary, not only at session end.
