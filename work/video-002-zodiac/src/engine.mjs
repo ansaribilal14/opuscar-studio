@@ -139,9 +139,9 @@ export function chrome(ctx, W, H, t, globalT, opts = {}) {
   ctx.restore();
   // case stamp
   if (showCase) {
-    text(ctx, "CASE 134/70", 26, H - 22, 13, { family: C.mono, color: C.amber, alpha: 0.55, spacing: 2 });
-    text(ctx, "BERGEN, NORWAY — 1970", 26, H - 22, 13, { family: C.mono, color: "#8a8577", alpha: 0.0, spacing: 2 });
-    const label = "THE ISDAL WOMAN";
+    text(ctx, "CASE FILE 9-6-69", 26, H - 22, 13, { family: C.mono, color: C.amber, alpha: 0.55, spacing: 2 });
+    text(ctx, "SAN FRANCISCO BAY AREA — 1969", 26, H - 22, 13, { family: C.mono, color: "#8a8577", alpha: 0.0, spacing: 2 });
+    const label = "THE ZODIAC KILLER";
     const w = textW(ctx, label, 11, C.mono);
     text(ctx, label, W - 26 - w, H - 22, 11, { family: C.mono, color: "#8a8577", alpha: 0.55, spacing: 2 });
   }

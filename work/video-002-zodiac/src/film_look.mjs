@@ -171,8 +171,8 @@ export function vignette(ctx, W, H) {
 // ---------- chrome: case tag + progress hairline ----------
 export function chrome2(ctx, W, H, t, total) {
   const a = 0.62;
-  text(ctx, "CASE 134/70 · BERGEN", Math.round(W * 0.024), H - Math.round(H * 0.028), Math.round(H * 0.0155), { family: PAL.mono, color: PAL.amber, alpha: a, spacing: 2.2 });
-  const lbl = "THE ISDAL WOMAN";
+  text(ctx, "CASE FILE · SAN FRANCISCO BAY AREA", Math.round(W * 0.024), H - Math.round(H * 0.028), Math.round(H * 0.0155), { family: PAL.mono, color: PAL.amber, alpha: a, spacing: 2.2 });
+  const lbl = "THE ZODIAC KILLER";
   const lw = textW(ctx, lbl, Math.round(H * 0.0135), PAL.mono);
   text(ctx, lbl, W - Math.round(W * 0.024) - lw, H - Math.round(H * 0.028), Math.round(H * 0.0135), { family: PAL.mono, color: PAL.boneFaint, alpha: a, spacing: 2.2 });
   if (total) {
