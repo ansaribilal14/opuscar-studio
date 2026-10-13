@@ -151,3 +151,17 @@ Work Log:
 Stage Summary:
 - THE FILM IS DELIVERED: v2.0.0 master + subs + poster live on the release. Shorts pending.
 - New failure mode encoded: tracked files can silently revert across container resets — every render now requires src/ == git HEAD (guard in build_seg.sh).
+
+---
+Task ID: 3-e
+Agent: main (Super Z)
+Task: OPERATOR REJECTION — narration voice wrong (must be edge TTS). Re-voice entire video-003 project with edge-tts, keep verified edit intact, push-asap every asset.
+
+Work Log:
+- Root cause found: gen_tts.mjs used z-ai platform voice "tongtong" (worklog 3, deviation when NIM 404'd) — wrong voice shipped in v1, v2.0/v2.1 master and all shorts mixes.
+- Operator's established house voice recovered from ansaribilal14/babymonster-documentary-pipeline: edge-tts en-US-GuyNeural, rate -8%, pitch -1Hz.
+- edge-tts installed (pip, venv), Microsoft endpoint verified reachable (test synth 8.7s OK).
+- PLAN: regenerate 38 blocks with per-block duration fitting to OLD durations.json (rate refinement + atempo residual <= 1%) so timeline.js/mix offsets/SRT stay valid; re-run mix.py over existing music.wav; re-mux master from video_silent.mp4 (video stream untouched); re-mux shorts A/B/C; render short D (missing); release as video-003-isdal-woman-v2.2.0 "edge-tts re-voiced edition" with per-asset push.
+- 38/38 blocks re-voiced with edge-tts en-US-GuyNeural (pitch -1Hz): every block EXACT fit vs old durations (Δ+0.000s; house rate auto-refined to -29% avg; max residual atempo 0.927 on b6d — documented). Tongtong originals preserved in audio/blocks_tongtong/.
+- mix.py re-run over existing score: 987.992s, loudnorm -16 LUFS engaged. Master re-muxed from video_silent.mp4 (video bit-exact) -> build/isdal-woman-003.mp4 (987.992s, AAC 192k).
+- RELEASED video-003-isdal-woman-v2.2.0: master (384MB) + srt uploaded (release id 411793068). Shorts next, per-asset push.
