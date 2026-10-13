@@ -7,6 +7,10 @@ ROOT="$(pwd)"
 K="$1"; NSEG="$2"; CRF="${3:-20}"
 FPS=24
 mkdir -p build/seg
+# guard: source tree must match git HEAD (container resets have reverted files silently)
+if ! git -C "$ROOT/../.." diff --quiet HEAD -- "$ROOT/src" 2>/dev/null; then
+  echo "FATAL: src/ differs from git HEAD — run: git -C $ROOT/../.. checkout HEAD -- $ROOT/src" >&2; exit 1
+fi
 TOTAL_FRAMES=$(node --input-type=module -e "import {buildTimeline} from '$ROOT/src/timeline.js'; console.log(Math.ceil(buildTimeline().total*buildTimeline().fps));")
 CHUNK=$(( (TOTAL_FRAMES + NSEG - 1) / NSEG ))
 FIRST=$(( K * CHUNK ))
