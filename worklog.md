@@ -133,3 +133,21 @@ Work Log:
 Stage Summary:
 - No methodology or QA state lost — engine, fixes, and QA verdicts all in git history.
 - Policy change encoded: disk build artifacts are considered volatile; release = source of truth for finished assets.
+
+---
+Task ID: 3-d
+Agent: main (Super Z)
+Task: video-003 v2.0.0 — REBUILT master delivered to release (per-asset push), shorts in progress
+
+Work Log:
+- Container reset #2 discovered on resume: build/ + node_modules wiped again; ALSO tracked files in work/ silently reverted (scenes2.mjs lost the funeral/grave photo-backdrop fix on disk while git HEAD kept it).
+- Rebuilt toolchain (npm canvas), re-rendered all 12 segments (2-parallel rounds, integrity-gated).
+- First rebuilt master QA-FAILED luma scan (43 flags, old funeral signature) -> root cause: renders used the reverted pre-fix scenes2.mjs. Restored src/ from HEAD; added git-HEAD consistency guard to build_seg.sh (with corrected ../.. path after debugging 'Could not access HEAD' -> path pointed at /home/z).
+- seg_10/seg_11 re-rendered with fixed engine (0 decode errors), master re-assembled: 987.992s, funeral/grave scenes verified IN the master (t=900/930 mean 39.1 vs broken 19.0).
+- RELEASED video-003-isdal-woman-v2.0.0: master (384MB), .srt (148 cues), poster — all uploaded to https://github.com/ansaribilal14/opuscar-studio/releases/tag/video-003-isdal-woman-v2.0.0
+- films.json -> v2.0.0 tag/poster/description; worklog; push.
+- Per-asset push policy in force: shorts A-D will be uploaded to the same release immediately on completion.
+
+Stage Summary:
+- THE FILM IS DELIVERED: v2.0.0 master + subs + poster live on the release. Shorts pending.
+- New failure mode encoded: tracked files can silently revert across container resets — every render now requires src/ == git HEAD (guard in build_seg.sh).
