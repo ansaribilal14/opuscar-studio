@@ -40,3 +40,6 @@ were rejected on policy grounds.
   to avoid misrepresenting the location).
 - Rejected on policy: all Alamy results (watermarks), all StockCake results
   (AI-generated), knit_texture.jpg (unusable exposure).
+
+## Narration voice
+- Microsoft edge-tts neural voice **en-US-GuyNeural** (pitch -1Hz) — v2.2.0 re-voiced edition (operator-mandated house narrator; replaces the platform TTS voice shipped in v1-v2.1).

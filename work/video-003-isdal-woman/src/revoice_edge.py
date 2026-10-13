@@ -54,26 +54,33 @@ async def synth(text, rate, out_mp3):
             await asyncio.sleep(3 + 3 * attempt)
 
 async def one_block(b):
-    bid, target = b["id"], durs[b["id"]]
+    bid = b["id"]
+    free = bid not in durs  # new block: no target -> natural duration (house rate)
+    target = durs[bid] if not free else None
     out_wav = os.path.join(BLK, f"{bid}.wav")
-    if os.path.exists(out_wav) and abs(probe(out_wav) - target) < 0.02:
+    if not free and os.path.exists(out_wav) and abs(probe(out_wav) - target) < 0.02:
         return (bid, target, probe(out_wav), None, None, "cached")
     text = b["text"]
     tmp_mp3 = os.path.join(TMP, f"{bid}.mp3")
     tmp_wav = os.path.join(TMP, f"{bid}.wav")
     rate = HOUSE_RATE
     d = None
-    for attempt in range(4):
+    for attempt in range(4 if not free else 1):
         await synth(text, rate, tmp_mp3)
         # trailing-silence strip (keep 0.25s pad), downmix to 24k mono
         ffmpeg(["-i", tmp_mp3, "-af",
                 "silenceremove=stop_periods=-1:stop_duration=0.25:stop_threshold=-45dB",
                 "-ar", "24000", "-ac", "1", "-c:a", "pcm_s16le", tmp_wav])
         d = probe(tmp_wav)
-        if abs(d - target) <= TOL:
+        if free or abs(d - target) <= TOL:
             break
         rate += round((d / target - 1) * 100)
         rate = max(RATE_MIN, min(RATE_MAX, rate))
+    if free:
+        ffmpeg(["-i", tmp_wav, "-c:a", "pcm_s16le", out_wav])
+        durs[bid] = d
+        json.dump(durs, open(os.path.join(ROOT, "audio/durations.json"), "w"), indent=2)
+        return (bid, d, d, rate, 1.0, "free-run (durations.json updated)")
     atempo = d / target
     warn = None
     if not (0.9 <= atempo <= 1.1):

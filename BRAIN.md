@@ -68,8 +68,13 @@ the compliance-critical ones.**
   evidence does and does not support.
 
 ### Step 4 — Voice (TTS)
-- Engine: **NVIDIA NIM** TTS (key stored as GitHub Actions secret `NVIDIA_NIM_API_KEY`,
-  never in the repo).
+- Engine: **edge-tts** (Microsoft neural voices) — PERMANENT default, operator-mandated
+  2026-10-13. House narrator: `en-US-GuyNeural`, `pitch -1Hz`, default `rate -8%`.
+- One file per narration block (`src/revoice_edge.py`); blocks are duration-fitted to the
+  timeline (per-block rate refinement + atempo residual ≤ ±1%, apad/atrim to exact target)
+  so scene timing, mix offsets and SRT stay valid on any re-voice.
+- History (do NOT regress): NIM TTS 404'd (video-003) → platform voice "tongtong" shipped
+  once → operator REJECTED it. edge-tts or nothing.
 - Generate one file per narration block; verify duration vs. timeline; normalize.
 
 ### Step 5 — Deterministic Render (render(t))
