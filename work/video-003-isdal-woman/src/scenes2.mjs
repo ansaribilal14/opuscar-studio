@@ -1317,13 +1317,11 @@ function candleGlow(ctx, W, H, t, cx, cy, scale = 1) {
   ctx.restore();
 }
 function funeral_card(ctx, W, H, t, dur) {
-  basePlate(ctx, W, H, t);
-  // night gradient
-  const g = ctx.createLinearGradient(0, 0, 0, H);
-  g.addColorStop(0, "#12161d"); g.addColorStop(1, "#0c0f14");
-  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  // v2.1: graded photo backdrop (was flat night gradient -> luma-void flags). Somber, dark-graded, RECONSTRUCTION-labelled.
+  photoPlate(ctx, W, H, t, dur, "isdalen_valley.jpg", { zoom: [1.12, 1.05], pan: [0, 0.35, 0, -0.1], dark: 0.55, scrim: 0.25 });
   fog2(ctx, W, H, t, 24, 0.035);
   candleGlow(ctx, W, H, t, W * 0.80, H * 0.52, 1.4);
+  chip(ctx, "RECONSTRUCTION — NOT THE ACTUAL LOCATION", Math.round(W * 0.94), Math.round(H * 0.935), Math.round(H * 0.015), { align: "right", color: S.boneFaint, alpha: clamp((t - 2.2) / 0.8) * 0.8 });
   fileHeader(ctx, W, H, t, "FILE 8 / 8", "The Unmarked Grave");
   kicker(ctx, "5 FEBRUARY 1971 — M\u00D8LLENDAL CEMETERY, BERGEN", Math.round(W * 0.062), Math.round(H * 0.30), Math.round(H * 0.0175));
   const rows = [
@@ -1347,11 +1345,10 @@ function funeral_card(ctx, W, H, t, dur) {
   text(ctx, "foreign country, without any family present.", Math.round(W * 0.062), Math.round(H * 0.925), Math.round(H * 0.024), { family: S.body, color: S.boneDim, alpha: clamp((t - 3.8) / 0.9) });
 }
 function grave_card(ctx, W, H, t, dur) {
-  basePlate(ctx, W, H, t);
-  const g = ctx.createLinearGradient(0, 0, 0, H);
-  g.addColorStop(0, "#12161d"); g.addColorStop(1, "#0d1015");
-  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  // v2.1: graded photo backdrop (was flat gradient -> luma-void flags)
+  photoPlate(ctx, W, H, t, dur, "rorbu_coast.jpg", { zoom: [1.10, 1.05], pan: [0, -0.1, 0, 0.1], dark: 0.62, scrim: 0.20 });
   fog2(ctx, W, H, t, 25, 0.03);
+  chip(ctx, "RECONSTRUCTION — NOT THE ACTUAL LOCATION", Math.round(W * 0.94), Math.round(H * 0.935), Math.round(H * 0.015), { align: "right", color: S.boneFaint, alpha: clamp((t - 2.2) / 0.8) * 0.8 });
   // wreath + candle at grave (vector, respectful, no location claimed)
   const gx = W * 0.30, gy = H * 0.52;
   ctx.save(); ctx.globalAlpha = clamp(t / 1.5);

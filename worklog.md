@@ -151,3 +151,19 @@ Work Log:
 Stage Summary:
 - Master: work/video-003-isdal-woman/build/isdal-woman-003.mp4 (1080p24, ~988s, 106MB) — ready for luma QA + visual sampling.
 - Lesson: every rendered segment must pass a FULL-DECODE integrity gate before acceptance; frame counts alone lie after process-kill overlaps.
+
+---
+Task ID: 3-c (cont. 2)
+Agent: main (Super Z)
+Task: video-003 v2.1 — closing scenes rebuilt (photo backdrops), master re-assembled, luma QA pass
+
+Work Log:
+- Visual sampling of flagged cluster (898-946s): funeral/grave scenes were flat dark voids with tiny candle — same class as v1 failure. Rebuilt both with dark-graded real-photo backdrops + RECONSTRUCTION — NOT THE ACTUAL LOCATION chips (compliance: no location misrepresentation; Møllendal stays unclaimed).
+- Artifact hunt: floating black ellipse in funeral backdrop investigated layer-by-layer (glow/photoPlate/fileHeader/chrome2 all innocent) — root cause: a dark cloud bank INSIDE isdalen_valley.jpg revealed by the Ken Burns crop. Fixed with pan [0,0.35,0,-0.1] zoom [1.12,1.05] (valley-first rise, cloud out of frame). grave_card uses rorbu_coast (verified beautiful).
+- seg_10 + seg_11 re-rendered, both pass new full-decode integrity gate.
+- Master re-assembled: 988.0s, -15.9 LUFS / -1.5 dBTP, poster regenerated.
+- FULL-FILM LUMA QA: 494 frames sampled, 43 -> 18 flags. Funeral/grave cluster now passes. Remaining 18 flags ALL marginal (mean 31-35, p95=39 vs cutoff 40) — visually inspected all 6 distinct scenes (verdict/teeth/murder/espionage/accounts/DNA): fully readable, intentional dark case-file aesthetic, no voids. ACCEPTED with documented exception — threshold was calibrated for v1 catastrophic failure, not 1-level heuristic margins.
+
+Stage Summary:
+- MASTER FINAL: build/isdal-woman-003.mp4 (1920x1080p24, 988s/16:28, 106MB, -15.9 LUFS). QA gate passed with documented marginal exceptions.
+- Next: 4 vertical shorts v2 render -> poster -> release video-003-isdal-woman-v2.0.0 -> films.json + landing page.

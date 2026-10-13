@@ -1,0 +1,13 @@
+import { createCanvas, loadImage } from "canvas";
+import { SCENES } from "./scenes2.mjs";
+import { writeFileSync } from "fs";
+import { buildTimeline } from "./timeline.js";
+const W=1920,H=1080;
+const tl=buildTimeline();
+const b8a=tl.blocks.find(b=>b.start>=890&&b.start<900);
+console.log("b8a:",b8a.id,b8a.start,b8a.dur,"visual:",b8a.visual);
+const c1=createCanvas(W,H),x1=c1.getContext("2d");
+SCENES[b8a.visual]||SCENES.funeral_card(x1,W,H,2.5,b8a.dur);
+writeFileSync("/home/z/my-project/work/qa/iso_funeral.jpg",c1.toBuffer("image/jpeg",{quality:90}));
+const img=await loadImage(process.cwd()+"/images/cache/isdalen_valley.jpg");
+console.log("isdalen_valley dims:",img.width,"x",img.height);
