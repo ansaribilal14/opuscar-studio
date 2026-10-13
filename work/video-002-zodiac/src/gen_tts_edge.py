@@ -19,7 +19,7 @@ BAK = os.path.join(ROOT, "audio/blocks_tongtong")
 TMP = os.path.join(ROOT, "audio/edge_tmp")
 VOICE = "en-US-GuyNeural"
 PITCH = "-1Hz"
-HOUSE_RATE = -8
+HOUSE_RATE = -18
 RATE_MIN, RATE_MAX = -35, 10
 TOL = 0.10  # seconds — accept before residual atempo
 
