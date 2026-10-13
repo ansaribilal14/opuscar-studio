@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "Bergen Norway Bryggen harbor wooden houses rain overcast moody photograph",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 5,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ddc61b6780dd.jpg",
+      "caption": "Sunset harbor scene with boats and historic buildings, featuring multiple Alamy watermarks and text.\n\nText: alamy, Clarion Collection, RADISSON, JULES, SILVER GALLERY, Image ID: 2R6XJM7, www.alamy.com.",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "821px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f453471c7b10.jpg",
+      "caption": "Colorful historic wooden houses line Bergen's Bryggen waterfront under cloudy skies, with mountains behind. Contains Alamy watermarks, image ID text.",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "956px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5d4d177a4ec2.jpg",
+      "caption": "Foggy Bergen, Norway waterfront with colorful wooden houses, hillside buildings, and mountains; contains Alamy watermark, not suitable for background.",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "956px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/153324999b33.jpg",
+      "caption": "Scenic Norwegian fjord village with red rorbu cabins on rocky shore beneath towering mountains, clear blue sky, no text or watermarks. Suitable for background image.",
+      "source": "Chasing Hippoz Travel Photography - Substack",
+      "original_width": "2500px",
+      "original_height": "1667px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/239b40dfc168.jpg",
+      "caption": "A framed wall art print of Bergen's colorful Bryggen waterfront houses reflecting on calm water, displayed above patterned cushions.",
+      "source": "Etsy",
+      "original_width": "2000px",
+      "original_height": "2000px"
+    }
+  ]
+}

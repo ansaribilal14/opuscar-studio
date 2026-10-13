@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "empty desolate mountain road Norway dusk fog photograph",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 5,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f9b5467de54d.jpg",
+      "caption": "Aerial view of a winding mountain road with hairpin turns, waterfalls, and misty valleys under soft pink dawn light. Suitable for background image.",
+      "source": "Loudavým krokem",
+      "original_width": "1800px",
+      "original_height": "1207px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/3bdb81fbad71.jpg",
+      "caption": "Snowy mountain behind red coastal cabins at pink twilight, calm sea, misty atmosphere; no text or watermarks. Suitable for background image.",
+      "source": "Chasing Hippoz",
+      "original_width": "2048px",
+      "original_height": "1365px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f6634f0754b1.jpg",
+      "caption": "Breathtaking coastal cliff at sunset, golden light on rocky faces, calm sea and pastel sky, high clarity, no text or watermarks.\n\nsuitable for background image",
+      "source": "The Photo Hikes",
+      "original_width": "935px",
+      "original_height": "1400px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/77a965e14f07.jpg",
+      "caption": "Dramatic misty mountain peaks with fjord waters below, mossy ridges and cloudy sky; no text or watermarks. Suitable for background image.",
+      "source": "The Photo Hikes",
+      "original_width": "1500px",
+      "original_height": "1000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/dcb7cbe98448.jpg",
+      "caption": "A couple stands on a sandy beach, viewing turquoise water and rugged mountains under a clear blue sky; suitable for background image",
+      "source": "Penguin Trampoline",
+      "original_width": "1558px",
+      "original_height": "1168px"
+    }
+  ]
+}

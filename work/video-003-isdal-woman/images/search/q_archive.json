@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "old police archive filing cabinet case files folders photograph",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 5,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0abf7ebaa37a.jpg",
+      "caption": "A vintage, rusted metal filing cabinet with an open drawer overflowing with aged yellowed papers and cards.",
+      "source": "StockCake",
+      "original_width": "768px",
+      "original_height": "1344px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/007671dd198a.jpg",
+      "caption": "Dim vintage police filing cabinet drawer overflowing with aged documents, lit by a green desk lamp; contains some text.",
+      "source": "StockCake",
+      "original_width": "768px",
+      "original_height": "1344px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/77c7849de583.jpg",
+      "caption": "A hand places a card into an open vintage wooden filing cabinet drawer, with warm sunlight through blinds. Suitable for background image.",
+      "source": "StockCake",
+      "original_width": "720px",
+      "original_height": "1280px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/da94170a385d.jpg",
+      "caption": "A black-and-white photo of hands pulling a document from an open file cabinet drawer in a dim archive room.",
+      "source": "StockCake",
+      "original_width": "768px",
+      "original_height": "1344px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/788bdd7a0a6a.jpg",
+      "caption": "Aged manila archive folders labeled \"Collyer, Langley\" and \"Collyer, Homer\" with handwritten numbers, filled with yellowed newspaper clippings; New York Times logo with \"Published 2024\" watermark.",
+      "source": "The New York Times",
+      "original_width": "3000px",
+      "original_height": "1687px"
+    }
+  ]
+}

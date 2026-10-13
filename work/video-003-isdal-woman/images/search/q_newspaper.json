@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "yellowed old newspapers stack vintage 1970 newspaper photograph",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 5,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/453bfe9a56a2.jpg",
+      "caption": "Stacks of aged yellowed newspapers folded on a dark wooden shelf; Alamy watermark present, not suitable for background image.",
+      "source": "Alamy",
+      "original_width": "866px",
+      "original_height": "1390px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/30f7ba0240e5.jpg",
+      "caption": "A pile of aged, yellowed newspaper pages with stains, warm lighting, and dense text; contains large amounts of text.",
+      "source": "StockCake",
+      "original_width": "768px",
+      "original_height": "1344px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f7c530114d62.jpg",
+      "caption": "A stack of folded newspapers with Latvian text, watermarked by Alamy, on white background.",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "956px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/011ca587cd55.jpg",
+      "caption": "A scattered collection of vintage newspaper clippings and magazine pages featuring antique cars, containing large amounts of text.",
+      "source": "Etsy",
+      "original_width": "1746px",
+      "original_height": "1746px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/317978bc2794.jpeg",
+      "caption": "A collage showing vintage paper scrolls tied with twine displayed beside an oil lamp and books, evoking antique decor.",
+      "source": "Walmart",
+      "original_width": "2200px",
+      "original_height": "2200px"
+    }
+  ]
+}

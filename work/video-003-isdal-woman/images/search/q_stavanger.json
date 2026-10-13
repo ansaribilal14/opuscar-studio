@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "Stavanger Norway old town white wooden houses street photograph",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 5,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6c624fc580d4.jpg",
+      "caption": "Norwegian flag on cobblestone street with white wooden houses, blue sky. Contains Alamy watermarks — not suitable for background.",
+      "source": "Alamy",
+      "original_width": "866px",
+      "original_height": "1390px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a44780001dd2.jpg",
+      "caption": "A charming cobblestone street lined with white wooden houses under a bright blue sky, high clarity, no watermark. Suitable for background image.",
+      "source": "Booking.com",
+      "original_width": "1024px",
+      "original_height": "768px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8af08c974dd1.png",
+      "caption": "A cobblestone street lined with white wooden houses, red roofs, and colorful flower boxes. Suitable for background image.",
+      "source": "Stavanger Shore Excursions",
+      "original_width": "1024px",
+      "original_height": "768px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b6eafb62acd5.jpg",
+      "caption": "Text: \"GAMLE STAVANGER\". Cobblestone street with white wooden houses, Norwegian flag, and flowers, high clarity. Suitable for background image.",
+      "source": "YouTube",
+      "original_width": "1280px",
+      "original_height": "720px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/9e4ccd813181.jpeg",
+      "caption": "White wooden houses line a cobblestone street under a blue sky; text includes \"CARMEN\" shop sign. Suitable for background image.",
+      "source": "Pexels",
+      "original_width": "1125px",
+      "original_height": "750px"
+    }
+  ]
+}

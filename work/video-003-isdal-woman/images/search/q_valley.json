@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "query": "Norway mountain valley mist fog rocky terrain heather moorland photograph",
+  "count": 4,
+  "ranked": true,
+  "captioned_count": 4,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b627c63dc539.jpg",
+      "caption": "Rocky moorland landscape with green shrubs, boulders, and grass; contains Alamy watermarks and logo, not suitable for background use.",
+      "source": "Alamy",
+      "original_width": "866px",
+      "original_height": "1390px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/220cca7ef0d5.jpg",
+      "caption": "A moorland landscape with purple heather, green grassy hills, distant mountains, and cloudy sky. Contains Alamy watermarks and ID text: 3FM0AM8, www.alamy.com.",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "949px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a878ae409c14.jpg",
+      "caption": "A rugged brown mountain slope with snow-dusted peaks beneath moody, overcast grey clouds; blurred foreground rocks. Suitable for background image.",
+      "source": "Unsplash",
+      "original_width": "3000px",
+      "original_height": "4497px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/c95eee21d30d.jpeg",
+      "caption": "A stacked stone cairn on a rocky alpine mountainside with green shrubs, distant hills, and cloudy sky. Suitable for background image.",
+      "source": "Pexels",
+      "original_width": "4672px",
+      "original_height": "7008px"
+    }
+  ]
+}

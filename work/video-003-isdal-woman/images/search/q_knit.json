@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "grey knitted wool sweater texture pattern close up photograph",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 4,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/9ad1aaf75506.jpg",
+      "caption": "Close-up of gray-white knitted wool fabric texture with dark flecks; contains Alamy watermark, Image ID J9HYHW, www.alamy.com.",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "956px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2f37ded352f9.jpg",
+      "caption": "Cozy layered cable-knit sweaters in cream, sage green, and tan, textured and sharp; suitable for background image.",
+      "source": "StockCake",
+      "original_width": "1344px",
+      "original_height": "768px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/13704b0ada5b.jpg",
+      "caption": "Close-up of beige ribbed knit wool fabric texture; contains Alamy watermarks and ID text \"Image ID: 2SWX RMR\", www.alamy.com.",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "956px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f61c64d6d672.jpg",
+      "caption": "",
+      "source": "Unsplash",
+      "original_width": "3000px",
+      "original_height": "2002px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/aaf63556f8ae.jpeg",
+      "caption": "Close-up of soft lavender cable-knit wool fabric with braided texture, no text or watermarks. Suitable for background image",
+      "source": "Walmart Business",
+      "original_width": "1600px",
+      "original_height": "1600px"
+    }
+  ]
+}

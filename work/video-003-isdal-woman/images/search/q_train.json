@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "vintage railway station platform winter snow nordic train photograph",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 5,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/10b087e3637e.jpg",
+      "caption": "A green train waits at a snowy station platform with few passengers, mountains in the background. Contains Alamy watermarks.",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "1065px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2bd75776b9b3.jpg",
+      "caption": "Blue train at Glenfinnan station, signal box, Stop signs, snowy mountains behind; contains Alamy watermark, not suitable for background.",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "956px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/4b2abb2d7b97.jpg",
+      "caption": "Blue \"THE GOLDEN TRAIN\" luxury train at snowy Norwegian platform, passengers walking, Alamy watermarked stock photo.",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "1064px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/867b9b35c8bc.jpg",
+      "caption": "Two dark green train cars coupled together at a snowy mountain station, one door open, under a clear blue sky.",
+      "source": "Trip.com",
+      "original_width": "1439px",
+      "original_height": "1920px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f48026eeb374.jpg",
+      "caption": "A white train numbered \"80002\" travels through a snowy winter forest with frosted trees and overhead power lines; text: \"80002\", \"BALISER\", \"1195-9\", \"1195-8\". High clarity, strong visual impact, no watermark — suitable for background image.",
+      "source": "Rail Technology Magazine",
+      "original_width": "2000px",
+      "original_height": "1380px"
+    }
+  ]
+}

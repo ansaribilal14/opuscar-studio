@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "query": "vintage hotel reception desk 1970s register book keys photograph",
+  "count": 4,
+  "ranked": true,
+  "captioned_count": 4,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/4dcfc260e7f5.jpg",
+      "caption": "A vintage black and white photograph of Hotel Plesnik in Logarska Dolina, heavily covered with Alamy watermarks.\n\nThe image contains multiple \"alamy\" watermarks.\n\nText: HOTEL PLESNIK, 1756, Logarska dolina, SLOVENSKI ETNOGRAFSKI MUZEJ, Image ID: KKXTPK www.alamy.com.",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "885px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/3386470f199a.jpg",
+      "caption": "Empty wooden hotel reception desk with green accent wall, dark door, tiled floor, and black mat. Contains Alamy watermarks.",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "954px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/649c0e287c99.jpg",
+      "caption": "A selfie of three smiling people indoors, wood-paneled room background, no text or watermarks.",
+      "source": "Brown Alumni Magazine",
+      "original_width": "1024px",
+      "original_height": "768px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7069dea89949.jpg",
+      "caption": "Illuminated Eiffel Tower at dusk over Paris cityscape with Seine River, buildings, and clear blue sky; no text or watermarks. Suitable for background image.",
+      "source": "Kiwi Collection",
+      "original_width": "1920px",
+      "original_height": "833px"
+    }
+  ]
+}

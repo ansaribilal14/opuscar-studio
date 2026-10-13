@@ -1,0 +1,921 @@
+     1→// scenes.mjs — every visual for video-003. Each scene: (ctx, W, H, b, tLoc, tAbs)
+     2→// b = timeline block (has .screen[] pairs [text, kind], .visual, .dur)
+     3→import path from "path";
+     4→import { fileURLToPath } from "url";
+     5→import {
+     6→  C, RNG, clamp, lerp, ease, easeOut, win, text, font, textW, paperCard, tape, stamp,
+     7→  chrome, edgeFade, camera, fog, loadImageSafe, archivePhoto, timelineStrip, bullets,
+     8→} from "./engine.mjs";
+     9→
+    10→const __dirname = path.dirname(fileURLToPath(import.meta.url));
+    11→const IMG = (n) => process.cwd() + `/images/cache/${n}`;
+    12→
+    13→// ===================== shared backdrops =====================
+    14→function valleySky(ctx, W, H, p, night = 0.62) {
+    15→  const g = ctx.createLinearGradient(0, 0, 0, H);
+    16→  g.addColorStop(0, "#171b21"); g.addColorStop(0.55, "#20242b"); g.addColorStop(1, "#101216");
+    17→  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    18→  // mountain layers (Bergen: Ulriken ridge + valley V)
+    19→  const layers = [
+    20→    { y: 0.52, c: `rgba(38,44,52,${night})`, f: 2.1, a: 90, s: 1.0 },
+    21→    { y: 0.62, c: `rgba(30,35,42,${night + 0.1})`, f: 3.2, a: 60, s: 1.4 },
+    22→    { y: 0.74, c: `rgba(22,26,31,${night + 0.2})`, f: 4.5, a: 40, s: 2.0 },
+    23→  ];
+    24→  layers.forEach((L, li) => {
+    25→    ctx.beginPath(); ctx.moveTo(0, H);
+    26→    for (let x = 0; x <= W; x += 8) {
+    27→      const y = H * L.y - Math.sin(x / W * Math.PI * L.f + li * 2) * L.a * 0.4 - Math.sin(x / 137) * 18;
+    28→      ctx.lineTo(x, y);
+    29→    }
+    30→    ctx.lineTo(W, H); ctx.closePath();
+    31→    ctx.fillStyle = L.c; ctx.fill();
+    32→  });
+    33→  // valley V between two ridges
+    34→  ctx.beginPath();
+    35→  ctx.moveTo(W * 0.18, H * 0.30); ctx.lineTo(W * 0.46, H * 0.78); ctx.lineTo(W * 0.78, H * 0.28);
+    36→  ctx.strokeStyle = "rgba(150,160,170,0.20)"; ctx.lineWidth = 2; ctx.stroke();
+    37→  fog(ctx, W, H, p * 30, 5, 0.06);
+    38→}
+    39→
+    40→function deskBase(ctx, W, H) {
+    41→  const g = ctx.createRadialGradient(W * 0.5, H * 0.42, H * 0.1, W * 0.5, H * 0.5, H);
+    42→  g.addColorStop(0, "#1a1d21"); g.addColorStop(1, "#0e1013");
+    43→  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    44→}
+    45→
+    46→function fileTab(ctx, W, H, label, p) {
+    47→  ctx.save();
+    48→  ctx.globalAlpha *= easeOut(clamp(p * 3));
+    49→  const w = textW(ctx, label, 20, C.mono, "bold") + 44;
+    50→  ctx.fillStyle = "rgba(201,163,92,0.14)";
+    51→  ctx.fillRect(26, 30, w, 46);
+    52→  ctx.strokeStyle = "rgba(201,163,92,0.65)"; ctx.lineWidth = 1;
+    53→  ctx.strokeRect(26.5, 30.5, w, 46);
+    54→  text(ctx, label, 48, 60, 20, { family: C.mono, color: C.amber, spacing: 1 });
+    55→  ctx.restore();
+    56→}
+    57→
+    58→// ===================== generic screen text =====================
+    59→const ST = {
+    60→  title(ctx, W, H, s, p) {
+    61→    const a = easeOut(clamp(p * 2.2));
+    62→    text(ctx, s, W / 2, H * 0.46, 78, { family: C.serif, color: "#e9e2d3", align: "center", alpha: a, spacing: 3 });
+    63→    const lw = 430 * easeOut(clamp((p - 0.12) * 2));
+    64→    ctx.fillStyle = "rgba(201,163,92,0.9)";
+    65→    ctx.fillRect(W / 2 - lw / 2, H * 0.46 + 34, lw, 2);
+    66→  },
+    67→  subtitle(ctx, W, H, s, p) {
+    68→    text(ctx, s, W / 2, H * 0.46 + 92, 30, { family: C.serif, color: "#b7b0a0", align: "center", alpha: easeOut(clamp((p - 0.18) * 2)), spacing: 1 });
+    69→  },
+    70→  tab(ctx, W, H, s, p) { fileTab(ctx, W, H, s, p); },
+    71→  mono(ctx, W, H, s, p, i) {
+    72→    const a = easeOut(clamp((p - 0.10 - i * 0.16) * 2.6));
+    73→    if (a <= 0) return;
+    74→    const y = H - 76 + i * 26;
+    75→    ctx.fillStyle = `rgba(201,163,92,${0.85 * a})`;
+    76→    ctx.fillRect(26, y - 15, 4, 20);
+    77→    text(ctx, s, 40, y, 16, { family: C.mono, color: "#d9d2c2", alpha: a });
+    78→  },
+    79→  warn(ctx, W, H, s, p, i) {
+    80→    const a = easeOut(clamp((p - 0.10 - i * 0.16) * 2.6));
+    81→    if (a <= 0) return;
+    82→    const y = H - 76 + i * 30;
+    83→    const w = textW(ctx, s, 16, C.mono);
+    84→    ctx.strokeStyle = `rgba(163,60,47,${a})`; ctx.lineWidth = 1;
+    85→    ctx.strokeRect(26.5, y - 19, w + 28, 28);
+    86→    stampDot(ctx, 40, y - 6, a);
+    87→    text(ctx, s, 58, y, 15, { family: C.mono, color: "#e0b6ad", alpha: a });
+    88→  },
+    89→  quote(ctx, W, H, s, p) {
+    90→    const a = easeOut(clamp((p - 0.15) * 1.8));
+    91→    if (a <= 0) return;
+    92→    const y = H * 0.80;
+    93→    ctx.fillStyle = `rgba(8,9,11,${0.62 * a})`;
+    94→    ctx.fillRect(0, y - 34, W, 64);
+    95→    ctx.fillStyle = `rgba(201,163,92,${a})`;
+    96→    ctx.fillRect(0, y - 34, 3, 64);
+    97→    text(ctx, s, W / 2, y + 4, 19, { family: C.serif, color: "#ddd6c6", align: "center", alpha: a });
+    98→  },
+    99→  decode(ctx, W, H, s, p, i) {
+   100→    const a = easeOut(clamp((p - 0.12 - i * 0.22) * 2.4));
+   101→    if (a <= 0) return;
+   102→    const rows = ST._decodeRows || (ST._decodeRows = []);
+   103→    const y = H * 0.30 + i * 62;
+   104→    ctx.save(); ctx.globalAlpha = a;
+   105→    paperCard(ctx, W * 0.30, y - 22, 190, 44, { alpha: a * 0.95 });
+   106→    text(ctx, s.split(" → ")[0], W * 0.30 + 95, y + 7, 22, { family: C.mono, color: C.ink, align: "center" });
+   107→    text(ctx, "→", W * 0.30 + 218, y + 8, 22, { family: C.mono, color: C.amber });
+   108→    text(ctx, s.split(" → ")[1], W * 0.30 + 250, y + 7, 22, { family: C.mono, color: "#d9d2c2" });
+   109→    ctx.restore();
+   110→  },
+   111→  result(ctx, W, H, s, p, i) {
+   112→    const a = easeOut(clamp((p - 0.12 - i * 0.24) * 2.4));
+   113→    if (a <= 0) return;
+   114→    const y = H * 0.34 + i * 74;
+   115→    const w = textW(ctx, s, 22, C.mono) + 60;
+   116→    ctx.save(); ctx.globalAlpha = a;
+   117→    ctx.fillStyle = "rgba(18,20,23,0.85)";
+   118→    ctx.fillRect(W / 2 - w / 2, y - 26, w, 52);
+   119→    ctx.strokeStyle = "rgba(201,163,92,0.7)"; ctx.strokeRect(W / 2 - w / 2, y - 26, w, 52);
+   120→    text(ctx, s, W / 2, y + 8, 22, { family: C.mono, color: "#e6dfcf", align: "center" });
+   121→    ctx.restore();
+   122→  },
+   123→  disputed(ctx, W, H, s, p) {
+   124→    const a = easeOut(clamp((p - 0.18) * 2));
+   125→    if (a <= 0) return;
+   126→    const y = H * 0.70;
+   127→    ctx.save(); ctx.globalAlpha = a;
+   128→    const w = textW(ctx, s, 18, C.mono) + 130;
+   129→    ctx.fillStyle = "rgba(18,20,23,0.8)";
+   130→    ctx.fillRect(W / 2 - w / 2, y - 24, w, 48);
+   131→    ctx.strokeStyle = "rgba(163,60,47,0.85)"; ctx.strokeRect(W / 2 - w / 2, y - 24, w, 48);
+   132→    stamp(ctx, "DISPUTED", W / 2 - w / 2 + 62, y, 12, C.red, a, -0.08);
+   133→    text(ctx, s, W / 2 - w / 2 + 108, y + 6, 15, { family: C.mono, color: "#e0d8c8" });
+   134→    ctx.restore();
+   135→  },
+   136→  open(ctx, W, H, s, p, i) {
+   137→    const a = easeOut(clamp((p - 0.14 - i * 0.28) * 2.2));
+   138→    if (a <= 0) return;
+   139→    const y = H * 0.62 + i * 56;
+   140→    const w = textW(ctx, s, 16, C.mono) + 120;
+   141→    ctx.save(); ctx.globalAlpha = a;
+   142→    ctx.fillStyle = "rgba(18,20,23,0.8)";
+   143→    ctx.fillRect(W / 2 - w / 2, y - 20, w, 40);
+   144→    ctx.strokeStyle = "rgba(163,60,47,0.7)"; ctx.strokeRect(W / 2 - w / 2, y - 20, w, 40);
+   145→    stamp(ctx, "UNVERIFIED", W / 2 - w / 2 + 58, y, 10, C.red, a, -0.07);
+   146→    text(ctx, s, W / 2 - w / 2 + 100, y + 5, 14, { family: C.mono, color: "#e0d8c8" });
+   147→    ctx.restore();
+   148→  },
+   149→  aliases(ctx, W, H, s, p) {
+   150→    const list = ["Geneviève Lancier", "Claudia Tielt", "Claudia Nielsen", "Alexia Zarne-Merchez", "Vera Jarle", "Fenella Lorch", "Elisabeth Leenhouwer"];
+   151→    const colW = W / 2 - 80;
+   152→    list.forEach((name, i) => {
+   153→      const a = easeOut(clamp((p - 0.16 - i * 0.10) * 3));
+   154→      if (a <= 0) return;
+   155→      const col = i % 2, row = Math.floor(i / 2);
+   156→      const x = 80 + col * colW, y = H * 0.30 + row * 52;
+   157→      ctx.save(); ctx.globalAlpha = a;
+   158→      text(ctx, String(i + 1).padStart(2, "0"), x, y, 18, { family: C.mono, color: C.amber });
+   159→      text(ctx, name, x + 44, y, 22, { family: C.serif, color: "#d9d2c2" });
+   160→      ctx.strokeStyle = "rgba(120,115,100,0.35)";
+   161→      ctx.beginPath(); ctx.moveTo(x + 44, y + 12); ctx.lineTo(x + 44 + textW(ctx, name, 22, C.serif), y + 12); ctx.stroke();
+   162→      ctx.restore();
+   163→    });
+   164→  },
+   165→};
+   166→function stampDot(ctx, x, y, a) {
+   167→  ctx.fillStyle = `rgba(163,60,47,${a})`;
+   168→  ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2); ctx.fill();
+   169→}
+   170→export function drawScreen(ctx, W, H, b, p) {
+   171→  let mi = 0;
+   172→  (b.screen || []).forEach(([s, kind], i) => {
+   173→    const fn = ST[kind] || ST.mono;
+   174→    const idx = (kind === "mono" || kind === "warn" || kind === "open") ? (mi++) : i;
+   175→    fn(ctx, W, H, s, p, idx);
+   176→  });
+   177→}
+   178→
+   179→// ===================== scene art =====================
+   180→const scenes = {};
+   181→
+   182→scenes.valley_intro = (ctx, W, H, b, t, T) => {
+   183→  const p = t / b.dur;
+   184→  valleySky(ctx, W, H, p);
+   185→  camera(ctx, W, H, ease(p) * 0.5, 0.05);
+   186→  const im = loadImageSafe(IMG("isdalen_valley.jpg"));
+   187→  if (im) archivePhoto(ctx, im, W * 0.56, H * 0.14, W * 0.38, H * 0.44, "ISDALEN VALLEY — BERGEN", "PHOTO: BBC", easeOut(clamp((p - 0.45) * 2)));
+   188→};
+   189→
+   190→scenes.valley_date_sting = (ctx, W, H, b, t, T) => {
+   191→  valleySky(ctx, W, H, 0.5);
+   192→  const p = t / b.dur;
+   193→  const a = easeOut(clamp(p * 3));
+   194→  ctx.fillStyle = `rgba(8,9,11,${0.45 * a})`; ctx.fillRect(0, 0, W, H);
+   195→  const lw = 320 * easeOut(clamp((p - 0.1) * 2));
+   196→  ctx.fillStyle = C.amber; ctx.fillRect(W / 2 - lw / 2, H * 0.40, lw, 2);
+   197→  ctx.fillRect(W / 2 - lw / 2, H * 0.40 + 54, lw, 2);
+   198→};
+   199→
+   200→scenes.casefile_stamp = (ctx, W, H, b, t) => {
+   201→  deskBase(ctx, W, H);
+   202→  const p = t / b.dur;
+   203→  // manila folder sliding in
+   204→  const fx = W * 0.5 - 170, fy = H * 0.28 + (1 - easeOut(clamp(p * 2))) * 40;
+   205→  ctx.save();
+   206→  ctx.translate(fx + 170, fy + 110); ctx.rotate(-0.045); ctx.translate(-(fx + 170), -(fy + 110));
+   207→  paperCard(ctx, fx, fy, 340, 220, {});
+   208→  text(ctx, "POLICE REPORT", fx + 24, fy + 46, 15, { family: C.mono, color: C.inkSoft, spacing: 2 });
+   209→  text(ctx, "134/70", fx + 24, fy + 110, 52, { family: C.mono, color: C.ink, weight: "bold" });
+   210→  text(ctx, "BERGEN POLITI — 1970", fx + 24, fy + 150, 13, { family: C.mono, color: C.inkSoft, spacing: 1 });
+   211→  stamp(ctx, "CLOSED", fx + 240, fy + 150, 22, C.red, easeOut(clamp((p - 0.4) * 2)), -0.12);
+   212→  ctx.restore();
+   213→};
+   214→
+   215→scenes.title_card = (ctx, W, H, b, t) => {
+   216→  const g = ctx.createLinearGradient(0, 0, 0, H);
+   217→  g.addColorStop(0, "#0d0f12"); g.addColorStop(1, "#14171b");
+   218→  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+   219→  fog(ctx, W, H, t * 6, 9, 0.03);
+   220→  const p = clamp(t / Math.min(1.2, b.dur));
+   221→  drawScreen(ctx, W, H, b, p);
+   222→  text(ctx, "A DOCUMENTARY FROM THE CASE FILE 134/70", W / 2, H - 84, 14, { family: C.mono, color: "#8a8577", align: "center", spacing: 3, alpha: 0.8 });
+   223→};
+   224→
+   225→scenes.scene_diagram = (ctx, W, H, b, t) => {
+   226→  deskBase(ctx, W, H);
+   227→  const p = t / b.dur;
+   228→  // annotated evidence diagram (abstract, respectful): position + burn extent
+   229→  const cx = W * 0.5, cy = H * 0.42;
+   230→  ctx.save();
+   231→  const a = easeOut(clamp(p * 2));
+   232→  ctx.globalAlpha = a;
+   233→  paperCard(ctx, cx - 300, cy - 160, 600, 320, {});
+   234→  // figure outline (abstract)
+   235→  ctx.strokeStyle = C.inkSoft; ctx.lineWidth = 2;
+   236→  ctx.beginPath(); ctx.ellipse(cx, cy - 90, 26, 32, 0, 0, Math.PI * 2); ctx.stroke(); // head
+   237→  ctx.beginPath(); ctx.moveTo(cx - 20, cy - 55); ctx.quadraticCurveTo(cx, cy - 65, cx + 20, cy - 55);
+   238→  ctx.lineTo(cx + 30, cy + 40); ctx.quadraticCurveTo(cx, cy + 55, cx - 30, cy + 40); ctx.closePath(); ctx.stroke(); // torso+legs mass
+   239→  // burn extent front
+   240→  ctx.fillStyle = `rgba(163,60,47,${0.16 * easeOut(clamp((p - 0.25) * 2))})`;
+   241→  ctx.beginPath(); ctx.ellipse(cx, cy - 10, 90, 95, 0, 0, Math.PI * 2); ctx.fill();
+   242→  ctx.strokeStyle = `rgba(163,60,47,0.8)`;
+   243→  ctx.beginPath(); ctx.ellipse(cx, cy - 10, 90, 95, 0, 0, Math.PI * 2); ctx.stroke();
+   244→  label(ctx, "FRONT BURNED", cx + 96, cy - 80, p, 0.3);
+   245→  label(ctx, "BACK NOT BURNED", cx - 220, cy + 30, p, 0.42);
+   246→  label(ctx, "PETROL TRACES — GROUND", cx - 230, cy - 130, p, 0.55);
+   247→  label(ctx, "FUR HAT BENEATH BODY — PETROL", cx + 60, cy + 120, p, 0.65);
+   248→  ctx.restore();
+   249→};
+   250→function label(ctx, s, x, y, p, at) {
+   251→  const a = easeOut(clamp((p - at) * 3));
+   252→  if (a <= 0) return;
+   253→  text(ctx, s, x, y, 13, { family: C.mono, color: C.ink, alpha: a });
+   254→  ctx.strokeStyle = `rgba(28,26,22,${a * 0.5})`; ctx.lineWidth = 1;
+   255→  ctx.beginPath(); ctx.moveTo(x - 8, y - 4); ctx.lineTo(x - 26, y - 4); ctx.stroke();
+   256→}
+   257→
+   258→scenes.scene_inventory = (ctx, W, H, b, t) => {
+   259→  deskBase(ctx, W, H);
+   260→  const p = t / b.dur;
+   261→  const items = ["LIQUEUR — ST. HALLVARD", "WATER BOTTLES ×2", "PASSPORT HOLDER (PLASTIC)", "RUBBER BOOTS", "WOOLEN JUMPER + SCARF", "NYLON STOCKINGS", "UMBRELLA", "PURSE", "MATCHBOX", "BURNED PAPER", "WATCH + EARRINGS + RING", "FUR HAT (PETROL)"];
+   262→  const cols = 3, rows = 4, cw = 250, ch = 64;
+   263→  const ox = W / 2 - (cols * cw) / 2, oy = H * 0.24;
+   264→  items.forEach((it, i) => {
+   265→    const ip = easeOut(clamp(p * items.length * 1.15 - i, 0, 1));
+   266→    if (ip <= 0) return;
+   267→    const col = i % cols, row = Math.floor(i / cols);
+   268→    const x = ox + col * (cw + 14), y = oy + row * (ch + 12);
+   269→    ctx.save(); ctx.globalAlpha = ip;
+   270→    ctx.fillStyle = "rgba(35,38,44,0.9)";
+   271→    ctx.fillRect(x, y, cw, ch);
+   272→    ctx.strokeStyle = "rgba(201,163,92,0.35)"; ctx.strokeRect(x + 0.5, y + 0.5, cw - 1, ch - 1);
+   273→    text(ctx, String(i + 1).padStart(2, "0"), x + 14, y + 30, 14, { family: C.mono, color: C.amber });
+   274→    text(ctx, it, x + 44, y + 30, 12.5, { family: C.mono, color: "#d6cfc0", maxWidth: cw - 56 });
+   275→    ctx.restore();
+   276→  });
+   277→};
+   278→
+   279→scenes.label_cut = (ctx, W, H, b, t) => {
+   280→  deskBase(ctx, W, H);
+   281→  const p = t / b.dur;
+   282→  // a garment label being cut — abstract: paper strip + scissors line
+   283→  const cx = W / 2, cy = H * 0.40;
+   284→  ctx.save();
+   285→  paperCard(ctx, cx - 220, cy - 60, 440, 120, { tilt: -0.02 });
+   286→  text(ctx, "MAKER  ·  SIZE  ·  ORIGIN", cx, cy + 6, 20, { family: C.mono, color: C.ink, align: "center", alpha: 1 - easeOut(clamp((p - 0.25) * 2)) });
+   287→  // scissors path
+   288→  const cut = easeOut(clamp((p - 0.2) * 1.6));
+   289→  ctx.strokeStyle = C.red; ctx.lineWidth = 3;
+   290→  ctx.setLineDash([14, 10]);
+   291→  ctx.beginPath(); ctx.moveTo(cx - 220 - 30 + 470 * cut, cy - 60 - 8); ctx.lineTo(cx - 220 - 30 + 470 * cut + 30, cy - 60 - 8); ctx.stroke();
+   292→  ctx.setLineDash([]);
+   293→  text(ctx, "CUT", cx - 240 + 470 * cut, cy - 74, 12, { family: C.mono, color: C.red, align: "center", alpha: cut > 0.05 ? 1 : 0 });
+   294→  ctx.restore();
+   295→};
+   296→
+   297→scenes.interpol_appeal = (ctx, W, H, b, t) => {
+   298→  deskBase(ctx, W, H);
+   299→  const p = t / b.dur;
+   300→  const im = loadImageSafe(IMG("police_sketch.jpg"));
+   301→  if (im) {
+   302→    // the real 1970 police sketch, framed left; radiating reach lines right
+   303→    archivePhoto(ctx, im, W * 0.07, H * 0.13, W * 0.46, H * 0.60, "POLICE SKETCH 1970 — \"UKJENT KVINNE\"", "VIA BBC · SEE CREDITS", easeOut(clamp(p * 2)));
+   304→    const cx = W * 0.78, cy = H * 0.42;
+   305→    ctx.save();
+   306→    ctx.strokeStyle = "rgba(93,114,133,0.6)"; ctx.lineWidth = 1.2;
+   307→    ctx.beginPath(); ctx.ellipse(cx, cy, 150, 150, 0, 0, Math.PI * 2); ctx.stroke();
+   308→    const rnd = RNG(11);
+   309→    for (let i = 0; i < 10; i++) {
+   310→      const a = easeOut(clamp(p * 2.4 - i * 0.06));
+   311→      const ang = rnd() * Math.PI * 2, rr = 90 + rnd() * 130;
+   312→      ctx.strokeStyle = `rgba(201,163,92,${0.55 * a})`;
+   313→      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + Math.cos(ang) * rr, cy + Math.sin(ang) * rr); ctx.stroke();
+   314→      ctx.fillStyle = `rgba(150,160,170,${a})`;
+   315→      ctx.beginPath(); ctx.arc(cx + Math.cos(ang) * rr, cy + Math.sin(ang) * rr, 2.4, 0, Math.PI * 2); ctx.fill();
+   316→    }
+   317→    text(ctx, "DISTRIBUTED VIA INTERPOL — EUROPE · N. AFRICA · MIDDLE EAST", cx, cy + 190, 12, { family: C.mono, color: "#a49e8f", align: "center", alpha: easeOut(clamp((p - 0.5) * 2)), maxWidth: 320 });
+   318→    ctx.restore();
+   319→  } else {
+   320→    const cx = W * 0.5, cy = H * 0.40;
+   321→    const rnd = RNG(11);
+   322→    const dots = Array.from({ length: 26 }, () => ({ x: cx - 330 + rnd() * 660, y: cy - 150 + rnd() * 280 }));
+   323→    ctx.save();
+   324→    ctx.strokeStyle = "rgba(93,114,133,0.5)"; ctx.lineWidth = 1.4;
+   325→    ctx.beginPath(); ctx.ellipse(cx, cy, 360, 200, 0, 0, Math.PI * 2); ctx.stroke();
+   326→    dots.forEach((d, i) => {
+   327→      const a = easeOut(clamp(p * 3 - i * 0.05));
+   328→      ctx.fillStyle = `rgba(150,160,170,${a})`;
+   329→      ctx.beginPath(); ctx.arc(d.x, d.y, 2.2, 0, Math.PI * 2); ctx.fill();
+   330→    });
+   331→    for (let r = 0; r < 4; r++) {
+   332→      const rp = ((p * 1.3 + r * 0.25) % 1);
+   333→      ctx.strokeStyle = `rgba(201,163,92,${(1 - rp) * 0.5})`; ctx.lineWidth = 2;
+   334→      ctx.beginPath(); ctx.arc(cx, cy, 30 + rp * 260, 0, Math.PI * 2); ctx.stroke();
+   335→    }
+   336→    ctx.restore();
+   337→  }
+   338→};
+   339→
+   340→scenes.station = (ctx, W, H, b, t) => {
+   341→  valleySky(ctx, W, H, 0.4, 0.7);
+   342→  const p = t / b.dur;
+   343→  const im = loadImageSafe(IMG("bergen_station.jpg"));
+   344→  if (im) {
+   345→    archivePhoto(ctx, im, W * 0.08, H * 0.16, W * 0.52, H * 0.52, "BERGEN RAILWAY STATION", "PHOTO: BANE NOR", easeOut(clamp(p * 2)));
+   346→  } else {
+   347→    // vector station hall
+   348→    ctx.save();
+   349→    const a = easeOut(clamp(p * 2));
+   350→    ctx.globalAlpha = a;
+   351→    ctx.strokeStyle = "rgba(200,190,170,0.6)"; ctx.lineWidth = 2;
+   352→    for (let i = 0; i < 5; i++) {
+   353→      const x = W * 0.12 + i * W * 0.11;
+   354→      ctx.beginPath(); ctx.moveTo(x, H * 0.70); ctx.lineTo(x + 26, H * 0.22); ctx.stroke();
+   355→    }
+   356→    ctx.beginPath(); ctx.moveTo(W * 0.10, H * 0.22); ctx.quadraticCurveTo(W * 0.4, H * 0.12, W * 0.72, H * 0.22); ctx.stroke();
+   357→    ctx.restore();
+   358→  }
+   359→  // two suitcase outlines
+   360→  const sx = W * 0.68, sy = H * 0.52;
+   361→  [[0, 0], [70, -34]].forEach(([dx, dy], i) => {
+   362→    const a = easeOut(clamp((p - 0.3 - i * 0.15) * 2.4));
+   363→    ctx.save(); ctx.globalAlpha = a; ctx.translate(sx + dx, sy + dy);
+   364→    ctx.strokeStyle = "rgba(220,210,190,0.85)"; ctx.lineWidth = 2;
+   365→    roundRect(ctx, -60, -40, 120, 80, 8); ctx.stroke();
+   366→    ctx.beginPath(); ctx.moveTo(-24, -40); ctx.lineTo(-24, -52); ctx.lineTo(24, -52); ctx.lineTo(24, -40); ctx.stroke();
+   367→    ctx.beginPath(); ctx.moveTo(-60, -14); ctx.lineTo(60, -14); ctx.stroke();
+   368→    ctx.restore();
+   369→  });
+   370→};
+   371→function roundRect(ctx, x, y, w, h, r) {
+   372→  ctx.beginPath();
+   373→  ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+   374→  ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+   375→}
+   376→
+   377→scenes.suitcase_open = (ctx, W, H, b, t) => {
+   378→  deskBase(ctx, W, H);
+   379→  const p = t / b.dur;
+   380→  const cx = W * 0.5, cy = H * 0.38;
+   381→  // open suitcase
+   382→  ctx.save();
+   383→  const a = easeOut(clamp(p * 2));
+   384→  ctx.globalAlpha = a;
+   385→  paperCard(ctx, cx - 260, cy - 120, 520, 260, { tilt: -0.01 });
+   386→  // lid
+   387→  ctx.strokeStyle = C.inkSoft; ctx.lineWidth = 2;
+   388→  ctx.strokeRect(cx - 230, cy - 90, 460, 60);
+   389→  text(ctx, "CONTENTS MANIFEST", cx - 210, cy - 52, 13, { family: C.mono, color: C.inkSoft, spacing: 2 });
+   390→  bullets(ctx, ["CLOTHES + SHOES", "WIGS (SEVERAL)", "COSMETICS · COMB · HAIRBRUSH", "MAPS + TIMETABLES", "COINS: BE · GB · CH + 135 NOK"], cx - 210, cy + 0, 15, 430, p - 0.1, {});
+   391→  // glasses callout
+   392→  const gp = easeOut(clamp((p - 0.55) * 2));
+   393→  if (gp > 0) {
+   394→    ctx.strokeStyle = `rgba(163,60,47,${gp})`; ctx.lineWidth = 1.6;
+   395→    ctx.strokeRect(cx + 150, cy + 6, 92, 34);
+   396→    text(ctx, "GLASSES", cx + 196, cy + 28, 12, { family: C.mono, color: C.red, align: "center", alpha: gp });
+   397→    text(ctx, "FINGERPRINT → MATCH", cx + 150, cy + 68, 12, { family: C.mono, color: "#d6cfc0", alpha: gp });
+   398→  }
+   399→  // eczema cream callout
+   400→  const ep = easeOut(clamp((p - 0.7) * 2));
+   401→  if (ep > 0) {
+   402→    ctx.strokeStyle = `rgba(163,60,47,${ep})`;
+   403→    ctx.strokeRect(cx - 210, cy + 66, 150, 30);
+   404→    text(ctx, "ECZEMA CREAM", cx - 135, cy + 86, 12, { family: C.mono, color: C.red, align: "center", alpha: ep });
+   405→    text(ctx, "PRESCRIPTION STICKER — SCRAPED OFF", cx - 40, cy + 86, 12, { family: C.mono, color: "#d6cfc0", alpha: ep });
+   406→  }
+   407→  ctx.restore();
+   408→};
+   409→
+   410→scenes.money_lining = (ctx, W, H, b, t) => {
+   411→  deskBase(ctx, W, H);
+   412→  const p = t / b.dur;
+   413→  const cx = W / 2, cy = H * 0.40;
+   414→  ctx.save();
+   415→  paperCard(ctx, cx - 280, cy - 110, 560, 240, {});
+   416→  // lining flap opening
+   417→  const open = easeOut(clamp((p - 0.1) * 1.8));
+   418→  ctx.fillStyle = "#d8d0bd";
+   419→  ctx.beginPath();
+   420→  ctx.moveTo(cx - 240, cy - 60); ctx.lineTo(cx + 240, cy - 60);
+   421→  ctx.lineTo(cx + 240, cy - 60 + 40 * (1 - open)); ctx.lineTo(cx - 240, cy - 60 + 40 * (1 - open));
+   422→  ctx.closePath(); ctx.fill();
+   423→  ctx.strokeStyle = C.inkSoft; ctx.stroke();
+   424→  // notes revealed
+   425→  const np = easeOut(clamp((p - 0.35) * 2.2));
+   426→  for (let i = 0; i < 5; i++) {
+   427→    const ia = clamp(np * 5 - i, 0, 1);
+   428→    if (ia <= 0) continue;
+   429→    ctx.save(); ctx.globalAlpha = ia;
+   430→    ctx.translate(cx - 160 + i * 80, cy + 30); ctx.rotate(-0.06 + i * 0.02);
+   431→    ctx.fillStyle = "#3d4a3a"; ctx.fillRect(-52, -26, 104, 52);
+   432→    ctx.strokeStyle = "#20281f"; ctx.strokeRect(-52, -26, 104, 52);
+   433→    text(ctx, "100", 0, 2, 18, { family: C.serif, color: "#cfd8c8", align: "center" });
+   434→    text(ctx, "DM", 0, 18, 10, { family: C.mono, color: "#9fb09a", align: "center" });
+   435→    ctx.restore();
+   436→  }
+   437→  text(ctx, "≈ US$137 (1970) — FLAGGED FOR VERIFICATION", cx, cy + 100, 12, { family: C.mono, color: C.inkSoft, align: "center" });
+   438→  ctx.restore();
+   439→};
+   440→
+   441→scenes.paris_inquiry = (ctx, W, H, b, t) => {
+   442→  deskBase(ctx, W, H);
+   443→  const p = t / b.dur;
+   444→  // arc Bergen→Paris on minimal Europe
+   445→  const bx = W * 0.56, by = H * 0.28, px = W * 0.44, py = H * 0.62;
+   446→  ctx.save();
+   447→  ctx.strokeStyle = "rgba(93,114,133,0.35)";
+   448→  ctx.beginPath(); ctx.ellipse(W / 2, H * 0.44, 330, 210, 0, 0, Math.PI * 2); ctx.stroke();
+   449→  const arc = clamp((p - 0.15) / 0.5);
+   450→  ctx.strokeStyle = C.amber; ctx.lineWidth = 2;
+   451→  ctx.beginPath(); ctx.moveTo(bx, by);
+   452→  ctx.quadraticCurveTo(W * 0.28, H * 0.34, lerp(bx, px, ease(arc)), lerp(by, py, ease(arc)));
+   453→  ctx.stroke();
+   454→  [[bx, by, "BERGEN"], [px, py, "PARIS"]].forEach(([x, y, s], i) => {
+   455→    const a = easeOut(clamp((p - i * 0.2) * 3));
+   456→    ctx.fillStyle = `rgba(220,210,190,${a})`;
+   457→    ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI * 2); ctx.fill();
+   458→    text(ctx, s, x, y - 16, 13, { family: C.mono, color: "#d6cfc0", align: "center", alpha: a });
+   459→  });
+   460→  const na = easeOut(clamp((p - 0.62) * 2));
+   461→  stamp(ctx, "NO MATCH", W / 2, H * 0.80, 24, C.red, na, -0.05);
+   462→  ctx.restore();
+   463→};
+   464→
+   465→scenes.suitcase_realisation = (ctx, W, H, b, t) => {
+   466→  deskBase(ctx, W, H);
+   467→  const p = t / b.dur;
+   468→  const cx = W / 2, cy = H * 0.40;
+   469→  ctx.save();
+   470→  paperCard(ctx, cx - 250, cy - 90, 500, 190, { tilt: 0.012 });
+   471→  text(ctx, "EVERY LABEL REMOVED", cx, cy - 20, 26, { family: C.serif, color: C.ink, align: "center" });
+   472→  const lines = ["her clothes", "her belongings", "her identity"];
+   473→  lines.forEach((s, i) => {
+   474→    const a = easeOut(clamp((p - 0.3 - i * 0.18) * 2.5));
+   475→    text(ctx, "— " + s, cx, cy + 22 + i * 34, 18, { family: C.body, color: C.inkSoft, align: "center", alpha: a });
+   476→  });
+   477→  ctx.restore();
+   478→};
+   479→
+   480→scenes.hotel_card = (ctx, W, H, b, t) => {
+   481→  const p = t / b.dur;
+   482→  deskBase(ctx, W, H);
+   483→  const im = loadImageSafe(IMG("bergen_1970s.jpg"));
+   484→  if (im) archivePhoto(ctx, im, W * 0.06, H * 0.14, W * 0.46, H * 0.56, "BERGEN — CITY CENTRE", "PHOTO: LIFE IN NORWAY", easeOut(clamp(p * 2)));
+   485→  else valleySky(ctx, W, H, p, 0.5);
+   486→  // room key tag
+   487→  ctx.save();
+   488→  const ka = easeOut(clamp((p - 0.35) * 2));
+   489→  ctx.globalAlpha = ka;
+   490→  ctx.translate(W * 0.74, H * 0.36); ctx.rotate(0.06);
+   491→  paperCard(ctx, -90, -60, 180, 120, {});
+   492→  ctx.beginPath(); ctx.arc(-90 + 90, -60, 12, 0, Math.PI * 2); ctx.fillStyle = C.bg; ctx.fill();
+   493→  text(ctx, "ROOM", 0, -18, 13, { family: C.mono, color: C.inkSoft, align: "center" });
+   494→  text(ctx, "407", 0, 26, 40, { family: C.serif, color: C.ink, align: "center", weight: "bold" });
+   495→  ctx.restore();
+   496→};
+   497→
+   498→scenes.witness_cards = (ctx, W, H, b, t) => {
+   499→  deskBase(ctx, W, H);
+   500→  const p = t / b.dur;
+   501→  const cards = [
+   502→    ["HOTEL STAFF", "kept to her room", "\"on guard\""],
+   503→    ["ROOM CHANGES", "asked ×3 on one stay", "wigs noted"],
+   504→    ["LANGUAGES", "English · German", "Flemish"],
+   505→    ["DETAIL", "smell of garlic", "—"],
+   506→  ];
+   507→  cards.forEach((c, i) => {
+   508→    const a = easeOut(clamp((p * 4.2 - i), 0, 1));
+   509→    if (a <= 0) return;
+   510→    const col = i % 2, row = Math.floor(i / 2);
+   511→    const x = W / 2 - 250 + col * 260, y = H * 0.22 + row * 150;
+   512→    ctx.save(); ctx.globalAlpha = easeOut(a);
+   513→    ctx.translate(x + 125, y + 60); ctx.rotate((i % 2 ? 0.012 : -0.012)); ctx.translate(-(x + 125), -(y + 60));
+   514→    paperCard(ctx, x, y, 240, 120, {});
+   515→    text(ctx, c[0], x + 18, y + 30, 12, { family: C.mono, color: C.amber, spacing: 1 });
+   516→    text(ctx, c[1], x + 18, y + 62, 15, { family: C.body, color: C.ink });
+   517→    text(ctx, c[2], x + 18, y + 88, 15, { family: C.body, color: C.inkSoft });
+   518→    ctx.restore();
+   519→  });
+   520→};
+   521→
+   522→scenes.neptun_card = (ctx, W, H, b, t) => {
+   523→  deskBase(ctx, W, H);
+   524→  const p = t / b.dur;
+   525→  // dining hall abstract: tables dots, woman near two navy figures
+   526→  const cx = W / 2, cy = H * 0.42;
+   527→  ctx.save();
+   528→  ctx.globalAlpha = easeOut(clamp(p * 2));
+   529→  paperCard(ctx, cx - 300, cy - 150, 600, 300, {});
+   530→  text(ctx, "HOTEL NEPTUN — DINING HALL (RECONSTRUCTION)", cx, cy - 118, 12, { family: C.mono, color: C.inkSoft, align: "center", spacing: 1 });
+   531→  // two navy figures
+   532→  [[cx + 70], [cx + 110]].forEach(([x], i) => {
+   533→    const a = easeOut(clamp((p - 0.25 - i * 0.1) * 2.5));
+   534→    ctx.fillStyle = `rgba(40,52,66,${a})`;
+   535→    ctx.beginPath(); ctx.ellipse(x, cy + 20, 16, 46, 0, 0, Math.PI * 2); ctx.fill();
+   536→    ctx.beginPath(); ctx.arc(x, cy - 40, 12, 0, Math.PI * 2); ctx.fill();
+   537→  });
+   538→  text(ctx, "GERMAN NAVY (ONE AN OFFICER)", cx + 90, cy + 92, 11, { family: C.mono, color: C.inkSoft, align: "center", alpha: easeOut(clamp((p - 0.4) * 2)) });
+   539→  // her seat — separated
+   540→  const ha = easeOut(clamp((p - 0.15) * 2.5));
+   541→  ctx.fillStyle = `rgba(201,163,92,${ha})`;
+   542→  ctx.beginPath(); ctx.arc(cx - 60, cy + 10, 9, 0, Math.PI * 2); ctx.fill();
+   543→  text(ctx, "SHE SAT NEAR — NEVER WITH", cx - 60, cy + 92, 11, { family: C.mono, color: C.ink, align: "center", alpha: ha });
+   544→  // separator
+   545→  ctx.strokeStyle = `rgba(163,60,47,${easeOut(clamp((p - 0.5) * 2))})`; ctx.lineWidth = 2;
+   546→  ctx.setLineDash([6, 6]);
+   547→  ctx.beginPath(); ctx.moveTo(cx + 20, cy - 60); ctx.lineTo(cx + 20, cy + 70); ctx.stroke();
+   548→  ctx.setLineDash([]);
+   549→  ctx.restore();
+   550→};
+   551→
+   552→scenes.stavanger_card = (ctx, W, H, b, t) => {
+   553→  deskBase(ctx, W, H);
+   554→  const p = t / b.dur;
+   555→  const cx = W / 2, cy = H * 0.40;
+   556→  ctx.save();
+   557→  // boot pair vector
+   558→  const a = easeOut(clamp(p * 2));
+   559→  ctx.globalAlpha = a;
+   560→  [[cx - 70, -0.08], [cx + 40, 0.05]].forEach(([x, rot]) => {
+   561→    ctx.save(); ctx.translate(x, cy); ctx.rotate(rot);
+   562→    ctx.strokeStyle = "#d9d2c2"; ctx.lineWidth = 2.4;
+   563→    ctx.beginPath();
+   564→    ctx.moveTo(-22, -50); ctx.lineTo(-22, 10); ctx.lineTo(34, 10); ctx.lineTo(34, -8); ctx.lineTo(0, -14); ctx.lineTo(0, -50); ctx.closePath(); ctx.stroke();
+   565→    ctx.beginPath(); ctx.moveTo(-22, 0); ctx.lineTo(34, 0); ctx.stroke();
+   566→    ctx.restore();
+   567→  });
+   568→  // tag
+   569→  const ta = easeOut(clamp((p - 0.45) * 2));
+   570→  ctx.globalAlpha = ta;
+   571→  paperCard(ctx, cx + 130, cy - 90, 240, 96, { tilt: 0.03 });
+   572→  text(ctx, "OSCAR RØRTVEDT", cx + 148, cy - 62, 13, { family: C.mono, color: C.ink });
+   573→  text(ctx, "FOOTWEAR — STAVANGER", cx + 148, cy - 40, 11, { family: C.mono, color: C.inkSoft });
+   574→  text(ctx, "BOOTS + UMBRELLA MATCHED", cx + 148, cy - 18, 11, { family: C.mono, color: C.red });
+   575→  ctx.restore();
+   576→};
+   577→
+   578→scenes.alias_list = (ctx, W, H, b, t) => { deskBase(ctx, W, H); };
+   579→
+   580→scenes.notebook_intro = (ctx, W, H, b, t) => {
+   581→  deskBase(ctx, W, H);
+   582→  const p = t / b.dur;
+   583→  const cx = W / 2, cy = H * 0.40;
+   584→  ctx.save();
+   585→  const a = easeOut(clamp(p * 2));
+   586→  ctx.globalAlpha = a;
+   587→  ctx.save(); ctx.translate(cx, cy); ctx.rotate(-0.03); ctx.translate(-cx, -cy);
+   588→  paperCard(ctx, cx - 240, cy - 140, 480, 290, {});
+   589→  ctx.strokeStyle = "rgba(28,26,22,0.35)"; ctx.lineWidth = 1;
+   590→  for (let i = 0; i < 9; i++) { const y = cy - 100 + i * 28; ctx.beginPath(); ctx.moveTo(cx - 200, y); ctx.lineTo(cx + 200, y); ctx.stroke(); }
+   591→  ctx.strokeStyle = "rgba(163,60,47,0.8)";
+   592→  ctx.beginPath(); ctx.moveTo(cx - 170, cy - 120); ctx.lineTo(cx - 170, cy + 120); ctx.stroke();
+   593→  // cryptic entries
+   594→  const rnd = RNG(21);
+   595→  const entries = ["O22 O28 P", "O29PS", "O29S", "O30BN5", "N14 N16 O", "D07 D08 K"];
+   596→  entries.forEach((e, i) => {
+   597→    const ia = easeOut(clamp((p - 0.2 - i * 0.1) * 3));
+   598→    text(ctx, e, cx - 150, cy - 84 + i * 28, 15, { family: C.mono, color: C.ink, alpha: ia });
+   599→  });
+   600→  ctx.restore(); ctx.restore();
+   601→};
+   602→
+   603→scenes.code_decode = (ctx, W, H, b, t) => { deskBase(ctx, W, H); };
+   604→
+   605→scenes.notebook_close = (ctx, W, H, b, t) => {
+   606→  deskBase(ctx, W, H);
+   607→  const p = t / b.dur;
+   608→  const cx = W / 2, cy = H * 0.40;
+   609→  const a = easeOut(clamp((p - 0.2) * 2));
+   610→  ctx.save(); ctx.globalAlpha = a;
+   611→  paperCard(ctx, cx - 270, cy - 80, 540, 160, {});
+   612→  text(ctx, "A PRIVATE TRAVEL LOG", cx, cy - 20, 24, { family: C.serif, color: C.ink, align: "center" });
+   613→  text(ctx, "PLACES + DATES — NOTHING MORE", cx, cy + 24, 15, { family: C.mono, color: C.inkSoft, align: "center", spacing: 1 });
+   614→  ctx.restore();
+   615→};
+   616→
+   617→scenes.autopsy_card = (ctx, W, H, b, t) => {
+   618→  deskBase(ctx, W, H);
+   619→  const p = t / b.dur;
+   620→  const cx = W / 2, cy = H * 0.38;
+   621→  ctx.save();
+   622→  ctx.globalAlpha = easeOut(clamp(p * 2));
+   623→  // forensic card (per BBC: name/position/address/date of birth & death all "unknown")
+   624→  paperCard(ctx, cx - 290, cy - 130, 580, 270, { tilt: -0.008 });
+   625→  tape(ctx, cx, cy - 130, 90, 0.5);
+   626→  text(ctx, "GADES INSTITUTT — AUTOPSY SUMMARY", cx - 260, cy - 90, 13, { family: C.mono, color: C.ink, spacing: 1 });
+   627→  const rows = [["NAME", "UNKNOWN"], ["OCCUPATION", "UNKNOWN"], ["ADDRESS", "UNKNOWN"], ["DATE OF BIRTH", "UNKNOWN"], ["DATE OF DEATH", "c. NOVEMBER 1970"]];
+   628→  rows.forEach(([k, v], i) => {
+   629→    const a = easeOut(clamp((p - 0.15 - i * 0.08) * 3));
+   630→    const y = cy - 56 + i * 34;
+   631→    text(ctx, k, cx - 260, y, 14, { family: C.mono, color: C.inkSoft, alpha: a });
+   632→    text(ctx, v, cx + 30, y, 14, { family: C.mono, color: C.red, alpha: a, weight: "bold" });
+   633→  });
+   634→  ctx.restore();
+   635→};
+   636→
+   637→scenes.autopsy_facts = (ctx, W, H, b, t) => {
+   638→  deskBase(ctx, W, H);
+   639→  const p = t / b.dur;
+   640→  const facts = [["50–70 ×", "FENEMAL PILLS — STOMACH (NOT FULLY ABSORBED)"], ["12 ×", "PILLS BESIDE THE BODY"], ["SOOT", "IN LUNGS — ALIVE AS FIRE REACHED HER"], ["BRUISE", "RIGHT SIDE OF NECK — UNEXPLAINED"]];
+   641→  facts.forEach(([k, v], i) => {
+   642→    const a = easeOut(clamp((p * 4.4 - i), 0, 1));
+   643→    if (a <= 0) return;
+   644→    const y = H * 0.26 + i * 96;
+   645→    ctx.save(); ctx.globalAlpha = easeOut(a);
+   646→    ctx.fillStyle = "rgba(24,27,32,0.92)";
+   647→    ctx.fillRect(W / 2 - 340, y - 34, 680, 68);
+   648→    ctx.strokeStyle = i === 3 ? "rgba(163,60,47,0.7)" : "rgba(201,163,92,0.4)";
+   649→    ctx.strokeRect(W / 2 - 340, y - 34, 680, 68);
+   650→    text(ctx, k, W / 2 - 310, y + 10, 24, { family: C.mono, color: C.amber, weight: "bold" });
+   651→    text(ctx, v, W / 2 - 160, y + 8, 14.5, { family: C.mono, color: "#d9d2c2" });
+   652→    ctx.restore();
+   653→  });
+   654→};
+   655→
+   656→scenes.dental_card = (ctx, W, H, b, t) => {
+   657→  deskBase(ctx, W, H);
+   658→  const p = t / b.dur;
+   659→  const cx = W / 2, cy = H * 0.36;
+   660→  ctx.save();
+   661→  // jaw diagram (abstract)
+   662→  ctx.globalAlpha = easeOut(clamp(p * 2));
+   663→  paperCard(ctx, cx - 300, cy - 120, 600, 240, {});
+   664→  // teeth row
+   665→  const n = 12;
+   666→  for (let i = 0; i < n; i++) {
+   667→    const x = cx - 230 + i * 42;
+   668→    const filled = [1, 3, 4, 6, 7, 8, 10].includes(i);
+   669→    const gold = [4, 7].includes(i);
+   670→    const a = easeOut(clamp((p - 0.2 - i * 0.04) * 3));
+   671→    ctx.globalAlpha = a;
+   672→    ctx.fillStyle = gold ? "#c9a35c" : filled ? "#b8ab90" : "#ece5d5";
+   673→    ctx.strokeStyle = "#1c1a16";
+   674→    roundRect(ctx, x, cy - 40, 30, 64, 6); ctx.fill(); ctx.stroke();
+   675→    if (filled && !gold) { ctx.beginPath(); ctx.moveTo(x + 8, cy - 30); ctx.lineTo(x + 22, cy + 14); ctx.stroke(); }
+   676→    ctx.globalAlpha = easeOut(clamp(p * 2));
+   677→  }
+   678→  text(ctx, "14 FILLED TEETH · GOLD CROWNS", cx, cy + 78, 16, { family: C.mono, color: C.ink, align: "center" });
+   679→  text(ctx, "STYLE: FAR EAST · C/S EUROPE · SOUTH AMERICA — NOT NORWAY", cx, cy + 104, 12, { family: C.mono, color: C.red, align: "center", alpha: easeOut(clamp((p - 0.6) * 2)) });
+   680→  ctx.restore();
+   681→};
+   682→
+   683→scenes.verdict_card = (ctx, W, H, b, t) => {
+   684→  deskBase(ctx, W, H);
+   685→  const p = t / b.dur;
+   686→  const cx = W / 2, cy = H * 0.36;
+   687→  ctx.save();
+   688→  const a = easeOut(clamp(p * 2));
+   689→  ctx.globalAlpha = a;
+   690→  paperCard(ctx, cx - 280, cy - 110, 560, 220, {});
+   691→  text(ctx, "OFFICIAL CONCLUSION — 1970", cx - 250, cy - 74, 12, { family: C.mono, color: C.inkSoft, spacing: 1 });
+   692→  text(ctx, "PROBABLE SUICIDE", cx, cy - 20, 34, { family: C.serif, color: C.ink, align: "center" });
+   693→  stamp(ctx, "CONTESTED", cx + 170, cy + 40, 16, C.red, easeOut(clamp((p - 0.45) * 2)), -0.1);
+   694→  text(ctx, "\"VERY FEW THOUGHT IT WAS SUICIDE\"", cx - 250, cy + 56, 13, { family: C.mono, color: C.inkSoft, alpha: easeOut(clamp((p - 0.55) * 2)) });
+   695→  text(ctx, "— C. H. AAS, POLICE LAWYER", cx - 250, cy + 80, 12, { family: C.mono, color: C.inkSoft, alpha: easeOut(clamp((p - 0.62) * 2)) });
+   696→  ctx.restore();
+   697→};
+   698→
+   699→scenes.case_closed = (ctx, W, H, b, t) => {
+   700→  valleySky(ctx, W, H, 0.5);
+   701→  const p = t / b.dur;
+   702→  const a = easeOut(clamp((p - 0.15) * 2));
+   703→  ctx.fillStyle = `rgba(8,9,11,${0.35 * a})`; ctx.fillRect(0, 0, W, H);
+   704→  stamp(ctx, "CASE CLOSED — FEBRUARY 1971", W / 2, H * 0.46, 20, C.amber, a, -0.03);
+   705→};
+   706→
+   707→scenes.theory_intro = (ctx, W, H, b, t) => {
+   708→  deskBase(ctx, W, H);
+   709→  const p = t / b.dur;
+   710→  const words = ["CUT LABELS", "SCRAPED PRESCRIPTIONS", "EIGHT NAMES"];
+   711→  words.forEach((w, i) => {
+   712→    const a = easeOut(clamp((p * 3.4 - i), 0, 1));
+   713→    if (a <= 0) return;
+   714→    const x = W / 2 + (i - 1) * 250;
+   715→    ctx.save(); ctx.globalAlpha = easeOut(a); ctx.translate(x, H * 0.38);
+   716→    ctx.rotate(-0.03 + i * 0.03);
+   717→    ctx.fillStyle = "rgba(35,38,44,0.9)";
+   718→    const w2 = textW(ctx, w, 16, C.mono) + 40;
+   719→    ctx.fillRect(-w2 / 2, -22, w2, 44);
+   720→    ctx.strokeStyle = "rgba(201,163,92,0.4)"; ctx.strokeRect(-w2 / 2, -22, w2, 44);
+   721→    text(ctx, w, 0, 6, 15, { family: C.mono, color: "#d9d2c2", align: "center" });
+   722→    ctx.restore();
+   723→  });
+   724→};
+   725→
+   726→scenes.theory_murder = (ctx, W, H, b, t) => {
+   727→  deskBase(ctx, W, H);
+   728→  const p = t / b.dur;
+   729→  const cx = W / 2, cy = H * 0.34;
+   730→  ctx.save();
+   731→  ctx.globalAlpha = easeOut(clamp((p - 0.05) * 2));
+   732→  const rows = ["THE REMOVED IDENTITY", "THE JEWELLERY PLACED BESIDE HER", "THE PETROL", "THE UNEXPLAINED BRUISE"];
+   733→  rows.forEach((r, i) => {
+   734→    const a = easeOut(clamp((p - 0.2 - i * 0.12) * 2.5));
+   735→    text(ctx, "— " + r, cx, cy - 30 + i * 44, 17, { family: C.body, color: "#d9d2c2", align: "center", alpha: a });
+   736→  });
+   737→  ctx.restore();
+   738→};
+   739→
+   740→scenes.theory_spy = (ctx, W, H, b, t) => {
+   741→  deskBase(ctx, W, H);
+   742→  const p = t / b.dur;
+   743→  // Norway outline abstract + Penguin test zone
+   744→  const cx = W * 0.44, cy = H * 0.40;
+   745→  ctx.save();
+   746→  ctx.globalAlpha = easeOut(clamp((p - 0.05) * 2));
+   747→  ctx.strokeStyle = "rgba(93,114,133,0.7)"; ctx.lineWidth = 2;
+   748→  ctx.beginPath(); // crude south-norway coast
+   749→  ctx.moveTo(cx - 150, cy - 120); ctx.quadraticCurveTo(cx - 60, cy - 150, cx + 30, cy - 110);
+   750→  ctx.quadraticCurveTo(cx + 90, cy - 80, cx + 120, cy - 20);
+   751→  ctx.quadraticCurveTo(cx + 60, cy + 60, cx - 20, cy + 80);
+   752→  ctx.quadraticCurveTo(cx - 120, cy + 90, cx - 150, cy + 20);
+   753→  ctx.closePath(); ctx.stroke();
+   754→  // Bergen dot + test zone
+   755→  const a2 = easeOut(clamp((p - 0.25) * 2));
+   756→  ctx.fillStyle = `rgba(220,210,190,${a2})`; ctx.beginPath(); ctx.arc(cx - 60, cy - 20, 5, 0, Math.PI * 2); ctx.fill();
+   757→  text(ctx, "BERGEN", cx - 60, cy - 34, 11, { family: C.mono, color: "#d6cfc0", align: "center", alpha: a2 });
+   758→  // missile arcs
+   759→  for (let r = 0; r < 3; r++) {
+   760→    const rp = ((p * 1.1 + r * 0.33) % 1);
+   761→    ctx.strokeStyle = `rgba(163,60,47,${(1 - rp) * 0.6 * a2})`;
+   762→    ctx.beginPath(); ctx.arc(cx + 90, cy + 10, 10 + rp * 46, 0, Math.PI * 2); ctx.stroke();
+   763→  }
+   764→  text(ctx, "PENGUIN MISSILE TRIALS — WEST NORWAY", cx + 90, cy + 84, 11, { family: C.mono, color: "#d6cfc0", align: "center", alpha: a2 });
+   765→  ctx.restore();
+   766→};
+   767→
+   768→scenes.theory_accounts = (ctx, W, H, b, t) => { deskBase(ctx, W, H); };
+   769→
+   770→scenes.theory_book = (ctx, W, H, b, t) => {
+   771→  deskBase(ctx, W, H);
+   772→  const p = t / b.dur;
+   773→  const cx = W / 2, cy = H * 0.40;
+   774→  ctx.save();
+   775→  ctx.globalAlpha = easeOut(clamp((p - 0.1) * 2));
+   776→  ctx.save(); ctx.translate(cx, cy); ctx.rotate(0.02);
+   777→  paperCard(ctx, -110, -140, 220, 280, {});
+   778→  text(ctx, "KVINNEN", 0, -40, 22, { family: C.serif, color: C.ink, align: "center" });
+   779→  text(ctx, "ISDALEN", 0, -10, 22, { family: C.serif, color: C.ink, align: "center" });
+   780→  text(ctx, "ASKE — 2018", 0, 90, 11, { family: C.mono, color: C.inkSoft, align: "center" });
+   781→  ctx.restore();
+   782→  ctx.restore();
+   783→};
+   784→
+   785→scenes.reopening = (ctx, W, H, b, t) => {
+   786→  deskBase(ctx, W, H);
+   787→  const p = t / b.dur;
+   788→  const cx = W / 2, cy = H * 0.40;
+   789→  ctx.save();
+   790→  // archive boxes + jaw find
+   791→  ctx.globalAlpha = easeOut(clamp((p - 0.1) * 2));
+   792→  [[-230, 30], [-70, -10], [90, 40]].forEach(([dx, dy], i) => {
+   793→    ctx.fillStyle = "rgba(52,45,36,0.9)";
+   794→    ctx.fillRect(cx + dx, cy + dy, 150, 90);
+   795→    ctx.strokeStyle = "rgba(201,163,92,0.35)"; ctx.strokeRect(cx + dx, cy + dy, 150, 90);
+   796→    text(ctx, "PM 1970 — " + (134 + i * 7) + "/70", cx + dx + 75, cy + dy + 50, 11, { family: C.mono, color: "#a49e8f", align: "center" });
+   797→  });
+   798→  const fa = easeOut(clamp((p - 0.5) * 2));
+   799→  stamp(ctx, "JAW RECOVERED", cx + 180, cy - 60, 14, C.amber, fa, -0.08);
+   800→  ctx.restore();
+   801→};
+   802→
+   803→scenes.isotope_card = (ctx, W, H, b, t) => { deskBase(ctx, W, H); };
+   804→
+   805→scenes.dna_card = (ctx, W, H, b, t) => {
+   806→  deskBase(ctx, W, H);
+   807→  const p = t / b.dur;
+   808→  const cx = W * 0.30, cy = H * 0.42;
+   809→  ctx.save();
+   810→  // double helix abstract (labels come from the generic result cards)
+   811→  ctx.globalAlpha = easeOut(clamp(p * 2));
+   812→  ctx.lineWidth = 2;
+   813→  for (let y = 0; y < 260; y += 5) {
+   814→    const ph = y / 42 + p * 2;
+   815→    const x1 = cx + Math.sin(ph) * 40, x2 = cx + Math.sin(ph + Math.PI) * 40;
+   816→    ctx.strokeStyle = `rgba(93,114,133,${0.35 + 0.25 * Math.sin(y / 26)})`;
+   817→    ctx.beginPath(); ctx.moveTo(x1, cy - 130 + y); ctx.lineTo(x2, cy - 130 + y); ctx.stroke();
+   818→  }
+   819→  ctx.restore();
+   820→};
+   821→
+   822→scenes.podcast_card = (ctx, W, H, b, t) => {
+   823→  deskBase(ctx, W, H);
+   824→  const p = t / b.dur;
+   825→  const cx = W / 2, cy = H * 0.40;
+   826→  ctx.save();
+   827→  ctx.globalAlpha = easeOut(clamp(p * 2));
+   828→  // sound waves
+   829→  for (let i = 0; i < 40; i++) {
+   830→    const h = (Math.sin(i * 1.7 + t * 2) * 0.5 + 0.5) * 60 * easeOut(clamp(p * 2));
+   831→    ctx.fillStyle = "rgba(201,163,92,0.75)";
+   832→    ctx.fillRect(cx - 240 + i * 12, cy - h / 2, 4, h);
+   833→  }
+   834→  ctx.restore();
+   835→};
+   836→
+   837→scenes.funeral_card = (ctx, W, H, b, t) => {
+   838→  const p = t / b.dur;
+   839→  deskBase(ctx, W, H);
+   840→  const im = loadImageSafe(IMG("mollendal.jpg"));
+   841→  if (im) archivePhoto(ctx, im, W * 0.10, H * 0.14, W * 0.5, H * 0.55, "MØLLENDAL CEMETERY — BERGEN", "ARCHIVE · SEE CREDITS", easeOut(clamp(p * 2)));
+   842→  else valleySky(ctx, W, H, p, 0.75);
+   843→  // zinc coffin silhouette (respectful, abstract)
+   844→  ctx.save();
+   845→  const a = easeOut(clamp((p - 0.35) * 2));
+   846→  ctx.globalAlpha = a;
+   847→  ctx.strokeStyle = "rgba(190,200,210,0.8)"; ctx.lineWidth = 2;
+   848→  ctx.translate(W * 0.74, H * 0.44);
+   849→  ctx.beginPath();
+   850→  ctx.moveTo(-80, 0); ctx.quadraticCurveTo(-60, -34, 0, -34); ctx.quadraticCurveTo(60, -34, 80, 0);
+   851→  ctx.quadraticCurveTo(60, 34, 0, 34); ctx.quadraticCurveTo(-60, 34, -80, 0);
+   852→  ctx.closePath(); ctx.stroke();
+   853→  // flowers
+   854→  ctx.fillStyle = "rgba(150,120,160,0.6)";
+   855→  for (let i = 0; i < 5; i++) { ctx.beginPath(); ctx.arc(-40 + i * 20, 20, 4, 0, Math.PI * 2); ctx.fill(); }
+   856→  ctx.restore();
+   857→};
+   858→
+   859→scenes.grave_card = (ctx, W, H, b, t) => {
+   860→  valleySky(ctx, W, H, 0.4, 0.8);
+   861→  const p = t / b.dur;
+   862→  // candle flame
+   863→  const cx = W / 2, cy = H * 0.46;
+   864→  ctx.save();
+   865→  const fa = easeOut(clamp(p * 2));
+   866→  ctx.globalAlpha = fa;
+   867→  ctx.fillStyle = "rgba(220,210,190,0.25)";
+   868→  roundRect(ctx, cx - 12, cy, 24, 64, 4); ctx.fill();
+   869→  const fl = Math.sin(t * 9) * 2;
+   870→  const g = ctx.createRadialGradient(cx + fl, cy - 14, 1, cx + fl, cy - 14, 26);
+   871→  g.addColorStop(0, "rgba(255,220,140,0.95)"); g.addColorStop(0.4, "rgba(230,160,60,0.5)"); g.addColorStop(1, "rgba(230,160,60,0)");
+   872→  ctx.fillStyle = g;
+   873→  ctx.beginPath(); ctx.ellipse(cx + fl, cy - 14, 10, 22, 0, 0, Math.PI * 2); ctx.fill();
+   874→  fog(ctx, W, H, t * 8, 13, 0.04);
+   875→  ctx.restore();
+   876→};
+   877→
+   878→scenes.closing = (ctx, W, H, b, t) => {
+   879→  const g = ctx.createLinearGradient(0, 0, 0, H);
+   880→  g.addColorStop(0, "#0d0f12"); g.addColorStop(1, "#121417");
+   881→  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+   882→  fog(ctx, W, H, t * 5, 17, 0.03);
+   883→};
+   884→
+   885→scenes.relatives_quote = (ctx, W, H, b, t) => {
+   886→  const g = ctx.createLinearGradient(0, 0, 0, H);
+   887→  g.addColorStop(0, "#0d0f12"); g.addColorStop(1, "#121417");
+   888→  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+   889→};
+   890→
+   891→scenes.end_card = (ctx, W, H, b, t) => {
+   892→  ctx.fillStyle = "#0b0c0e"; ctx.fillRect(0, 0, W, H);
+   893→  const p = clamp(t / 1.2);
+   894→  drawScreen(ctx, W, H, b, p);
+   895→  text(ctx, "OPUSCAR STUDIO — THE DOCUMENTARY ENGINE · VIDEO-003", W / 2, H - 30, 12, { family: C.mono, color: "#6f6a5e", align: "center", spacing: 2, alpha: clamp((t - 1) * 0.8) });
+   896→};
+   897→
+   898→// scenes that rely only on generic screen text over deskBase
+   899→for (const k of ["alias_list", "code_decode", "isotope_card", "theory_accounts"]) {
+   900→  if (!scenes[k]) scenes[k] = (ctx, W, H, b, t) => { deskBase(ctx, W, H); };
+   901→}
+   902→
+   903→// ===================== master render =====================
+   904→export function renderFrame(ctx, W, H, tl, tAbs) {
+   905→  const b = tl.blocks.find(bl => tAbs >= bl.start && tAbs < bl.end) || tl.blocks[tl.blocks.length - 1];
+   906→  const tLoc = tAbs - b.start;
+   907→  chrome(ctx, W, H, tLoc, tAbs, { showCase: b.id !== "b0d" && b.id !== "b8d" });
+   908→  const fn = scenes[b.visual] || scenes.closing;
+   909→  ctx.save();
+   910→  fn(ctx, W, H, b, tLoc, tAbs);
+   911→  ctx.restore();
+   912→  // screen text layer above art
+   913→  ctx.save();
+   914→  if (!["title_card", "end_card"].includes(b.visual)) drawScreen(ctx, W, H, b, tLoc / b.dur);
+   915→  ctx.restore();
+   916→  // edge fade per scene
+   917→  ctx.save();
+   918→  edgeFade(ctx, W, H, tLoc, b.dur, 0.4, b.visual === "end_card" ? 0 : 0.4);
+   919→  ctx.restore();
+   920→}
+   921→

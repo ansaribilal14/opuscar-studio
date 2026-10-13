@@ -83,3 +83,22 @@ Stage Summary:
 - Release: https://github.com/ansaribilal14/opuscar-studio/releases/tag/video-003-isdal-woman-v1.0.0
 - Compliance: no invented dialogue/evidence; verdict contested on screen; spy/murder/sex-worker theories labelled DISPUTED/UNVERIFIED; 1991/2005 accounts stamped UNVERIFIED; no body depiction; archival images credited; open claims listed in release notes.
 - Method note: NIM TTS deprecated → platform TTS recorded as the new default in future runs; pipeline code now lives in the repo and is reusable for video-004.
+
+---
+Task ID: 3-a
+Agent: main (Super Z)
+Task: video-003 v1 QA triage after user rejection ("shitty and worst") + v2 rebuild kickoff
+
+Work Log:
+- Downloaded released isdal-woman-003.mp4 from release video-003-isdal-woman-v1.0.0; sampled 8 frames at 30/120/250/420/560/700/850/950s
+- QA VERDICT: v1 visuals unusable — frame@250s is 100% pure black; frame@560s has one tiny text box in black void; DNA helix @850s at ~3% opacity; 720p@~91kbps video; monospace debug-HUD styling; no motion; real photos barely used
+- Root cause: scenes.mjs composed tiny elements on near-black base; x264 crushed static near-black content to nothing
+- Assets confirmed GOOD: narration.json (40 blocks), 38 TTS wavs (882.6s), timeline.js, mix.py/music.py, research trio (SOURCES/TIMELINE/CLAIMS)
+- Toolchain reinstalled (node canvas) after container reset; disk check: 9.1GB free => v2 MUST stream frames into ffmpeg (no PNG intermediates)
+- Image search executed (10 queries); rejected all Alamy (watermarks) + StockCake (AI) results on policy
+- Downloaded + verified 7 new real photos (moody_peak, misty_fjord, hairpin_road, rorbu_coast, archive_folders, stavanger_street, train_winter); archive_folders cropped to remove NYT UI chip; knit_texture dropped (unusable)
+- CREDITS.md updated to v2 (11 photos, policy notes)
+
+Stage Summary:
+- DECISION: full visual rebuild (engine v2 + scenes v2 at 1920x1080, photo-first cinematic design, animated grain, Ken Burns on photos, crossfades instead of black dips, streaming encode). Narration/audio/mix/timeline untouched so SRT + durations stay valid.
+- Next: engine film_look additions -> scenes2.mjs (all 40 visuals) -> streaming render_encode -> luma QA -> shorts rebuild -> poster -> release v2.0.0

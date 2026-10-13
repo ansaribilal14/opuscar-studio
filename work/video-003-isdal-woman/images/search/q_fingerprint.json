@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "fingerprint card archive forensic identification vintage photograph",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 5,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/9534fe830fd6.jpg",
+      "caption": "Vintage 1940 press photo back with pasted By-Line Pictures caption about FBI fingerprint identification; significant text, stamps, watermarks—not suitable as background.",
+      "source": "eBay",
+      "original_width": "1000px",
+      "original_height": "816px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/10e0cb4dab15.jpg",
+      "caption": "A historical page labeled \"PLATE V\" showing Rajyadhar Konai's 1858 handprint contract with handwritten Bengali script, from Sir William Herschel.",
+      "source": "Linda Hall Library",
+      "original_width": "768px",
+      "original_height": "1024px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2e6b74d9a6ae.jpg",
+      "caption": "Vintage red-and-white Champion Manufacturing fingerprint kit advertisement with order form; contains large amount of text.",
+      "source": "eBay",
+      "original_width": "900px",
+      "original_height": "1200px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5217b3b465e3.jpg",
+      "caption": "A computer monitor displays fingerprint analysis software comparing two fingerprints, with \"Ident\" confirmation shown, in an office.",
+      "source": "FOX8 WGHP",
+      "original_width": "1477px",
+      "original_height": "831px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/c9bcd9c013c3.jpg",
+      "caption": "A collage of two vintage black-and-white photos: a group portrait of men and a woman, and a woman in profile with an arm tattoo.",
+      "source": "PetaPixel",
+      "original_width": "1600px",
+      "original_height": "840px"
+    }
+  ]
+}

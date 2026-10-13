@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "query": "vintage handwritten code cipher notebook page cryptic symbols photograph",
+  "count": 4,
+  "ranked": true,
+  "captioned_count": 2,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a56d4639d8ac.jpeg",
+      "caption": "The image contains a large amount of handwritten Sanskrit text in Devanagari script on lined notebook paper, so I will not transcribe it completely. No watermarks, logos, or QR codes are visible; the image is clear.",
+      "source": "Reddit",
+      "original_width": "1576px",
+      "original_height": "2100px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ff0722e9c66e.jpg",
+      "caption": "Green notepad reading \"CYPHER ENCRYPTION,\" with fountain pen and fanned 100-dollar bills on red surface; Alamy watermarks present.",
+      "source": "Alamy",
+      "original_width": "1040px",
+      "original_height": "1390px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ebd3b035b0d3.jpg",
+      "caption": "",
+      "source": "kryptosbot.com",
+      "original_width": "1200px",
+      "original_height": "1600px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/de456110b2e0.jpg",
+      "caption": "",
+      "source": "Scribd",
+      "original_width": "768px",
+      "original_height": "1024px"
+    }
+  ]
+}

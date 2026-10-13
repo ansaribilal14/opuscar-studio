@@ -1,0 +1,16 @@
+{
+  "name": "video-003-isdal-woman",
+  "version": "1.0.0",
+  "description": "Full documentary (12–18 min) + 4 vertical shorts. Evidence-first: every claim sourced, theories labelled, nothing invented. Method: see root `BRAIN.md` §2 (10-step pipeline).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "canvas": "^3.2.3"
+  }
+}
