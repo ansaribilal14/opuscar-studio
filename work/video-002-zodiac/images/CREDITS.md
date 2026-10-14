@@ -17,3 +17,14 @@ All real photographs located via web image search (2026-10-13); re-hosted copies
 | napa_hills.jpg | context/location photo | Wine Spectator (via web image search) |
 | bay_fog.jpg | context/location photo | The Center for Land Use Interpretation (via web image search) |
 | evidence_board.jpg | context/location photo | Unsplash (via web image search) |
+
+## v2 additions (2026-10-14, sourced via image search for the engine-v3 rebuild)
+
+| file | subject | source (credit) |
+|---|---|---|
+| chronicle_building.jpg | San Francisco Chronicle building | KQED (via web image search) |
+| blue_rock_park.jpg | Blue Rock Springs Park, Vallejo | Greater Vallejo Recreation District (via web image search) |
+| mount_diablo_tower.jpg | Mount Diablo summit tower | blog.travelhackfun.com (via web image search) |
+| press_room.jpg | vintage newspaper press room | ASME (via web image search) |
+| sf_night_1960s.jpg | San Francisco street at night, 1960s | Curbside Classic (via web image search) |
+| envelope_stamp.jpg | vintage envelope + postage stamp | Pexels (via web image search) |

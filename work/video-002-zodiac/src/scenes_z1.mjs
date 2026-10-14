@@ -140,9 +140,16 @@ export function title_card(ctx, W, H, tLoc, dur, b) {
   creditBR(ctx, W, H, "RECONSTRUCTIONS LABELLED \u00B7 SOURCES IN DESCRIPTION");
 }
 export function base(ctx, W, H, t) {
+  // v3 ghost mode: when a photo backdrop was injected underneath (BACKS map in
+  // scenes_z3), the scene's own background becomes translucent so the graded
+  // photo texture reads through instead of being covered (issue #8).
+  const ghost = globalThis.__Z_GHOST__ || 0;
   const g = ctx.createLinearGradient(0, 0, 0, H);
   g.addColorStop(0, S.bgTop); g.addColorStop(0.55, S.bgMid); g.addColorStop(1, S.bgBot);
+  ctx.save();
+  if (ghost > 0) ctx.globalAlpha = 1 - ghost * 0.55;   // 0.45..1.0 opacity over photo
   ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  ctx.restore();
   const rng = RNG(7);
   for (let i = 0; i < 40; i++) {
     const x = rng() * W, y = rng() * H, r = 30 + rng() * 130;

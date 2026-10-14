@@ -42,6 +42,8 @@ const PHOTO_NAMES = [
   "berryessa_aerial.jpg", "sf_street_1960s.jpg", "golden_gate_vintage.jpg", "mount_diablo.jpg",
   "news_press.jpg", "vallejo_waterfront.jpg", "benicia_street.jpg", "presidio_historic.jpg",
   "typewriter_keys.jpg", "napa_hills.jpg", "bay_fog.jpg", "evidence_board.jpg",
+  "chronicle_building.jpg", "blue_rock_park.jpg", "mount_diablo_tower.jpg", "press_room.jpg",
+  "sf_night_1960s.jpg", "envelope_stamp.jpg",
 ];
 // preload all photos once at module init (top-level await — deterministic for every frame)
 {
@@ -58,10 +60,18 @@ export function photo(name) {
 }
 
 // ---------- Ken Burns cover draw ----------
-// opts: zoom [from,to], pan [x0,y0,x1,y1] (fractions of overshoot), scrim (0..0.6)
+// ISSUE #8 FIX (v3): pan fractions are HARD-CLAMPED to [0,1]. Negative pan values
+// used to push the image past the frame edge leaving a visible background gap
+// ("backgrounds keep getting out of frame"). Now impossible by construction.
+// opts: zoom [from,to] (>=1.02), pan [x0,y0,x1,y1] (fractions of overshoot, clamped), scrim (0..0.6)
 export function photoPlate(ctx, W, H, tLocal, dur, name, opts = {}) {
   const img = photo(name);
-  const { zoom = [1.04, 1.13], pan = [0, 0, -0.35, -0.2], scrim = 0.42, dark = 0 } = opts;
+  // v3: when zoom/pan are not given explicitly, derive a deterministic move from the
+  // photo name — every scene gets a DIFFERENT, gap-proof Ken Burns (issue #8).
+  const { scrim = 0.42, dark = 0, kbSeed = null } = opts;
+  const mv = kb(kbSeed ?? hashStr(name));
+  const zoom = opts.zoom ?? mv.zoom;
+  const pan = opts.pan ?? mv.pan;
   const p = ease(clamp(tLocal / Math.max(0.001, dur)));
   if (!img) { // fallback plate if photo missing
     ctx.fillStyle = "#141920"; ctx.fillRect(0, 0, W, H); return false;
@@ -71,8 +81,9 @@ export function photoPlate(ctx, W, H, tLocal, dur, name, opts = {}) {
   const cover = Math.max(W / iw, H / ih) * z;
   const dw = iw * cover, dh = ih * cover;
   const freeX = dw - W, freeY = dh - H;
-  const dx = lerp(pan[0], pan[2], p) * freeX;
-  const dy = lerp(pan[1], pan[3], p) * freeY;
+  // clamp keeps the draw rect inside [0..free] => the plate ALWAYS covers the frame
+  const dx = lerp(clamp(pan[0]), clamp(pan[2]), p) * freeX;
+  const dy = lerp(clamp(pan[1]), clamp(pan[3]), p) * freeY;
   ctx.drawImage(img, -dx - (freeX > 0 ? 0 : (W - dw) / 2), -dy - (freeY > 0 ? 0 : (H - dh) / 2), dw, dh);
   // cold unify + bottom scrim for text
   const g = ctx.createLinearGradient(0, 0, 0, H);
@@ -85,6 +96,59 @@ export function photoPlate(ctx, W, H, tLocal, dur, name, opts = {}) {
   }
   if (dark > 0) { ctx.fillStyle = `rgba(8,10,14,${dark})`; ctx.fillRect(0, 0, W, H); }
   return true;
+}
+
+// ---------- v3 motion variety (issue #8: "editing per scene is too stale") ----------
+// Seeded KB move catalog — every call gets a different in-range move.
+// All pans are already inside [0,1] => gap-proof. zooms keep >=1.03 so edges never show.
+const KB_MOVES = [
+  { zoom: [1.05, 1.14], pan: [0.10, 0.14, 0.62, 0.70] },  // push-in drifting right/down
+  { zoom: [1.14, 1.05], pan: [0.62, 0.70, 0.10, 0.14] },  // pull-out drifting left/up
+  { zoom: [1.06, 1.16], pan: [0.55, 0.20, 0.12, 0.55] },  // push-in sweeping left
+  { zoom: [1.12, 1.04], pan: [0.20, 0.55, 0.60, 0.18] },  // pull-out sweeping right
+  { zoom: [1.05, 1.12], pan: [0.30, 0.85, 0.55, 0.15] },  // rise (tilt up feel)
+  { zoom: [1.12, 1.05], pan: [0.55, 0.15, 0.30, 0.85] },  // sink (tilt down feel)
+  { zoom: [1.06, 1.13], pan: [0.85, 0.30, 0.15, 0.45] },  // lateral track left
+  { zoom: [1.13, 1.06], pan: [0.15, 0.45, 0.85, 0.30] },  // lateral track right
+  { zoom: [1.08, 1.18], pan: [0.40, 0.40, 0.52, 0.52] },  // hard center punch-in
+  { zoom: [1.04, 1.10], pan: [0.50, 0.50, 0.44, 0.58] },  // gentle settle
+];
+export function kb(seed) {
+  const r = typeof seed === "number" ? RNG(seed)() : (Math.abs(hashStr(String(seed))) % 1000) / 1000;
+  const m = KB_MOVES[Math.floor(r * KB_MOVES.length) % KB_MOVES.length];
+  return { zoom: [...m.zoom], pan: [...m.pan] };
+}
+export function hashStr(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h | 0; }
+
+// Hard-cut montage: plate A until frac, plate B after (with a 2-frame dip-free cut).
+// Gives every block TWO visuals instead of one static hold.
+export function photoCut(ctx, W, H, tLocal, dur, names, opts = {}) {
+  const { at = 0.5, kbSeed = 1, scrim = 0.42 } = opts;
+  const m = kb(kbSeed);
+  if (tLocal < dur * at || !Array.isArray(names) || names.length < 2) {
+    photoPlate(ctx, W, H, tLocal, dur * (names && names.length > 1 ? at : 1), names[0], { ...m, scrim });
+  } else {
+    const m2 = kb(kbSeed + 31);
+    photoPlate(ctx, W, H, tLocal - dur * at, dur - dur * at, names[1], { ...m2, scrim });
+  }
+}
+
+// Split-screen duo: two plates side by side, divider slides mid-block (38% <-> 62%).
+export function photoDuo(ctx, W, H, tLocal, dur, nameA, nameB, opts = {}) {
+  const { kbSeed = 7, gap = 4, scrim = 0.5, splitFrom = 0.5, splitTo = 0.62 } = opts;
+  const p = ease(clamp(tLocal / Math.max(0.001, dur)));
+  const split = lerp(splitFrom, splitTo, clamp(p * 1.6 - 0.2));
+  const m1 = kb(kbSeed), m2 = kb(kbSeed + 17);
+  const wA = Math.round(W * split) - gap / 2, wB = W - Math.round(W * split) - gap / 2;
+  const xB = Math.round(W * split) + gap / 2;
+  drawPlateClipped(ctx, W, H, 0, 0, wA, H, tLocal, dur, nameA, m1, scrim);
+  drawPlateClipped(ctx, W, H, xB, 0, wB, H, tLocal, dur, nameB, m2, scrim);
+}
+function drawPlateClipped(ctx, W, H, x, y, w, h, tLocal, dur, name, move, scrim) {
+  ctx.save(); ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+  ctx.translate(x, y);
+  photoPlate(ctx, w, h, tLocal, dur, name, { ...move, scrim });
+  ctx.restore();
 }
 
 // photo in a bordered frame with caption strip (archive look)

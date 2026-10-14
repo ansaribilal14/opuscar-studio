@@ -323,7 +323,7 @@ export function end_card(ctx, W, H, tLoc, dur, b) {
 }
 
 // ---------- dispatcher (same contract as scenes2.mjs) ----------
-import { grain, basePlate, vignette, chrome2 } from "./film_look.mjs";
+import { grain, basePlate, vignette, chrome2, photoCut, kb, hashStr } from "./film_look.mjs";
 import { ease as _e } from "./engine.mjs";
 
 const SCENES = {
@@ -360,9 +360,43 @@ function xfadeBuffers(W, H) {
   return _xf;
 }
 function drawScene(c2d, W, H, b, tLoc) {
+  // v3 (issue #8): photo-backed backdrops under vector scenes + mid-block hard cut.
+  // Ghosted base() in scenes_z1 lets the graded plate read through the panels.
+  const back = BACKS[b.id];
+  if (back) {
+    photoCut(c2d, W, H, tLoc, b.dur, back, { at: back.cut ?? 0.5, kbSeed: hashStr(b.id), scrim: back.scrim ?? 0.5 });
+    globalThis.__Z_GHOST__ = back.ghost ?? 0.75;
+  }
   const fn = SCENES[b.visual] || cold_open_paper;
   fn(c2d, W, H, tLoc, b.dur, b);
+  if (back) globalThis.__Z_GHOST__ = 0;
 }
+
+// backdrop map: blockId -> [photoA, photoB] (hard-cut at `at`) — honest, location/
+// context plates only; every photo is in images/CREDITS.md. Cipher-quote scenes
+// (c408_message/c408_noname/c340_message) stay on clean plates for focus.
+const BACKS = {
+  b0b: ["golden_gate_vintage.jpg", "bay_fog.jpg"],
+  b2a: ["press_room.jpg", "chronicle_building.jpg"],
+  b2c: ["sf_night_1960s.jpg", "evidence_board.jpg"],
+  b2d: ["envelope_stamp.jpg", "typewriter_keys.jpg"],
+  b3a: ["typewriter_keys.jpg", "news_press.jpg"],
+  b3b: ["vallejo_waterfront.jpg", "bay_fog.jpg"],
+  b3e: ["news_press.jpg", "typewriter_keys.jpg"],
+  b4a: ["envelope_stamp.jpg", "press_room.jpg"],
+  b4c: ["sf_night_1960s.jpg", "golden_gate_vintage.jpg"],
+  b5a: ["mount_diablo_tower.jpg", "mount_diablo.jpg"],
+  b5b: ["bay_fog.jpg", "napa_hills.jpg"],
+  b5c: ["envelope_stamp.jpg", "evidence_board.jpg"],
+  b6a: ["vallejo_waterfront.jpg", "benicia_street.jpg"],
+  b6b: ["evidence_board.jpg", "typewriter_keys.jpg"],
+  b6c: ["sf_night_1960s.jpg", "press_room.jpg"],
+  b6d: ["bay_fog.jpg", "sf_street_1960s.jpg"],
+  b7a: ["sf_street_1960s.jpg", "press_room.jpg"],
+  b7b: ["envelope_stamp.jpg", "evidence_board.jpg"],
+  b8a: ["golden_gate_vintage.jpg", "bay_fog.jpg"],
+  b8b: ["bay_fog.jpg", "napa_hills.jpg"],
+};
 const TRANS = 0.9;
 
 export function renderFrame(ctx, W, H, tl, t) {
