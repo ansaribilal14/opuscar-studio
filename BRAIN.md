@@ -69,10 +69,16 @@ the compliance-critical ones.**
 
 ### Step 4 — Voice (TTS)
 - Engine: **edge-tts** (Microsoft neural voices) — PERMANENT default, operator-mandated
-  2026-10-13. House narrator: `en-US-GuyNeural`, `pitch -1Hz`, default `rate -8%`.
-- One file per narration block (`src/revoice_edge.py`); blocks are duration-fitted to the
-  timeline (per-block rate refinement + atempo residual ≤ ±1%, apad/atrim to exact target)
-  so scene timing, mix offsets and SRT stay valid on any re-voice.
+  2026-10-13. House narrator (operator-mandated 2026-10-14, issue #5):
+  **`en-US-AndrewMultilingualNeural`, rate `-3%`** — recovered from
+  `ansaribilal14/last-stop-yt-engine` (`projects/ahyeon/config.json`,
+  `pipeline/tts_all.py`); ~136 wpm effective on documentary copy.
+- Capture **WordBoundary events** per block (`audio/words/<id>.words.json`) for
+  word-timed SRT cues and SFX alignment (last-stop contract).
+- Prior narrator: `en-US-GuyNeural`, `pitch -1Hz` (video-001..003 era) — superseded by
+  operator directive; originals preserved per project in `audio/blocks_guy/`.
+- One file per narration block (`gen_tts_andrew.py`); new scripts are free-run (timeline
+  rebuilt around new durations); legacy re-voice fitting lives in `revoice_edge.py`.
 - History (do NOT regress): NIM TTS 404'd (video-003) → platform voice "tongtong" shipped
   once → operator REJECTED it. edge-tts or nothing.
 - Generate one file per narration block; verify duration vs. timeline; normalize.
