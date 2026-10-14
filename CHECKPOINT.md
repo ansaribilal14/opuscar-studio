@@ -38,15 +38,13 @@
 - [x] Phase 4: proof benchmark base/A/B/C rendered+reviewed from ENCODED output; C SELECTED;
       verdict archived (docs/BENCHMARK-2026-10-14.md + docs/proof/) — 50d6b47
 - [x] Phase 4.5: audio chain regenerated (score/sfx/mix deterministic) for mux + proof audio
-- [ ] Phase 5: luma gate on v4 stills; then FULL RE-RENDER 12 segments (build_seg.sh, src==HEAD guard)
-- [ ] Phase 6: assemble master (build_finish.sh), poster
-- [ ] Phase 7: QC (ffprobe/loudnorm/ASR spot/luma + contact sheets VIEWED + 10-point review)
-- [ ] Phase 8: release v3.0.0 (master+srt+poster), films.json, worklog, final push
+- [x] Phase 5: luma gate clean; 12 segments rendered + integrity-gated (0 decode errors)
+- [x] Phase 6: master assembled (805.2s, 1080p24, faststart, 3-bus mix muxed); poster at title card
+- [x] Phase 7: QC PASS — decode 0 errors, -16.1 LUFS, ASR 0.91/0.93, luma clean, 90-frame encoded-output editorial review (10-question ALL PASS); asset accuracy fix (chronicle_building -> Golden Gate overlook) + creditBR legibility chip; seg_0 re-rendered twice
+- [x] Phase 8: RELEASED https://github.com/ansaribilal14/opuscar-studio/releases/tag/video-002-zodiac-v3.0.0 (master 425MB + srt + poster); films.json v3.0.0; issues #11-#16 closed; worklog written
 
 ## NEXT ACTION
-Phase 5: run luma gate (scan build/qc_v4 frames for voids), then render segments:
-`cd work/video-002-zodiac && bash build_seg.sh 0 12` … `bash build_seg.sh 11 12`
-(one segment per bash call, foreground, ~4 min each; src must equal git HEAD).
+NONE — TASK 6 COMPLETE. Final film: release video-002-zodiac-v3.0.0. Next candidate work (not started): video-004 per BRAIN.md §6 board.
 
 ## Gotchas
 - build_seg.sh had a stale absolute path (repo moved one level deeper) — fix before full render.
