@@ -1,0 +1,142 @@
+{
+ "b0a": {
+  "dur": 20.68,
+  "text": "San Francisco. The last morning of July, 1969. Three newspapers open their mail and find the same envelope: one third of a cipher. Four hundred and eight symbols in all \u2014 to the Chronicle, the Examiner, the Vallejo Times-Herald. Print this, the letters demanded, or more people die."
+ },
+ "b0b": {
+  "dur": 16.812,
+  "text": "That first cipher was broken within days. A second cipher, mailed that November, held out for fifty-one years. And the man who sent them \u2014 a killer with a name, a symbol, and a body count \u2014 has never been identified. Not then. Not since."
+ },
+ "b0c": {
+  "dur": 16.677,
+  "text": "This is the story of what he actually left behind: the attacks, the letters, the ciphers, and the evidence that still exists. What the codes really said \u2014 and what they never said at all. Every fact here comes from the documented record. Every theory is labelled as a theory."
+ },
+ "b1a": {
+  "dur": 19.976,
+  "text": "It begins on Lake Herman Road, outside Benicia. December 20th, 1968. David Faraday and Betty Lou Jensen, both seventeen, parked in his station wagon. A car pulled alongside. Both were shot and killed. Police found no motive, no suspect, and nothing to explain it."
+ },
+ "b1b": {
+  "dur": 20.58,
+  "text": "Six months later. Just after midnight, the Fourth of July, 1969. Blue Rock Springs Park, above Vallejo. A car drove up beside another parked couple. Darlene Ferrin, twenty-two, was killed. Michael Mageau, nineteen, survived \u2014 and described the headlights, the gunfire, the man walking away."
+ },
+ "b1c": {
+  "dur": 24.919,
+  "text": "Then came the attack that made the case a legend. September 27th, 1969, at Lake Berryessa. A figure stepped out of the brush: a black hood, an executioner's bib, the white crosshair on his chest. He was armed, and he spoke calmly. Cecelia Shepard, twenty-two, died two days later. Bryan Hartnell, twenty, survived."
+ },
+ "b1d": {
+  "dur": 19.026,
+  "text": "Two weeks on. October 11th, 1969. A man hired a cab in the theater district and sent the driver, Paul Stine, to Presidio Heights. There he shot Stine once in the head. Witnesses saw him a few feet from the cab. Police lifted a partial print from the door. He walked away."
+ },
+ "b1e": {
+  "dur": 15.766,
+  "text": "Four attacks. Ten months. Five dead, two survivors. The Bay Area went from ordinary to afraid \u2014 armed guards on school buses, a manhunt across four jurisdictions. And into that fear, the killer began to write."
+ },
+ "b2a": {
+  "dur": 17.099,
+  "text": "The July 31st letters made the press his publishing house. Three envelopes, three newspapers, one cipher in three parts. Print it on your front page, or more people die. The Chronicle ran its third the next morning. The others followed."
+ },
+ "b2b": {
+  "dur": 18.305,
+  "text": "Four days later, he chose a name. Quote: 'This is the Zodiac speaking.' The letter took credit for the attacks police had already linked, and described details only the killer could know. Within weeks, that name was on every front page and every patrol dashboard in Northern California."
+ },
+ "b2c": {
+  "dur": 20.951,
+  "text": "The letters kept coming \u2014 roughly twenty confirmed, between 1969 and 1974, signed with a crossed-circle like a gun sight. They taunted police. They threatened a school bus. They claimed thirty-seven victims. Police could confirm five. The rest was theatre \u2014 calculated, terrifying theatre."
+ },
+ "b2d": {
+  "dur": 19.268,
+  "text": "But the letters were also the best evidence the case had. Every envelope carried handwriting in block capitals. The stamps and flaps carried saliva. The cab door carried a partial print. In 1969, none of it could name a man. So it was kept \u2014 and compared \u2014 and waited on."
+ },
+ "b3a": {
+  "dur": 19.224,
+  "text": "The 408 was the first test. It was a homophonic substitution cipher: every ordinary letter replaced by one or more arbitrary symbols. Multiple symbols per letter flattens the frequency patterns that crack simple codes. What it did not hide was the structure of plain English underneath."
+ },
+ "b3b": {
+  "dur": 18.049,
+  "text": "The people who broke it were not cryptographers. Donald Harden taught high-school social sciences in Salinas. His wife Bettye worked the pencil beside him. Over one weekend in August 1969, with paper and a guess, they tore it open. The FBI verified their solution."
+ },
+ "b3c": {
+  "dur": 14.359,
+  "text": "The message was a boast. Quote: 'I like killing because it is so much fun. It is more fun than killing wild game in the forest, because man is the most dangerous animal of all.' He wrote that his victims would serve him in his afterlife."
+ },
+ "b3d": {
+  "dur": 19.851,
+  "text": "But it withheld the one thing police wanted. Near the end it says plainly: 'I will not give you my name because you will try to slow down or stop my collecting of slaves for my afterlife.' The final eighteen characters \u2014 E-B-E-O-R-I-E-T-E-M-E-T-H-H-P-I-T-I \u2014 never resolved. They remain unexplained today."
+ },
+ "b3e": {
+  "dur": 13.896,
+  "text": "That is what the 408 actually proved. Not a name \u2014 a behaviour. He wanted the puzzle printed, the taunt heard, the game made public. The solvable cipher was the point. The unsolvable things, he kept."
+ },
+ "b4a": {
+  "dur": 18.209,
+  "text": "Six weeks later \u2014 November 8th, 1969 \u2014 a new cipher reached the Chronicle. Three hundred and forty symbols in one dense grid. No divisions, no anchor words, no easy repeated structure. For fifty-one years, nothing moved it."
+ },
+ "b4b": {
+  "dur": 20.177,
+  "text": "The 340 was crueler than the 408 in one way: it was transposed. The message was encrypted homophonically \u2014 then reordered along diagonals, nineteen symbols at a time, and flipped. Reading row by row, you were reading scrambled noise. The message was there. It was just not in reading order."
+ },
+ "b4c": {
+  "dur": 19.331,
+  "text": "It finally fell on December 5th, 2020, to three men working as one team: David Oranchak, who had studied the ciphers for years; Sam Blake, a mathematician who mapped the reordering space; and Jarl Van Eycke, who built the fast solver AZdecrypt. The FBI confirmed their reading."
+ },
+ "b4d": {
+  "dur": 21.749,
+  "text": "The hidden message opened like this. Quote: 'I hope you are having lots of fun in trying to catch me.' And further on: 'I am not afraid of the gas chamber, because it will send me to paradise all the sooner.' Misspelled \u2014 P-A-R-A-D-I-C-E \u2014 exactly as he habitually misspelled it. The voice was unchanged. The name was still absent."
+ },
+ "b4e": {
+  "dur": 16.448,
+  "text": "Solving the 340 settled something. The killer was a competent amateur, not a genius \u2014 one substitution trick plus a transposition that stalled half a century. Patience and computing beat him. It still proved nothing about who he was."
+ },
+ "b5a": {
+  "dur": 21.708,
+  "text": "Two ciphers remain unsolved \u2014 and they may be unsolvable in principle. In April 1970, thirteen symbols arrived above the words 'my name is'. In June 1970, thirty-two more arrived with a map of Mount Diablo and a claim that a bomb was buried there. Thirteen and thirty-two symbols are simply too few."
+ },
+ "b5b": {
+  "dur": 22.534,
+  "text": "Cryptanalysts call it underdetermination. A short string admits enormous numbers of plausible readings \u2014 dozens fit equally well, and nothing verifies among them. The Z13 and Z32 may be genuine puzzles, or may be nothing at all. That is not a mystery with a solution. It is a limit of the evidence."
+ },
+ "b5c": {
+  "dur": 21.041,
+  "text": "So the identity evidence was never the ciphers. It was the physical trail: handwriting on twenty-some letters, a partial print from Paul Stine's cab door, wound records from Berryessa, and \u2014 preserved from 1969 onward \u2014 saliva on the stamps. Kept for a technology that did not exist yet."
+ },
+ "b6a": {
+  "dur": 24.176,
+  "text": "One name has dominated the suspect file for fifty years: Arthur Leigh Allen. A convicted child molester from Vallejo who told acquaintances \u2014 before some of the murders \u2014 that he intended to call himself Zodiac and kill couples. He owned a Zodiac-brand watch. In 1991, police searched his home. He was never charged. He died in August 1992."
+ },
+ "b6b": {
+  "dur": 21.851,
+  "text": "The case against Allen had one fatal weakness: it never matched the crime. His prints did not match the cab. Handwriting ruled him out of the letters. And when DNA testing arrived, reported results indicated he was not the source of the letter DNA. The most-investigated suspect was excluded on the very evidence the case was built on."
+ },
+ "b6c": {
+  "dur": 24.271,
+  "text": "Since then, the theories have multiplied \u2014 books, documentaries, internet investigations. In October 2021, a volunteer group called the Case Breakers announced the killer was Gary Francis Poste. Law enforcement was swift and negative: the FBI denied the case had been solved, and investigators rejected the claim. The case remains open and active."
+ },
+ "b6d": {
+  "dur": 23.43,
+  "text": "Watch how it repeats. Every few years, a confident identification surfaces, goes viral, and collapses on contact with the evidence \u2014 prints that do not match, handwriting that does not match, DNA that cannot confirm. Confirmation bias finds patterns. Evidence decides. Fifty-plus years of naming attempts: zero confirmations."
+ },
+ "b7a": {
+  "dur": 20.808,
+  "text": "Why was the biggest letter-writing killer in American history never caught? Start with 1969 itself. Four jurisdictions, incompatible records, analog radio \u2014 and a killer who attacked in one county and mailed from another. Some physical evidence was consumed, degraded, or lost entirely."
+ },
+ "b7b": {
+  "dur": 24.075,
+  "text": "The modern era added one card. In 2002, San Francisco police developed a partial DNA profile from saliva on a stamp. Partial is the operative word \u2014 too few markers to confirm any one man, though still enough to exclude. Genetic genealogy has been reported as an ongoing avenue. The profile's limits remain the profile's limits."
+ },
+ "b7c": {
+  "dur": 24.325,
+  "text": "So here is the full record. Five confirmed murders, two survivors, and a killer who chose to communicate. Two major ciphers read in full and confirmed by the FBI. Handwriting, a partial print, a partial DNA profile \u2014 none matched to any named individual. And a case file still open in San Francisco, Vallejo, Napa County, and Benicia."
+ },
+ "b8a": {
+  "dur": 22.258,
+  "text": "The evidence proves this much: the Zodiac was real, the attacks are documented, the letters are authentic, and two of his ciphers are solved beyond doubt. The 408 and the 340 show how he thought \u2014 the vanity, the threat, the control through fear. The unsolved ciphers and partial prints show how much he withheld."
+ },
+ "b8b": {
+  "dur": 22.841,
+  "text": "The unresolved questions are as sharp as ever. Who wrote the letters \u2014 no one can say. What the final eighteen characters mean, if anything. Whether the thirteen- and thirty-two-symbol ciphers hold meaning or misdirection. Whether the 1966 Riverside murder belongs in the file. The record answers some questions, and refuses the rest."
+ },
+ "b8c": {
+  "dur": 21.338,
+  "text": "Every few years, the world is told the case is solved. Each time, the evidence says otherwise, and the file stays open. In the archives sit twenty letters, two broken ciphers, a partial print, and a partial profile \u2014 a killer documented by his own hand. And still, after all this time, a man with no name."
+ }
+}
