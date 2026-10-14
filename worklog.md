@@ -214,3 +214,22 @@ Stage Summary:
 - Engine: v3 (clamped gap-proof KB + per-photo moves + photo-cut backdrops + ghost compositing; act-cue score + SFX + 3-bus mix; Andrew -3% house voice; word-timed subs). geneva = optional provider (PoC'd, not load-bearing). Legacy paths intact.
 - Compliance: 408/340 SOLVED + Z13/Z32 UNSOLVED on screen; theories labelled; no invented dialogue; 18 credited plates; no AI imagery; no fair-use police sketch.
 - Known candidates for v2.1: news_press.jpg is a modern newspaper (context texture, labelled — a period SF paper would be stronger); cold_open title-card dwell could tighten by ~1s.
+
+---
+Task ID: 6 (resumed + completed)
+Agent: main (Super Z)
+Task: MASTER DIRECTIVE #2 — opuscar-studio visual quality recovery & engagement upgrade, culminating in the final Zodiac film render (v3.0.0).
+
+Work Log:
+- Session resumed after TWO container resets + tool-gateway outage. Recovery: repo re-anchored at origin/main 96ede7d (task 6 kickoff artifacts survived in git); established AUTO-RESTART PROTOCOL (CHECKPOINT.md at repo root, pushed after every step; per-asset push; foreground-only; idempotent stage scripts). All v4 code lost in the reset was rebuilt from the regression report + briefs contract.
+- Phase 2 (rebuild): engine v4 written — src/comp_modes.mjs (grade sat 0.38→0.72, capped text-zone scrims, kb4 strong moves, band/lowerThird/inkGrid/softVignette), src/scene_briefs.json (37 narration-attentive briefs driving transitions + vignette), scenes_z1/z2/z3v4.mjs (rebuilt hook: newsroom photo + ink 408 envelope + "PRINT THIS, OR MORE PEOPLE DIE." + 51 YEARS hard cut + title over photo; photo-first attacks with lower-thirds; typographic scenes de-beige'd), dispatcher with cut/dissolve grammar; BACKS ghost system retired (RC2). Smoke 37/37.
+- Phase 3 (frame review, viewed at sheet + full 1080p): creditBR spacing overflow fixed globally; b0a papers strip got a contrast band; **typewriter_keys.jpg REJECTED — watermarked Unsplash+ preview discovered at full size** (directive §6) → replaced with press_room close crop; b8c closing given an honest atmospheric pass (asset is a bright daytime aerial, credit corrected).
+- Phase 4 (proof benchmark, directive §10): four 75s candidates rendered with IDENTICAL narration audio (score/sfx/mix regenerated deterministically after fetching CC sample libs vsco2ce/vcsl/salamander/freepats): BASE (exact v3 dispatcher), A (v4 hook), B (v4 composition), C (combined). Reviewed from ENCODED output contact sheets: **C selected**; verdict + 4 sheets archived (docs/BENCHMARK-2026-10-14.md, docs/proof/).
+- Phase 5-6 (full render): luma gate clean (90 stills, 0 voids); 12 segments rendered via build_seg.sh (per-seg integrity gates, 0 decode errors); master assembled + 3-bus mix muxed (805.2s, 1080p24, faststart).
+- Phase 7 (QC): loudness −16.1 LUFS integrated; 60-frame encoded-master luma scan clean; ASR spot-check word coverage 0.91 (cold) / 0.93 (mid) PASS; 90-frame editorial sheets from the encoded master reviewed against the 10-question checklist — ALL PASS. Final frame review caught chronicle_building.jpg mislabeled (actually Golden Gate overlook) → credit + CREDITS.md + brief corrected, seg_0 re-rendered; creditBR given a soft dark chip for legibility on bright skies, seg_0 re-rendered again. Poster regenerated at the title card (t=65.5). Word-timed SRT regenerated (179 cues).
+- Phase 8 (release): RELEASED video-002-zodiac-v3.0.0 with master (425MB) + srt + poster; films.json updated; issues #11–#16 closed as completed; repo worklog + CHECKPOINT updated; everything pushed.
+
+Stage Summary:
+- Film: https://github.com/ansaribilal14/opuscar-studio/releases/tag/video-002-zodiac-v3.0.0 (zodiac-killer-002.mp4, 13:25, 1080p24, −16.1 LUFS)
+- Engine v4 is now production behavior (reusable for future films); rollback = git revert of the v4 commit range; baseline v2.0.0 release untouched.
+- Method wins encoded into the repo: CHECKPOINT auto-restart protocol, qc_stills/contact-sheet editorial loop, asset-inspection discipline (§6) caught two bad assets before release.
