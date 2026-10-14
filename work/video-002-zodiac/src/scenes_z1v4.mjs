@@ -107,7 +107,7 @@ export function title_card(ctx, W, H, tLoc, dur, b) {
   display(ctx, "The Ciphers, the Letters, and the Killer Nobody Could Identify", W / 2, Math.round(H * 0.575), Math.round(H * 0.030), ease(clamp((tLoc - 1.2) / 1.3)), { color: S.amber });
   rule(ctx, W / 2, Math.round(H * 0.628), Math.round(W * 0.42), ease(clamp((tLoc - 1.6) / 1.2)));
   chip(ctx, "AN EVIDENCE-FIRST INVESTIGATIVE DOCUMENTARY", W / 2, Math.round(H * 0.695), Math.round(H * 0.017), { align: "center", color: S.boneDim, alpha: ease(clamp((tLoc - 2.0) / 1.0)) });
-  creditBR(ctx, W, H, "RECONSTRUCTIONS LABELLED \u00B7 SOURCES IN DESCRIPTION \u00B7 CHRONICLE BUILDING (CREDITED)");
+  creditBR(ctx, W, H, "RECONSTRUCTIONS LABELLED \u00B7 SOURCES IN DESCRIPTION \u00B7 GOLDEN GATE OVERLOOK, SAN FRANCISCO (CREDITED)");
 }
 
 // ---------- attacks: photo-first, lower-thirds, small map inset ----------

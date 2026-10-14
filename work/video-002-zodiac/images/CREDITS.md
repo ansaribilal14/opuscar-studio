@@ -22,7 +22,7 @@ All real photographs located via web image search (2026-10-13); re-hosted copies
 
 | file | subject | source (credit) |
 |---|---|---|
-| chronicle_building.jpg | San Francisco Chronicle building | KQED (via web image search) |
+| chronicle_building.jpg | Golden Gate overlook / Marin Headlands battery (v4 frame review re-identification; v2 mislabeled it as the Chronicle building) | KQED (via web image search) |
 | blue_rock_park.jpg | Blue Rock Springs Park, Vallejo | Greater Vallejo Recreation District (via web image search) |
 | mount_diablo_tower.jpg | Mount Diablo summit tower | blog.travelhackfun.com (via web image search) |
 | press_room.jpg | vintage newspaper press room | ASME (via web image search) |
