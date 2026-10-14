@@ -38,7 +38,8 @@ export function cold_open_paper(ctx, W, H, tLoc, dur, b) {
   const pd = ease(clamp((tLoc - 1.4) / 1.3));
   display(ctx, "PRINT THIS,", Math.round(W * 0.735), Math.round(H * 0.44), Math.round(H * 0.062), pd, { color: S.bone, weight: "bold", align: "center" });
   display(ctx, "OR MORE PEOPLE DIE.", Math.round(W * 0.735), Math.round(H * 0.53), Math.round(H * 0.062), ease(clamp((tLoc - 2.1) / 1.3)), { color: "rgba(224,150,90,0.98)", weight: "bold", align: "center" });
-  // the three-paper strip
+  // the three-paper strip — on a contrast band (full-size review fix)
+  band(ctx, W, H, 0.60, 0.24, 0.40, "right", 0.52);
   const papers = ["SAN FRANCISCO CHRONICLE", "SAN FRANCISCO EXAMINER", "VALLEJO TIMES-HERALD"];
   papers.forEach((nm, i) => {
     const pp = ease(clamp((tLoc - 3.0 - i * 0.45) / 0.7));
@@ -47,7 +48,7 @@ export function cold_open_paper(ctx, W, H, tLoc, dur, b) {
     text(ctx, `\u2713  ${nm}`, Math.round(W * 0.545), Math.round(H * (0.645 + i * 0.058)), Math.round(H * 0.021), { family: S.mono, color: S.bone, alpha: pp });
     ctx.restore();
   });
-  creditBR(ctx, W, H, "ENVELOPE: STYLIZED RECONSTRUCTION \u2014 NO AUTHENTIC PHOTO EXISTS \u00B7 NEWSROOM PHOTO (CREDITED)");
+  creditBR(ctx, W, H, "ENVELOPE: STYLIZED RECONSTRUCTION \u00B7 NEWSROOM PHOTO (CREDITED)");
 }
 
 // ---------- HOOK b0b: 51 YEARS — the first hard cut ----------

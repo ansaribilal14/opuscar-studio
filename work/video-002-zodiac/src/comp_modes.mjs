@@ -37,7 +37,9 @@ function gradePixels(img) {
 const PHOTO_NAMES = [
   "berryessa_aerial.jpg", "sf_street_1960s.jpg", "golden_gate_vintage.jpg", "mount_diablo.jpg",
   "vallejo_waterfront.jpg", "benicia_street.jpg", "presidio_historic.jpg",
-  "typewriter_keys.jpg", "napa_hills.jpg", "bay_fog.jpg", "evidence_board.jpg",
+  // typewriter_keys.jpg REMOVED (v4 frame review): watermarked Unsplash+ preview —
+  // rejected per directive §6 (inspect every asset at full size before use).
+  "napa_hills.jpg", "bay_fog.jpg", "evidence_board.jpg",
   "chronicle_building.jpg", "blue_rock_park.jpg", "mount_diablo_tower.jpg", "press_room.jpg",
   "sf_night_1960s.jpg", "envelope_stamp.jpg",
 ];

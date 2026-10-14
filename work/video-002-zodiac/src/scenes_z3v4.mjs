@@ -326,13 +326,16 @@ export function verdict_open(ctx, W, H, tLoc, dur, b) {
 }
 
 export function closing_fog(ctx, W, H, tLoc, dur, b) {
-  plate(ctx, W, H, tLoc, dur, "bay_fog.jpg", { scrim: 0.16, topScrim: 0.10, move: { zoom: [1.20, 1.06], pan: [0.56, 0.12, 0.30, 0.88] } });
+  // v4 frame-review fix: this plate is a bright daytime aerial — add a deliberate
+  // atmospheric pass so the closing reads as dusk memory, and credit it honestly.
+  plate(ctx, W, H, tLoc, dur, "bay_fog.jpg", { scrim: 0.18, topScrim: 0.10, move: { zoom: [1.20, 1.06], pan: [0.56, 0.12, 0.30, 0.88] } });
+  ctx.fillStyle = "rgba(8,10,14,0.45)"; ctx.fillRect(0, 0, W, H);
   display(ctx, "A killer documented by his own hand.", W / 2, Math.round(H * 0.43), Math.round(H * 0.042), ease(clamp((tLoc - 0.9) / 1.3)), { color: S.bone, weight: "bold" });
   display(ctx, "Twenty letters. Two broken ciphers. A partial print.", W / 2, Math.round(H * 0.52), Math.round(H * 0.027), ease(clamp((tLoc - 1.6) / 1.2)), { color: S.boneDim });
   const p = ease(clamp((tLoc - 1.4) / 1.6));
   display(ctx, "And still, after all this time \u2014 a man with no name.", W / 2, Math.round(H * 0.60), Math.round(H * 0.031), p, { color: S.amber });
   rule(ctx, W / 2, Math.round(H * 0.67), Math.round(W * 0.30), p);
-  creditBR(ctx, W, H, "SAN FRANCISCO BAY (CREDITED)");
+  creditBR(ctx, W, H, "BAY AREA AERIAL (CREDITED)");
 }
 
 export function end_card(ctx, W, H, tLoc, dur, b) {

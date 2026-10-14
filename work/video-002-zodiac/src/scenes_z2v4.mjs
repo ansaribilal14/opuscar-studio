@@ -43,7 +43,10 @@ export function letters_three(ctx, W, H, tLoc, dur, b) {
 }
 
 export function letters_name(ctx, W, H, tLoc, dur, b) {
-  plate(ctx, W, H, tLoc, dur, "typewriter_keys.jpg", { mode: "close", focus: [0.42, 0.55], scrim: 0.22, topScrim: 0.20 });
+  // v4 frame-review fix #2: typewriter_keys.jpg is a WATERMARKED stock preview
+  // (Unsplash+ tiles visible at full size) — rejected per directive §6. Replaced
+  // with a close crop of the credited period newsroom photo (b0a used the wide view).
+  plate(ctx, W, H, tLoc, dur, "press_room.jpg", { mode: "close", focus: [0.38, 0.62], scrim: 0.26, topScrim: 0.22 });
   kicker(ctx, "1969-08-04 \u00B7 \u201CDEBUT OF ZODIAC\u201D LETTER", Math.round(W * 0.062), Math.round(H * 0.185), Math.round(H * 0.021));
   // contrast band BEFORE the typed line (frame-review fix)
   band(ctx, W, H, 0.355, 0.20, 0.34);
@@ -60,7 +63,7 @@ export function letters_name(ctx, W, H, tLoc, dur, b) {
   ctx.shadowBlur = 0;
   rule(ctx, W / 2, Math.round(H * 0.53), Math.round(W * 0.5), ease(clamp((tLoc - 2.4) / 1.0)));
   display(ctx, "The name the killer chose for himself \u2014 on every front page within weeks.", W / 2, Math.round(H * 0.615), Math.round(H * 0.028), ease(clamp((tLoc - 2.9) / 1.1)), { color: S.bone });
-  creditBR(ctx, W, H, "CASE-BOARD CONTEXT PHOTO (CREDITED) \u00B7 QUOTE DOCUMENTED");
+  creditBR(ctx, W, H, "PERIOD NEWSROOM PHOTO (CREDITED) \u00B7 LETTER QUOTE DOCUMENTED");
 }
 
 export function letters_symbol(ctx, W, H, tLoc, dur, b) {

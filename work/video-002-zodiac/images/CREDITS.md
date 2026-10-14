@@ -28,3 +28,8 @@ All real photographs located via web image search (2026-10-13); re-hosted copies
 | press_room.jpg | vintage newspaper press room | ASME (via web image search) |
 | sf_night_1960s.jpg | San Francisco street at night, 1960s | Curbside Classic (via web image search) |
 | envelope_stamp.jpg | vintage envelope + postage stamp | Pexels (via web image search) |
+
+## v4 frame-review rejections (2026-10-14)
+
+- typewriter_keys.jpg — REJECTED: watermarked Unsplash+ preview (tiles visible at full size); no longer used in any scene. Directive §6: assets must be inspected at full size before use.
+- news_press.jpg — REJECTED (regression RC4): modern Australian Telegraph front page; wrong continent/decade for this story; removed from the film.
