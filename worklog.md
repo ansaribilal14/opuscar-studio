@@ -189,3 +189,28 @@ Stage Summary (Task 4 complete):
 - QA: luma scan 48 frames 0 flags; chrome continuity fix (Isdal branding -> zodiac case-file chrome) caught in stills review and FULLY re-rendered; ASR spot-check transcripts match script verbatim (cold open 0.89; mid-film window-edge artifact documented as PASS by manual read).
 - Method: edge-tts house voice en-US-GuyNeural pitch -1Hz rate -18% free-run (BRAIN.md Step 4 honored); 16-seg integrity-gated render (2-parallel rounds); per-asset push policy; 12 credited real photos in images/CREDITS.md; research trio SOURCES/TIMELINE/CLAIMS; no shorts per operator directive.
 - films.json video-002 -> released v1.0.0. Library state: video-002 RELEASED, video-003 v2.2.0 released, ostrich-plate rebuild_planned.
+
+---
+Task ID: 5
+Agent: main (Super Z)
+Task: MASTER DIRECTIVE — video engine research/benchmark/safe integration + operator's 5 quality rejections on Zodiac v1.0.0. task-main.md verbatim + git issues #1-#10 as tracker.
+
+Work Log:
+- Ground truth: fetched origin (found Zodiac v1.0.0 was released in a parallel session — operator complaints target it); rebased local; task-main.md committed verbatim; 10 issues opened, all later closed with evidence.
+- Research: 10 repos cloned to refs/. Audits by parallel agents: refs/audit-master-repos.md (geneva/openfilm/hyperframes/revideo/motion-canvas) + refs/audit-learning-repos.md (last-stop-yt-engine deep dive, MoneyPrinterTurbo, brag, reelmimic, open-generative-ai).
+- VOICE (issue #5): operator-mandated voice verified in last-stop-yt-engine = edge-tts en-US-AndrewMultilingualNeural rate -3% (config.json + tts_all.py). gen_tts_andrew.py built (free-run + WordBoundary capture + 75s timeout + blocks_guy backup); 35/35 blocks, 706.0s speech, 0 fails. BRAIN.md Step 4 updated permanently.
+- PACING (issue #6): narration v2 — 2138→1706 words, avg sentence 10.5, all E-claims/hedges preserved, beat/claims/visual fields restored from git after rewrite dropped them (bug caught by timeline smoke).
+- MUSIC (issue #7): score_zodiac.py ports last-stop act-cue system onto lemo-opuscar MIT sampler (VCSL+VSCO2CE+Salamander packs fetched; CC0/CC-BY, credits emitted). 13 cues follow the 9-section arc with dawn lifts at both cipher solves; narration-ducked envelope + gap swells; HPF32+limiter. sfx_zodiac.py: whooshes/impacts/ticks/radio/dings/heartbeat/risers. mix_v3.py 3-bus → -16.0 LUFS.
+- VISUALS (issue #8): ROOT CAUSE of "backgrounds out of frame" found — photoPlate negative pan fractions pushed plates past frame edge; now HARD-CLAMPED [0,1]. 10-move seeded KB catalog (per-photo variety). Photo pool 12→18 (KQED/GVRD/Pexels/ASME etc., ledgered; Alamy mispick caught and replaced). BACKS map: 20 vector scenes now on photo-cut backdrops (mid-block hard cut) via base() ghost mode. PoC frames + encoded-master stills verified.
+- SUBTITLES: gen_subs.py v2 — word-timed cues from WordBoundary data, punctuation re-attached by token alignment (bug: findall stripped source punctuation — fixed), 179 cues.
+- BENCHMARK (issue #3): directive's representative scene rendered by BOTH engines: geneva v1.5.0 (binary, validate caught 7 authoring errors — excellent agent UX) 43.6s/686MB/1080p30; ours 42.0s/581MB/1080p24. Deliverables: VIDEO_ENGINE_AUDIT.md, VIDEO_ENGINE_BENCHMARK.md, VIDEO_ENGINE_ARCHITECTURE.md, VIDEO_ENGINE_INTEGRATION.md.
+- RENDER: 12 segs (2-parallel rounds; one 10-min sandbox cap hit mid-round — resumed per-seg) all VERIFIED (decode 0 errors, frame-gated). Master 805.22s = 13:25, 494MB, faststart.
+- QC GATES: loudness -16.0 LUFS; luma scan 403 samples 0 voids (min 30.1 vs v1 void ~5); ASR small.en block-aligned windows PASS seq 0.97/0.97 (4-gram metric superseded by autojunk=False SequenceMatcher — difflib autojunk trap documented); legacy mix.py fallback re-run OK; poster re-cut at 145s (t=52 caught mid-animation).
+- RELEASED video-002-zodiac-v2.0.0 (id 412344779): master + word-timed srt + poster — all live. films.json -> v2.0.0. Issues #1-#10 CLOSED with evidence comments.
+
+Stage Summary:
+- Film: work/video-002-zodiac/build/zodiac-killer-002.mp4 (13:25, 1080p24, -16 LUFS).
+- Release: https://github.com/ansaribilal14/opuscar-studio/releases/tag/video-002-zodiac-v2.0.0
+- Engine: v3 (clamped gap-proof KB + per-photo moves + photo-cut backdrops + ghost compositing; act-cue score + SFX + 3-bus mix; Andrew -3% house voice; word-timed subs). geneva = optional provider (PoC'd, not load-bearing). Legacy paths intact.
+- Compliance: 408/340 SOLVED + Z13/Z32 UNSOLVED on screen; theories labelled; no invented dialogue; 18 credited plates; no AI imagery; no fair-use police sketch.
+- Known candidates for v2.1: news_press.jpg is a modern newspaper (context texture, labelled — a period SF paper would be stronger); cold_open title-card dwell could tighten by ~1s.
