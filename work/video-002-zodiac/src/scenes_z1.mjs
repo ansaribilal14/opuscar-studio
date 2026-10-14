@@ -25,11 +25,17 @@ export function header(ctx, W, H, tLoc, label, title) {
   ctx.restore();
 }
 export function creditBR(ctx, W, H, str) {
-  // v4 fix: measured width must include the 1.5px letter-spacing actually rendered,
-  // otherwise long credits overflow the right edge (seen at full size in b0a/b1a).
+  // v4 fix 2: dim mono credits vanish on bright photo skies — draw a soft dark
+  // chip behind the credit (invisible on dark bases, guarantees legibility on
+  // photo scenes); measured width includes the 1.5px letter-spacing.
   const size = Math.round(H * 0.014);
   const w = textW(ctx, str, size, S.mono) + 1.5 * (str.length - 1);
-  text(ctx, str, W - Math.round(W * 0.03) - w, Math.round(H * 0.055), size, { family: S.mono, color: S.boneFaint, alpha: 0.85, spacing: 1.5 });
+  const x = W - Math.round(W * 0.03) - w, y = Math.round(H * 0.055);
+  ctx.save();
+  ctx.fillStyle = "rgba(8,10,14,0.45)";
+  ctx.fillRect(x - size * 0.7, y - size * 0.95, w + size * 1.4, size * 2.1);
+  ctx.restore();
+  text(ctx, str, x, y, size, { family: S.mono, color: S.boneFaint, alpha: 0.9, spacing: 1.5 });
 }
 export function chip(ctx, str, x, y, size, opts = {}) {
   const { color = S.boneDim, border = "rgba(234,227,212,0.35)", fill = "rgba(12,15,20,0.55)", align = "left", alpha = 1 } = opts;
