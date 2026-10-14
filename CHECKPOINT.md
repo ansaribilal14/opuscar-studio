@@ -31,20 +31,22 @@
 ## Pipeline (directive §1–§12, from task-6-main.md)
 - [x] Phase 1: regression report (6 root causes) + directive archived + qc_stills.mjs
 - [x] Phase 1.5: container-reset recovery, toolchain, checkpoint system (this file)
-- [ ] Phase 2: read v3 sources + briefs → rebuild v4 engine (image-first modes, grade sat 0.38→0.78,
-      hook rebuild: newsroom photo → taped 408 artifact → "51 YEARS" slam, transition grammar)
-- [ ] Phase 3: v4 QC contact sheets → VIEW frames → apply fixes (briefs stay authoritative)
-- [ ] Phase 4: proof benchmark 4×75s identical narration (base=actual v2.0.0 encode cut, A hook,
-      B composition, C combined) → contact sheets → VIEW → verdict doc → select winner
-- [ ] Phase 5: dispatcher flip to v4, regression gates, commit+push
-- [ ] Phase 6: full re-render per segment (chunked, push progress), assemble master
+- [x] Phase 2: v4 engine REBUILT (comp_modes.mjs, scene_briefs.json, scenes_z1/z2/z3v4.mjs,
+      dispatcher flipped, smoke 37/37) — commit b004710
+- [x] Phase 3: v4 QC sheets reviewed at sheet + full size; fixes applied (creditBR overflow,
+      b0a band, typewriter_keys REJECTED watermarked → press_room close, b8c atmospheric) — 2368b0d
+- [x] Phase 4: proof benchmark base/A/B/C rendered+reviewed from ENCODED output; C SELECTED;
+      verdict archived (docs/BENCHMARK-2026-10-14.md + docs/proof/) — 50d6b47
+- [x] Phase 4.5: audio chain regenerated (score/sfx/mix deterministic) for mux + proof audio
+- [ ] Phase 5: luma gate on v4 stills; then FULL RE-RENDER 12 segments (build_seg.sh, src==HEAD guard)
+- [ ] Phase 6: assemble master (build_finish.sh), poster
 - [ ] Phase 7: QC (ffprobe/loudnorm/ASR spot/luma + contact sheets VIEWED + 10-point review)
 - [ ] Phase 8: release v3.0.0 (master+srt+poster), films.json, worklog, final push
 
 ## NEXT ACTION
-Phase 2: read docs/REGRESSION-2026-10-14.md + task-6-main.md + v3 sources
-(film_look.mjs, scenes_z1–z3, scenes_zodiac.mjs, timeline.js, render_encode.mjs,
-build_seg.sh, narration) then write v4 sources.
+Phase 5: run luma gate (scan build/qc_v4 frames for voids), then render segments:
+`cd work/video-002-zodiac && bash build_seg.sh 0 12` … `bash build_seg.sh 11 12`
+(one segment per bash call, foreground, ~4 min each; src must equal git HEAD).
 
 ## Gotchas
 - build_seg.sh had a stale absolute path (repo moved one level deeper) — fix before full render.
