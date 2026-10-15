@@ -238,18 +238,19 @@ export function co_names(ctx, W, H, tLoc, dur, b) {
   }
   ctx.restore();
   const step = Math.max(2.0, (dur - 3.0) / NINE.length);
+  const ageX = Math.round(W * 0.665);
   NINE.forEach((n, i) => {
     const p = ease(clamp((tLoc - 1.0 - i * step) / 0.75));
     if (p <= 0) return;
-    const y = Math.round(H * (0.24 + (i % 5) * 0.115));
-    const x = i < 5 ? Math.round(W * 0.30) : Math.round(W * 0.56);
+    const y = Math.round(H * (0.245 + i * 0.071));
+    const x = Math.round(W * 0.335);
     ctx.save(); ctx.globalAlpha = p;
-    font(ctx, Math.round(H * 0.031), S.serif, "bold");
+    font(ctx, Math.round(H * 0.029), S.serif, "bold");
     ctx.fillStyle = S.bone;
     ctx.fillText(n[0], x, y);
-    font(ctx, Math.round(H * 0.021), S.mono, "bold");
+    font(ctx, Math.round(H * 0.020), S.mono, "bold");
     ctx.fillStyle = S.amber;
-    ctx.fillText(n[1], x + textW(ctx, n[0], Math.round(H * 0.031), S.serif, "bold") + 14, y);
+    ctx.fillText(n[1], ageX, y);
     ctx.restore();
   });
   dline(ctx, "THE NINE", W / 2, Math.round(H * 0.15), Math.round(H * 0.022), ease(clamp((tLoc - 0.4) / 0.8)), { color: S.boneDim, align: "center" });
@@ -257,7 +258,7 @@ export function co_names(ctx, W, H, tLoc, dur, b) {
 }
 
 export function co_close(ctx, W, H, tLoc, dur, b) {
-  terrainPlate(ctx, W, H, tLoc, dur, "camp", { seed: "b6e-dawn", night: Math.max(0, 0.5 - (tLoc / dur) * 0.62), scrim: 0.16, warm: true, move: { zoom: [1.10, 1.04], pan: [0.46, 0.52, 0.54, 0.48] } });
+  terrainPlate(ctx, W, H, tLoc, dur, "camp", { seed: "b6e-dawn", night: Math.max(0.28, 0.5 - (tLoc / dur) * 0.30), scrim: 0.30, warm: true, move: { zoom: [1.10, 1.04], pan: [0.46, 0.52, 0.54, 0.48] } });
   if (tLoc < dur * 0.5) snow(ctx, W, H, tLoc, 71, 40, 18);
   dline(ctx, "THE PASS CARRIES THEIR NAME", W / 2, Math.round(H * 0.40), Math.round(H * 0.044), ease(clamp((tLoc - 0.8) / 1.0)), { color: S.bone, weight: "bold", align: "center" });
   dline(ctx, "The file remains open where the record ends \u2014 with nine names, one mountain,", W / 2, Math.round(H * 0.49), Math.round(H * 0.024), ease(clamp((tLoc - 1.8) / 1.1)), { color: S.boneDim, align: "center" });

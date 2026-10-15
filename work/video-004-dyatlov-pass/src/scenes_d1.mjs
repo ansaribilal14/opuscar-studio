@@ -88,8 +88,13 @@ export function hook_tent_find(ctx, W, H, tLoc, dur, b) {
     creditBR(ctx, W, H, "PHOTOGRAPH: 1959 (CREDITED IN DESCRIPTION)");
   } else {
     snowGround(ctx, W, H, 0.60, 0.10);
+    // slow push-in on the tableau (long holds must still move)
+    const cam = 1 + 0.055 * ease(clamp(tLoc / Math.max(0.001, dur)));
+    ctx.save();
+    ctx.translate(W / 2, H * 0.52); ctx.scale(cam, cam); ctx.translate(-W / 2, -H * 0.52);
     const p = ease(clamp(tLoc / 1.2));
     inkTent(ctx, W * 0.42, H * 0.52, W * 0.40, H * 0.34, { p, cuts: ease(clamp((tLoc - 1.6) / 1.4)) > 0.5 ? 3 : 0, night: true, alpha: 1 });
+    ctx.restore();
     snow(ctx, W, H, tLoc, 11, 70, 22);
     creditBR(ctx, W, H, "TENT: STYLIZED RECONSTRUCTION \u00B7 NOT A 1959 PHOTOGRAPH");
   }
