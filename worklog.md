@@ -257,3 +257,23 @@ Stage Summary:
 - THE FILM IS LIVE: https://github.com/ansaribilal14/opuscar-studio/releases/tag/video-004-dyatlov-pass-v1.0.0
 - v4 engine confirmed as production pipeline: third film shipped with zero methodology changes, only content adaptation.
 - Open items (non-blocking): Commons gateway throttling persisted all session — if it lifts, period photos can be slotted into images/cache/ (tent_1959.jpg, group_1959.jpg, yudin_farewell.jpg, search_photos.jpg) and affected segments re-rendered deterministically; scenes fall back to labelled reconstructions today by design.
+
+---
+Task ID: 8
+Agent: main (Super Z)
+Task: OpusCar Studio — free universal image acquisition upgrade (discover/retrieve/validate/organize authentic imagery; no paid APIs; no renderer rebuild; PR delivery)
+
+Work Log:
+- Workspace re-recovered after container reset #4 (hard realign to origin/main 138d178; toolchain intact incl. Pillow/pytest/canvas).
+- Phase 1 inspection: mapped photo() cache integration point (comp_modes preload from images/cache), scene_briefs photo slots, terrain manifest pattern, v002 CREDITS.md, deprecated Isdal z-ai image-search scripts (watermark incident origin), and the one-shot v004_commons_sweep.py (no cache/resume/consumer).
+- Root cause (evidence): Wikimedia's own Varnish 403 "Too Many Reqs" against shared egress IP 8.212.10.159 (whole Task-7 session blocked; intermittent within sessions) + architecture gap (one-shot sweep, no resumability). Plan written (docs/IMAGE-ACQUISITION-PLAN.md); branch feat/image-acquisition created before any change.
+- Built scripts/imgacq (python, keyless): provider registry in directive order (SearXNG-optional -> Openverse -> NASA archive -> InternetArchive -> Commons fallback), validated downloads (magic bytes, full Pillow decode, size caps, no silent substitution), sha256+dHash dedup, per-film provenance ledger with conservative classifications (metadata alone never authentic_verified; NC/ND refused for staging), scene-briefs-driven query generation, stage-to-slot bridge (zero renderer changes).
+- Discovered + implemented NASA Image Library as a fifth provider (keyless public archive, PD imagery w/ rights URL) after live hosts proved flaky (Flickr 429 window; archive.org hangs).
+- Tests: 46 offline pytest tests green (stub-server provider contracts, outage/ratelimit degradation, HTML-masquerade/corrupt/oversize rejection, dedup, classification rules incl. NC/ND refusal caught by test, ledger persistence, staging gates, real-v004-briefs plan, renderer boundary compat). pytest caught and fixed a real compliance bug (NC staging).
+- LIVE E2E 10/10 PASS (twice): discover->persist->rank->download+validate->dedup->provenance->review(authentic_verified)->stage->film's own comp_modes preload consumes staged file->cleanup (production cache pristine).
+- Backward compat: git diff main..branch on film src/ = EMPTY; renderer preload smoke PASS.
+- Ops lessons this session: gateway flips worktree to main between tool calls and checkout -f discards modified tracked files (one E2E ledger record lost, re-run recovered it — commit-after-milestone discipline reconfirmed); sandbox forbids symlink creation (node_modules/.bin symlinks in repo block some checkouts; renderer probe redesigned to copy 3-module closure + NODE_PATH); command scanner blocks any command text containing symlink literals.
+
+Stage Summary:
+- Branch feat/image-acquisition pushed per-asset; plan + report + live ledger committed; PR opened for review (no production release, per directive).
+- imgacq CLI: providers|scene-queries|discover|download|dedup|ledger|stage|e2e — resumable, foreground, bounded.
