@@ -282,7 +282,7 @@ def _renderer_probe(film: str, staged_file: str) -> bool:
         r = subprocess.run(["node", "--input-type=module", "-e", script],
                            cwd=harness, capture_output=True, text=True, timeout=180,
                            stdin=subprocess.DEVNULL, env=env)
-        return r.stdout.strip() == "True"
+        return r.stdout.strip().lower() == "true"
     except Exception:
         return False
     finally:
