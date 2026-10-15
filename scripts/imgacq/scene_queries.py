@@ -84,7 +84,9 @@ _PROVIDER_SCORE = {"commons": 1.0, "internetarchive": 0.8, "openverse": 0.7,
 def rank_candidates(cands: list, queries: list, min_w: int = 0, min_h: int = 0) -> list:
     """Deterministic score: license (3/2) + provider authority (1.0-0.3) + resolution
     (0-1.5) + query match position (earlier in more queries = better) + archival title
-    evidence (year/subject match in title = +0.5). Stable sort; ties by asset id."""
+    evidence (year/subject match in title = +0.5). Stable sort; ties by asset id.
+    Accepts Candidate objects or plain dicts."""
+    cands = [c.to_dict() if hasattr(c, "to_dict") else dict(c) for c in cands]
     qlows = [q.lower() for q in queries]
 
     def score(c):
