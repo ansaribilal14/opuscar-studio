@@ -270,19 +270,18 @@ def _renderer_probe(film: str, staged_file: str) -> bool:
     try:
         os.makedirs(os.path.join(harness, "src"))
         os.makedirs(os.path.join(harness, "images", "cache"))
-        shutil.copy(os.path.join(film_abs, "src", "comp_modes.mjs"),
-                    os.path.join(harness, "src", "comp_modes.mjs"))
-        nm = os.path.join(film_abs, "node_modules")
-        if os.path.isdir(nm):
-            os.symlink(nm, os.path.join(harness, "node_modules"),
-                       target_is_directory=True)
+        for mod in ("comp_modes.mjs", "engine.mjs", "film_look.mjs"):
+            shutil.copy(os.path.join(film_abs, "src", mod),
+                        os.path.join(harness, "src", mod))
         shutil.copy(staged_file,
                     os.path.join(harness, "images", "cache", "kholat_modern.jpg"))
         script = ("const {photo}=await import('./src/comp_modes.mjs');"
                   "process.stdout.write(String(!!photo('kholat_modern.jpg')));")
+        env = dict(os.environ,
+                   NODE_PATH=os.path.join(film_abs, "node_modules"))
         r = subprocess.run(["node", "--input-type=module", "-e", script],
                            cwd=harness, capture_output=True, text=True, timeout=180,
-                           stdin=subprocess.DEVNULL)
+                           stdin=subprocess.DEVNULL, env=env)
         return r.stdout.strip() == "True"
     except Exception:
         return False
