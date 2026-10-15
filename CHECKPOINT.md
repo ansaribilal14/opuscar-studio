@@ -53,21 +53,27 @@
 - Disk 9.9G total, 8.5G free — sufficient for ~16 min master + segments.
 
 ## Pipeline (mirrors BRAIN.md §2 + Zodiac task-6 flow)
-- [ ] 7-a Setup: directive archived, checkpoint live, project scaffolded (this file)
-- [ ] 7-b Toolchain: canvas, edge-tts voice check, CC sample libraries re-fetch, build_seg.sh path check
-- [ ] 7-c Research: fact verification pass → research/SOURCES.md + CLAIMS.md + TIMELINE.md
-- [ ] 7-d Assets: Commons sweep + license-verified manifest (images/manifest.json) + visual inspection
-- [ ] 7-e Narration ~36 blocks (~2,200 words) + TTS Andrew −3% + WordBoundary capture
-- [ ] 7-f Timeline (6 chapters, pauses) + scene_briefs.json (every block)
-- [ ] 7-g Scenes d1/d2/d3 v4 modules + route maps + dispatcher; smoke render + still review
-- [ ] 7-h Audio: score (cold palette) + SFX (blizzard-forward) + mix_v3-style 3-bus
-- [ ] 7-i Render: luma gate → segments (foreground serial) → master assemble → decode gate
-- [ ] 7-j QC + deliver: loudness/ASR/luma/6 contact sheets/10-question review; SRT;
-      thumbnail; description + chapter timestamps; films.json; release
-      video-004-dyatlov-pass-v1.0.0; worklog; checkpoint close
+- [x] 7-a Setup: directive archived (task-7-main.md), checkpoint live
+- [x] 7-b Toolchain: canvas, edge-tts Andrew voice, VSCO2/VCSL/Salamander re-fetched
+- [x] 7-c Research: SOURCES.md + CLAIMS.md + TIMELINE.md; 2021/2022 DOIs Crossref-locked
+- [x] 7-d Assets: SRTM terrain plates (Mapzen/AWS, CC-BY) — route z10 + campsite z13 +
+      slope map; Commons THROTTLED at gateway (retry periodically); film built
+      reconstruction-first with photo slots that auto-activate if assets land
+- [x] 7-e Narration: 42 voice blocks + 2 cards, edge-tts Andrew −3%, 798.4s, WordBoundary
+- [x] 7-f Timeline 909.7s = 15:10 (21,833 frames) + scene_briefs.json (44 briefs)
+- [x] 7-g Scenes d1/d2/d3 v4 + support.mjs + terrain_d.mjs + dispatcher; 104-frame QC
+      sheet review + editorial fixes (memorial column, dawn floor, push-in, collisions)
+- [x] 7-h Audio: score (10-cue arc) + SFX (blizzard/rips/whumpf) + 3-bus mix
+- [x] 7-i Render: 16 segments all VERIFIED (0 decode errors); master assembled
+      build/dyatlov-pass-004.mp4 — 909.65s, 275MB, faststart, AAC 192k, 0 decode errors
+- [x] 7-j QC gates: loudness −16.1 LUFS / TP −1.5 PASS; ASR 0.97/0.97/0.97 PASS;
+      luma flags = intentional dark editorial scenes (verified by eye, not voids)
+- [ ] 7-j2 Deliver: encoded-output sheets + 10-question review; SRT; thumbnail;
+      description + chapters; films.json; release video-004-dyatlov-pass-v1.0.0;
+      worklog; checkpoint close
 
 ## NEXT ACTION
-7-b — toolchain install (canvas, edge-tts), sample-library fetch, build script adaptation.
+7-j2 — encoded-output editorial review, SRT, thumbnail, release upload (master verified on disk).
 
 ## Gotchas (inherited + new)
 - build_seg.sh in Zodiac had corrected ../.. guard paths — verify after copying.
