@@ -235,6 +235,23 @@ def cmd_e2e(a):
     ok_render = _renderer_probe(film, e2["staged_path"])
     step("renderer consumption", ok_render,
          f"comp_modes preload resolves the staged file = {ok_render}")
+
+    # 9. proof artifact cleanup — an e2e run is a pipeline proof, not a content
+    #    decision; the staged file is removed and the ledger keeps full provenance.
+    l = lg.ledger(film)
+    e3 = lg.entry_by_id(l, pick["id"])
+    try:
+        os.remove(e3["staged_path"])
+        e3["notes"] = (e3.get("notes", "") +
+                       " | e2e proof artifact removed from cache after consumption "
+                       "verification; provenance retained").strip(" |")
+        e3["status"] = "validated"
+        lg.save_ledger(film, l)
+        cleaned = not os.path.exists(e3["staged_path"])
+    except OSError:
+        cleaned = False
+    step("cleanup", cleaned, f"staged proof file removed from production cache: {cleaned}")
+
     _finish(steps, film)
     return 0 if all(ok for _, ok, _ in steps) else 1
 
