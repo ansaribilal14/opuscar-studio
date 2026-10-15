@@ -107,6 +107,6 @@ Wikimedia calls returned 403/429 from Wikimedia's own limiter.
 ## 8. Commit and pull-request URLs
 
 - Branch: `https://github.com/ansaribilal14/opuscar-studio/tree/feat/image-acquisition`
-- PR: `https://github.com/ansaribilal14/opuscar-studio/pull/<PR_NUMBER>` (opened from
+- PR: `https://github.com/ansaribilal14/opuscar-studio/pull/17` (opened from
   `feat/image-acquisition` → `main`; merge only after review — no production release
   is published by this task).
