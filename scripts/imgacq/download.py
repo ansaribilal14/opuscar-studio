@@ -147,6 +147,10 @@ def download_candidates(film: str, ids=None, limit: int = 5, min_w: int = 0,
                 work = pv.internetarchive_resolve_media(work)
                 entry["media_url"] = work.media_url
                 c["media_url"] = work.media_url
+            elif work.provider == "nasa":
+                work = pv.nasa_resolve_media(work)
+                entry["media_url"] = work.media_url
+                c["media_url"] = work.media_url
             stem = now_iso().replace(":", "").replace("-", "")[:15] + "_" + cid
             path, info = fetch_media(work.media_url, incoming_dir(film), stem)
             entry.update({"file": path,

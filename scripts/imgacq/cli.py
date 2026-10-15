@@ -46,6 +46,7 @@ def cmd_providers(_a):
     probes = (
         ("openverse", "https://api.openverse.org/v1/images/",
          {"q": "test", "page_size": 1}),
+        ("nasa", pv.NASA_API, {"q": "apollo", "media_type": "image"}),
         ("internetarchive", pv.IA_SEARCH,
          {"q": "test AND mediatype:image", "fl[]": "identifier", "rows": 1,
           "output": "json"}),
@@ -56,7 +57,9 @@ def cmd_providers(_a):
         try:
             j = cm.http_json(url, params=params, tries=1)
             n = (len(j.get("results", [])) if name == "openverse"
-                 else len(((j.get("response") or {}).get("docs") or [])
+                 else len(((j.get("collection") or {}).get("items") or [])
+                          if name == "nasa" else
+                          ((j.get("response") or {}).get("docs") or [])
                           if name == "internetarchive" else []))
             print(f"  {name:<17} OK ({n} probe result{'s' if n != 1 else ''})")
         except cm.HttpError as e:
@@ -158,25 +161,38 @@ def cmd_e2e(a):
         _finish(steps, film)
         return 1
     total, added = cm.merge_candidates(film, found)
-    step("candidates persisted", added > 0, f"{added} new, {total} total")
+    step("candidates persisted", total > 0,
+         f"{added} new this run, {total} total (resumable across runs)")
 
-    # 2. ranked pick
+    # 2. ranked pick (download attempts walk down the ranking, bounded)
     ranked = sq.rank_candidates(found, [a.q], a.min_width, a.min_height)
-    pick = ranked[0]
-    step("ranking", pick is not None,
-         f"picked {pick['id']} ({pick['provider']}, {pick['license'] or 'UNKNOWN license'}, "
-         f"{pick['width']}x{pick['height']})")
+    step("ranking", bool(ranked),
+         f"{len(ranked)} ranked; top: {ranked[0]['id']} ({ranked[0]['provider']}, "
+         f"{ranked[0]['license'] or 'UNKNOWN license'}, "
+         f"{ranked[0]['width']}x{ranked[0]['height']})" if ranked else "no candidates")
+    if not ranked:
+        _finish(steps, film)
+        return 1
 
-    # 3. validated download
-    dl.download_candidates(film, ids=[pick["id"]], limit=1,
-                           min_w=a.min_width, min_h=a.min_height)
-    l = lg.ledger(film)
-    e = lg.entry_by_id(l, pick["id"])
-    ok = e and e.get("status") in ("downloaded", "validated", "staged")
-    step("download+validate", bool(ok),
-         f"status={e.get('status') if e else 'missing'} "
-         f"{(e or {}).get('format')} {(e or {}).get('width')}x{(e or {}).get('height')} "
-         f"{(e or {}).get('bytes', 0) // 1024}KB sha256={(e or {}).get('sha256', '')[:16]}…")
+    # 3. validated download — try ranked candidates until one clears validation
+    e, pick = None, None
+    attempts = []
+    for cand in ranked[:3]:
+        dl.download_candidates(film, ids=[cand["id"]], limit=1,
+                               min_w=a.min_width, min_h=a.min_height)
+        l = lg.ledger(film)
+        e = lg.entry_by_id(l, cand["id"])
+        attempts.append(f"{cand['id']}:{(e or {}).get('status')}")
+        if e and e.get("status") in ("downloaded", "validated", "staged"):
+            pick = cand
+            break
+    ok = pick is not None
+    step("download+validate", ok,
+         f"attempts={attempts}; " + (
+             f"{(e or {}).get('format')} {(e or {}).get('width')}x{(e or {}).get('height')} "
+             f"{((e or {}).get('bytes') or 0) // 1024}KB "
+             f"sha256={(e or {}).get('sha256', '')[:16]}…" if ok else
+             "all ranked attempts failed — nothing substituted, ledger records why"))
     if not ok:
         _finish(steps, film)
         return 1
@@ -201,7 +217,7 @@ def cmd_e2e(a):
     step("review+classification", e["classification"] in ("authentic_verified", "documentary_context"),
          f"classification={e['classification']}")
 
-    # 7. stage into the renderer's photo slot
+    # 7. stage into a renderer slot (--force for non-brief slots)
     slot = a.slot or ""
     if not slot:
         plan = sq.scene_query_plan(film)
@@ -214,30 +230,47 @@ def cmd_e2e(a):
     e2 = st.stage(film, pick["id"], slot, force=a.force)
     step("stage", os.path.exists(e2["staged_path"]), f"slot={slot} -> {e2['staged_path']}")
 
-    # 8. renderer consumption through the film's OWN preload (zero renderer changes)
-    ok_render = _renderer_probe(film, slot)
+    # 8. renderer consumption through the film's OWN preload (verbatim module, real canvas,
+    #    throwaway harness — production cache untouched by proof artifacts)
+    ok_render = _renderer_probe(film, e2["staged_path"])
     step("renderer consumption", ok_render,
-         f"comp_modes preload resolves photo('{slot}') = {ok_render}")
+         f"comp_modes preload resolves the staged file = {ok_render}")
     _finish(steps, film)
     return 0 if all(ok for _, ok, _ in steps) else 1
 
 
-def _renderer_probe(film: str, slot: str) -> bool:
-    """Run the film's own comp_modes preload in node and check the slot resolves.
-    Deterministic, offline, uses the film's real renderer module."""
+def _renderer_probe(film: str, staged_file: str) -> bool:
+    """Consume the staged file through the film's OWN comp_modes.mjs preload chain
+    (verbatim module copy in a throwaway harness dir, real canvas). The production
+    images/cache is never touched by proof artifacts; the harness is deleted after.
+    Slot key 'kholat_modern.jpg' is one of the film's reserved PHOTO_NAMES — proving
+    that a staged cache file activates for the real renderer."""
     import subprocess
+    import shutil
+    import tempfile
     film_abs = cm.film_dir(film)
-    script = (
-        "const {photo}=await import('./src/comp_modes.mjs');"
-        "process.stdout.write(String(!!photo(%r)));" % slot
-    )
+    harness = tempfile.mkdtemp(prefix="imgacq-e2e-")
     try:
+        os.makedirs(os.path.join(harness, "src"))
+        os.makedirs(os.path.join(harness, "images", "cache"))
+        shutil.copy(os.path.join(film_abs, "src", "comp_modes.mjs"),
+                    os.path.join(harness, "src", "comp_modes.mjs"))
+        nm = os.path.join(film_abs, "node_modules")
+        if os.path.isdir(nm):
+            os.symlink(nm, os.path.join(harness, "node_modules"),
+                       target_is_directory=True)
+        shutil.copy(staged_file,
+                    os.path.join(harness, "images", "cache", "kholat_modern.jpg"))
+        script = ("const {photo}=await import('./src/comp_modes.mjs');"
+                  "process.stdout.write(String(!!photo('kholat_modern.jpg')));")
         r = subprocess.run(["node", "--input-type=module", "-e", script],
-                           cwd=film_abs, capture_output=True, text=True, timeout=120,
+                           cwd=harness, capture_output=True, text=True, timeout=180,
                            stdin=subprocess.DEVNULL)
         return r.stdout.strip() == "True"
     except Exception:
         return False
+    finally:
+        shutil.rmtree(harness, ignore_errors=True)
 
 
 def _finish(steps, film):

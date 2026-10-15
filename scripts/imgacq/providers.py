@@ -158,6 +158,62 @@ def internetarchive_resolve_media(candidate: Candidate) -> Candidate:
     return candidate
 
 
+# ------------------------------------------------------------------ 3a. NASA image library
+NASA_API = "https://images-api.nasa.gov/search"
+NASA_ASSET = "https://images-api.nasa.gov/asset/"
+NASA_RIGHTS_URL = "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+
+
+def nasa_search(query: str, limit: int = 10) -> List[Candidate]:
+    """NASA Image and Video Library (images.nasa.gov) — public archive catalog,
+    keyless, documented open API; imagery is public domain with no known
+    restrictions (rights URL recorded on every candidate)."""
+    params = {"q": query, "media_type": "image"}
+    try:
+        j = http_json(NASA_API, params=params)
+    except HttpError as e:
+        print(f"  nasa: unavailable this run ({e})")
+        return []
+    items = ((j.get("collection", {}) or {}).get("items", []) or [])[:limit]
+    out = []
+    for it in items:
+        d = (it.get("data") or [{}])[0]
+        nid = d.get("nasa_id") or ""
+        if not nid:
+            continue
+        links = it.get("links") or []
+        thumb = links[0].get("href", "") if links else ""
+        out.append(Candidate(
+            id=asset_id("nasa", nid), provider="nasa", query=query,
+            media_url=NASA_ASSET + urllib.parse.quote(nid),   # resolved at download
+            source_page=f"https://images.nasa.gov/details/{urllib.parse.quote(nid)}",
+            title=clean_html(d.get("title", "")),
+            creator=d.get("center") or "NASA",
+            date=str(d.get("date_created") or "")[:10],
+            license="Public domain", license_url=NASA_RIGHTS_URL,
+            thumb_url=thumb, mime="image/jpeg",
+        ))
+    return out
+
+
+def nasa_resolve_media(candidate: Candidate) -> Candidate:
+    """Resolve the original (orig.jpg > large > medium) asset URL for a NASA item."""
+    j = http_json(candidate.media_url)
+    items = (j.get("collection", {}) or {}).get("items", []) or []
+    urls = [i.get("href", "") for i in items]
+    pick = None
+    for suffix in ("~orig.jpg", "~large.jpg", "~medium.jpg"):
+        for u in urls:
+            if u.split("?")[0].endswith(suffix):
+                pick = u
+                break
+        if pick:
+            break
+    if pick:
+        candidate.media_url = pick.split("?")[0]
+    return candidate
+
+
 # ------------------------------------------------------------------ 4. Wikimedia Commons
 def commons_search(query: str, limit: int = 12) -> List[Candidate]:
     """Commons full-text search (file namespace). Fallback provider per directive order.
@@ -217,7 +273,7 @@ def providers_in_order() -> List[str]:
     names = []
     if searxng_base():
         names.append("searxng")
-    names += ["openverse", "internetarchive", "commons"]
+    names += ["openverse", "nasa", "internetarchive", "commons"]
     return names
 
 
@@ -228,7 +284,8 @@ def discover(query: str, per_provider: int = 10, providers=None) -> List[Candida
     for name in (providers or providers_in_order()):
         provider_rateSleep()
         fn = {"searxng": searxng_search, "openverse": openverse_search,
-              "internetarchive": internetarchive_search, "commons": commons_search}[name]
+              "nasa": nasa_search, "internetarchive": internetarchive_search,
+              "commons": commons_search}[name]
         try:
             batch = fn(query, per_provider)
         except Exception as e:   # a provider must never abort the sweep
