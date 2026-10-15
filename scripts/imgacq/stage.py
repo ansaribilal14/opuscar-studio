@@ -44,8 +44,10 @@ def stage(film: str, asset_id: str, slot: str, force: bool = False) -> dict:
     if not src or not os.path.exists(src):
         raise SystemExit(f"refusing to stage {asset_id}: file missing ({src})")
     canon, rights_note = None, ""
-    from .ledger import normalize_license
+    from .ledger import normalize_license, RESTRICTED_LICENSES
     canon, rights_note = normalize_license(e.get("license", ""))
+    if canon in RESTRICTED_LICENSES:
+        raise SystemExit(f"refusing to stage {asset_id}: {rights_note}")
     if not canon:
         raise SystemExit(f"refusing to stage {asset_id}: license not usable for "
                          f"monetized publication ({rights_note})")
