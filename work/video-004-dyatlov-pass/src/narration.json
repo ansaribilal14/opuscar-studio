@@ -1,0 +1,177 @@
+{
+  "film": "video-004-dyatlov-pass",
+  "title": "Dyatlov Pass: What Really Happened to the Nine Hikers?",
+  "channel": "The Unclosed File",
+  "blocks": [
+    {
+      "id": "b1a", "beat": 0, "claims": ["A1"], "visual": "hook_tent_find",
+      "text": "February 26th, 1959. On a bare slope in the northern Urals, searchers climb toward a shape buried in wind-driven snow: a large canvas tent, still standing, pitched where no experienced party would camp. Its canvas has been slit open from the inside. Boots, coats, and diaries are inside it. The nine hikers who own them are gone."
+    },
+    {
+      "id": "b1b", "beat": 0, "claims": ["A1"], "visual": "hook_footprints",
+      "text": "Their footprints lead downhill, toward a forest a mile and a half below. Some are made in socks. Some in single boots. They are spaced like people walking — side by side, at an ordinary pace. Near the treeline, the prints stop."
+    },
+    {
+      "id": "b1b2", "beat": 0, "claims": ["A1"], "visual": "hook_no_plan",
+      "text": "What the searchers cannot find matters as much as what they can. No supplies carried out. No note. No trail prepared in advance. Nothing about this exit looks planned. Everything about it looks sudden."
+    },
+    {
+      "id": "b1c", "beat": 0, "claims": ["A1", "A5"], "visual": "hook_cold_night",
+      "text": "That night, temperatures near the site fell far below minus thirty, with wind. Nine experienced winter travelers had walked out of their only shelter, into the dark and the cold. None were seen alive again."
+    },
+    {
+      "id": "b1d", "beat": 0, "claims": ["A6"], "visual": "hook_question",
+      "text": "For more than sixty years, investigators, scientists, and theorists have argued over the same question — a question the case file never answers. Why did they leave?"
+    },
+    { "id": "b1e", "beat": 0, "claims": [], "visual": "card_title", "text": "" },
+    {
+      "id": "b2a", "beat": 1, "claims": ["A1"], "visual": "ctx_start",
+      "text": "The story begins in Sverdlovsk, in January 1959 — a closed industrial city, five hundred kilometres east of Moscow. At the Ural Polytechnic Institute, the city's route commission approves a winter expedition: Category III, the hardest regular grade. Sixteen days on skis, north to mount Otorten. Ten set out."
+    },
+    {
+      "id": "b2b", "beat": 1, "claims": ["A1"], "visual": "ctx_group",
+      "text": "They are led by Igor Dyatlov, twenty-three, an engineering student who has run winter routes since his teens. With him: ski-touring partners he has trained and travelled with for years, carrying skis, a primus stove, canvas tents, and the confidence of a group that has wintered in this country before. The youngest is twenty. The oldest is thirty-eight."
+    },
+    {
+      "id": "b2c", "beat": 1, "claims": ["A1"], "visual": "ctx_route_map",
+      "text": "The journey runs by rail to Ivdel, by truck to Vizhay — the last settlement, where the group registers its route — and then north on sledge and ski, up the frozen Lozva river. On January 28th, Yuri Yudin turns back, too ill to continue. The farewell they photograph at a cart track becomes the last picture of all ten together."
+    },
+    {
+      "id": "b2d", "beat": 1, "claims": ["A1"], "visual": "ctx_labaz",
+      "text": "On the 31st, they bury a supply cache — the labaz — in the bank of the Auspiya valley, to lighten the load for the return. The diaries record hard frost, and a wind that reads, entry after entry, like a warning. Ahead lies the pass. Beyond it, mount Otorten — and nothing inhabited."
+    },
+    {
+      "id": "b2e", "beat": 1, "claims": ["A1"], "visual": "ctx_climb",
+      "text": "February 1st. The plan calls for crossing the 1079 pass and camping in the valley beyond it. Instead, the group drifts about a kilometre west of its line and, in the afternoon, begins climbing the open shoulder of Kholat Syakhl, in worsening weather."
+    },
+    {
+      "id": "b2f", "beat": 1, "claims": ["A1", "P1"], "visual": "ctx_camp",
+      "text": "Late in the day, at about a thousand metres, they pitch the tent on the open slope — twenty-three degrees, wind-scoured, with the forest and its shelter a mile and a half below. It is the kind of decision experienced travelers do not usually have to explain, because they do not usually make it. The last known photograph shows the tent going up. Then the cameras go quiet."
+    },
+    {
+      "id": "b2g", "beat": 1, "claims": ["A1"], "visual": "ctx_silence",
+      "text": "Everything after noon that day is reconstruction — built from tracks, from the camp, from what was left behind. The diaries stop. The photographs stop. The night itself has no witness who survived it."
+    },
+    {
+      "id": "b3a", "beat": 2, "claims": ["A1"], "visual": "ev_search_tent",
+      "text": "February 20th, with the group overdue, the institute sends its first search parties. Within days the operation grows — volunteers, students, military aircraft, and trackers, fanning out across the valley. On the 26th, students climb the slope and find the tent. Inside: money, documents, spare clothing, food. Everything a winter camp should hold — except the campers."
+    },
+    {
+      "id": "b3b", "beat": 2, "claims": ["A1"], "visual": "ev_cuts_prints",
+      "text": "The canvas is cut from the inside — eight or nine slashes, some reachable only from within. Outside, the snow holds footprints from eight or nine people, spaced like a walking group, not a panicked run. They lead downhill toward the treeline, and there they end."
+    },
+    {
+      "id": "b3c", "beat": 2, "claims": ["A1", "A2"], "visual": "ev_cedar",
+      "text": "Under a tall cedar at the forest edge — a mile and a half below the tent — are the remains of a small fire, and branches broken high up the trunk, as if someone had climbed for the last dry wood. And two bodies. Yuri Doroshenko and Yuri Krivonishenko, dead of exposure. The autopsy records burns on their hands. They fed that fire until they could not."
+    },
+    {
+      "id": "b3c2", "beat": 2, "claims": ["A1"], "visual": "ev_cedar_climb",
+      "text": "The cedar itself carries a message. Its branches are broken up to five metres off the ground — climbed for, in the dark, in lethal cold, by bare hands. For wood. Or for a view of the slope they had come down from. The searchers note it, and cannot explain it."
+    },
+    {
+      "id": "b3d", "beat": 2, "claims": ["A1"], "visual": "ev_line_back",
+      "text": "Between the cedar and the tent, over the following days, three more are found — spaced along the line of the footprints, several hundred metres apart, all facing back up the slope. Igor Dyatlov, near the forest. Then, on March 5th, Rustem Slobodin and Zinaida Kolmogorova, closer to the tent."
+    },
+    {
+      "id": "b3e", "beat": 2, "claims": ["A1", "A3"], "visual": "ev_ravine_four",
+      "text": "It takes the spring melt to give up the last four. In early May, seventy-five metres from the cedar and four metres under the snow, searchers find Semyon Zolotaryov, Nikolai Thibeaux-Brignolle, Lyudmila Dubinina, and Alexander Kolevatov — beside a small den dug into the stream bank of a ravine."
+    },
+    {
+      "id": "b3f", "beat": 2, "claims": ["A2"], "visual": "ev_autopsy_split",
+      "text": "The autopsies divide the nine in two. Five died of exposure — the cold alone, in every case. Rustem Slobodin's skull was fractured, but the pathologists ruled it non-fatal. Whatever broke it, they wrote, was not what stopped him."
+    },
+    {
+      "id": "b3g", "beat": 2, "claims": ["A2"], "visual": "ev_injuries",
+      "text": "The last four died differently. Severe internal injuries — one skull crushed, two chests broken in multiple places, the kind of force a car crash produces. Yet none of them carries a single external wound: no burns, no cuts, no bruises. The force that killed them left no mark on the skin. What that force was, the reports do not say."
+    },
+    {
+      "id": "b3h", "beat": 2, "claims": ["A2"], "visual": "ev_details",
+      "text": "Two details from the file feed the legend, but they begin as facts. Several of the nine were found partly undressed — a documented behaviour of terminal hypothermia. And a radiological appendix records beta contamination on some clothing of the ravine four — far from lethal, origin never established."
+    },
+    {
+      "id": "b3i", "beat": 2, "claims": ["A6"], "visual": "ev_closure",
+      "text": "On May 28th, the case is closed. Prosecutor Lev Ivanov writes that the hikers died from a compelling natural force which they were unable to overcome. He does not name the force. The file is sealed, the slope is quiet — and the theories begin."
+    },
+    {
+      "id": "b4a", "beat": 3, "claims": ["A1"], "visual": "th_frame",
+      "text": "Every theory of Dyatlov Pass has to survive the same test: the evidence itself. Some survive better than others."
+    },
+    {
+      "id": "b4b", "beat": 3, "claims": ["A1", "A2"], "visual": "th_people",
+      "text": "An attack by people fails first. No struggle. No third-party tracks. Nothing stolen — even the money. The Mansi, the Indigenous people of these forests, cooperated with the investigation from the start, and their herders moved through this country all winter without incident. The forensic record rules out violence by anyone."
+    },
+    {
+      "id": "b4c", "beat": 3, "claims": ["A1"], "visual": "th_abandon",
+      "text": "Deliberate abandonment fails next. No one walks out of a standing tent at minus thirty, leaves the boots, the coats, and the food — and never comes back for them. The positions of the bodies say the group kept moving, and kept trying to live."
+    },
+    {
+      "id": "b4d", "beat": 3, "claims": ["A4", "A2"], "visual": "th_sky",
+      "text": "The stranger theories feed on real details. Weeks after the search began, witnesses told investigators about glowing orange objects in the night sky over the northern Urals — testimony that remains in the file, from an era of early Soviet rocket tests. And the contamination on the clothing is real. But nothing in the record places any event over the slope that night, and the contamination's source was never established. What remains is testimony — and an open question."
+    },
+    {
+      "id": "b4d2", "beat": 3, "claims": ["A1"], "visual": "th_infrasound",
+      "text": "One more natural explanation deserves its honesty. Wind curling around a ridge can, in theory, produce infrasound — pressure waves at the edge of hearing, linked in some studies to unease and dread. It fits the fear. It does not fit the injuries, the cuts, or the tracks. And on this slope, in this wind, it cannot be tested. It remains a hypothesis."
+    },
+    {
+      "id": "b4e", "beat": 3, "claims": ["A1", "P1"], "visual": "th_avalanche",
+      "text": "The avalanche is the theory with the strongest forensic fit — and the loudest objections. The campsite slope is roughly twenty-three degrees, gentler than most avalanche terrain. The searchers photographed no crown line, no debris. No one was buried the way an avalanche buries people. Twenty-six days later, the slope looked clean. For sixty years, that stalemate defined the case."
+    },
+    {
+      "id": "b4f", "beat": 3, "claims": ["P1"], "visual": "th_turn",
+      "text": "Then, in January 2021, two researchers at ETH Zurich published a mechanism that answers every objection at once. Avalanche scientist Johan Gaume, and geotechnical engineer Alexander Puzrin."
+    },
+    {
+      "id": "b5a", "beat": 4, "claims": ["P1"], "visual": "sc_cut",
+      "text": "Their model begins with the campers themselves. To pitch the tent, the group cut a platform into the slope — normal practice for a winter camp, and a lasting change to the layered snow above it."
+    },
+    {
+      "id": "b5b", "beat": 4, "claims": ["P1"], "visual": "sc_wind_load",
+      "text": "That night, strong katabatic winds behind an arctic cold front drove loose snow onto the shoulder above the tent. Hour by hour, the load built along a weak layer buried in the snowpack — invisibly, directly above the sleeping group."
+    },
+    {
+      "id": "b5c", "beat": 4, "claims": ["P1"], "visual": "sc_release",
+      "text": "The forensic window for the release: nine and a half to thirteen hours after the cut was made. Sometime in the dark hours, the slab fails. Snow blocks up to half a cubic metre slide onto the tent — a slow, heavy surf, moving at hardly more than walking pace. Pressure, not impact. Force without a wound."
+    },
+    {
+      "id": "b5c2", "beat": 4, "claims": ["P1"], "visual": "sc_escape",
+      "text": "The model makes their escape readable too. A slab pressing the tent deforms the canvas, pins some of the group inside — and the exit is cut in seconds, with knives, from within. Then the slope below carries them away from it: injured, freezing, alive. For now."
+    },
+    {
+      "id": "b5d", "beat": 4, "claims": ["P1", "A2"], "visual": "sc_injuries",
+      "text": "The model's force estimates, checked against the Abbreviated Injury Scale, reproduce the pattern in the autopsies: moderate to severe compression injuries of chest and skull — painful, disabling, survivable. Everyone could still walk out. No one was buried."
+    },
+    {
+      "id": "b5e", "beat": 4, "claims": ["P1", "P2"], "visual": "sc_objections",
+      "text": "It also answers the objections. A twenty-three degree slope can release when wind adds load. The missing traces were erased by weeks of fresh snowfall — the same smoothing the searchers' photographs recorded. In 2022 the authors came back with three expeditions and field measurements at the pass, and found that avalanches there are not exceptional."
+    },
+    {
+      "id": "b5f", "beat": 4, "claims": ["P1", "P2"], "visual": "sc_limits",
+      "text": "What the science does not do — and does not claim to do — is close the file. It does not say why no one climbed back to the tent, why the group split, or where the contamination came from. It shrinks the mystery to human-sized questions. That is what good evidence work does."
+    },
+    {
+      "id": "b6a", "beat": 5, "claims": ["P1", "A1"], "visual": "co_chain",
+      "text": "Assembled, the evidence holds one defensible chain. A winter storm. A loaded slope. A slab released in the dark, hours after the group fell asleep. An exit cut in seconds. A descent to the trees. And cold finishing what fear and injury began."
+    },
+    {
+      "id": "b6b", "beat": 5, "claims": ["R1"], "visual": "co_2020",
+      "text": "In 2020, after a re-examination requested by the families, Russian prosecutors endorsed the same conclusion: an avalanche, deaths by hypothermia, no crime. The state's answer, sixty-one years late."
+    },
+    {
+      "id": "b6b2", "beat": 5, "claims": ["A6", "P1"], "visual": "co_words",
+      "text": "In a sense, the 1959 closure was never wrong. A compelling natural force — the file's own words. Science has spent sixty years learning how to name it."
+    },
+    {
+      "id": "b6c", "beat": 5, "claims": ["A1"], "visual": "co_open",
+      "text": "What remains unanswered is the part no file can close. The choices of nine people in the dark — who decided to go down, who decided to go back, who stayed with whom. The evidence shows they moved with reason and order. It will never show what they said."
+    },
+    {
+      "id": "b6d", "beat": 5, "claims": ["A1"], "visual": "co_names",
+      "text": "They were: Igor Dyatlov, twenty-three. Zinaida Kolmogorova, twenty. Rustem Slobodin, twenty-three. Yuri Doroshenko, twenty-one. Yuri Krivonishenko, twenty-three. Nikolai Thibeaux-Brignolle, twenty-four. Lyudmila Dubinina, twenty. Alexander Kolevatov, twenty-five. And Semyon Zolotaryov, thirty-eight."
+    },
+    {
+      "id": "b6e", "beat": 5, "claims": ["A1", "P1"], "visual": "co_close",
+      "text": "In 1963, the pass they set out to cross was given their leader's name. The slope still sits at twenty-three degrees. The evidence still says what it has always said about that night — and it still cannot say everything. The file remains open where the record ends: with nine names, one mountain, and the honest limits of what science has proven."
+    },
+    { "id": "b6f", "beat": 5, "claims": [], "visual": "card_end", "text": "" }
+  ]
+}
