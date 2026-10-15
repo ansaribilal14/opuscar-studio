@@ -34,8 +34,9 @@
 | ID | Title | Status |
 |---|---|---|
 | video-001 | (unassigned) | — |
-| video-002 | Zodiac — trailer built, **full film not started** | LOST in recovery incident; rebuild from this brain |
-| video-003 | *The Isdal Woman: The Woman Who Erased Her Own Identity* — full film + 4 shorts | NEXT UP (see §6) |
+| video-002 | Zodiac — **RELEASED v3.0.0** (image-first v4 engine) | tag `video-002-zodiac-v3.0.0` |
+| video-003 | *The Isdal Woman* — **RELEASED v2.2.0** (full film + 4 shorts, edge-tts) | tag `video-003-isdal-woman-v2.2.0` |
+| video-004 | *Dyatlov Pass: What Really Happened to the Nine Hikers?* — **RELEASED v1.0.0** (15:10 full film) | tag `video-004-dyatlov-pass-v1.0.0` |
 | ostrich-plate | 58 s copperplate-engraving natural-history short (lemo-opuscar style) | Source LOST; release `superz1402/ostrich-documentary` gone; method preserved below |
 
 ---
@@ -168,20 +169,15 @@ Stage Summary:
 
 ---
 
-## 6. Current Priority — video-003, The Isdal Woman
+## 6. Current Priority — none open; video-004 released 2026-10-15
 
-**Next task on the board** (per operator instruction): produce the *full* Isdal Woman
-film. Requirements snapshot (full detail will live in `work/video-003-isdal-woman/`):
-
-- Title: *The Isdal Woman: The Woman Who Erased Her Own Identity*
-- Structure: 7 beats — cold open / discovery / identity clues / the notebook / theories
-  vs. evidence / modern forensics / open ending
-- Sources: Norwegian police records, Interpol filings, established Norwegian press, BBC
-  *Death in Ice Valley* (2018)
-- Deliverables: full film (12–18 min) + 4 shorts (The Strange Suitcases / The Notebook
-  and Travel Trail / Was She a Spy? / The Identity That Remains Unknown) + thumbnail
-  concept + description with sources + open-claims list
-- Release tag: `video-003-isdal-woman-v1.0.0`; then add to `films.json` + Pages
+video-004 *Dyatlov Pass* shipped through the full pipeline: research ledger → license-
+verified assets (SRTM terrain; reconstructions labelled) → 42-block narration → v4
+image-first scenes → 10-cue score + blizzard SFX → 16 verified segments → gates
+(−16.1 LUFS, ASR 0.97, 0 decode errors, 10-question review) → release
+`video-004-dyatlov-pass-v1.0.0`. The Unclosed File identity (black / archival beige /
+crimson) maintained. Commons asset slots exist in the project for period photos if
+licences verify later — the render falls back to labelled reconstructions today.
 
 ---
 

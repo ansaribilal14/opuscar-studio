@@ -233,3 +233,27 @@ Stage Summary:
 - Film: https://github.com/ansaribilal14/opuscar-studio/releases/tag/video-002-zodiac-v3.0.0 (zodiac-killer-002.mp4, 13:25, 1080p24, −16.1 LUFS)
 - Engine v4 is now production behavior (reusable for future films); rollback = git revert of the v4 commit range; baseline v2.0.0 release untouched.
 - Method wins encoded into the repo: CHECKPOINT auto-restart protocol, qc_stills/contact-sheet editorial loop, asset-inspection discipline (§6) caught two bad assets before release.
+
+---
+Task ID: 7
+Agent: main (Super Z)
+Task: video-004 — Dyatlov Pass: What Really Happened to the Nine Hikers? (The Unclosed File, 15-18 min full film, same v4 logic as Zodiac v3.0.0)
+
+Work Log:
+- Container reset #3 survived by design: origin/main carried the full Task 6 state; local realigned (hard reset to 04d85f7); CHECKPOINT.md repurposed for Task 7 with directive archived verbatim (work/video-004-dyatlov-pass/task-7-main.md).
+- Toolchain rebuilt post-reset: canvas, edge-tts (Andrew house voice verified), VSCO2/VCSL/Salamander sample libraries re-fetched from the assets release.
+- Research ledger: SOURCES.md (A1-A6 archival, P1-P2 peer-reviewed, R1-R2 record/press), CLAIMS.md (28 claims with statuses), TIMELINE.md. Crossref locked the two Nature DOIs (2021 paper = "Mechanisms of slab avalanche release and impact..."; 2022 = follow-up expeditions commentary); key mechanism numbers mined from the open-access full text (delay 9.5-13 h, slope 23° ± 2°, 0.5 m³ blocks, AIS mapping, traces erased by snowfall).
+- Assets: Wikimedia throttled at the gateway ALL session (403 on every domain) → film built reconstruction-first with photo slots that auto-activate if licences verify later. Real-data anchor: SRTM terrain via Mapzen tiles (AWS Open Data, CC-BY) — route corridor z10 + campsite z13 hillshade + slope-angle map; max elevation 1084 m matches documented Kholat Syakhl 1079 m. Every plate visually inspected.
+- Narration: 42 voice blocks + 2 silent cards (~1,750 words) across 6 beats matching the operator's 0:00/2:00/5:00/8:00/12:00/15:00 spine proportionally; edge-tts Andrew -3% with WordBoundary capture (798.4s).
+- Timeline 909.7s = 15:10 (21,833 frames); scene_briefs.json for all 44 blocks (narration-visual contract).
+- Scenes: support.mjs (v4 support layer extracted), terrain_d.mjs (projection/markers/routes/snow), scenes_d1/d2/d3 (44 scenes incl. slope cross-section workhorse), dispatcher with brief-driven cut/dissolve grammar + Dyatlov beat tabs. Smoke rounds caught: loadImage-promise bug (all terrain black), grade over/undershoot, label collisions, memorial column overlap — all fixed and re-verified at full size.
+- Audio: score_dyatlov.py (10-cue arc: dark hook → wistful overture expedition → dark evidence → tension theories → dark-to-dawn science at the autopsy match → resolve with sparse memorial + warm close), sfx_dyatlov.py (blizzard beds, canvas rips synced to the nine slashes, slab whumpf, heartbeat dread, radio breath), mix_dyatlov.py 3-bus loudnorm.
+- Render: 16 segments, all integrity-gated VERIFIED; master build/dyatlov-pass-004.mp4 (909.65s, 275MB, faststart, AAC 192k) — 0 decode errors.
+- QC: −16.1 LUFS / TP −1.5 PASS; ASR word coverage 0.97 on cold-open/science/conclusion windows PASS; luma flags = intentional dark editorial scenes (verified by eye); 40-frame encoded-output sheet + full-size checks → 10-question editorial review PASS.
+- Deliverables: word-timed SRT (221 cues), title poster, dedicated thumbnail per operator brief (tent focal / real slope relief / crimson marker / WHY DID THEY LEAVE? / honesty label), description with chapter timestamps + full sources + open claims; films.json + BRAIN.md registry updated; copies in download/video-004-dyatlov-pass/.
+- RELEASED video-004-dyatlov-pass-v1.0.0 with 4 assets (275MB master verified uploaded).
+
+Stage Summary:
+- THE FILM IS LIVE: https://github.com/ansaribilal14/opuscar-studio/releases/tag/video-004-dyatlov-pass-v1.0.0
+- v4 engine confirmed as production pipeline: third film shipped with zero methodology changes, only content adaptation.
+- Open items (non-blocking): Commons gateway throttling persisted all session — if it lifts, period photos can be slotted into images/cache/ (tent_1959.jpg, group_1959.jpg, yudin_farewell.jpg, search_photos.jpg) and affected segments re-rendered deterministically; scenes fall back to labelled reconstructions today by design.

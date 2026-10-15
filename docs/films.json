@@ -1,45 +1,58 @@
 {
-  "studio": "Opuscar Studio \u2014 The Documentary Engine",
-  "updated": "2026-10-14",
-  "films": [
-    {
-      "id": "video-003",
-      "slug": "isdal-woman",
-      "title": "The Isdal Woman",
-      "subtitle": "The Woman Who Erased Her Own Identity",
-      "status": "released",
-      "format": "documentary",
-      "runtime_minutes": "16:28",
-      "year": 2026,
-      "release_tag": "video-003-isdal-woman-v2.2.0",
-      "poster": "https://github.com/ansaribilal14/opuscar-studio/releases/download/video-003-isdal-woman-v2.2.0/poster.jpg",
-      "description": "RELEASED v2.2.0 (edge-tts re-voiced edition) \u2014 full cinematic rebuild at 1920x1080p24 with narration by Microsoft edge-tts neural voice (en-US-GuyNeural). In November 1970, a burned body was found in Norway's Isdalen valley. Her labels were cut off, her names were false, and fifty-five years later her identity remains unknown. 16:28 evidence-first film + 4 vertical shorts. Photo-first engine: 11 credited real photographs, Ken Burns motion, film grain, crossfades. Every claim sourced; theories labelled; nothing invented."
-    },
-    {
-      "id": "video-002",
-      "slug": "zodiac",
-      "title": "Zodiac",
-      "subtitle": "The Ciphers That Refused to Die",
-      "status": "released",
-      "format": "documentary",
-      "year": 2026,
-      "release_tag": "video-002-zodiac-v1.0.0",
-      "poster": "https://github.com/ansaribilal14/opuscar-studio/releases/download/video-002-zodiac-v1.0.0/poster.jpg",
-      "description": "RELEASED v1.0.0 \u2014 full 15:52 investigative documentary at 1920x1080p24, narration by Microsoft edge-tts (en-US-GuyNeural). The documented record: four confirmed attacks (5 murdered, 2 survivors), ~20 letters, the 408 cipher solved in 1969 (FBI-corroborated), the 340 cipher solved December 2020 (FBI-confirmed), the unsolved Z13/Z32, the partial print and partial DNA, and every suspect theory labelled as theory. 12 credited real photographs; cipher grids and newspapers are labelled reconstructions; evidence-first, nothing invented.",
-      "runtime_minutes": "15:52"
-    },
-    {
-      "id": "ostrich-plate",
-      "slug": "ostrich-plate",
-      "title": "The Ostrich, Engraved",
-      "subtitle": "One plate, one build \u2014 a copperplate natural-history short",
-      "status": "rebuild_planned",
-      "format": "natural-history short",
-      "runtime_seconds": 58,
-      "year": 2026,
-      "release_tag": null,
-      "poster": null,
-      "description": "A 58-second copperplate-engraving film: the ostrich drawn as a living plate \u2014 burin cuts, three hatch passes, the amber iris wash, and the finished print. Original release lost in account migration; method preserved in BRAIN.md and burin engine partially recovered in tool-results/."
-    }
-  ]
+ "studio": "Opuscar Studio — The Documentary Engine",
+ "updated": "2026-10-15",
+ "films": [
+  {
+   "id": "video-004",
+   "slug": "dyatlov-pass",
+   "title": "Dyatlov Pass",
+   "subtitle": "What Really Happened to the Nine Hikers?",
+   "status": "released",
+   "format": "documentary",
+   "runtime_minutes": "15:10",
+   "year": 2026,
+   "release_tag": "video-004-dyatlov-pass-v1.0.0",
+   "poster": "https://github.com/ansaribilal14/opuscar-studio/releases/download/video-004-dyatlov-pass-v1.0.0/poster.jpg",
+   "description": "RELEASED v1.0.0 — 15:10 evidence-first documentary at 1920x1080p24, house voice edge-tts en-US-AndrewMultilingualNeural. Nine experienced hikers cut their way out of their own tent into a -30C night in the northern Urals, 1959 — and died. The film tests every theory against the case file, follows the 2021 ETH Zurich delayed-slab avalanche model and 2022 follow-up expeditions, and is honest about what remains open. Visuals: real SRTM terrain plates (Mapzen/AWS, CC-BY) + on-screen-labelled stylized reconstructions; no graphic imagery; no generated image passed off as archival. Gates: -16.1 LUFS, ASR 0.97, 0 decode errors, 10-question editorial review."
+  },
+  {
+   "id": "video-003",
+   "slug": "isdal-woman",
+   "title": "The Isdal Woman",
+   "subtitle": "The Woman Who Erased Her Own Identity",
+   "status": "released",
+   "format": "documentary",
+   "runtime_minutes": "16:28",
+   "year": 2026,
+   "release_tag": "video-003-isdal-woman-v2.2.0",
+   "poster": "https://github.com/ansaribilal14/opuscar-studio/releases/download/video-003-isdal-woman-v2.2.0/poster.jpg",
+   "description": "RELEASED v2.2.0 (edge-tts re-voiced edition) — full cinematic rebuild at 1920x1080p24 with narration by Microsoft edge-tts neural voice (en-US-GuyNeural). In November 1970, a burned body was found in Norway's Isdalen valley. Her labels were cut off, her names were false, and fifty-five years later her identity remains unknown. 16:28 evidence-first film + 4 vertical shorts. Photo-first engine: 11 credited real photographs, Ken Burns motion, film grain, crossfades. Every claim sourced; theories labelled; nothing invented."
+  },
+  {
+   "id": "video-002",
+   "slug": "zodiac",
+   "title": "Zodiac",
+   "subtitle": "The Ciphers That Refused to Die",
+   "status": "released",
+   "format": "documentary",
+   "year": 2026,
+   "release_tag": "video-002-zodiac-v1.0.0",
+   "poster": "https://github.com/ansaribilal14/opuscar-studio/releases/download/video-002-zodiac-v1.0.0/poster.jpg",
+   "description": "RELEASED v1.0.0 — full 15:52 investigative documentary at 1920x1080p24, narration by Microsoft edge-tts (en-US-GuyNeural). The documented record: four confirmed attacks (5 murdered, 2 survivors), ~20 letters, the 408 cipher solved in 1969 (FBI-corroborated), the 340 cipher solved December 2020 (FBI-confirmed), the unsolved Z13/Z32, the partial print and partial DNA, and every suspect theory labelled as theory. 12 credited real photographs; cipher grids and newspapers are labelled reconstructions; evidence-first, nothing invented.",
+   "runtime_minutes": "15:52"
+  },
+  {
+   "id": "ostrich-plate",
+   "slug": "ostrich-plate",
+   "title": "The Ostrich, Engraved",
+   "subtitle": "One plate, one build — a copperplate natural-history short",
+   "status": "rebuild_planned",
+   "format": "natural-history short",
+   "runtime_seconds": 58,
+   "year": 2026,
+   "release_tag": null,
+   "poster": null,
+   "description": "A 58-second copperplate-engraving film: the ostrich drawn as a living plate — burin cuts, three hatch passes, the amber iris wash, and the finished print. Original release lost in account migration; method preserved in BRAIN.md and burin engine partially recovered in tool-results/."
+  }
+ ]
 }

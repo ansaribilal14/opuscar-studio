@@ -68,12 +68,16 @@
       build/dyatlov-pass-004.mp4 — 909.65s, 275MB, faststart, AAC 192k, 0 decode errors
 - [x] 7-j QC gates: loudness −16.1 LUFS / TP −1.5 PASS; ASR 0.97/0.97/0.97 PASS;
       luma flags = intentional dark editorial scenes (verified by eye, not voids)
-- [ ] 7-j2 Deliver: encoded-output sheets + 10-question review; SRT; thumbnail;
-      description + chapters; films.json; release video-004-dyatlov-pass-v1.0.0;
-      worklog; checkpoint close
+- [x] 7-j2 Deliver: encoded-output review PASS (10 questions); SRT (221 cues);
+      poster + thumbnail; description + chapters; films.json + BRAIN.md;
+      RELEASED video-004-dyatlov-pass-v1.0.0 (4 assets incl. 275MB master);
+      download/ copies; worklog written
 
 ## NEXT ACTION
-7-j2 — encoded-output editorial review, SRT, thumbnail, release upload (master verified on disk).
+NONE — TASK 7 COMPLETE. Final film: release video-004-dyatlov-pass-v1.0.0 (15:10, 1080p24).
+Non-blocking follow-up: if Wikimedia un-throttles, slot licence-verified period photos
+into work/video-004-dyatlov-pass/images/cache/ and re-render affected segments (scenes
+auto-activate the slots).
 
 ## Gotchas (inherited + new)
 - build_seg.sh in Zodiac had corrected ../.. guard paths — verify after copying.
