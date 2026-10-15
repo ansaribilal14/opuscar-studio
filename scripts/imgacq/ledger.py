@@ -98,6 +98,10 @@ def classify(entry: dict) -> str:
     has_integrity = bool(entry.get("sha256")) and bool(entry.get("file"))
     if not review_approved or not canon or not has_integrity:
         return "unverified"
+    if canon in RESTRICTED_LICENSES:
+        # NC/ND and friends stay flagged even after approval — never silently cleared
+        # for monetized publication; a human must re-license or explicitly override.
+        return "unverified"
     if entry.get("authenticity_evidence"):
         return "authentic_verified"
     return "documentary_context"

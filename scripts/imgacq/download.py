@@ -11,8 +11,9 @@ Rules enforced here (directive Phase 3):
 
 import os
 
+from . import common as cm
 from .common import (HttpError, DOWNLOAD_TIMEOUT, MAX_BYTES, MIN_BYTES, MIN_W, MIN_H,
-                     incoming_dir, save_json, load_json, now_iso, sha256_file, SLEEP)
+                     incoming_dir, save_json, load_json, now_iso, sha256_file)
 from .dedup import dhash_path
 from . import providers as pv
 
@@ -47,7 +48,7 @@ def fetch_media(url: str, dest_dir: str, stem: str, tries: int = 3):
     last_err = None
     for t in range(tries):
         if t:
-            SLEEP(1.8 ** t)
+            cm.SLEEP(1.8 ** t)
         try:
             r = requests.get(url, timeout=DOWNLOAD_TIMEOUT, stream=True,
                              headers={"User-Agent": "OpusCarStudio-ImageAcq/1.0"})
@@ -81,11 +82,22 @@ def fetch_media(url: str, dest_dir: str, stem: str, tries: int = 3):
                 f.write(data)
             # full decode validation — corrupt/truncated files die here
             from PIL import Image
-            with Image.open(path + ".part") as im:
-                im.load()
-                w, h = im.size
-                real_fmt = im.format
+            try:
+                with Image.open(path + ".part") as im:
+                    im.load()
+                    w, h = im.size
+                    real_fmt = im.format
+            except Exception as decode_err:
+                try:
+                    os.remove(path + ".part")   # no orphan files, no silent acceptance
+                except OSError:
+                    pass
+                raise HttpError(f"image decode failed: {decode_err}")
             if w < MIN_W or h < MIN_H:
+                try:
+                    os.remove(path + ".part")
+                except OSError:
+                    pass
                 raise HttpError(f"image too small: {w}x{h} < {MIN_W}x{MIN_H} minimum")
             os.replace(path + ".part", path)
             return path, {"format": real_fmt, "width": w, "height": h, "bytes": len(data),
