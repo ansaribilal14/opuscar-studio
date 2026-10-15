@@ -1,11 +1,12 @@
-# TASK 6 — LIVE CHECKPOINT (Zodiac visual quality recovery → v3.0.0)
+# TASK 7 — LIVE CHECKPOINT (video-004: Dyatlov Pass, The Unclosed File)
 
 > **AUTO-RESTART PROTOCOL**: This file is the durable brain. It is updated and PUSHED
 > after every completed step. Any new session: (1) read this file, (2) read
-> `docs/REGRESSION-2026-10-14.md`, (3) verify "Verified state" below, (4) resume at
-> "NEXT ACTION". Disk is disposable; git is the brain; per-asset push is mandatory.
+> `work/video-004-dyatlov-pass/task-7-main.md` (operator directive, verbatim), (3)
+> verify "Verified state" below, (4) resume at "NEXT ACTION". Disk is disposable;
+> git is the brain; per-asset push is mandatory.
 
-**Updated**: 2026-10-14 ~14:30 UTC · **Phase**: RECOVERY COMPLETE → ENGINE REBUILD
+**Updated**: 2026-10-15 · **Phase**: KICKOFF (post-Zodiac v3.0.0)
 
 ## Environment rules (learned the hard way — obey)
 - Container resets wipe untracked files + node_modules + big builds. Push after EVERY step.
@@ -16,38 +17,63 @@
 - Renderer is DETERMINISTIC: same sources → same frames. Re-rendering after a reset is safe.
 - Success = frames actually VIEWED (Read tool on stills/sheets), never "render exited 0".
 
-## Verified state (checked 2026-10-14)
-- Repo checkout at /home/z/my-project, HEAD = origin/main = `96ede7d` (task 6 kickoff).
-- Token auth live (in remote URL). `git push` tested this session.
-- Toolchain: node v24 + canvas OK, ffmpeg 7.1, python3.12 + PIL + numpy OK.
-- Zodiac project intact: work/video-002-zodiac/{src,audio(80M),images(9.6M)}.
-- Issues #11–#16 open on GitHub (regression tracking).
+## Film spec (from directive, verbatim in task-7-main.md)
+- **Film ID**: `video-004-dyatlov-pass` · Release tag: `video-004-dyatlov-pass-v1.0.0`
+- **Title**: "Dyatlov Pass: What Really Happened to the Nine Hikers?" (recommended;
+  alternatives in directive §1 for release-notes A/B testing)
+- **Channel**: The Unclosed File — black / archival beige / crimson identity (unchanged)
+- **Length**: 15–18 min full film, English, 1080p24 · **Shorts: NOT requested — full film only**
+- **Narrative spine**: 0:00 hook (abandoned tent) / 2:00 context (nine hikers) /
+  5:00 evidence (search + autopsies) / 8:00 theories vs evidence / 12:00 science
+  (2021 model + 2022 follow-up) / 15:00 honest conclusion
+- **Thumbnail**: tent focal, mountain behind, crimson evidence marker, text
+  "WHY DID THEY LEAVE?", no graphic imagery, no invented-reconstruction-as-1959-photo
+- **Asset law**: every download gets URL + creator + date + source page + licence +
+  intended scene in the manifest; unclear licence ⇒ do not use (use labelled
+  reconstructions / animated maps instead); never present generated imagery as archival
+- **Science framing**: 2021/2022 Gaume–Puzrin papers are a testable explanation, not
+  proof; no invented quotes/documents/weather/forensics
 
-## Lost in container reset (must rebuild)
-- v4 composition engine + scene briefs + v4 scene modules + v4 dispatcher (were local-only)
-- Proof renders (proof_base_actual/A/B/C), master download (494MB), v4 contact sheets
-→ All rebuildable deterministically from git sources. Do NOT shortcut QA to save time.
+## Engine rules (carried from Zodiac v3.0.0 — production behavior now)
+- v4 image-first composition: full-bleed photo anchors, sat lift, capped scrims,
+  inkGrid for documents, contrast bands before text, creditBR with dark chip
+- scene_briefs JSON = narration-visual contract for EVERY block; cut/dissolve grammar
+- Every image visually inspected before use (watermark/license/mislabel checks caught 2 in v3)
+- Gates: luma (no voids), loudnorm −16 LUFS, ASR word-coverage ≥0.85, 0 decode errors,
+  6×15-frame encoded-output contact sheets, 10-question editorial review ALL PASS
+- House voice: edge-tts `en-US-AndrewMultilingualNeural` rate −3% (BRAIN.md §4),
+  WordBoundary events per block → word-timed SRT
+- ffmpeg always `-nostdin`, stdin `< /dev/null`; fonts: DejaVu Serif/Carlito/DejaVuSansMono
 
-## Pipeline (directive §1–§12, from task-6-main.md)
-- [x] Phase 1: regression report (6 root causes) + directive archived + qc_stills.mjs
-- [x] Phase 1.5: container-reset recovery, toolchain, checkpoint system (this file)
-- [x] Phase 2: v4 engine REBUILT (comp_modes.mjs, scene_briefs.json, scenes_z1/z2/z3v4.mjs,
-      dispatcher flipped, smoke 37/37) — commit b004710
-- [x] Phase 3: v4 QC sheets reviewed at sheet + full size; fixes applied (creditBR overflow,
-      b0a band, typewriter_keys REJECTED watermarked → press_room close, b8c atmospheric) — 2368b0d
-- [x] Phase 4: proof benchmark base/A/B/C rendered+reviewed from ENCODED output; C SELECTED;
-      verdict archived (docs/BENCHMARK-2026-10-14.md + docs/proof/) — 50d6b47
-- [x] Phase 4.5: audio chain regenerated (score/sfx/mix deterministic) for mux + proof audio
-- [x] Phase 5: luma gate clean; 12 segments rendered + integrity-gated (0 decode errors)
-- [x] Phase 6: master assembled (805.2s, 1080p24, faststart, 3-bus mix muxed); poster at title card
-- [x] Phase 7: QC PASS — decode 0 errors, -16.1 LUFS, ASR 0.91/0.93, luma clean, 90-frame encoded-output editorial review (10-question ALL PASS); asset accuracy fix (chronicle_building -> Golden Gate overlook) + creditBR legibility chip; seg_0 re-rendered twice
-- [x] Phase 8: RELEASED https://github.com/ansaribilal14/opuscar-studio/releases/tag/video-002-zodiac-v3.0.0 (master 425MB + srt + poster); films.json v3.0.0; issues #11-#16 closed; worklog written
+## Verified state (checked 2026-10-15)
+- Repo at /home/z/my-project, HEAD = origin/main = `04d85f7` (task 6 complete state).
+- Zodiac v4 sources recovered in work/video-002-zodiac/ (engine template for this film).
+- Toolchain: node v24, ffmpeg 7.1.5, python3.12, scipy/soundfile OK. **canvas NOT yet
+  installed** (reset) — install into work/video-004-dyatlov-pass. edge-tts NOT yet installed.
+- Disk 9.9G total, 8.5G free — sufficient for ~16 min master + segments.
+
+## Pipeline (mirrors BRAIN.md §2 + Zodiac task-6 flow)
+- [ ] 7-a Setup: directive archived, checkpoint live, project scaffolded (this file)
+- [ ] 7-b Toolchain: canvas, edge-tts voice check, CC sample libraries re-fetch, build_seg.sh path check
+- [ ] 7-c Research: fact verification pass → research/SOURCES.md + CLAIMS.md + TIMELINE.md
+- [ ] 7-d Assets: Commons sweep + license-verified manifest (images/manifest.json) + visual inspection
+- [ ] 7-e Narration ~36 blocks (~2,200 words) + TTS Andrew −3% + WordBoundary capture
+- [ ] 7-f Timeline (6 chapters, pauses) + scene_briefs.json (every block)
+- [ ] 7-g Scenes d1/d2/d3 v4 modules + route maps + dispatcher; smoke render + still review
+- [ ] 7-h Audio: score (cold palette) + SFX (blizzard-forward) + mix_v3-style 3-bus
+- [ ] 7-i Render: luma gate → segments (foreground serial) → master assemble → decode gate
+- [ ] 7-j QC + deliver: loudness/ASR/luma/6 contact sheets/10-question review; SRT;
+      thumbnail; description + chapter timestamps; films.json; release
+      video-004-dyatlov-pass-v1.0.0; worklog; checkpoint close
 
 ## NEXT ACTION
-NONE — TASK 6 COMPLETE. Final film: release video-002-zodiac-v3.0.0. Next candidate work (not started): video-004 per BRAIN.md §6 board.
+7-b — toolchain install (canvas, edge-tts), sample-library fetch, build script adaptation.
 
-## Gotchas
-- build_seg.sh had a stale absolute path (repo moved one level deeper) — fix before full render.
-- `news_press.jpg` (Australian Telegraph) must NOT appear in the opening (wrong continent/decade).
--Cipher cards must be legible (v2 failure: beige boxes at low contrast).
-- v2 b5c amber-on-white and b2b sub-line contrast fixes: band helper renders BEFORE text.
+## Gotchas (inherited + new)
+- build_seg.sh in Zodiac had corrected ../.. guard paths — verify after copying.
+- node_modules lives per-project (work/<film>/package.json) — reinstall after every reset.
+- Commons API + image services rate-limit → serial fetch with retries, never parallel bursts.
+- Sample libraries (VSCO2/VCSL/Salamander/gran_cassa) live OUTSIDE the repo — re-fetch
+  via lemo-opuscar/tools fetch mechanism after resets.
+- Dyatlov-specific: NO graphic imagery (directive); autopsy findings stated factually,
+  not visually; radiation claims stay within the documented radiologist appendix scope.
