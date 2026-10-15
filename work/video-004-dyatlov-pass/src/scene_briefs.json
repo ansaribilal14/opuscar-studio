@@ -1,0 +1,252 @@
+{
+  "film": "video-004-dyatlov-pass",
+  "rev": 1,
+  "hierarchy": "1 real photos/archival (license-verified only) \u00b7 2 ink reconstructions, on-screen labelled \u00b7 3 evidence typographic cards \u00b7 4 real-data terrain plates (SRTM via Mapzen, CC-BY)",
+  "briefs": {
+    "b1a": {
+      "visual": "hook_tent_find", "mode": "full-bleed archival or ink reconstruction",
+      "photos": ["tent_1959.jpg"], "fallback": "recon_tent_wide",
+      "motion": "slow push-in", "in": "cut", "vig": "hard",
+      "why": "Opens on the documented 26 Feb 1959 discovery: standing tent, slit from inside, belongings in place. Photo slot only if Commons licence verified; fallback is a labelled ink tent with three visible cuts. No gore, no staged fake-1959 imagery."
+    },
+    "b1b": {
+      "visual": "hook_footprints", "mode": "ink reconstruction map-view",
+      "photos": [], "fallback": "recon_footprints",
+      "motion": "slow pan downslope (top->bottom)", "in": "cut", "vig": "soft",
+      "why": "The protocol fact: 8-9 print trails walking (not running) to the treeline, some in socks. Chip annotations: SOCKS / SINGLE BOOTS. Prints stop at forest edge \u2014 the question's visual seed."
+    },
+    "b1b2": {
+      "visual": "hook_no_plan", "mode": "evidence chips over darkened recon",
+      "photos": [], "fallback": "recon_tent_night",
+      "motion": "static + chip pops", "in": "cut", "vig": "hard",
+      "why": "Absence-of-planning triad: NO SUPPLIES / NO NOTE / NO PREPARED TRAIL. Keeps the hook factual and sets the exit's suddenness before the question lands."
+    },
+    "b1c": {
+      "visual": "hook_cold_night", "mode": "terrain atmosphere + weather chip",
+      "photos": [], "plates": ["campsite_relief"], "fallback": null,
+      "motion": "slow drift + snowfall overlay", "in": "dissolve", "vig": "soft",
+      "why": "Night grade over the real SRTM relief of the slope; falling snow. Chip: FAR BELOW \u221230\u00b0C (SEARCHER RECORDS). No invented station data \u2014 qualitative per ledger."
+    },
+    "b1d": {
+      "visual": "hook_question", "mode": "typographic slam",
+      "photos": [], "fallback": null,
+      "motion": "hard cut-in, hold", "in": "cut", "vig": "hard",
+      "why": "The operator's thumbnail line WHY DID THEY LEAVE? becomes the hook slam \u2014 crimson on black, case-file mono. Ties film to thumbnail concept."
+    },
+    "b1e": {
+      "visual": "card_title", "mode": "silent title card",
+      "photos": [], "fallback": null, "motion": "dwell", "in": "cut", "vig": "hard",
+      "why": "DYATLOV PASS / THE UNCLOSED FILE \u2014 brand moment (poster frame source)."
+    },
+    "b2a": {
+      "visual": "ctx_start", "mode": "terrain wide + editorial card",
+      "photos": [], "plates": ["route_relief"], "fallback": null,
+      "motion": "slow pan north along corridor", "in": "dissolve", "vig": "soft",
+      "why": "Sverdlovsk marker on real relief corridor; card: CATEGORY III \u00b7 16 DAYS \u00b7 OTORTEN \u00b7 TEN SET OUT."
+    },
+    "b2b": {
+      "visual": "ctx_group", "mode": "roster card + photo slot",
+      "photos": ["group_1959.jpg"], "fallback": "roster_card",
+      "motion": "roster builds line by line", "in": "dissolve", "vig": "soft",
+      "why": "Ten names + ages as typographic roster (documented); group photo only if licence verified. Led by Dyatlov, 23; ages 20-38 per records."
+    },
+    "b2c": {
+      "visual": "ctx_route_map", "mode": "animated route over real terrain",
+      "photos": ["yudin_farewell.jpg"], "plates": ["route_relief"], "fallback": "terrain_only",
+      "motion": "route polyline draws progressively; map crawl", "in": "cut", "vig": "soft",
+      "why": "ANCHOR: rail Ivdel \u2192 truck Vizhay \u2192 north up Lozva. YUDIN TURNS BACK \u2014 JAN 28 chip at the farewell point; farewell photo slot (licence permitting)."
+    },
+    "b2d": {
+      "visual": "ctx_labaz", "mode": "route zoom + marker + diary line card",
+      "photos": [], "plates": ["route_relief"], "fallback": null,
+      "motion": "zoom to Auspiya valley, marker pop", "in": "dissolve", "vig": "soft",
+      "why": "LABAZ (SUPPLY CACHE) marker in Auspiya valley; diary paraphrase card HARD FROST \u00b7 WIND (documented, no invented quotes)."
+    },
+    "b2e": {
+      "visual": "ctx_climb", "mode": "terrain + planned-vs-actual overlay",
+      "photos": [], "plates": ["campsite_relief"], "fallback": null,
+      "motion": "tracks draw; deviation widens", "in": "cut", "vig": "soft",
+      "why": "Planned line dashed to pass 1079 vs actual solid line drifting ~1 km west up Kholat Syakhl's shoulder. FEB 1 chip. The mistake made visible without asserting motive."
+    },
+    "b2f": {
+      "visual": "ctx_camp", "mode": "terrain close + markers + angle readout",
+      "photos": ["last_photo.jpg"], "plates": ["campsite_relief"], "fallback": "terrain_only",
+      "motion": "slow push to slope marker", "in": "dissolve", "vig": "soft",
+      "why": "Slope 23\u00b0 readout + TENT marker + FOREST EDGE 1.5 KM marker. Last-photo slot with honest credit; fallback stays terrain + markers (no fake 1959 photo)."
+    },
+    "b2g": {
+      "visual": "ctx_silence", "mode": "dark terrain + typographic beats",
+      "photos": [], "plates": ["campsite_relief"], "fallback": null,
+      "motion": "static, chips land on beats", "in": "cut", "vig": "hard",
+      "why": "THE DIARIES STOP. / THE PHOTOGRAPHS STOP. / NO WITNESS SURVIVED THE NIGHT. \u2014 the honest frame for all reconstruction that follows."
+    },
+    "b3a": {
+      "visual": "ev_search_tent", "mode": "terrain + search grid + photo slot",
+      "photos": ["search_photos.jpg"], "plates": ["campsite_relief"], "fallback": "terrain_grid",
+      "motion": "grid lines sweep in", "in": "dissolve", "vig": "soft",
+      "why": "Search mobilization (volunteers, aircraft) Feb 20-26 grid overlay; tent-found chip FEB 26. Search-photo slot only with verified licence."
+    },
+    "b3b": {
+      "visual": "ev_cuts_prints", "mode": "recon close + numbered cuts",
+      "photos": [], "fallback": "recon_tent_cuts",
+      "motion": "cut ticks number 1..9", "in": "cut", "vig": "hard",
+      "why": "8-9 slashes, some reachable only from within \u2014 numbered ticks + CUT FROM INSIDE band; prints chip 8-9 TRAILS, WALKING PACED."
+    },
+    "b3c": {
+      "visual": "ev_cedar", "mode": "ink reconstruction, restrained",
+      "photos": [], "fallback": "recon_cedar_fire",
+      "motion": "glow pulse at base, slow push", "in": "dissolve", "vig": "soft",
+      "why": "Cedar silhouette, small fire glow, branch-break markers; two memorial crosses at the base (restrained, no bodies). Names shown: DOROSHENKO / KRIVONISHENKO. Exposure + burned hands per autopsy."
+    },
+    "b3c2": {
+      "visual": "ev_cedar_climb", "mode": "recon close + height scale",
+      "photos": [], "fallback": "recon_cedar_climb",
+      "motion": "scale draws to 5 m marker", "in": "cut", "vig": "soft",
+      "why": "Branches broken to 5 m \u2014 height scale + SEARCHERS' NOTE: UNEXPLAINED. Keeps the documented mystery visible without speculating."
+    },
+    "b3d": {
+      "visual": "ev_line_back", "mode": "terrain + position line",
+      "photos": [], "plates": ["campsite_relief"], "fallback": null,
+      "motion": "markers land in sequence, line draws cedar->tent", "in": "dissolve", "vig": "soft",
+      "why": "Find positions along the return line with date chips (DYATLOV FEB 28 \u00b7 SLOBODIN & KOLMOGOROVA MAR 5), memorial crosses only. All facing upslope per record."
+    },
+    "b3e": {
+      "visual": "ev_ravine_four", "mode": "terrain close + depth gauge",
+      "photos": [], "plates": ["campsite_relief"], "fallback": null,
+      "motion": "snow-depth gauge fills 4 m", "in": "dissolve", "vig": "soft",
+      "why": "Ravine + DEN markers, 75 m FROM CEDAR chip, 4 m snow gauge, EARLY MAY chip. Four names shown as memorial text only."
+    },
+    "b3f": {
+      "visual": "ev_autopsy_split", "mode": "two-column evidence card",
+      "photos": [], "fallback": null, "motion": "columns build", "in": "cut", "vig": "hard",
+      "why": "FIVE: EXPOSURE | FOUR: INTERNAL INJURIES; Slobodin chip SKULL FRACTURE \u2014 RULED NON-FATAL. Pure ledger content, icon-free."
+    },
+    "b3g": {
+      "visual": "ev_injuries", "mode": "typographic evidence cards",
+      "photos": [], "fallback": null, "motion": "cards land sequentially", "in": "cut", "vig": "hard",
+      "why": "SKULL: FRACTURE / CHEST: MULTIPLE FRACTURES / SKIN: UNBROKEN + FORCE WITHOUT A WOUND. No imagery of injuries \u2014 directive rule."
+    },
+    "b3h": {
+      "visual": "ev_details", "mode": "twin evidence cards",
+      "photos": [], "fallback": null, "motion": "cards slide in", "in": "dissolve", "vig": "soft",
+      "why": "PARTLY UNDRESSED \u2014 TERMINAL HYPOOTHERMIA BEHAVIOUR (documented) | BETA CONTAMINATION \u2014 SOME GARMENTS, ORIGIN UNKNOWN. Facts that feed legends, stated as facts."
+    },
+    "b3i": {
+      "visual": "ev_closure", "mode": "typographic quote reproduction",
+      "photos": [], "fallback": null, "motion": "quote types on", "in": "cut", "vig": "hard",
+      "why": "Documented closure phrase rendered as typographic quotation (not a fake scan): 'a compelling natural force which they were unable to overcome' \u2014 CASE CLOSED 28 MAY 1959."
+    },
+    "b4a": {
+      "visual": "th_frame", "mode": "editorial frame card",
+      "photos": [], "plates": ["campsite_relief"], "fallback": null,
+      "motion": "static hold", "in": "dissolve", "vig": "soft",
+      "why": "Chapter frame: THE TEST IS THE EVIDENCE. Dark relief backdrop."
+    },
+    "b4b": {
+      "visual": "th_people", "mode": "ruled-out card + ticks",
+      "photos": [], "fallback": null, "motion": "ticks strike", "in": "cut", "vig": "soft",
+      "why": "ATTACK \u2014 RULED OUT: no struggle / no third-party tracks / nothing stolen / Mansi cooperative. Crimson RULED OUT stamp."
+    },
+    "b4c": {
+      "visual": "th_abandon", "mode": "ruled-out card + ticks",
+      "photos": [], "fallback": null, "motion": "ticks strike", "in": "cut", "vig": "soft",
+      "why": "ABANDONMENT \u2014 CONTRADICTED: boots/coats/food left; bodies along return line show attempts to survive."
+    },
+    "b4d": {
+      "visual": "th_sky", "mode": "night atmosphere + testimony cards",
+      "photos": [], "plates": ["route_relief"], "fallback": null,
+      "motion": "subtle sky glow arc, cards land", "in": "dissolve", "vig": "soft",
+      "why": "TESTIMONY ON FILE: glowing orange objects (witness statements incl. Atmanaki 7-8.IV.59) + BETA CONTAMINATION: REAL, UNEXPLAINED. Labelled testimony \u2014 nothing placed over the slope that night."
+    },
+    "b4d2": {
+      "visual": "th_infrasound", "mode": "ridge-flow diagram",
+      "photos": [], "fallback": null, "motion": "wind arrows flow, rings pulse", "in": "cut", "vig": "soft",
+      "why": "Wind over ridge profile, low-frequency rings; card: FITS THE FEAR / NOT THE INJURIES / UNTESTABLE HERE \u2014 HYPOTHESIS. Fair treatment, clearly labelled."
+    },
+    "b4e": {
+      "visual": "th_avalanche", "mode": "slope-angle map + profile + objections",
+      "photos": [], "plates": ["campsite_slope"], "fallback": null,
+      "motion": "profile draws with 23\u00b0 marker", "in": "dissolve", "vig": "soft",
+      "why": "Real slope map + cross-section profile with 23\u00b0 marker; objection chips NO CROWN LINE / NO DEBRIS / NO ONE BURIED / SLOPE CLEAN AT DAY 26. The stalemate made visual."
+    },
+    "b4f": {
+      "visual": "th_turn", "mode": "turn card",
+      "photos": [], "fallback": null, "motion": "card pops", "in": "cut", "vig": "hard",
+      "why": "JAN 2021 \u00b7 ETH ZURICH \u00b7 GAUME & PUZRIN + paper title chip (documented). The chapter turn."
+    },
+    "b5a": {
+      "visual": "sc_cut", "mode": "terrain cross-section diagram",
+      "photos": [], "fallback": null, "motion": "cut trench draws in", "in": "dissolve", "vig": "soft",
+      "why": "Slope cross-section with the tent-platform cut drawn in (labelled: documented practice). Layered snowpack above."
+    },
+    "b5b": {
+      "visual": "sc_wind_load", "mode": "wind-loading animation over profile",
+      "photos": [], "fallback": null, "motion": "wind arrows + deposition build", "in": "cut", "vig": "soft",
+      "why": "Katabatic wind arrows over the shoulder, snow deposition accumulating above the tent marker; chip ARCTIC FRONT \u00b7 KATABATIC WINDS."
+    },
+    "b5c": {
+      "visual": "sc_release", "mode": "slab release diagram",
+      "photos": [], "fallback": null, "motion": "slab slides slow; readout counts 9.5\u201313 h", "in": "cut", "vig": "soft",
+      "why": "Weak layer + slab block sliding at walking pace onto tent; readout RELEASE WINDOW 9.5\u201313 H AFTER THE CUT; chip PRESSURE, NOT IMPACT."
+    },
+    "b5c2": {
+      "visual": "sc_escape", "mode": "escape schematic",
+      "photos": [], "fallback": null, "motion": "cut arrows + descent polyline", "in": "dissolve", "vig": "soft",
+      "why": "Tent + cut-out arrows + descent line to treeline; caption INJURED \u00b7 FREEZING \u00b7 ALIVE \u2014 FOR NOW. Model-based, labelled."
+    },
+    "b5d": {
+      "visual": "sc_injuries", "mode": "AIS calibration card",
+      "photos": [], "fallback": null, "motion": "gauge to moderate-severe", "in": "cut", "vig": "hard",
+      "why": "COMPRESSION \u2192 CHEST & SKULL, MODERATE-SEVERE, NON-FATAL + ticks ALL WALKED OUT / NONE BURIED. Maps model to autopsies without imagery."
+    },
+    "b5e": {
+      "visual": "sc_objections", "mode": "objections resolution grid + slope map",
+      "photos": [], "plates": ["campsite_slope"], "fallback": null,
+      "motion": "rows resolve to green-ish ticks", "in": "dissolve", "vig": "soft",
+      "why": "23\u00b0 + WIND LOAD \u2192 RELEASE / TRACES ERASED BY SNOWFALL / 2022: THREE EXPEDITIONS \u00b7 'AVALANCHES NOT EXCEPTIONAL'. Paper-accurate wording."
+    },
+    "b5f": {
+      "visual": "sc_limits", "mode": "open questions card",
+      "photos": [], "fallback": null, "motion": "three open chips", "in": "cut", "vig": "hard",
+      "why": "WHY NO ONE RETURNED / WHY THE GROUP SPLIT / WHERE CONTAMINATION CAME FROM \u2014 three OPEN chips. Science's honest boundary."
+    },
+    "b6a": {
+      "visual": "co_chain", "mode": "chain sequence over night relief",
+      "photos": [], "plates": ["campsite_relief"], "fallback": null,
+      "motion": "links land on beats", "in": "dissolve", "vig": "soft",
+      "why": "STORM \u2192 LOAD \u2192 SLAB \u2192 EXIT \u2192 COLD chain card. The defensible synthesis."
+    },
+    "b6b": {
+      "visual": "co_2020", "mode": "ruling card",
+      "photos": [], "fallback": null, "motion": "card pops", "in": "cut", "vig": "soft",
+      "why": "PROSECUTORS 2020: AVALANCHE \u00b7 DEATHS BY HYPOTHERMIA \u00b7 NO CRIME. Requested by families (documented)."
+    },
+    "b6b2": {
+      "visual": "co_words", "mode": "callback quote card",
+      "photos": [], "fallback": null, "motion": "quote holds", "in": "dissolve", "vig": "soft",
+      "why": "Closure phrase callback + SCIENCE SPENT SIXTY YEARS NAMING IT."
+    },
+    "b6c": {
+      "visual": "co_open", "mode": "night terrain drift",
+      "photos": [], "plates": ["campsite_relief"], "fallback": null,
+      "motion": "very slow drift", "in": "dissolve", "vig": "soft",
+      "why": "THE CHOICES IN THE DARK \u2014 the human-sized remainder, stated without invention."
+    },
+    "b6d": {
+      "visual": "co_names", "mode": "memorial roll",
+      "photos": [], "fallback": null, "motion": "names appear one per clause", "in": "cut", "vig": "hard",
+      "why": "Nine names + ages on black, small cedar silhouette. No photographs of the deceased needed \u2014 respect + rights."
+    },
+    "b6e": {
+      "visual": "co_close", "mode": "terrain at dawn + closing type",
+      "photos": [], "plates": ["campsite_relief"], "fallback": null,
+      "motion": "slow lift to dawn grade", "in": "dissolve", "vig": "soft",
+      "why": "Dawn grade over the pass; THE FILE REMAINS OPEN; credit chip TERRAIN: MAPZEN/SRTM. Honest, restrained ending."
+    },
+    "b6f": {
+      "visual": "card_end", "mode": "silent end card",
+      "photos": [], "fallback": null, "motion": "dwell", "in": "cut", "vig": "hard",
+      "why": "THE UNCLOSED FILE \u00b7 DYATLOV PASS 1959 \u00b7 sources line small."
+    }
+  }
+}
