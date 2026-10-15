@@ -1,0 +1,17 @@
+{
+ "subject": "Dyatlov Pass incident",
+ "aliases": ["Dyatlov group", "Kholat Syakhl", "Dyatlov Pass 1959"],
+ "locations": ["Northern Urals", "Sverdlovsk Oblast", "Soviet Union"],
+ "dates": ["1959", "February 1959", "26 February 1959"],
+ "archive_terms": ["case files", "search operation", "memorial", "mountain pass"],
+ "slot_hints": {
+  "tent_1959.jpg": ["abandoned tent snow slope", "tourist tent winter camp snow"],
+  "group_1959.jpg": ["hiker group winter portrait", "student hiking group 1950s soviet"],
+  "yudin_farewell.jpg": ["young man railway station winter 1959", "soviet backpacker farewell station"],
+  "last_photo.jpg": ["winter forest campsite soviet hikers", "snow camp evening soviet era"],
+  "search_photos.jpg": ["mountain rescue search snow soviet", "volunteer searchers winter slope"]
+ },
+ "min_width": 900,
+ "min_height": 600,
+ "notes": "Derived from research/SOURCES.md (A1-A6) + scene_briefs.json `why` fields. Free licenses only (PD/CC0/CC BY/CC BY-SA); NC/ND/unknown are held for review."
+}
