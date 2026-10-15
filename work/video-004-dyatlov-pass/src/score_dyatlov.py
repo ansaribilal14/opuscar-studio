@@ -1,0 +1,187 @@
+#!/usr/bin/env python3
+"""score_dyatlov.py — composed, act-cue score for video-004 (cold Urals palette).
+
+Ported from the Zodiac v3 chain (score_zodiac.py) onto the same CC sampler.
+Act cues follow the BLOCK TIMELINE; presets per dramatic arc:
+  hook dark -> expedition overture (wistful) -> evidence dark -> theories tension
+  -> science: dark (mechanism build) then DAWN at the autopsy match (b5d)
+  -> conclusion: resolve, dropping to sparse dark for the memorial (b6d),
+     a final warm dawn under the closing.
+Output: build/music.wav (48k stereo float), build/score_credits.txt
+"""
+import json, os, sys
+import numpy as np
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, "/home/z/my-project/lemo-opuscar/core/audio")
+sys.path.insert(0, HERE)
+import sampler as S
+from sfx import SR, limit, hp, norm
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BUILD = os.path.join(ROOT, "build")
+os.makedirs(BUILD, exist_ok=True)
+
+XFADE = 2.0
+TAIL = 4.0
+
+PROGS = {
+    "overture": [(0, "m"), (8, "M"), (3, "M"), (10, "M")],
+    "tension":  [(0, "m"), (0, "m"), (8, "M"), (7, "m")],
+    "dark":     [(0, "m"), (7, "m"), (8, "M"), (5, "m")],
+    "dawn":     [(0, "M"), (9, "m"), (5, "M"), (7, "M")],
+    "resolve":  [(0, "M"), (5, "M"), (0, "M"), (7, "M")],
+}
+
+def chord_notes(root_midi, semi, quality):
+    third = 4 if quality == "M" else 3
+    return [root_midi + semi, root_midi + semi + third, root_midi + semi + 7]
+
+def events_for_cue(cue, t_off, dur):
+    p = cue["preset"]; inten = float(cue.get("intensity", 0.5))
+    minor = bool(cue.get("minor", p in ("overture", "tension", "dark")))
+    root = S.midi(cue.get("root", "D2" if minor else "C3"))
+    prog = PROGS.get(p, PROGS["tension"] if minor else PROGS["resolve"])
+    ev, t, bar = [], 0.0, 8.0
+    ci = 0
+    while t < dur:
+        d = min(bar, dur - t)
+        semi, q = prog[ci % len(prog)]
+        tri = chord_notes(root, semi, q)
+        pad = [tri[0] - 12, tri[0], tri[1], tri[2]]
+        rnd = np.random.default_rng(int((t_off + t) * 7 + ci * 13 + len(p)))
+        for j, n in enumerate(pad):
+            ev.append(dict(t=t_off + t, inst="violins" if n >= root + 7 else ("violas" if n >= root else "cellos"),
+                           pitch=float(n), dur=d + 1.5, vel=0.26 + 0.20 * inten,
+                           pan=(-.4 + .8 * j / max(1, len(pad) - 1)),
+                           attack=(1.0 - 0.45 * inten) + 0.3 * rnd.random()))
+        ev.append(dict(t=t_off + t, inst="contrabass",
+                       pitch=float(tri[0] - 24 if tri[0] - 24 >= 26 else tri[0] - 12),
+                       dur=d + 1.0, vel=0.30 + 0.22 * inten, pan=0.0,
+                       attack=0.5 + 0.5 * rnd.random()))
+        if p in ("tension", "dark"):
+            ev.append(dict(t=t_off + t, inst="cellos", pitch=float(tri[0] - 12), dur=d * 0.9,
+                           vel=0.34 + 0.22 * inten, pan=-.15, attack=d * 0.45))
+            if p == "tension" and ci % 2 == 0:
+                ev.append(dict(t=t_off + t + d * 0.5, inst="timpani",
+                               pitch="D2" if ci % 4 == 0 else "G2",
+                               vel=0.30 + 0.28 * inten, dur=2.0))
+            if p == "dark" and ci % 3 == 0:
+                ev.append(dict(t=t_off + t + d * 0.5, inst="gran_cassa", pitch=None,
+                               vel=0.26 + 0.22 * inten, dur=2.0))
+        # sparse piano — the cold, human voice of this score
+        if p in ("overture", "dawn", "resolve") or (p == "dark" and inten > 0.50):
+            mel = [tri[2] + 12, tri[1] + 12, tri[0] + 12]
+            for k, n in enumerate(mel[:2 if p == "dark" else 3]):
+                if rnd.random() < 0.78:
+                    ev.append(dict(t=t_off + t + k * (d / 6.0), inst="piano", pitch=float(n),
+                                   dur=1.4, vel=0.22 + 0.24 * inten, pan=0.18 * (1 if k % 2 else -1)))
+        if p in ("dawn", "overture") and ci % 2 == 1:
+            inst = "glockenspiel" if p == "dawn" else "vibraphone"
+            ev.append(dict(t=t_off + t + d * 0.5, inst=inst, pitch=float(tri[2] + 12),
+                           dur=1.5, vel=0.15 + 0.12 * inten, pan=0.3))
+        if p in ("tension", "overture") and inten > 0.62 and ci % 4 == 3:
+            ev.append(dict(t=t_off + t, inst="horn", pitch=float(tri[0] + 12),
+                           dur=min(d, 6.0), vel=0.18 + 0.15 * inten, pan=0.0, attack=1.6))
+        t += d; ci += 1
+    return ev
+
+def duck_envelope(tl_total, blocks, sr=SR):
+    n = int(round(tl_total * sr))
+    env = np.ones(n, dtype=np.float32)
+    for b in blocks:
+        if not b.get("text"): continue
+        i0 = int(max(0, (b["start"] - 0.30) * sr))
+        i1 = int(min(n, (b["end"] + 0.35) * sr))
+        if i1 > i0: env[i0:i1] = 10 ** (-7.5 / 20)
+    k = int(0.35 * sr) | 1
+    kern = np.hanning(k).astype(np.float32); kern /= kern.sum()
+    env = np.convolve(env, kern, mode="same").astype(np.float32)
+    free = env > 0.97
+    env[free] *= 10 ** (1.5 / 20)
+    env = np.convolve(env, kern, mode="same").astype(np.float32)
+    return np.minimum(env, 1.2)
+
+def main():
+    tl = json.load(open(os.path.join(BUILD, "timeline.json")))
+    total = tl["total"]; blocks = tl["blocks"]
+    print(f"score: total {total:.1f}s, {len(blocks)} blocks")
+
+    sections = {}
+    for b in blocks:
+        if b.get("text") or b["id"] in ("b1e", "b6f"):
+            try: key = int(b["id"][1])
+            except Exception: key = 0
+            s0 = sections.get(key)
+            if s0 is None: sections[key] = [b["start"], b["end"]]
+            else:
+                s0[0] = min(s0[0], b["start"]); s0[1] = max(s0[1], b["end"])
+    keys = sorted(sections)
+    # dramatic arc by SECTION NUMBER in the id (1..6)
+    ARC = {
+        1: ("dark", 0.55, "D2", True),      # hook — the question
+        2: ("overture", 0.45, "G2", True),  # expedition — wistful, human
+        3: ("dark", 0.55, "A1", True),      # evidence — sober dread
+        4: ("tension", 0.55, "C2", True),   # theories — the arguments
+        5: ("dark", 0.50, "E2", True),      # science build (dawn hits at b5d)
+        6: ("resolve", 0.52, "C3", False),  # conclusion — cadence
+    }
+    cues = []
+    lead_end = blocks[0]["start"] if blocks else 3.2
+    cues.append(dict(t0=0.0, t1=lead_end, preset="dark", intensity=0.44, root="D2", minor=True))
+    for k in keys:
+        t0, t1 = sections[k]
+        preset, inten, root, minor = ARC.get(k, ("dark", 0.5, "D2", True))
+        if k == 5:  # science: dawn at the autopsy match (b5d)
+            mb = next((b for b in blocks if b["id"] == "b5d"), None)
+            if mb:
+                cues.append(dict(t0=t0, t1=mb["start"], preset="dark", intensity=0.50, root="E2", minor=True))
+                cues.append(dict(t0=mb["start"], t1=t1, preset="dawn", intensity=0.58, root="G2", minor=False))
+                continue
+        if k == 6:  # conclusion: sparse dark for the memorial, warm dawn close
+            nb = next((b for b in blocks if b["id"] == "b6d"), None)
+            eb = next((b for b in blocks if b["id"] == "b6e"), None)
+            if nb and eb:
+                cues.append(dict(t0=t0, t1=nb["start"], preset="resolve", intensity=0.50, root="C3", minor=False))
+                cues.append(dict(t0=nb["start"], t1=eb["start"], preset="dark", intensity=0.34, root="A2", minor=True))
+                cues.append(dict(t0=eb["start"], t1=t1, preset="dawn", intensity=0.50, root="C3", minor=False))
+                continue
+        cues.append(dict(t0=t0, t1=t1, preset=preset, intensity=inten, root=root, minor=minor))
+    cues.append(dict(t0=max(cues[-1]["t1"], lead_end), t1=total,
+                     preset="dawn", intensity=0.46, root="C3", minor=False))
+
+    events = []
+    for c in cues:
+        dur = c["t1"] - c["t0"]
+        if dur <= 0.5: continue
+        ev = events_for_cue(c, c["t0"], dur)
+        events.extend(ev)
+        print(f"  cue {c['t0']:7.1f}->{c['t1']:7.1f} {c['preset']:8s} I={c['intensity']:.2f} root={c['root']} ({len(ev)} ev)")
+
+    print("rendering", len(events), "instrument events ...")
+    S.seed(77)
+    mix = S.render(events, dur=total + TAIL)
+    mix = S.room(mix, size=0.55, mix=0.18)  # slightly bigger, colder room
+
+    n = int(round((total + TAIL) * SR))
+    if mix.shape[0] < n:
+        mix = np.pad(mix, ((0, n - mix.shape[0]), (0, 0)))
+    mix = mix[:n]
+    env = duck_envelope(n / SR, blocks)
+    mix *= env[:mix.shape[0], None]
+
+    mix = hp(mix.T, 32).T.astype(np.float32)
+    mix = limit(mix, 0.88)
+    mix *= 0.72
+    out = os.path.join(BUILD, "music.wav")
+    import soundfile as sf
+    sf.write(out, mix, SR, subtype="FLOAT")
+    print(f"build/music.wav written ({total:.1f}s + tail)")
+    try:
+        cred = S.credits(["violins", "violas", "cellos", "contrabass", "horn", "timpani", "glockenspiel", "vibraphone", "gran_cassa", "piano"]) if hasattr(S, "credits") else ""
+        open(os.path.join(BUILD, "score_credits.txt"), "w").write(str(cred))
+    except Exception as e:
+        print("credits skip:", e)
+
+if __name__ == "__main__":
+    main()
