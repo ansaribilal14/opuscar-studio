@@ -120,8 +120,22 @@ def download_candidates(film: str, ids=None, limit: int = 5, min_w: int = 0,
     lg = ledger(film)
     cands = {c["id"]: c for c in load_json(
         __import__("os").path.join(incoming_dir(film), "candidates.json"), [])}
+    have = {e["asset_id"]: e for e in lg["entries"]}
+
+    def _needs_work(c):
+        # No explicit ids: pick up candidates never attempted, PLUS entries that
+        # claim success but whose backing file vanished (container reset self-heal).
+        # Failed/rejected entries are NOT auto-retried (retry via explicit ids).
+        e = have.get(c["id"])
+        if e is None:
+            return True
+        if e.get("status") in ("downloaded", "validated", "staged"):
+            f = e.get("file") or ""
+            return not (f and os.path.exists(f))
+        return False
+
     todo = [c for c in cands.values()
-            if (c["id"] in ids if ids else c["id"] not in {e["asset_id"] for e in lg["entries"]})]
+            if (c["id"] in ids if ids else _needs_work(c))]
     todo.sort(key=lambda c: c.get("discovered_at") or "")
     done = []
     for c in todo[:limit]:
