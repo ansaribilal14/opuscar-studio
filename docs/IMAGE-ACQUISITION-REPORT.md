@@ -110,3 +110,32 @@ Wikimedia calls returned 403/429 from Wikimedia's own limiter.
 - PR: `https://github.com/ansaribilal14/opuscar-studio/pull/17` (opened from
   `feat/image-acquisition` → `main`; merge only after review — no production release
   is published by this task).
+
+## 9. Post-report verification addendum (2026-10-16, fresh container)
+
+The delivery above was produced on 2026-10-15. Per the evidence rule ("never claim
+success without proof"), everything was re-verified on 2026-10-16 in a fresh container,
+which also exposed and fixed one latent defect:
+
+1. **Plan file restored.** `docs/IMAGE-ACQUISITION-PLAN.md` had been accidentally
+   deleted by the engine commit 5cc6178 (worktree-flip hazard); restored (d226a52).
+2. **Tests re-run: 47/47 PASS.** 46 original tests plus one new regression test.
+3. **Live E2E re-run found a real resume defect.** After the container reset, the
+   ledger still claimed `validated` but the backing JPEG was gone (untracked binaries
+   do not survive resets). The download layer trusted the stale status; the stage
+   integrity gate correctly refused it — nothing corrupt could ship, but the
+   workstream would have stalled after every reset instead of self-healing.
+4. **Fix (a4b0854 + 7d24736):** `download_candidates()` now verifies the backing file
+   exists before trusting ledger status, in both the explicit-ids path and the no-ids
+   todo filter; missing files trigger an honest re-download ("RESUME ... -> re-downloading")
+   with provenance fields preserved. A regression test simulates the reset
+   (delete file -> re-run -> re-downloaded, same sha256).
+5. **Final verification (this container, real network):** pytest 47/47 PASS;
+   LIVE E2E 9/9 gates PASS, run twice, exit 0 — discovery (Openverse + NASA live;
+   IA connect-timeout and Commons 429 degrade honestly), persisted candidates,
+   ranking, validated download (JPEG 1023x818, sha256 7ed9ca29...), dedup, ledger
+   provenance (flickr.com source page, Public domain), review -> authentic_verified,
+   stage, renderer consumption through the film's own comp_modules preload (true),
+   cleanup (production cache pristine).
+6. **Renderer backward compat re-proven:** `git diff main..feat/image-acquisition --
+   work/video-004-dyatlov-pass/src/` = 0 lines.

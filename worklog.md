@@ -277,3 +277,22 @@ Work Log:
 Stage Summary:
 - Branch feat/image-acquisition pushed per-asset; plan + report + live ledger committed; PR opened for review (no production release, per directive).
 - imgacq CLI: providers|scene-queries|discover|download|dedup|ledger|stage|e2e — resumable, foreground, bounded.
+
+---
+Task ID: 8-b
+Agent: main (Super Z)
+Task: Task 8 post-delivery verification in a fresh container (evidence re-check) + fix defect found
+
+Work Log:
+- Container reset #5 on resume: workspace re-recovered, repo realigned to origin/main 138d178 (Task 7 complete). Discovered feat/image-acquisition branch + open PR #17 from the prior session; verified PR state via API (open, mergeable).
+- Restored docs/IMAGE-ACQUISITION-PLAN.md — accidentally deleted by engine commit 5cc6178 (worktree-flip hazard during that session's commit); report referenced it. Pushed d226a52.
+- Re-ran the 46 offline pytest tests fresh: 46/46 PASS (12.5s).
+- Backward compat re-proven: `git diff main..branch -- work/video-004-dyatlov-pass/src/` = 0 lines; changed-file list = imgacq module + tests + report + v004 image workdir + worklog only.
+- LIVE E2E re-run exposed a REAL latent defect: after the reset, the ledger claimed "validated" but the backing jpg was wiped (untracked binaries). download trusted the stale status; the stage integrity gate correctly refused ("file missing") — nothing corrupt, but the workstream would stall after every reset (the exact root-cause-2 failure Task 8 eliminates).
+- Root cause in code: skip path trusted ledger status; todo filter (no-ids path) excluded ALL ledger-known ids, so self-heal was unreachable. Fixed both (commits a4b0854 + 7d24736): verify backing file, re-download when missing (provenance survives, RESUME logged), failed/rejected entries still not auto-retried. Regression test simulates reset -> same sha256.
+- Discipline notes: pytest pipe masking hid one red run before commit (exit code via tail) — corrected with output-file + explicit exit check; worktree flipped mid-session multiple times (checkout -f bundling held).
+- FINAL STATE: pytest 47/47 PASS; LIVE E2E 9/9 gates PASS twice, exit 0, real endpoints (Openverse+NASA live; IA timeout + Commons 429 degrade honestly); CHECKPOINT.md repurposed to Task-8 verified state.
+
+Stage Summary:
+- Branch feat/image-acquisition (head 7d24736+): plan restored, resume self-heal defect fixed with regression test, all evidence re-verified in this container.
+- PR #17 updated automatically by the pushes. Still OPEN for review — merge is the operator's call; no production release from this task (per directive).
