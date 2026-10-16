@@ -103,7 +103,8 @@ def cmd_discover(a):
 def cmd_download(a):
     ids = a.asset or None
     done = dl.download_candidates(a.film, ids=ids, limit=a.limit,
-                                  min_w=a.min_width, min_h=a.min_height)
+                                  min_w=a.min_width, min_h=a.min_height,
+                                  retry_failed=bool(getattr(a, "retry_failed", False)))
     print(f"download pass complete ({len(done)} considered) -> ledger.json")
 
 
@@ -313,6 +314,9 @@ def main(argv=None):
     s.set_defaults(fn=cmd_discover)
 
     s = sub.add_parser("download"); film_arg(s)
+    s.add_argument("--retry-failed", action="store_true",
+                   help="also re-attempt entries recorded as failed_download "
+                        "(e.g. after a rate-limit window lifts)")
     s.add_argument("--limit", type=int, default=5)
     s.add_argument("--asset", action="append")
     s.add_argument("--min-width", type=int, default=0)

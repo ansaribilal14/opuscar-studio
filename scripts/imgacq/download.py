@@ -168,7 +168,7 @@ def fetch_media(url: str, dest_dir: str, stem: str, tries: int = 3,
 
 
 def download_candidates(film: str, ids=None, limit: int = 5, min_w: int = 0,
-                        min_h: int = 0) -> list:
+                        min_h: int = 0, retry_failed: bool = False) -> list:
     """Download pending candidates into images/incoming/, recording every outcome in
     the ledger (ledger.json). Concurrency = 1 (foreground discipline)."""
     from .ledger import ledger, save_ledger, classify
@@ -187,6 +187,8 @@ def download_candidates(film: str, ids=None, limit: int = 5, min_w: int = 0,
         if e.get("status") in ("downloaded", "validated", "staged"):
             f = e.get("file") or ""
             return not (f and os.path.exists(f))
+        if retry_failed and e.get("status") == "failed_download":
+            return True
         return False
 
     todo = [c for c in cands.values()

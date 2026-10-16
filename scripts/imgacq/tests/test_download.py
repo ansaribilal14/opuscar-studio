@@ -148,3 +148,32 @@ def test_resume_after_reset_redownloads_missing_file(film, stub_server, no_sleep
     assert e2["status"] in ("downloaded", "validated", "staged")
     assert e2["sha256"] == first_sha, "re-fetched bytes must be the same asset"
     assert "re-downloading" in (e2.get("notes") or "")
+
+
+def test_retry_failed_flag_repicks_failed_entries(film, stub_server, no_sleep):
+    """After a rate-limit window lifts, one command must resume: failed_download
+    entries are re-attempted ONLY with retry_failed=True."""
+    from imgacq import common as cm
+    from imgacq.ledger import ledger
+    base, H = stub_server
+    serve(stub_server, "/img.jpg", jpeg_bytes())
+    cand = {"id": "rl01", "provider": "commons", "query": "q",
+            "media_url": base + "/img.jpg", "source_page": "s", "title": "t",
+            "creator": "", "date": "", "license": "Public domain", "license_url": "",
+            "width": 1600, "height": 900, "thumb_url": "", "mime": "image/jpeg"}
+    cm.save_json(cm.candidates_path(film), [cand])
+    # first attempt: server down -> failed_download
+    H.routes.pop("/img.jpg", None)
+    dl.download_candidates(film, limit=1)
+    e = ledger(film)["entries"][0]
+    assert e["status"] == "failed_download"
+    # window lifts: without the flag, nothing happens
+    serve(stub_server, "/img.jpg", jpeg_bytes())
+    dl.download_candidates(film, limit=1)
+    e = ledger(film)["entries"][0]
+    assert e["status"] == "failed_download"
+    # with the flag, the entry is retried and lands
+    dl.download_candidates(film, limit=1, retry_failed=True)
+    e = ledger(film)["entries"][0]
+    assert e["status"] in ("downloaded", "validated", "staged")
+    assert os.path.exists(e["file"])
