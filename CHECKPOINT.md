@@ -41,13 +41,24 @@
 - The stage integrity gate correctly REFUSED the missing file during discovery of
   this bug — defense in depth worked; nothing corrupt could ship.
 
-## NEXT ACTION (updated 2026-10-16 after merge)
-- MERGED: PR #17 rebased into main (c044f01); post-merge verification on main:
-  pytest 47/47, renderer src/ diff vs pre-merge main = 0 lines.
-- IN PROGRESS — period-photo pass (first production use of imgacq): discover →
-  download → review for the five v004 briefs slots (group_1959.jpg, tent_1959.jpg,
-  yudin_farewell.jpg, last_photo.jpg, search_photos.jpg). License/provenance-gated:
-  stage only what honestly verifies (period-authentic + reuse rights); inspect every
-  image visually before staging. If slots land → re-render affected segments
-  deterministically + full gates + release v1.1.0 (per-asset push). If none land →
-  no re-render; per-slot outcomes recorded in the ledger (resumable).
+## NEXT ACTION (updated 2026-10-16, period-photo pass paused on media-host window)
+- MERGED: PR #17 rebased into main (c044f01); post-merge verification on main: 47/47.
+- PERIOD-PHOTO PASS STATE (first production use of imgacq, all on main):
+  * Commons API UNBLOCKED via the Commons-only curl-transport bridge (Wikimedia's
+    edge serves curl 200 while refusing python-requests 403 same-second — same UA,
+    same rate, single identity; not evasion). Discovery LIVE: 40 candidates incl.
+    ~14 genuine 1959 case-file volume scans (Public domain, ~2300x3700) and
+    "Dyatlov Pass incident 02.jpg" (Public domain, 809x640, likely period photo).
+  * Media host upload.wikimedia.org spent this shared IP's budget (429 on BOTH
+    transports for 6+ min of patient spaced retries). 5 archival assets are queued
+    as failed_download in the ledger — NOTHING substituted, all resumable.
+  * RESUME (one command when the window lifts):
+      python3 scripts/imgacq/cli.py download --film video-004-dyatlov-pass --retry-failed --limit 8
+    Then: visual inspection (Read the files) -> review/classify (only PD with
+    documented provenance -> authentic_verified) -> stage into declared slots ->
+    toolchain (canvas npm reinstall after resets) -> re-render affected segments
+    deterministically -> full gates (luma/loudnorm/ASR/decode) -> release v1.1.0
+    (per-asset push).
+  * Tests now 49/49 (curl bridge contract + retry-failed contract added today).
+  * Optionally extend briefs with case-file document slots for the inkGrid scenes
+    (data-only change; renderer modules untouched) — a v1.1.x content decision.

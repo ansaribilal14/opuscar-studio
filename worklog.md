@@ -312,3 +312,21 @@ Work Log:
 Stage Summary:
 - main = c044f01+ : Task 8 upgrade is now the production standard; canvas npm module needs reinstall before any re-render (reset #6 wiped node_modules).
 - Next: 9-b period-photo pass for the five v004 briefs slots, license-gated.
+
+---
+Task ID: 9-b
+Agent: main (Super Z)
+Task: First production use of imgacq — Dyatlov period-photo pass (discovery LIVE via Commons curl bridge; downloads queued on media-host 429 window)
+
+Work Log:
+- Discovery pass for all 5 briefs slots + core terms: Openverse hits sparse; Commons returned 0 while answering (not 403) — diagnosed live: Wikimedia's edge differentiates by HTTP client stack (curl 200 vs python-requests 403, same URL+UA+second; python had 200s earlier in the session).
+- Commons-only curl-transport bridge added to http_json (same UA/params/rate/identity; one bounded attempt after 403/429 exhaustion; +contract test). 48/48.
+- Commons discovery LIVE: "Dyatlov Pass incident" → 15 real candidates, pool now 40 incl. ~14 genuine 1959 case-file volume scans (PD, ~2300x3700) + "Dyatlov Pass incident 02.jpg" (PD, 809x640). Discovery milestones now committed immediately (worktree flips had reverted uncommitted candidates.json — lesson applied to data files).
+- Media downloads (upload.wikimedia.org) 429 on python AND curl — real budget exhaustion on the shared egress IP (patient spaced retries over 6+ min, 5 rounds). Media fetch_media given the same Commons-only curl bridge + descriptive UA; validation pipeline made transport-agnostic (caps/HTML-refusal/signature/full-decode/size-floor unchanged). 48/48 after refactor.
+- --retry-failed flag added to download (failed_download entries re-attempted on explicit opt-in, bounded by limit; failed entries previously reachable only by explicit ids). 49/49. One-command resumption: download --film video-004-dyatlov-pass --retry-failed --limit 8.
+- 5 archival assets queued as failed_download in the ledger; nothing substituted; candidates.json + ledger.json committed per milestone throughout.
+
+Stage Summary:
+- The acquisition layer survived its first real production contact: it found the archival material (PD case-file scans + period photo), recorded everything with provenance, degraded honestly under rate limits, and left a one-command resumption path.
+- main = c2b6b65+: 49/49 offline tests; 3 new resilience patches (curl bridge API+media, --retry-failed) all evidence-driven, Commons-scoped, contract-tested.
+- Pending: calm-window downloads -> visual review -> staging -> deterministic re-render of affected segments -> v1.1.0 release (per-asset push).
