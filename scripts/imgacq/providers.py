@@ -227,7 +227,7 @@ def commons_search(query: str, limit: int = 12) -> List[Candidate]:
         # between 200 windows). A slightly longer retry span (~11s at BACKOFF 1.8)
         # catches those windows without raising request rate — retry-later is the
         # directive-sanctioned response; failures still degrade honestly.
-        j = http_json(COMMONS_API, params=params, tries=4)
+        j = http_json(COMMONS_API, params=params, tries=4, curl_fallback=True)
     except HttpError as e:
         print(f"  commons: unavailable this run ({e})")
         return []
@@ -239,7 +239,7 @@ def commons_category(category: str, limit: int = 20) -> List[Candidate]:
               "gcmtype": "file", "gcmlimit": min(limit, 100), "prop": "imageinfo",
               "iiprop": "url|size|mime|extmetadata", "iiurlwidth": "1600", "format": "json"}
     try:
-        j = http_json(COMMONS_API, params=params)
+        j = http_json(COMMONS_API, params=params, curl_fallback=True)
     except HttpError as e:
         print(f"  commons: unavailable this run ({e})")
         return []

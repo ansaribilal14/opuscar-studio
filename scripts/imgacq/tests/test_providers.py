@@ -156,3 +156,20 @@ def test_discover_dedups_within_batch(stub_server):
                                                "license": "cc0"}]})
     res = pv.discover("q", per_provider=5, providers=["openverse"])
     assert len(res) == 1
+
+
+def test_commons_curl_fallback_degrades(stub_server, no_sleep):
+    """Commons-only curl fallback: after requests-retries exhaust on 403, one curl
+    attempt is made (total = RETRIES+1 calls) and failure still degrades to [].
+    Other providers keep their exact retry contract (no fallback)."""
+    base, H = stub_server
+    pv.COMMONS_API = base + "/w/api.php"
+    H.routes["/w/api.php"] = (403, {}, "blocked")
+    assert pv.commons_search("q") == []
+    assert len(H.calls) == 4 + 1            # commons tries=4 override + single curl attempt
+    # openverse contract unchanged: exactly RETRIES calls, no curl attempt
+    pv.OPENVERSE_API = base + "/v1/images/"
+    H.routes["/v1/images/"] = (429, {"Retry-After": "0"}, {"error": "slow down"})
+    assert pv.openverse_search("q") == []
+    total_before = len(H.calls)
+    assert total_before == (4 + 1) + RETRIES
