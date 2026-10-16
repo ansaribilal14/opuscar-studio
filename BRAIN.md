@@ -104,6 +104,25 @@ the compliance-critical ones.**
 - Public-domain / press-archive images: check license, credit exactly as the source
   requires.
 
+**Image acquisition standard (2026-10-16, Task 8, merged via PR #17 — `scripts/imgacq/`)**:
+- `imgacq` is the house tool for discovering / acquiring / validating real imagery.
+  Provider priority: self-hosted SearXNG (opt-in via `IMGACQ_SEARXNG_URL`) → Openverse →
+  NASA Image Library → Internet Archive → Wikimedia Commons fallback. Keyless; no
+  proxies, no CAPTCHA/auth evasion; bounded timeouts, retry with backoff, honest
+  degradation when a provider is throttled or down.
+- Every download is validated (magic bytes + full Pillow decode + size caps); failures
+  are recorded, never substituted. sha256 + dHash dedup. Per-film provenance ledger at
+  `work/<film>/images/ledger.json` (source page, media URL, creator, license,
+  classification). Classifications are conservative: search metadata alone is never
+  `authentic_verified`; NC/ND licenses are refused at staging outright.
+- Staging bridge: `imgacq stage` places an approved asset at
+  `work/<film>/images/cache/<slot>.jpg` — the renderer's existing preload picks it up
+  with ZERO renderer changes; absent slots keep their labelled-reconstruction fallbacks.
+- Resumable across container resets: ledger-backed, backing files verified, missing
+  binaries re-downloaded automatically. CLI: `providers|scene-queries|discover|download|
+  dedup|ledger|stage|e2e`. Tests: `python3 -m pytest scripts/imgacq/tests/` (47 offline).
+  Docs: `docs/IMAGE-ACQUISITION-PLAN.md`, `docs/IMAGE-ACQUISITION-REPORT.md`.
+
 ### Step 7 — Shorts
 - 4 vertical shorts per film, cut from the strongest beats (per film's short plan).
 - Same compliance rules; each short ends with a pointer to the full film.

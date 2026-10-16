@@ -9,7 +9,7 @@
 > between tool calls.** Always `git checkout -f feat/image-acquisition` in the same
 > command that reads/writes branch files; never rely on cwd across calls.
 
-**Updated**: 2026-10-16 · **Phase**: VERIFIED — awaiting PR review/merge (no production release per directive)
+**Updated**: 2026-10-16 · **Phase**: MERGED — PR #17 rebased into main (c044f01); imgacq is now the production standard on main
 
 ## What Task 8 delivered (all on branch `feat/image-acquisition`, PR #17 -> main)
 - `scripts/imgacq/` (python, keyless): provider registry in directive priority order
@@ -41,10 +41,13 @@
 - The stage integrity gate correctly REFUSED the missing file during discovery of
   this bug — defense in depth worked; nothing corrupt could ship.
 
-## NEXT ACTION
-- Human/operator review of PR #17, then merge. Do NOT publish a production release
-  from this task (directive: release only after integration+regression pass AND review).
-- Optional next production pass: stage real Dyatlov period photos into the waiting
-  briefs slots (group_1959.jpg, tent_1959.jpg, yudin_farewell.jpg, last_photo.jpg,
-  search_photos.jpg) when Commons/Openverse licensing verifies, then re-render the
-  affected segments deterministically.
+## NEXT ACTION (updated 2026-10-16 after merge)
+- MERGED: PR #17 rebased into main (c044f01); post-merge verification on main:
+  pytest 47/47, renderer src/ diff vs pre-merge main = 0 lines.
+- IN PROGRESS — period-photo pass (first production use of imgacq): discover →
+  download → review for the five v004 briefs slots (group_1959.jpg, tent_1959.jpg,
+  yudin_farewell.jpg, last_photo.jpg, search_photos.jpg). License/provenance-gated:
+  stage only what honestly verifies (period-authentic + reuse rights); inspect every
+  image visually before staging. If slots land → re-render affected segments
+  deterministically + full gates + release v1.1.0 (per-asset push). If none land →
+  no re-render; per-slot outcomes recorded in the ledger (resumable).

@@ -296,3 +296,19 @@ Work Log:
 Stage Summary:
 - Branch feat/image-acquisition (head 7d24736+): plan restored, resume self-heal defect fixed with regression test, all evidence re-verified in this container.
 - PR #17 updated automatically by the pushes. Still OPEN for review — merge is the operator's call; no production release from this task (per directive).
+
+---
+Task ID: 9-a
+Agent: main (Super Z)
+Task: Merge PR #17 (image acquisition upgrade) into main + post-merge verification; encode imgacq as production standard in BRAIN.md
+
+Work Log:
+- Container reset #6 on resume (local refs reverted to stale Task-3 state). PR #17 unaffected server-side (open, clean, head c4a2296).
+- MERGED PR #17 via GitHub API with rebase method (linear history preserved; 16 commits; merge sha c044f01). Verification evidence quoted in the merge commit message.
+- Local realign: fetch + hard reset to origin/main c044f01. Post-merge verification on main: imgacq tree present; pytest 47/47 PASS (13.0s); renderer src/ diff pre-merge-main(138d178)->merged main = 0 lines (tag-based diff of 163 lines was Task-7 finalization, tag 907e73e is one commit before 138d178 — expected, not a compat break).
+- BRAIN.md Step 6 extended with the imgacq production standard (provider priority, validation/dedup/ledger rules, conservative classifications, staging bridge, resumability, test entry point).
+- CHECKPOINT.md -> MERGED state; period-photo pass declared as first production use.
+
+Stage Summary:
+- main = c044f01+ : Task 8 upgrade is now the production standard; canvas npm module needs reinstall before any re-render (reset #6 wiped node_modules).
+- Next: 9-b period-photo pass for the five v004 briefs slots, license-gated.
