@@ -119,3 +119,32 @@ def test_download_failure_records_ledger_no_file(film, stub_server, no_sleep):
     assert e["status"] == "failed_download" and e["error"]
     incoming = os.path.join(film, "images", "incoming")
     assert not [f for f in os.listdir(incoming) if f.endswith((".jpg", ".png"))]
+
+
+def test_resume_after_reset_redownloads_missing_file(film, stub_server, no_sleep):
+    """Container-reset scenario: the ledger says 'validated' but the backing
+    file was wiped (untracked binaries do not survive resets). download_candidates
+    must re-fetch instead of trusting the stale status -- otherwise the whole
+    workstream stalls at the stage gate after every reset."""
+    from imgacq import common as cm
+    from imgacq.ledger import ledger
+    base, H = stub_server
+    serve(stub_server, "/img.jpg", jpeg_bytes())
+    cand = {"id": "gone01", "provider": "openverse", "query": "q",
+            "media_url": base + "/img.jpg", "source_page": "s", "title": "t",
+            "creator": "", "date": "", "license": "Public domain", "license_url": "",
+            "width": 1600, "height": 900, "thumb_url": "", "mime": "image/jpeg"}
+    cm.save_json(cm.candidates_path(film), [cand])
+    dl.download_candidates(film, limit=1)
+    e = ledger(film)["entries"][0]
+    assert e["status"] in ("downloaded", "validated", "staged")
+    assert os.path.exists(e["file"])
+    first_sha, first_file = e["sha256"], e["file"]
+    # simulate the reset: binary wiped, ledger record survives (it is committed)
+    os.remove(first_file)
+    dl.download_candidates(film, limit=1)
+    e2 = ledger(film)["entries"][0]
+    assert os.path.exists(e2["file"]), "must re-download after reset, not trust stale status"
+    assert e2["status"] in ("downloaded", "validated", "staged")
+    assert e2["sha256"] == first_sha, "re-fetched bytes must be the same asset"
+    assert "re-downloading" in (e2.get("notes") or "")
