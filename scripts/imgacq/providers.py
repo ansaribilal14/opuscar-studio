@@ -223,7 +223,11 @@ def commons_search(query: str, limit: int = 12) -> List[Candidate]:
               "gsrlimit": min(limit, 50), "prop": "imageinfo",
               "iiprop": "url|size|mime|extmetadata", "iiurlwidth": "1600", "format": "json"}
     try:
-        j = http_json(COMMONS_API, params=params)
+        # Wikimedia's shared-IP limiter oscillates (403 stretches lasting seconds
+        # between 200 windows). A slightly longer retry span (~11s at BACKOFF 1.8)
+        # catches those windows without raising request rate — retry-later is the
+        # directive-sanctioned response; failures still degrade honestly.
+        j = http_json(COMMONS_API, params=params, tries=4)
     except HttpError as e:
         print(f"  commons: unavailable this run ({e})")
         return []
