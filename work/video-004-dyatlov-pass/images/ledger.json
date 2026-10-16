@@ -1,7 +1,7 @@
 {
  "film": "video-004-dyatlov-pass",
  "created_at": "2026-10-15T08:32:28Z",
- "updated_at": "2026-10-16T11:33:40Z",
+ "updated_at": "2026-10-16T11:37:29Z",
  "entries": [
   {
    "asset_id": "d1e89348340f",
@@ -63,7 +63,7 @@
    "classification": "unverified",
    "review": "pending",
    "status": "failed_download",
-   "error": "HTTP 429",
+   "error": "HTTP 429 (via curl)",
    "notes": ""
   },
   {
@@ -92,7 +92,7 @@
    "classification": "unverified",
    "review": "pending",
    "status": "failed_download",
-   "error": "HTTP 429",
+   "error": "HTTP 429 (via curl)",
    "notes": ""
   },
   {
@@ -121,7 +121,7 @@
    "classification": "unverified",
    "review": "pending",
    "status": "failed_download",
-   "error": "HTTP 429",
+   "error": "HTTP 429 (via curl)",
    "notes": ""
   },
   {
@@ -150,7 +150,7 @@
    "classification": "unverified",
    "review": "pending",
    "status": "failed_download",
-   "error": "HTTP 429",
+   "error": "HTTP 429 (via curl)",
    "notes": ""
   },
   {
@@ -179,7 +179,7 @@
    "classification": "unverified",
    "review": "pending",
    "status": "failed_download",
-   "error": "HTTP 429",
+   "error": "HTTP 429 (via curl)",
    "notes": ""
   }
  ],
