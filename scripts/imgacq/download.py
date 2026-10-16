@@ -139,8 +139,19 @@ def download_candidates(film: str, ids=None, limit: int = 5, min_w: int = 0,
                      "status": "candidate", "error": None, "notes": ""}
             lg["entries"].append(entry)
         if entry.get("status") in ("downloaded", "validated", "staged"):
-            done.append(entry["asset_id"])
-            continue
+            f = entry.get("file") or ""
+            if f and os.path.exists(f):
+                done.append(entry["asset_id"])
+                continue
+            # Resume honesty: the ledger claims success but the backing file is
+            # gone (container reset wipes untracked binaries). Do NOT trust the
+            # stale status -- fall through and re-download. Provenance fields
+            # survive; the success path below overwrites retrieval fields.
+            entry.update({"status": "candidate", "file": None, "phash": None,
+                          "retrieved_at": None,
+                          "notes": (entry.get("notes") or "") +
+                                   " | resume: backing file missing, re-downloading"})
+            print(f"  RESUME {cid}: ledger status without backing file -> re-downloading")
         try:
             work = pv.Candidate.from_dict(c)
             if work.provider == "internetarchive":
