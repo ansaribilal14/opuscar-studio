@@ -36,8 +36,8 @@
 | video-001 | (unassigned) | — |
 | video-002 | Zodiac — **RELEASED v3.0.0** (image-first v4 engine) | tag `video-002-zodiac-v3.0.0` |
 | video-003 | *The Isdal Woman* — **RELEASED v2.2.0** (full film + 4 shorts, edge-tts) | tag `video-003-isdal-woman-v2.2.0` |
-| video-004 | *Dyatlov Pass: What Really Happened to the Nine Hikers?* — **RELEASED v1.0.0** (15:10 full film) | tag `video-004-dyatlov-pass-v1.0.0` |
-| ostrich-plate | 58 s copperplate-engraving natural-history short (lemo-opuscar style) | Source LOST; release `superz1402/ostrich-documentary` gone; method preserved below |
+| video-004 | *Dyatlov Pass: What Really Happened to the Nine Hikers?* — **RELEASED v1.1.0** (15:10, period-photo edition) | tag `video-004-dyatlov-pass-v1.1.0` |
+| ostrich-plate | *The Ostrich, Plate XII* — 62.7 s copperplate-engraving short | RELEASED `ostrich-plate-v1.0.0` (2026-10-17 rebuild from the preserved method; source in `work/ostrich-plate/`) |
 
 ---
 

@@ -46,13 +46,13 @@
       "slug": "ostrich-plate",
       "title": "The Ostrich, Engraved",
       "subtitle": "One plate, one build — a copperplate natural-history short",
-      "status": "rebuild_planned",
+      "status": "released",
       "format": "natural-history short",
       "runtime_seconds": 58,
       "year": 2026,
-      "release_tag": null,
-      "poster": null,
-      "description": "A 58-second copperplate-engraving film: the ostrich drawn as a living plate — burin cuts, three hatch passes, the amber iris wash, and the finished print. Original release lost in account migration; method preserved in BRAIN.md and burin engine partially recovered in tool-results/."
+      "release_tag": "ostrich-plate-v1.0.0",
+      "poster": "https://github.com/ansaribilal14/opuscar-studio/releases/download/ostrich-plate-v1.0.0/poster.jpg",
+      "description": "RELEASED v1.0.0 — the lost copperplate-engraving short restored from its preserved method. A 62.7-second museum science-card film: the burin cuts the ostrich onto raw copper, the proof is pulled, four magnified roundels carry the facts (the largest eye of any land animal; a brain smaller than either eye; two toes only; the largest egg of any living bird), the washes hand-colour the print, the plate signs itself. 88 BPM score in code, D minor to D major at the wash; house edge-tts narration. Every fact established."
     }
   ]
 }

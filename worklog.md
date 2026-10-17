@@ -352,3 +352,24 @@ Stage Summary:
 - Key fix: imgacq UA 1.1 (neutral descriptive identity w/ contact) — the Wikimedia media-host blocker was the UA string, not the rate.
 - 11 authentic PD archival assets now in the ledger with full provenance; 1 staged into production.
 - Next: ostrich-plate rebuild (last unreleased film on the slate).
+
+---
+Task ID: 11
+Agent: Super Z (main agent)
+Task: "Build the final videos" (cont.) — ostrich-plate rebuild: the studio's lost first film re-authored from the preserved method and released.
+
+Work Log:
+- Rebuilt the 58-second copperplate-engraving short on the vendored lemo-opuscar engine (burin/plate/wash/copper copied verbatim) with the demo film architecture (content-driven, 88 BPM grid, reflowing detail slots).
+- Authored subjects/ostrich.js: the bird in left-facing profile on the burin engine (body tone fields, three hatch families, shaggy fur, two-toed feet with banded tarsi, big lashed eye) + subjects/details_ostrich.js (brain-vs-eye comparison roundel, two-toed foot with scales and dimension pads, speckled egg with 15 cm dimension line). During authoring, fixed: capsule/region wrapper mismatches, two local-vs-world coordinate leaks (P(BC), P(0)), and the plume tongue geometry (width offsets must be PERPENDICULAR to the tongue direction; tongues also needed the world transform P applied — the earlier silent failure mode was plume strokes drawing off-canvas).
+- film.js adapted: ostrich registered, per-subject placement, 4 details (eye A magnify / brain B / foot C / egg C), 14/11-beat detail windows, detail-art schedules, leader routing with multi-region omissions.
+- Narration: 6 lines, house voice edge-tts en-US-GuyNeural pitch −1Hz rate −8% (BRAIN.md Step 4); dur.json; asr-hinted spellings for latin/numbers per the established convention.
+- Score composed in code (music/score_ostrich.py): 88 BPM, D minor through the engraving, first bowed notes at the hand-colouring turning to D MAJOR, perfect cadence at the landing, tissue-card tonic; stems (harpsichord/pizz/bowed); every accent verified against picture events (internal onset report ALL CUES WITHIN TOLERANCE + tools/cuecheck.py mismatches: 0). Instrument sample libraries refetched after container resets (vsco2ce/vcsl/salamander via lemo tools/fetch.sh).
+- Sound: demo mix.py (room tone, foley keyed to events.json, voice compressed, score ducked) → mix.wav.
+- Render: core/render/video.mjs (2 workers, 1505 frames) → mux.sh loudnorm −14 LUFS, grain 4 → ostrich-plate.mp4 (62.7s, 1920×1080, −13.8 LUFS, TP −1.1 dB, 0 decode errors).
+- Gates: ASR word coverage 0.83–1.00 across all six lines (PASS); cuecheck 0 mismatches; luma never void; SRT 6 cues matching the burned deckled slips; poster cut from the finished plate (t=53).
+- RELEASED ostrich-plate-v1.0.0 (master + srt + poster); films.json + BRAIN.md registry + CHECKPOINT updated.
+
+Stage Summary:
+- Release: https://github.com/ansaribilal14/opuscar-studio/releases/tag/ostrich-plate-v1.0.0
+- THE ENTIRE SLATE IS NOW RELEASED: video-002 v3.0.0, video-003 v2.2.0, video-004 v1.1.0, ostrich-plate v1.0.0.
+- Method note: out-of-library film workspaces mount at /@film/ and can import /core/...; PLAYWRIGHT_CHROME must point at the cached chromium (build 1200) since playwright-core pins a newer build.
