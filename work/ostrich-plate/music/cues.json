@@ -1,0 +1,161 @@
+[
+ {
+  "t": 1.75,
+  "what": "pickup 1: D4",
+  "stem": "harpsichord"
+ },
+ {
+  "t": 2.05,
+  "what": "pickup 2: F4 (the lift)",
+  "stem": "harpsichord"
+ },
+ {
+  "t": 2.7273,
+  "what": "peel: Dm tutti accent",
+  "stem": "pizz",
+  "band": "low"
+ },
+ {
+  "t": 5.4545,
+  "what": "third pass: cello A pedal (dominant shadow)",
+  "stem": "pizz",
+  "band": "low"
+ },
+ {
+  "t": 6.2682,
+  "what": "title flourish (rising Dm arpeggio)",
+  "stem": "harpsichord"
+ },
+ {
+  "t": 6.8182,
+  "what": "title engraved: D5",
+  "stem": "harpsichord"
+ },
+ {
+  "t": 10.2273,
+  "what": "detail A: thins to cello D pedal",
+  "stem": "pizz",
+  "band": "low"
+ },
+ {
+  "t": 11.2773,
+  "what": "ring ting (A6)",
+  "stem": "pizz",
+  "band": "high"
+ },
+ {
+  "t": 12.1273,
+  "what": "rising line",
+  "stem": "harpsichord"
+ },
+ {
+  "t": 13.6273,
+  "what": "landing: low cello + bass pizz D",
+  "stem": "pizz",
+  "band": "low"
+ },
+ {
+  "t": 19.7727,
+  "what": "detail B: F pedal",
+  "stem": "pizz",
+  "band": "low"
+ },
+ {
+  "t": 20.2727,
+  "what": "ring ting (C6)",
+  "stem": "pizz",
+  "band": "high"
+ },
+ {
+  "t": 20.5727,
+  "what": "rising line",
+  "stem": "harpsichord"
+ },
+ {
+  "t": 21.5727,
+  "what": "landing: low cello + bass pizz D",
+  "stem": "pizz",
+  "band": "low"
+ },
+ {
+  "t": 27.2727,
+  "what": "detail C: A pedal",
+  "stem": "pizz",
+  "band": "low"
+ },
+ {
+  "t": 27.7727,
+  "what": "ring ting (A6)",
+  "stem": "pizz",
+  "band": "high"
+ },
+ {
+  "t": 28.1727,
+  "what": "rising line",
+  "stem": "harpsichord"
+ },
+ {
+  "t": 29.3727,
+  "what": "landing: low cello + bass pizz D",
+  "stem": "pizz",
+  "band": "low"
+ },
+ {
+  "t": 34.7727,
+  "what": "detail D: Bb pedal (warm)",
+  "stem": "pizz",
+  "band": "low"
+ },
+ {
+  "t": 35.2727,
+  "what": "ring ting (D6)",
+  "stem": "pizz",
+  "band": "high"
+ },
+ {
+  "t": 35.6727,
+  "what": "rising line",
+  "stem": "harpsichord"
+ },
+ {
+  "t": 36.8727,
+  "what": "landing #4 on G (the egg)",
+  "stem": "pizz",
+  "band": "low"
+ },
+ {
+  "t": 42.2727,
+  "what": "gentle lift into the silence",
+  "stem": "harpsichord"
+ },
+ {
+  "t": 43.6364,
+  "what": "silence begins",
+  "stem": "harpsichord"
+ },
+ {
+  "t": 45.0,
+  "what": "silence ends",
+  "stem": "harpsichord"
+ },
+ {
+  "t": 45.1,
+  "what": "FIRST BOW: D major, pp (the wash begins)",
+  "stem": "bowed"
+ },
+ {
+  "t": 50.45,
+  "what": "perfect cadence V-I: the plate lands",
+  "stem": "harpsichord"
+ },
+ {
+  "t": 53.0,
+  "what": "wink: soft violin pizz D6",
+  "stem": "pizz"
+ },
+ {
+  "t": 55.3273,
+  "what": "end card: soft tonic, fade begins",
+  "stem": "harpsichord"
+ }
+]

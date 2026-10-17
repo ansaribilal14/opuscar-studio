@@ -1,0 +1,115 @@
+{
+  "plate_no": "Pl. XII",
+  "series": "Natural History Gallery · Birds of the Savanna",
+  "title": "The Ostrich",
+  "latin": "Struthio camelus",
+  "subject": "ostrich",
+  "details": [
+    {
+      "name": "The Eye",
+      "latin": "oculus",
+      "note": "The largest eye of any land animal — fringed with double lashes.",
+      "focus": "eye"
+    },
+    {
+      "name": "The Brain",
+      "latin": "cerebrum",
+      "note": "Drawn beside the eye that dwarfs it: the brain is smaller than either eye.",
+      "focus": "brain"
+    },
+    {
+      "name": "The Foot",
+      "latin": "pes",
+      "note": "Two toes only, where every other living bird has three or four.",
+      "focus": "foot"
+    },
+    {
+      "name": "The Egg",
+      "latin": "ovum",
+      "note": "Some fifteen centimetres long; the largest egg laid by any living bird.",
+      "focus": "egg"
+    }
+  ],
+  "colors": [
+    {
+      "region": "body",
+      "color": "#a68d72"
+    },
+    {
+      "region": "plumes",
+      "color": "#efe7d6"
+    },
+    {
+      "region": "neck",
+      "color": "#cfa9a0"
+    },
+    {
+      "region": "head",
+      "color": "#c49a8e"
+    },
+    {
+      "region": "bill",
+      "color": "#a3826b"
+    },
+    {
+      "region": "eye",
+      "color": "#5a4238"
+    },
+    {
+      "region": "legs",
+      "color": "#c9b39d"
+    },
+    {
+      "region": "egg",
+      "color": "#e9ddc4"
+    }
+  ],
+  "caption": "See the living gallery in Hall 4",
+  "signature": {
+    "left": "Lemo del.",
+    "right": "Opus sculp."
+  },
+  "voice": {
+    "voice": "en-US-GuyNeural",
+    "speed": 1.0,
+    "lines": [
+      {
+        "id": "title",
+        "text": "Plate twelve. The ostrich: Struthio camelus.",
+        "asr": "Play 12 the ostrich struthio camelot"
+      },
+      {
+        "id": "d1",
+        "text": "The eye, magnified: the largest of any land animal, fringed with double lashes."
+      },
+      {
+        "id": "d2",
+        "text": "The brain, drawn beside the eye that dwarfs it: smaller than either eye."
+      },
+      {
+        "id": "d3",
+        "text": "The foot: two toes only, where every other living bird has three or four."
+      },
+      {
+        "id": "d4",
+        "text": "A grown cock stands two metres seventy, and a single stride covers three full metres.",
+        "asr": "A grown cock stands 2 meters 70 and a single stride covers 3 full meters"
+      },
+      {
+        "id": "close",
+        "text": "The cock digs the nest, and the hen by day and the cock by night keep the largest egg of any living bird."
+      }
+    ]
+  },
+  "end": {
+    "film_title": "The Ostrich, Plate XII",
+    "style_name": "Copperplate Engraving",
+    "credits": [
+      "Voice · Microsoft edge-tts (MIT)",
+      "Type · Bodoni Moda · Pinyon Script (OFL)",
+      "Score & sound · written in code"
+    ]
+  },
+  "nat_size_label": "Drawn at one twenty-fifth natural size",
+  "scale_note": "2.7 m cock · 1/25"
+}

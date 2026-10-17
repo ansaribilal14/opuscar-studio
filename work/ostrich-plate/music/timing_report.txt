@@ -1,0 +1,38 @@
+Timing check (tol ±0.042 s = 1 frame @24fps)
+
+OK   1.7500s  got  1.7480s  err   -2.0 ms  (rise 155.0 dB)  pickup 1: D4
+OK   2.0500s  got  2.0490s  err   -1.0 ms  (rise 37.9 dB)  pickup 2: F4 (the lift)
+OK   2.7273s  got  2.7283s  err   +1.0 ms  (rise 168.0 dB)  peel: Dm tutti accent
+OK   5.4545s  got  5.4595s  err   +5.0 ms  (rise 42.3 dB)  third pass: cello A pedal (dominant shadow)
+OK   6.2682s  got  6.2782s  err  +10.0 ms  (rise 50.3 dB)  title flourish (rising Dm arpeggio)
+OK   6.8182s  got  6.8162s  err   -2.0 ms  (rise 13.1 dB)  title engraved: D5
+OK  10.2273s  got 10.2293s  err   +2.0 ms  (rise 159.0 dB)  detail A: thins to cello D pedal
+OK  11.2773s  got 11.2753s  err   -2.0 ms  (rise 102.2 dB)  ring ting (A6)
+OK  12.1273s  got 12.1263s  err   -1.0 ms  (rise 25.0 dB)  rising line
+OK  13.6273s  got 13.6283s  err   +1.0 ms  (rise 41.5 dB)  landing: low cello + bass pizz D
+OK  19.7727s  got 19.7757s  err   +3.0 ms  (rise 160.7 dB)  detail B: F pedal
+OK  20.2727s  got 20.2697s  err   -3.0 ms  (rise 75.4 dB)  ring ting (C6)
+OK  20.5727s  got 20.5737s  err   +1.0 ms  (rise  9.8 dB)  rising line
+OK  21.5727s  got 21.5747s  err   +2.0 ms  (rise 37.1 dB)  landing: low cello + bass pizz D
+OK  27.2727s  got 27.2777s  err   +5.0 ms  (rise 160.8 dB)  detail C: A pedal
+OK  27.7727s  got 27.7707s  err   -2.0 ms  (rise 77.7 dB)  ring ting (A6)
+OK  28.1727s  got 28.1707s  err   -2.0 ms  (rise 32.5 dB)  rising line
+OK  29.3727s  got 29.3767s  err   +4.0 ms  (rise 46.5 dB)  landing: low cello + bass pizz D
+OK  34.7727s  got 34.7777s  err   +5.0 ms  (rise 161.1 dB)  detail D: Bb pedal (warm)
+OK  35.2727s  got 35.2707s  err   -2.0 ms  (rise 60.6 dB)  ring ting (D6)
+OK  35.6727s  got 35.6697s  err   -3.0 ms  (rise 12.8 dB)  rising line
+OK  36.8727s  got 36.8887s  err  +16.0 ms  (rise 53.0 dB)  landing #4 on G (the egg)
+GATE 42.2727s  (verified by peak level below)  gentle lift into the silence
+GATE 43.6364s  (verified by peak level below)  silence begins
+GATE 45.0000s  (verified by peak level below)  silence ends
+OK  45.1000s  got 45.1076s  err   +7.6 ms  (rise  0.0 dB)  FIRST BOW: D major, pp (the wash begins)
+OK  50.4500s  got 50.4550s  err   +5.0 ms  (rise 69.8 dB)  perfect cadence V-I: the plate lands
+OK  53.0000s  got 52.9990s  err   -1.0 ms  (rise 153.1 dB)  wink: soft violin pizz D6
+OK  55.3273s  got 55.3293s  err   +2.0 ms  (rise 152.9 dB)  end card: soft tonic, fade begins
+
+Silence 0.0–1.70 s: peak -240.0 dBFS
+Picture silence 43.64–45.00 s: peak -239.8 dBFS
+First bowed sample above -100 dB at 45.1076 s (target 45.1)
+Mix: 63.727 s, peak -1.48 dBFS, integrated -18.0 LUFS
+
+ALL CUES WITHIN TOLERANCE
