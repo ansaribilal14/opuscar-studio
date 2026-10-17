@@ -26,8 +26,8 @@ from typing import Optional
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 WORK_DIR = os.path.join(REPO_ROOT, "work")
 
-UA = ("OpusCarStudio-ImageAcq/1.0 (documentary production; free/public endpoints only; "
-      "respectful rate: 1 req / 1.5 s; no bots meant to evade any control)")
+UA = ("OpuscarStudio-ImgAcq/1.1 (documentary production; free/public endpoints only; "
+      "contact: ops@opuscar.studio; respectful rate: 1 req / 1.5 s)")
 
 # ---------------------------------------------------------------- tunables
 HTTP_TIMEOUT = 25          # seconds per HTTP call (bounded)
