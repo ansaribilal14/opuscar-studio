@@ -1,0 +1,76 @@
+{
+ "film": "wow-signal",
+ "generated": "2026-10-18",
+ "policy": "house imgacq standard (scripts/imgacq): keyless providers, validated downloads, conservative classification, per-film ledger",
+ "ledger": "work/wow-signal/images/ledger.json",
+ "approved": {
+  "printout_close": {
+   "asset_id": "wow-printout-close",
+   "description": "Close-up of the original Big Ear computer printout page: red-circled 6EQUJ5 (channel 2) with Jerry Ehman's handwritten 'Wow!' margin note.",
+   "source_page": "https://commons.wikimedia.org/wiki/File:Wow_signal.jpg",
+   "media_url": "https://upload.wikimedia.org/wikipedia/commons/1/16/Wow_signal.jpg",
+   "creator": "(per Commons file data; scan of a 1977 Ohio State University Radio Observatory printout)",
+   "original_filename": "Wow signal.jpg",
+   "local_file": "shared/assets/printout_close.jpg",
+   "provenance_ledger_id": "e80e1f08b9f8",
+   "license": "Public domain (per Commons determination)",
+   "attribution": "Not required (PD); courtesy credit in credits card: 'printout scan: Wikimedia Commons'",
+   "retrieved": "2026-10-18",
+   "sha256": "4fd296acb2f6386c8fcab56df03ee501683de8f1c75d26529ad3101df5e56013",
+   "size_bytes": 163378,
+   "dimensions": "1024x578",
+   "intended_scenes": [
+    "SC02",
+    "SC09",
+    "SC14"
+   ],
+   "restrictions": "None known. Classified authentic_verified after full-size visual inspection (row structure, red circle, margin note match bigear.org 30th report).",
+   "on_screen_label": "archival scan (no reconstruction label needed)"
+  },
+  "printout_page": {
+   "asset_id": "wow-printout-page",
+   "description": "Full original Big Ear printout page for Aug 15, 1977: header columns (channel numbers, R.A./Decl. 1950.0, 2ND LO FREQ, galactic coords, EST), handwritten 'Aug 15, 1977', the Wow! annotation row.",
+   "source_page": "https://commons.wikimedia.org/wiki/File:Wow_signal_(large).jpg",
+   "media_url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Wow_signal_%28large%29.jpg",
+   "creator": "(per Commons file data; scan of a 1977 Ohio State University Radio Observatory printout)",
+   "original_filename": "Wow signal (large).jpg",
+   "local_file": "shared/assets/printout_page.jpg",
+   "provenance_ledger_id": "3fdca02a3a8d",
+   "license": "Public domain (per Commons determination)",
+   "attribution": "Not required (PD); courtesy credit in credits card: 'printout scan: Wikimedia Commons'",
+   "retrieved": "2026-10-18",
+   "sha256": "33c22ca24bec7355fbdb1aa8cd0f2d1685ee81fb7e6f16c20ac99da4b3870ac3",
+   "size_bytes": 635184,
+   "dimensions": "1024x846",
+   "intended_scenes": [
+    "SC08",
+    "SC15"
+   ],
+   "restrictions": "None known. Classified authentic_verified after full-size visual inspection (2ND LO 120.185 column, row 19:17:35, handwritten date all match the published record).",
+   "on_screen_label": "archival scan (no reconstruction label needed)"
+  }
+ },
+ "excluded": {
+  "14e29b1ccbd3": {
+   "title": "Wow 6EQUJ5 (Flickr, CC BY 2.0, tonynetone)",
+   "reason": "Inspected at full size: pink-inverted stylized derivative collage of public materials; conflicts with the film's visual system and re-treats archival material. Excluded per directive \u00a78."
+  },
+  "feabf853480b": {
+   "title": "openverse hit for 'Wow signal printout'",
+   "reason": "Refused by imgacq validation (HTML page masquerading as image)."
+  },
+  "f29e1659c03a": {
+   "title": "File:Wow! signal.png (Commons)",
+   "reason": "Refused: 2866 B, 289x251 \u2014 below validation floor."
+  },
+  "7848c7ded2b8": {
+   "title": "File:THE BIG EAR 2005.jpg (Commons)",
+   "reason": "Refused: 512x768 below 640x360 floor; subject not verified as the radio telescope."
+  },
+  "d36f8e130eac / 503079f99d2a / 1d420ed35043 / f95513fcdfb9": {
+   "title": "subject-mismatch downloads (festival/lamb's-ear plant)",
+   "reason": "Irrelevant subjects returned by broad queries; downloaded in a retry pass, NOT staged, NOT used."
+  }
+ },
+ "note": "All other visuals are code-generated per STORYBOARD.md (labelled reconstructions where applicable)."
+}
