@@ -1,0 +1,46 @@
+{
+ "id": "wow-signal-render-spec",
+ "version": "1.0.0-frozen",
+ "note": "Frozen delivery spec \u2014 binding for ALL three engines (directive \u00a75).",
+ "video": {
+  "duration": 600.0,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "container": "mp4",
+  "video_codec": "h264",
+  "pixel_format": "yuv420p",
+  "audio_codec": "aac",
+  "audio_channels": 2,
+  "audio_sample_rate": 48000,
+  "loudness_target_lufs": -16
+ },
+ "narration": {
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "-3%",
+  "engine": "edge-tts",
+  "blocks": 34,
+  "measured_seconds": 583.1,
+  "ends_at": 597.79
+ },
+ "subtitles": {
+  "file": "shared/subtitles/wow-signal.srt",
+  "cues": 149,
+  "word_timed": true,
+  "max_line_chars": 42
+ },
+ "gates": [
+  "duration 599-601s",
+  "frame count 17970-18030 @30fps",
+  "1920x1080",
+  "h264 yuv420p",
+  "aac stereo 48k",
+  "full decode 0 errors",
+  "loudness -16 LUFS +/-1",
+  "closing card identical",
+  "captions match SRT wording"
+ ],
+ "timeline": "TIMELINE.json",
+ "assets": "ASSET_MANIFEST.json",
+ "audio_manifest": "shared/audio/AUDIO_MANIFEST.json"
+}
