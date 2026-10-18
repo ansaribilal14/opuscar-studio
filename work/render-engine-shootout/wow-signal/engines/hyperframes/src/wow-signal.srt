@@ -1,0 +1,713 @@
+1
+00:00:00,090 --> 00:00:04,381
+August the fifteenth
+1977 A radio telescope in
+
+2
+00:00:04,394 --> 00:00:08,595
+Ohio is listening to the
+sky For exactly seventy-two
+
+3
+00:00:08,595 --> 00:00:13,363
+seconds a signal arrives from
+the direction of Sagittarius thirty
+
+4
+00:00:13,363 --> 00:00:17,461
+times stronger than the
+background noise Narrow precise
+
+5
+00:00:17,900 --> 00:00:20,283
+unlike anything around it Then it is gone
+
+6
+00:00:20,849 --> 00:00:23,916
+A few days later an
+astronomer flipping through a stack of
+
+7
+00:00:23,916 --> 00:00:28,130
+computer paper
+circles six characters six E
+
+8
+00:00:28,414 --> 00:00:29,303
+Q U
+
+9
+00:00:29,947 --> 00:00:33,942
+J five and writes a
+single word in the margin Wow
+
+10
+00:00:34,559 --> 00:00:39,147
+Almost fifty years later that
+is still all we have seventy-two
+
+11
+00:00:39,147 --> 00:00:43,554
+seconds one annotation and no
+explanation Here is the most
+
+12
+00:00:43,567 --> 00:00:48,167
+famous unsolved signal in the
+search for extraterrestrial intelligence
+
+13
+00:00:48,580 --> 00:00:51,518
+and why science refuses to close the file
+
+14
+00:00:52,345 --> 00:00:57,010
+The instrument was Big Ear
+the Ohio State University Radio
+
+15
+00:00:57,010 --> 00:01:01,791
+Observatory in Delaware,
+Ohio Designed by John Kraus it
+
+16
+00:01:01,804 --> 00:01:06,005
+was unlike any dish you have
+seen a tiltable flat reflector
+
+17
+00:01:06,172 --> 00:01:10,245
+bouncing the sky onto a fixed
+curved antenna a steel ground
+
+18
+00:01:10,257 --> 00:01:11,855
+plane stretched between them
+
+19
+00:01:12,354 --> 00:01:16,078
+Big Ear never pointed at
+anything It sat still and let
+
+20
+00:01:16,091 --> 00:01:20,163
+the turning Earth sweep the
+sky across its beam Every point
+
+21
+00:01:20,163 --> 00:01:24,687
+of sky got exactly seventy-two
+seconds of attention If something out
+
+22
+00:01:24,699 --> 00:01:28,759
+there wanted to be heard it had
+seventy-two seconds to introduce
+
+23
+00:01:28,759 --> 00:01:29,532
+itself
+
+24
+00:01:29,958 --> 00:01:34,236
+Through the sixties Big Ear
+catalogued nearly twenty thousand radio
+
+25
+00:01:34,249 --> 00:01:38,617
+sources In 1972 the
+funding was cut and the
+
+26
+00:01:38,630 --> 00:01:40,164
+survey team was let go
+
+27
+00:01:40,644 --> 00:01:44,446
+Rather than shut the telescope
+down Bob Dixon convinced Kraus to
+
+28
+00:01:44,459 --> 00:01:48,196
+give it a new job a search
+for narrowband radio signals
+
+29
+00:01:48,479 --> 00:01:53,093
+the kind that almost always
+means a transmitter An IBM 1130
+
+30
+00:01:53,093 --> 00:01:57,461
+sampled fifty ten-kilohertz
+channels every second and printed the
+
+31
+00:01:57,461 --> 00:02:01,971
+result as one character per
+channel per row The longest-running
+
+32
+00:02:01,972 --> 00:02:04,201
+narrowband search ever attempted
+
+33
+00:02:05,114 --> 00:02:08,387
+Eleven sixteen p.m. August fifteenth
+
+34
+00:02:08,632 --> 00:02:12,640
+1977 Big Ear's two feed horns alternate
+
+35
+00:02:12,820 --> 00:02:17,150
+rows as the sky drifts
+through each row summarizing
+
+36
+00:02:17,163 --> 00:02:18,787
+twelve seconds of sky
+
+37
+00:02:19,329 --> 00:02:23,698
+In channel two across six
+consecutive rows the printout
+
+38
+00:02:23,698 --> 00:02:28,466
+reads six E Q U J five Each character is
+
+39
+00:02:28,466 --> 00:02:33,221
+a signal-to-noise ratio At ten
+the computer switches to letters
+
+40
+00:02:33,620 --> 00:02:38,118
+E means fourteen or
+more Q twenty-six And U the
+
+41
+00:02:38,118 --> 00:02:39,329
+peak thirty
+
+42
+00:02:39,959 --> 00:02:43,696
+Thirty times the background
+noise Most of that background is the
+
+43
+00:02:43,696 --> 00:02:48,283
+receiver's own hiss the hum
+of the galaxy the afterglow of
+
+44
+00:02:48,296 --> 00:02:52,162
+the Big Bang Whatever rose
+above it was bright and very
+
+45
+00:02:52,175 --> 00:02:53,206
+real in the data
+
+46
+00:02:53,702 --> 00:02:57,336
+The shape was right too A steady
+narrowband source drifting through
+
+47
+00:02:57,336 --> 00:03:01,743
+a beam should rise smoothly peak and fade
+
+48
+00:03:02,272 --> 00:03:06,318
+exactly the arch the six
+samples trace The signal filled the
+
+49
+00:03:06,331 --> 00:03:08,496
+full seventy-two-second window
+
+50
+00:03:09,012 --> 00:03:12,092
+And then the detail that
+keeps the file open the signal
+
+51
+00:03:12,092 --> 00:03:16,654
+appeared in one horn only Five
+minutes later the second horn
+
+52
+00:03:16,654 --> 00:03:21,074
+swept across the identical
+patch of sky Nothing Whatever it
+
+53
+00:03:21,087 --> 00:03:23,007
+was it left no second impression
+
+54
+00:03:23,938 --> 00:03:28,126
+Jerry Ehman was a radio
+astronomer at Ohio State Every few
+
+55
+00:03:28,126 --> 00:03:31,515
+days the printouts arrived
+and he read them row by row
+
+56
+00:03:32,018 --> 00:03:34,518
+looking for the pattern
+a real signal would make
+
+57
+00:03:34,997 --> 00:03:38,941
+On August nineteenth a few
+pages into the run he found
+
+58
+00:03:38,953 --> 00:03:42,910
+it the six-character arch in
+channel two He circled it in
+
+59
+00:03:42,910 --> 00:03:46,982
+red pen and beside it wrote
+the only annotation the printout
+
+60
+00:03:46,982 --> 00:03:48,747
+would ever need Wow
+
+61
+00:03:49,364 --> 00:03:52,212
+He finished the rest of the
+printout first checking whether the
+
+62
+00:03:52,212 --> 00:03:56,207
+signal returned on later
+pages It did not Then he called
+
+63
+00:03:56,348 --> 00:04:00,150
+John Kraus and Bob Dixon
+Kraus began calling it the Wow
+
+64
+00:04:00,562 --> 00:04:01,890
+source and the name stuck
+
+65
+00:04:02,419 --> 00:04:06,710
+The printout records where the
+sky was right ascension nineteen
+
+66
+00:04:06,710 --> 00:04:11,388
+hours twenty-two minutes
+twenty-five seconds declination minus
+
+67
+00:04:11,401 --> 00:04:15,963
+twenty-seven degrees three
+minutes the constellation Sagittarius
+
+68
+00:04:16,848 --> 00:04:21,294
+Why did that page become
+famous Because of 1959 when
+
+69
+00:04:21,294 --> 00:04:25,044
+Morrison and Cocconi pointed out
+that the universe has a natural
+
+70
+00:04:25,044 --> 00:04:29,683
+meeting frequency 1420 megahertz the
+
+71
+00:04:29,683 --> 00:04:34,026
+whisper of ordinary
+hydrogen A sensible place to speak
+
+72
+00:04:34,503 --> 00:04:36,809
+if you wanted to be
+found The watering hole
+
+73
+00:04:37,368 --> 00:04:41,311
+And the Wow signal sat
+almost exactly there measured at
+
+74
+00:04:41,311 --> 00:04:45,641
+1420.4556 megahertz
+
+75
+00:04:46,054 --> 00:04:50,036
+about fifty kilohertz above the
+hydrogen line If the offset was
+
+76
+00:04:50,036 --> 00:04:54,378
+motion the source drifted toward
+us at ten kilometers per second
+
+77
+00:04:54,791 --> 00:04:58,502
+Near enough to be deliberate
+Far enough to keep everyone honest
+
+78
+00:04:58,994 --> 00:05:02,886
+Even the number has a story the
+telescope's local oscillator had
+
+79
+00:05:02,886 --> 00:05:06,430
+been delivered a hundred
+kilohertz off from what was ordered and
+
+80
+00:05:06,443 --> 00:05:11,120
+Ehman's calculation accounted for it
+Kraus's earlier summary carried the uncorrected
+
+81
+00:05:11,120 --> 00:05:14,484
+value The signal did
+not move The paperwork did
+
+82
+00:05:15,065 --> 00:05:19,447
+The puzzle is precise Natural
+radio sources broadcast across
+
+83
+00:05:19,459 --> 00:05:23,918
+wide bands of spectrum This
+signal was narrow no wider than
+
+84
+00:05:23,918 --> 00:05:28,635
+one ten-kilohertz channel
+Narrowness is what technology does And
+
+85
+00:05:28,635 --> 00:05:32,037
+yet nothing technological
+we know of was there to do it
+
+86
+00:05:32,899 --> 00:05:37,512
+The first follow-up was the
+simplest look again Big Ear could
+
+87
+00:05:37,512 --> 00:05:40,708
+not be repointed so the
+sky itself had to bring the
+
+88
+00:05:40,708 --> 00:05:42,590
+answer around It never did
+
+89
+00:05:43,175 --> 00:05:47,402
+Decades of better instruments
+followed Robert Gray searched with the META
+
+90
+00:05:47,415 --> 00:05:50,636
+array in 1987 and 1989
+
+91
+00:05:51,062 --> 00:05:55,791
+In 1995 H Paul Shuch
+scanned the coordinates from Green
+
+92
+00:05:55,804 --> 00:05:59,180
+Bank The Very Large Array tried twice more
+
+93
+00:05:59,580 --> 00:06:04,000
+In 1999 Gray and Simon
+Ellingsen watched from Tasmania
+
+94
+00:06:04,412 --> 00:06:05,791
+Silence every time
+
+95
+00:06:06,340 --> 00:06:10,722
+In 2022 Breakthrough Listen
+trained the Green Bank Telescope
+
+96
+00:06:11,095 --> 00:06:15,825
+and the Allen Telescope Array on the
+coordinates including a simultaneous
+
+97
+00:06:15,825 --> 00:06:20,490
+observation In 2025 the
+SETI Institute coordinated them
+
+98
+00:06:20,490 --> 00:06:21,972
+again Still nothing
+
+99
+00:06:22,904 --> 00:06:27,311
+The original team ruled
+out the obvious Planets no
+
+100
+00:06:27,324 --> 00:06:31,023
+narrowband radio
+Asteroids none near the beam
+
+101
+00:06:31,448 --> 00:06:36,036
+Satellites aircraft
+spacecraft none in position A
+
+102
+00:06:36,048 --> 00:06:40,430
+terrestrial signal bouncing off
+debris It would need an illegal transmitter
+
+103
+00:06:40,829 --> 00:06:44,927
+a non-tumbling surface
+perfect geometry Improbable in
+
+104
+00:06:44,940 --> 00:06:45,688
+practice
+
+105
+00:06:46,242 --> 00:06:50,972
+Two ideas survive as
+possibilities Gravitational lensing an
+
+106
+00:06:50,984 --> 00:06:55,752
+unseen mass briefly
+focusing a faint beacon toward us
+
+107
+00:06:56,023 --> 00:07:00,546
+should have lasted longer Interstellar
+scintillation the flickering that makes
+
+108
+00:07:00,559 --> 00:07:04,837
+stars twinkle applied to
+radio could boost a faint
+
+109
+00:07:04,850 --> 00:07:08,368
+source But it too should
+have shown in both horns
+
+110
+00:07:08,879 --> 00:07:13,609
+In 2017 a researcher
+proposed hydrogen clouds around two
+
+111
+00:07:13,609 --> 00:07:17,758
+comets Astronomers
+including Big Ear's own veterans
+
+112
+00:07:17,823 --> 00:07:20,671
+dismissed it the comets
+were not in the beam at the
+
+113
+00:07:20,671 --> 00:07:25,078
+right time comets barely emit
+at that frequency and nothing
+
+114
+00:07:25,078 --> 00:07:28,583
+explains one horn seeing
+everything and the other nothing
+
+115
+00:07:29,106 --> 00:07:33,694
+The newest hypothesis is
+the most humbling In 2024 a
+
+116
+00:07:33,706 --> 00:07:38,294
+team re-examining archived
+Arecibo data found that cold hydrogen
+
+117
+00:07:38,294 --> 00:07:42,469
+clouds under the right
+excitation a magnetar flare
+
+118
+00:07:42,714 --> 00:07:47,237
+say can briefly maser
+lasing in radio at the
+
+119
+00:07:47,250 --> 00:07:51,993
+hydrogen line Its model
+events run a hundred times weaker A
+
+120
+00:07:51,993 --> 00:07:54,621
+proposed explanation not a proven one
+
+121
+00:07:55,473 --> 00:07:59,661
+Where the evidence stands
+a strong narrowband radio
+
+122
+00:07:59,661 --> 00:08:04,107
+burst on the sky for
+seventy-two seconds never detected
+
+123
+00:08:04,107 --> 00:08:08,721
+again despite twenty-five years of
+instrument improvement The fact base
+
+124
+00:08:08,733 --> 00:08:11,414
+fits on one sheet of line-printer paper
+
+125
+00:08:11,949 --> 00:08:16,408
+What is not established who
+or what sent it Nothing has
+
+126
+00:08:16,421 --> 00:08:21,099
+ever replicated the event and
+replication is the currency science
+
+127
+00:08:21,111 --> 00:08:25,351
+trades in An extraterrestrial
+transmission cannot be ruled out
+
+128
+00:08:25,764 --> 00:08:30,171
+Neither can a rare natural
+phenomenon Both remain hypotheses
+
+129
+00:08:30,736 --> 00:08:35,298
+Jerry Ehman decades later
+held the same line The origin of
+
+130
+00:08:35,298 --> 00:08:38,816
+the Wow signal is still
+an open question for me His
+
+131
+00:08:38,816 --> 00:08:41,831
+discipline is the point of
+this film I choose not to
+
+132
+00:08:41,831 --> 00:08:44,512
+draw vast conclusions from half-vast data
+
+133
+00:08:45,435 --> 00:08:50,061
+Big Ear itself is gone In
+1998 the land was sold and
+
+134
+00:08:50,074 --> 00:08:53,244
+the telescope came down for a
+golf course and four hundred
+
+135
+00:08:53,244 --> 00:08:58,038
+houses What survives is
+paper a page of characters a
+
+136
+00:08:58,051 --> 00:08:59,739
+red circle and a word
+
+137
+00:09:00,308 --> 00:09:04,561
+The searches go on new
+instruments new surveys wider bands
+
+138
+00:09:04,960 --> 00:09:09,612
+Every narrowband search is in
+some sense listening for another Wow
+
+139
+00:09:10,102 --> 00:09:14,509
+seventy-two seconds of
+something impossible that arrives once
+
+140
+00:09:15,348 --> 00:09:19,382
+Ehman wrote that he awaits
+additional signals like the Wow
+
+141
+00:09:19,807 --> 00:09:23,918
+source So do the instruments
+still listening tonight If it was
+
+142
+00:09:23,918 --> 00:09:28,480
+a beacon it spoke for
+seventy-two seconds and has not repeated
+
+143
+00:09:28,493 --> 00:09:32,075
+in fifty years If it was
+nature it is stranger than
+
+144
+00:09:32,075 --> 00:09:35,400
+we have modeled Either
+way the file stays open
+
+145
+00:09:35,994 --> 00:09:40,723
+THE UNCLOSED FILE The
+Wow Signal 72 Seconds from
+
+146
+00:09:40,723 --> 00:09:45,247
+Deep Space Sources bigear.org the SETI
+
+147
+00:09:45,247 --> 00:09:49,448
+Institute and the published
+literature Narration synthetic
+
+148
+00:09:49,448 --> 00:09:53,739
+voice Visuals
+code-generated with public-domain
+
+149
+00:09:53,739 --> 00:09:57,682
+archival material where
+credited Some files never close
