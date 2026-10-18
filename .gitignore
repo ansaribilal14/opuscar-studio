@@ -11,3 +11,4 @@ work/ostrich-plate/music/stems/
 work/ostrich-plate/voices/_*.mp3
 work/ostrich-plate/voices/*.wav
 work/ostrich-plate/mix.wav
+tmp/

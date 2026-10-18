@@ -4,7 +4,7 @@
 
 [English](README.md) · **简体中文**
 
-**<!--n-->43<!--/n--> 种影片风格，每种都配一支完全用代码做出来的短片。**
+**<!--n-->44<!--/n--> 种影片风格，每种都配一支完全用代码做出来的短片。**
 
 选一个风格，带上你自己的故事，让你的编程 agent 来当导演。
 
@@ -160,6 +160,7 @@ agent 会读三份指南，像一个小工作室一样开工。指南是英文�
 </tr>
 <tr>
 <td width="33%" valign="top"><a href="styles/ascii-crt/STYLE.md"><img src="docs/frames/ascii-crt.jpg" alt="ASCII / CRT 终端"></a><br><b>ASCII / CRT 终端</b><br>ASCII / CRT Terminal<br><i>Tranquility.log</i><br><sub>月球基地的 AI 沉睡 40 年后被唤醒，用字符画出“家”来回复。</sub></td>
+<td width="33%" valign="top"><a href="styles/code-title-cards/STYLE.md"><img src="docs/frames/code-title-cards.jpg" alt="代码标题卡"></a><br><b>代码标题卡</b><br>Code Title Cards<br><i>Render It Free</i><br><sub>五句宣言在深色平面上依次登场：每张卡片只有一行居中的文字和一个酸绿色的词。</sub></td>
 </tr>
 </table>
 

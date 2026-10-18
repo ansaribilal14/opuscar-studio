@@ -46,6 +46,7 @@ Users may name a style in English, in Chinese, or by its folder. Find it here, t
 | Stained Glass | 彩色玻璃窗 | [`stained-glass`](stained-glass/STYLE.md) | *The Dragon of the East Window* |
 | Pictogram Motion | 象形运动图形 | [`pictogram-motion`](pictogram-motion/STYLE.md) | *Aichi-Nagoya 2026 — All 43 Sports* |
 | ASCII / CRT Terminal | ASCII / CRT 终端 | [`ascii-crt`](ascii-crt/STYLE.md) | *Tranquility.log* |
+| Code Title Cards | 代码标题卡 | [`code-title-cards`](code-title-cards/STYLE.md) | *Render It Free* |
 
 ## Information & Keynote · 信息与发布
 

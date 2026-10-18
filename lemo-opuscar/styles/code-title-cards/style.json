@@ -1,0 +1,18 @@
+{
+ "slug": "code-title-cards",
+ "num": "55",
+ "en": "Code Title Cards",
+ "cn": "代码标题卡",
+ "category_en": "Graphic & Type",
+ "category_cn": "图形与排版",
+ "film": "Render It Free",
+ "line": "Five statements take a dark stage one at a time — each card is one centered line with a single acid-green word.",
+ "line_cn": "五句宣言在深色平面上依次登场：每张卡片只有一行居中的文字和一个酸绿色的词。",
+ "uses": [
+  "Title cards",
+  "Opening statements",
+  "Chapter markers"
+ ],
+ "frame_sec": 2.0,
+ "dur": 18.0
+}
