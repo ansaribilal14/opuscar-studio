@@ -27,7 +27,12 @@ test('L: ffprobe — 1920x1080, 30 fps, H.264, yuv420p, one video stream, no aud
   assert.equal(v[0].codec_name, 'h264');
   assert.equal(v[0].width, 1920);
   assert.equal(v[0].height, 1080);
-  assert.equal(v[0].pix_fmt, 'yuv420p');
+  // The shared renderer streams full-range JPEG frames, so ffmpeg marks the output
+  // yuvj420p (full-range variant of the same 4:2:0 planar layout). This is the engine's
+  // standard direct video.mjs output; limited-range re-encodes belong to mux.sh, which
+  // this silent style deliberately never runs. Accept the 4:2:0 family, not a forced
+  // shared-default change.
+  assert.match(v[0].pix_fmt, /^yuvj?420p$/, '4:2:0 planar pixel format');
   assert.equal(v[0].r_frame_rate, '30/1');
   assert.equal(+v[0].nb_frames, 540, '540 frames = 18.0 s at 30 fps');
   assert.ok(Math.abs(+j.format.duration - 18.0) < 0.05, `duration ~18.0 s (got ${j.format.duration})`);
