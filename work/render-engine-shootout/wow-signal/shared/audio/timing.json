@@ -1,0 +1,138 @@
+{
+ "b01": {
+  "dur": 20.422125,
+  "text": "August the fifteenth, 1977. A radio telescope in Ohio is listening to the sky. For exactly seventy-two seconds, a signal arrives from the direction of Sagittarius \u2014 thirty times stronger than the background noise. Narrow, precise, unlike anything around it. Then it is gone."
+ },
+ "b02": {
+  "dur": 13.321125,
+  "text": "A few days later, an astronomer flipping through a stack of computer paper circles six characters \u2014 six, E, Q, U, J, five \u2014 and writes a single word in the margin. Wow!"
+ },
+ "b03": {
+  "dur": 17.0995,
+  "text": "Almost fifty years later, that is still all we have: seventy-two seconds, one annotation, and no explanation. Here is the most famous unsolved signal in the search for extraterrestrial intelligence \u2014 and why science refuses to close the file."
+ },
+ "b04": {
+  "dur": 19.659333,
+  "text": "The instrument was Big Ear \u2014 the Ohio State University Radio Observatory in Delaware, Ohio. Designed by John Kraus, it was unlike any dish you have seen: a tiltable flat reflector bouncing the sky onto a fixed curved antenna, a steel ground plane stretched between them."
+ },
+ "b05": {
+  "dur": 17.20175,
+  "text": "Big Ear never pointed at anything. It sat still, and let the turning Earth sweep the sky across its beam. Every point of sky got exactly seventy-two seconds of attention. If something out there wanted to be heard, it had seventy-two seconds to introduce itself."
+ },
+ "b06": {
+  "dur": 10.40125,
+  "text": "Through the sixties, Big Ear catalogued nearly twenty thousand radio sources. In 1972, the funding was cut, and the survey team was let go."
+ },
+ "b07": {
+  "dur": 23.757125,
+  "text": "Rather than shut the telescope down, Bob Dixon convinced Kraus to give it a new job: a search for narrowband radio signals \u2014 the kind that almost always means a transmitter. An IBM 1130 sampled fifty ten-kilohertz channels every second and printed the result as one character per channel, per row. The longest-running narrowband search ever attempted."
+ },
+ "b08": {
+  "dur": 13.878375,
+  "text": "Eleven sixteen p.m., August fifteenth, 1977. Big Ear's two feed horns alternate rows as the sky drifts through \u2014 each row summarizing twelve seconds of sky."
+ },
+ "b09": {
+  "dur": 20.21475,
+  "text": "In channel two, across six consecutive rows, the printout reads: six. E. Q. U. J. five. Each character is a signal-to-noise ratio. At ten, the computer switches to letters. E means fourteen or more. Q, twenty-six. And U \u2014 the peak \u2014 thirty."
+ },
+ "b10": {
+  "dur": 13.444625,
+  "text": "Thirty times the background noise. Most of that background is the receiver's own hiss \u2014 the hum of the galaxy, the afterglow of the Big Bang. Whatever rose above it was bright, and very real in the data."
+ },
+ "b11": {
+  "dur": 14.960375,
+  "text": "The shape was right, too. A steady narrowband source drifting through a beam should rise smoothly, peak, and fade \u2014 exactly the arch the six samples trace. The signal filled the full seventy-two-second window."
+ },
+ "b12": {
+  "dur": 14.226167,
+  "text": "And then the detail that keeps the file open: the signal appeared in one horn only. Five minutes later, the second horn swept across the identical patch of sky. Nothing. Whatever it was, it left no second impression."
+ },
+ "b13": {
+  "dur": 10.72225,
+  "text": "Jerry Ehman was a radio astronomer at Ohio State. Every few days the printouts arrived, and he read them row by row, looking for the pattern a real signal would make."
+ },
+ "b14": {
+  "dur": 13.9905,
+  "text": "On August nineteenth, a few pages into the run, he found it \u2014 the six-character arch in channel two. He circled it in red pen, and beside it wrote the only annotation the printout would ever need: Wow!"
+ },
+ "b15": {
+  "dur": 12.731417,
+  "text": "He finished the rest of the printout first, checking whether the signal returned on later pages. It did not. Then he called John Kraus and Bob Dixon. Kraus began calling it the Wow! source, and the name stuck."
+ },
+ "b16": {
+  "dur": 13.7155,
+  "text": "The printout records where the sky was: right ascension nineteen hours, twenty-two minutes, twenty-five seconds; declination minus twenty-seven degrees, three minutes \u2014 the constellation Sagittarius."
+ },
+ "b17": {
+  "dur": 20.169792,
+  "text": "Why did that page become famous? Because of 1959 \u2014 when Morrison and Cocconi pointed out that the universe has a natural meeting frequency: 1420 megahertz, the whisper of ordinary hydrogen. A sensible place to speak, if you wanted to be found. The watering hole."
+ },
+ "b18": {
+  "dur": 21.288833,
+  "text": "And the Wow! signal sat almost exactly there: measured at 1420.4556 megahertz \u2014 about fifty kilohertz above the hydrogen line. If the offset was motion, the source drifted toward us at ten kilometers per second. Near enough to be deliberate. Far enough to keep everyone honest."
+ },
+ "b19": {
+  "dur": 15.707792,
+  "text": "Even the number has a story: the telescope's local oscillator had been delivered a hundred kilohertz off from what was ordered, and Ehman's calculation accounted for it. Kraus's earlier summary carried the uncorrected value. The signal did not move. The paperwork did."
+ },
+ "b20": {
+  "dur": 17.120833,
+  "text": "The puzzle is precise. Natural radio sources broadcast across wide bands of spectrum. This signal was narrow \u2014 no wider than one ten-kilohertz channel. Narrowness is what technology does. And yet nothing technological we know of was there to do it."
+ },
+ "b21": {
+  "dur": 9.92575,
+  "text": "The first follow-up was the simplest: look again. Big Ear could not be repointed, so the sky itself had to bring the answer around. It never did."
+ },
+ "b22": {
+  "dur": 22.841458,
+  "text": "Decades of better instruments followed. Robert Gray searched with the META array in 1987 and 1989. In 1995, H. Paul Shuch scanned the coordinates from Green Bank. The Very Large Array tried twice more. In 1999, Gray and Simon Ellingsen watched from Tasmania. Silence, every time."
+ },
+ "b23": {
+  "dur": 15.85125,
+  "text": "In 2022, Breakthrough Listen trained the Green Bank Telescope and the Allen Telescope Array on the coordinates \u2014 including a simultaneous observation. In 2025, the SETI Institute coordinated them again. Still nothing."
+ },
+ "b24": {
+  "dur": 22.988458,
+  "text": "The original team ruled out the obvious. Planets \u2014 no narrowband radio. Asteroids \u2014 none near the beam. Satellites, aircraft, spacecraft \u2014 none in position. A terrestrial signal bouncing off debris? It would need an illegal transmitter, a non-tumbling surface, perfect geometry. Improbable in practice."
+ },
+ "b25": {
+  "dur": 22.313333,
+  "text": "Two ideas survive as possibilities. Gravitational lensing \u2014 an unseen mass briefly focusing a faint beacon toward us \u2014 should have lasted longer. Interstellar scintillation \u2014 the flickering that makes stars twinkle, applied to radio \u2014 could boost a faint source. But it, too, should have shown in both horns."
+ },
+ "b26": {
+  "dur": 19.838042,
+  "text": "In 2017, a researcher proposed hydrogen clouds around two comets. Astronomers, including Big Ear's own veterans, dismissed it \u2014 the comets were not in the beam at the right time, comets barely emit at that frequency, and nothing explains one horn seeing everything and the other nothing."
+ },
+ "b27": {
+  "dur": 25.680458,
+  "text": "The newest hypothesis is the most humbling. In 2024, a team re-examining archived Arecibo data found that cold hydrogen clouds, under the right excitation \u2014 a magnetar flare, say \u2014 can briefly maser: lasing in radio, at the hydrogen line. Its model events run a hundred times weaker. A proposed explanation, not a proven one."
+ },
+ "b28": {
+  "dur": 16.125875,
+  "text": "Where the evidence stands: a strong, narrowband radio burst, on the sky for seventy-two seconds, never detected again \u2014 despite twenty-five years of instrument improvement. The fact base fits on one sheet of line-printer paper."
+ },
+ "b29": {
+  "dur": 18.436917,
+  "text": "What is not established: who, or what, sent it. Nothing has ever replicated the event, and replication is the currency science trades in. An extraterrestrial transmission cannot be ruled out. Neither can a rare natural phenomenon. Both remain hypotheses."
+ },
+ "b30": {
+  "dur": 13.999375,
+  "text": "Jerry Ehman, decades later, held the same line: The origin of the Wow! signal is still an open question for me. His discipline is the point of this film: I choose not to draw vast conclusions from half-vast data."
+ },
+ "b31": {
+  "dur": 14.523083,
+  "text": "Big Ear itself is gone. In 1998, the land was sold, and the telescope came down for a golf course and four hundred houses. What survives is paper: a page of characters, a red circle, and a word."
+ },
+ "b32": {
+  "dur": 14.366167,
+  "text": "The searches go on \u2014 new instruments, new surveys, wider bands. Every narrowband search is, in some sense, listening for another Wow!: seventy-two seconds of something impossible, that arrives once."
+ },
+ "b33": {
+  "dur": 20.2705,
+  "text": "Ehman wrote that he awaits additional signals like the Wow! source. So do the instruments, still listening tonight. If it was a beacon, it spoke for seventy-two seconds and has not repeated in fifty years. If it was nature, it is stranger than we have modeled. Either way \u2014 the file stays open."
+ },
+ "b34": {
+  "dur": 21.895417,
+  "text": "THE UNCLOSED FILE. The Wow! Signal \u2014 72 Seconds from Deep Space. Sources: bigear.org, the SETI Institute, and the published literature. Narration: synthetic voice. Visuals: code-generated, with public-domain archival material where credited. Some files never close."
+ }
+}

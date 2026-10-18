@@ -1,0 +1,248 @@
+{
+ "voice": "en-US-AndrewMultilingualNeural",
+ "rate": "-3%",
+ "engine": "edge-tts",
+ "format": "wav pcm_s16le 24k mono",
+ "note": "per-block files; program mix resampled to 48k stereo at mux",
+ "blocks": {
+  "b01": {
+   "start": 0.0,
+   "dur": 20.422,
+   "end": 20.422,
+   "file": "shared/audio/blocks/b01.wav",
+   "sha256": "8341b5e094c2151d2bd63f47dd4975353955087f4a1a2d76a1dece70f31c3571"
+  },
+  "b02": {
+   "start": 20.772,
+   "dur": 13.321,
+   "end": 34.093,
+   "file": "shared/audio/blocks/b02.wav",
+   "sha256": "7b6948c1c489a72a8f0be9f555e7b9b9639d92bec8f8ddbd8ac84fc7b79edce7"
+  },
+  "b03": {
+   "start": 34.443,
+   "dur": 17.099,
+   "end": 51.542,
+   "file": "shared/audio/blocks/b03.wav",
+   "sha256": "2ee61965cc660d6d1f4717d5926e15724917f0904db731edc1e28318d9f55a7f"
+  },
+  "b04": {
+   "start": 52.242,
+   "dur": 19.659,
+   "end": 71.901,
+   "file": "shared/audio/blocks/b04.wav",
+   "sha256": "03639bb43d6f2756206bc2dfc3272a180ac54cf83d86bd2c44bc93c05a4b3717"
+  },
+  "b05": {
+   "start": 72.251,
+   "dur": 17.202,
+   "end": 89.453,
+   "file": "shared/audio/blocks/b05.wav",
+   "sha256": "2e63576b9022bf655339d44d99a6f1a87fcb81eb1765c19ba839ef6ae64134ac"
+  },
+  "b06": {
+   "start": 89.803,
+   "dur": 10.401,
+   "end": 100.204,
+   "file": "shared/audio/blocks/b06.wav",
+   "sha256": "ec67e47769f305e9e6220112dac0b9b7083b518f0e387e65845c95b4d765a074"
+  },
+  "b07": {
+   "start": 100.554,
+   "dur": 23.757,
+   "end": 124.311,
+   "file": "shared/audio/blocks/b07.wav",
+   "sha256": "2dfaf0db21fbce2651a873aa3677d2d032222b1bcf6952b36a4541c4bce6f299"
+  },
+  "b08": {
+   "start": 125.011,
+   "dur": 13.878,
+   "end": 138.889,
+   "file": "shared/audio/blocks/b08.wav",
+   "sha256": "5417bc2dcac1789447b90d04ac9fc8724abf1dcffe91edf2cdc252e3c2b951f5"
+  },
+  "b09": {
+   "start": 139.239,
+   "dur": 20.215,
+   "end": 159.454,
+   "file": "shared/audio/blocks/b09.wav",
+   "sha256": "65afaa8aaebbe3de6e286e76f31ee85c657b0e95d62086f6c4b3b0128289ba0d"
+  },
+  "b10": {
+   "start": 159.804,
+   "dur": 13.445,
+   "end": 173.249,
+   "file": "shared/audio/blocks/b10.wav",
+   "sha256": "c025c5e5625c0bcb7b348064afba8002a84ec946416efc3b58d84059e44dd864"
+  },
+  "b11": {
+   "start": 173.599,
+   "dur": 14.96,
+   "end": 188.559,
+   "file": "shared/audio/blocks/b11.wav",
+   "sha256": "4c5f9cbb99e3555406a54c13acb3f8a5d7496ca02b98a307bc5be3c37fed4de6"
+  },
+  "b12": {
+   "start": 188.909,
+   "dur": 14.226,
+   "end": 203.135,
+   "file": "shared/audio/blocks/b12.wav",
+   "sha256": "c7799a9cdf3150c0393c18027587fa968aec73642e1bf3e9c24e1d6fcd78a561"
+  },
+  "b13": {
+   "start": 203.835,
+   "dur": 10.722,
+   "end": 214.557,
+   "file": "shared/audio/blocks/b13.wav",
+   "sha256": "3f4a6ac97f5af48d9c2dd538c2c61a4f10e99cf57dbad1da417e549916fc8b89"
+  },
+  "b14": {
+   "start": 214.907,
+   "dur": 13.991,
+   "end": 228.898,
+   "file": "shared/audio/blocks/b14.wav",
+   "sha256": "0c5e7ec569c32940c05040e29c8d587fb39ac5d6b4266103628c60552848429e"
+  },
+  "b15": {
+   "start": 229.248,
+   "dur": 12.731,
+   "end": 241.979,
+   "file": "shared/audio/blocks/b15.wav",
+   "sha256": "a88675e1376156b7ab1dd08a53873068f3e13122f7bbbee4f81e888f21aa7f98"
+  },
+  "b16": {
+   "start": 242.329,
+   "dur": 13.716,
+   "end": 256.045,
+   "file": "shared/audio/blocks/b16.wav",
+   "sha256": "b319e8d735edf0145e4ae8b1cc0f64df18634a1b448dca25429df4d9147801df"
+  },
+  "b17": {
+   "start": 256.745,
+   "dur": 20.17,
+   "end": 276.915,
+   "file": "shared/audio/blocks/b17.wav",
+   "sha256": "9d90a6521373ec43493bfbcefb8c7cc15e4b0bb1eb96f45dc97621e0839f6bf9"
+  },
+  "b18": {
+   "start": 277.265,
+   "dur": 21.289,
+   "end": 298.554,
+   "file": "shared/audio/blocks/b18.wav",
+   "sha256": "163032e39f52cc85323a7e350e2459443714c29a31c803ac345488deac5c0c58"
+  },
+  "b19": {
+   "start": 298.904,
+   "dur": 15.708,
+   "end": 314.612,
+   "file": "shared/audio/blocks/b19.wav",
+   "sha256": "edf5d04a03f745ad2c36f75e24d1cc3f5b5041f9912f8783280318d23cffbe9a"
+  },
+  "b20": {
+   "start": 314.962,
+   "dur": 17.121,
+   "end": 332.083,
+   "file": "shared/audio/blocks/b20.wav",
+   "sha256": "7b6eabe9b5d71ca2753e152ada169e8f915c03b17076925c0b751a6bd895325a"
+  },
+  "b21": {
+   "start": 332.783,
+   "dur": 9.926,
+   "end": 342.709,
+   "file": "shared/audio/blocks/b21.wav",
+   "sha256": "3750a89782902c03815131014201f767cba4e221b44adb95fd9c1c18a5c09fe3"
+  },
+  "b22": {
+   "start": 343.059,
+   "dur": 22.841,
+   "end": 365.9,
+   "file": "shared/audio/blocks/b22.wav",
+   "sha256": "ac4e1ff4921b7fd16d2a92350980a1c1360c2f8af6db1b92eb836c04054b09d5"
+  },
+  "b23": {
+   "start": 366.25,
+   "dur": 15.851,
+   "end": 382.101,
+   "file": "shared/audio/blocks/b23.wav",
+   "sha256": "c169f0271505641e743ac9829ccc64f03997739ea10ef8487d92bd20aa0a5771"
+  },
+  "b24": {
+   "start": 382.801,
+   "dur": 22.988,
+   "end": 405.789,
+   "file": "shared/audio/blocks/b24.wav",
+   "sha256": "91439ddfaa865228e1b6e49225c7d14364a38f0da46b40107e75dc264b55cc17"
+  },
+  "b25": {
+   "start": 406.139,
+   "dur": 22.313,
+   "end": 428.452,
+   "file": "shared/audio/blocks/b25.wav",
+   "sha256": "42e81f07fcfb99d8daf3bc39a23ada716375e87d85eb360ce34c10c30a070b78"
+  },
+  "b26": {
+   "start": 428.802,
+   "dur": 19.838,
+   "end": 448.64,
+   "file": "shared/audio/blocks/b26.wav",
+   "sha256": "4aac51ec63af0dc894b66dcb218cf28520fb5d620cebd765c425e76e981d8197"
+  },
+  "b27": {
+   "start": 448.99,
+   "dur": 25.68,
+   "end": 474.67,
+   "file": "shared/audio/blocks/b27.wav",
+   "sha256": "b54d53b5466312261c54c2cf55b15c01cb0b80eddf3f42c29d7270bed1b0f290"
+  },
+  "b28": {
+   "start": 475.37,
+   "dur": 16.126,
+   "end": 491.496,
+   "file": "shared/audio/blocks/b28.wav",
+   "sha256": "a7dfa06ef27ecbabba9f10b51829eb218977aa9841a0cbfb5cb1f149f6990ec0"
+  },
+  "b29": {
+   "start": 491.846,
+   "dur": 18.437,
+   "end": 510.283,
+   "file": "shared/audio/blocks/b29.wav",
+   "sha256": "0672afdd715ce2e26f9ba313f5342da6d154eb6ce0376a2a5b4201229565f92a"
+  },
+  "b30": {
+   "start": 510.633,
+   "dur": 13.999,
+   "end": 524.632,
+   "file": "shared/audio/blocks/b30.wav",
+   "sha256": "d9f05d08d1bdc1ca22a9184505c976e715296b5ec6cdf6c03752c912c0047b7f"
+  },
+  "b31": {
+   "start": 525.332,
+   "dur": 14.523,
+   "end": 539.855,
+   "file": "shared/audio/blocks/b31.wav",
+   "sha256": "96047f880651ff9b1962e92c7a68c8da8dcaf80315123cb0b852e02274f70783"
+  },
+  "b32": {
+   "start": 540.205,
+   "dur": 14.366,
+   "end": 554.571,
+   "file": "shared/audio/blocks/b32.wav",
+   "sha256": "795e6c121a6f147edbeac34b5f7f0519df58642000113fc9004be591bf018721"
+  },
+  "b33": {
+   "start": 555.271,
+   "dur": 20.27,
+   "end": 575.541,
+   "file": "shared/audio/blocks/b33.wav",
+   "sha256": "3fb3035e53a00160b1fa3c881e6db6f60cd8c4c59af2ff2fa3a567c00b6cd01d"
+  },
+  "b34": {
+   "start": 575.891,
+   "dur": 21.895,
+   "end": 597.786,
+   "file": "shared/audio/blocks/b34.wav",
+   "sha256": "47022817d8dd3c530448c16630582c774c73da44d0ccb9469c33ca3cc0196f18"
+  }
+ },
+ "narration_total_seconds": 583.09
+}

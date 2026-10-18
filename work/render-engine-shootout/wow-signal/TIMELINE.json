@@ -1,0 +1,473 @@
+{
+ "id": "wow-signal",
+ "title": "THE WOW! SIGNAL \u2014 72 Seconds from Deep Space",
+ "channel": "The Unclosed File",
+ "version": "1.0.0-frozen",
+ "render_spec": {
+  "duration": 600.0,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "container": "mp4",
+  "video_codec": "h264",
+  "pixel_format": "yuv420p",
+  "audio_codec": "aac",
+  "audio_channels": 2,
+  "audio_sample_rate": 48000,
+  "loudness_target_lufs": -16
+ },
+ "narration_gaps": {
+  "intra_segment": 0.35,
+  "segment": 0.7
+ },
+ "narration_end": 597.786,
+ "blocks": {
+  "b01": {
+   "start": 0.0,
+   "dur": 20.422,
+   "end": 20.422,
+   "segment": "S1",
+   "scene": "SC01",
+   "text": "August the fifteenth, 1977. A radio telescope in Ohio is listening to the sky. For exactly seventy-two seconds, a signal arrives from the direction of Sagittarius \u2014 thirty times stronger than the background noise. Narrow, precise, unlike anything around it. Then it is gone."
+  },
+  "b02": {
+   "start": 20.772,
+   "dur": 13.321,
+   "end": 34.093,
+   "segment": "S1",
+   "scene": "SC02",
+   "text": "A few days later, an astronomer flipping through a stack of computer paper circles six characters \u2014 six, E, Q, U, J, five \u2014 and writes a single word in the margin. Wow!"
+  },
+  "b03": {
+   "start": 34.443,
+   "dur": 17.099,
+   "end": 51.542,
+   "segment": "S1",
+   "scene": "SC03",
+   "text": "Almost fifty years later, that is still all we have: seventy-two seconds, one annotation, and no explanation. Here is the most famous unsolved signal in the search for extraterrestrial intelligence \u2014 and why science refuses to close the file."
+  },
+  "b04": {
+   "start": 52.242,
+   "dur": 19.659,
+   "end": 71.901,
+   "segment": "S2",
+   "scene": "SC04",
+   "text": "The instrument was Big Ear \u2014 the Ohio State University Radio Observatory in Delaware, Ohio. Designed by John Kraus, it was unlike any dish you have seen: a tiltable flat reflector bouncing the sky onto a fixed curved antenna, a steel ground plane stretched between them."
+  },
+  "b05": {
+   "start": 72.251,
+   "dur": 17.202,
+   "end": 89.453,
+   "segment": "S2",
+   "scene": "SC05",
+   "text": "Big Ear never pointed at anything. It sat still, and let the turning Earth sweep the sky across its beam. Every point of sky got exactly seventy-two seconds of attention. If something out there wanted to be heard, it had seventy-two seconds to introduce itself."
+  },
+  "b06": {
+   "start": 89.803,
+   "dur": 10.401,
+   "end": 100.204,
+   "segment": "S2",
+   "scene": "SC06",
+   "text": "Through the sixties, Big Ear catalogued nearly twenty thousand radio sources. In 1972, the funding was cut, and the survey team was let go."
+  },
+  "b07": {
+   "start": 100.554,
+   "dur": 23.757,
+   "end": 124.311,
+   "segment": "S2",
+   "scene": "SC07",
+   "text": "Rather than shut the telescope down, Bob Dixon convinced Kraus to give it a new job: a search for narrowband radio signals \u2014 the kind that almost always means a transmitter. An IBM 1130 sampled fifty ten-kilohertz channels every second and printed the result as one character per channel, per row. The longest-running narrowband search ever attempted."
+  },
+  "b08": {
+   "start": 125.011,
+   "dur": 13.878,
+   "end": 138.889,
+   "segment": "S3",
+   "scene": "SC08",
+   "text": "Eleven sixteen p.m., August fifteenth, 1977. Big Ear's two feed horns alternate rows as the sky drifts through \u2014 each row summarizing twelve seconds of sky."
+  },
+  "b09": {
+   "start": 139.239,
+   "dur": 20.215,
+   "end": 159.454,
+   "segment": "S3",
+   "scene": "SC09",
+   "text": "In channel two, across six consecutive rows, the printout reads: six. E. Q. U. J. five. Each character is a signal-to-noise ratio. At ten, the computer switches to letters. E means fourteen or more. Q, twenty-six. And U \u2014 the peak \u2014 thirty."
+  },
+  "b10": {
+   "start": 159.804,
+   "dur": 13.445,
+   "end": 173.249,
+   "segment": "S3",
+   "scene": "SC10",
+   "text": "Thirty times the background noise. Most of that background is the receiver's own hiss \u2014 the hum of the galaxy, the afterglow of the Big Bang. Whatever rose above it was bright, and very real in the data."
+  },
+  "b11": {
+   "start": 173.599,
+   "dur": 14.96,
+   "end": 188.559,
+   "segment": "S3",
+   "scene": "SC11",
+   "text": "The shape was right, too. A steady narrowband source drifting through a beam should rise smoothly, peak, and fade \u2014 exactly the arch the six samples trace. The signal filled the full seventy-two-second window."
+  },
+  "b12": {
+   "start": 188.909,
+   "dur": 14.226,
+   "end": 203.135,
+   "segment": "S3",
+   "scene": "SC12",
+   "text": "And then the detail that keeps the file open: the signal appeared in one horn only. Five minutes later, the second horn swept across the identical patch of sky. Nothing. Whatever it was, it left no second impression."
+  },
+  "b13": {
+   "start": 203.835,
+   "dur": 10.722,
+   "end": 214.557,
+   "segment": "S4",
+   "scene": "SC13",
+   "text": "Jerry Ehman was a radio astronomer at Ohio State. Every few days the printouts arrived, and he read them row by row, looking for the pattern a real signal would make."
+  },
+  "b14": {
+   "start": 214.907,
+   "dur": 13.991,
+   "end": 228.898,
+   "segment": "S4",
+   "scene": "SC14",
+   "text": "On August nineteenth, a few pages into the run, he found it \u2014 the six-character arch in channel two. He circled it in red pen, and beside it wrote the only annotation the printout would ever need: Wow!"
+  },
+  "b15": {
+   "start": 229.248,
+   "dur": 12.731,
+   "end": 241.979,
+   "segment": "S4",
+   "scene": "SC15",
+   "text": "He finished the rest of the printout first, checking whether the signal returned on later pages. It did not. Then he called John Kraus and Bob Dixon. Kraus began calling it the Wow! source, and the name stuck."
+  },
+  "b16": {
+   "start": 242.329,
+   "dur": 13.716,
+   "end": 256.045,
+   "segment": "S4",
+   "scene": "SC16",
+   "text": "The printout records where the sky was: right ascension nineteen hours, twenty-two minutes, twenty-five seconds; declination minus twenty-seven degrees, three minutes \u2014 the constellation Sagittarius."
+  },
+  "b17": {
+   "start": 256.745,
+   "dur": 20.17,
+   "end": 276.915,
+   "segment": "S5",
+   "scene": "SC17",
+   "text": "Why did that page become famous? Because of 1959 \u2014 when Morrison and Cocconi pointed out that the universe has a natural meeting frequency: 1420 megahertz, the whisper of ordinary hydrogen. A sensible place to speak, if you wanted to be found. The watering hole."
+  },
+  "b18": {
+   "start": 277.265,
+   "dur": 21.289,
+   "end": 298.554,
+   "segment": "S5",
+   "scene": "SC18",
+   "text": "And the Wow! signal sat almost exactly there: measured at 1420.4556 megahertz \u2014 about fifty kilohertz above the hydrogen line. If the offset was motion, the source drifted toward us at ten kilometers per second. Near enough to be deliberate. Far enough to keep everyone honest."
+  },
+  "b19": {
+   "start": 298.904,
+   "dur": 15.708,
+   "end": 314.612,
+   "segment": "S5",
+   "scene": "SC19",
+   "text": "Even the number has a story: the telescope's local oscillator had been delivered a hundred kilohertz off from what was ordered, and Ehman's calculation accounted for it. Kraus's earlier summary carried the uncorrected value. The signal did not move. The paperwork did."
+  },
+  "b20": {
+   "start": 314.962,
+   "dur": 17.121,
+   "end": 332.083,
+   "segment": "S5",
+   "scene": "SC20",
+   "text": "The puzzle is precise. Natural radio sources broadcast across wide bands of spectrum. This signal was narrow \u2014 no wider than one ten-kilohertz channel. Narrowness is what technology does. And yet nothing technological we know of was there to do it."
+  },
+  "b21": {
+   "start": 332.783,
+   "dur": 9.926,
+   "end": 342.709,
+   "segment": "S6",
+   "scene": "SC21",
+   "text": "The first follow-up was the simplest: look again. Big Ear could not be repointed, so the sky itself had to bring the answer around. It never did."
+  },
+  "b22": {
+   "start": 343.059,
+   "dur": 22.841,
+   "end": 365.9,
+   "segment": "S6",
+   "scene": "SC22",
+   "text": "Decades of better instruments followed. Robert Gray searched with the META array in 1987 and 1989. In 1995, H. Paul Shuch scanned the coordinates from Green Bank. The Very Large Array tried twice more. In 1999, Gray and Simon Ellingsen watched from Tasmania. Silence, every time."
+  },
+  "b23": {
+   "start": 366.25,
+   "dur": 15.851,
+   "end": 382.101,
+   "segment": "S6",
+   "scene": "SC23",
+   "text": "In 2022, Breakthrough Listen trained the Green Bank Telescope and the Allen Telescope Array on the coordinates \u2014 including a simultaneous observation. In 2025, the SETI Institute coordinated them again. Still nothing."
+  },
+  "b24": {
+   "start": 382.801,
+   "dur": 22.988,
+   "end": 405.789,
+   "segment": "S7",
+   "scene": "SC24",
+   "text": "The original team ruled out the obvious. Planets \u2014 no narrowband radio. Asteroids \u2014 none near the beam. Satellites, aircraft, spacecraft \u2014 none in position. A terrestrial signal bouncing off debris? It would need an illegal transmitter, a non-tumbling surface, perfect geometry. Improbable in practice."
+  },
+  "b25": {
+   "start": 406.139,
+   "dur": 22.313,
+   "end": 428.452,
+   "segment": "S7",
+   "scene": "SC25",
+   "text": "Two ideas survive as possibilities. Gravitational lensing \u2014 an unseen mass briefly focusing a faint beacon toward us \u2014 should have lasted longer. Interstellar scintillation \u2014 the flickering that makes stars twinkle, applied to radio \u2014 could boost a faint source. But it, too, should have shown in both horns."
+  },
+  "b26": {
+   "start": 428.802,
+   "dur": 19.838,
+   "end": 448.64,
+   "segment": "S7",
+   "scene": "SC26",
+   "text": "In 2017, a researcher proposed hydrogen clouds around two comets. Astronomers, including Big Ear's own veterans, dismissed it \u2014 the comets were not in the beam at the right time, comets barely emit at that frequency, and nothing explains one horn seeing everything and the other nothing."
+  },
+  "b27": {
+   "start": 448.99,
+   "dur": 25.68,
+   "end": 474.67,
+   "segment": "S7",
+   "scene": "SC27",
+   "text": "The newest hypothesis is the most humbling. In 2024, a team re-examining archived Arecibo data found that cold hydrogen clouds, under the right excitation \u2014 a magnetar flare, say \u2014 can briefly maser: lasing in radio, at the hydrogen line. Its model events run a hundred times weaker. A proposed explanation, not a proven one."
+  },
+  "b28": {
+   "start": 475.37,
+   "dur": 16.126,
+   "end": 491.496,
+   "segment": "S8",
+   "scene": "SC28",
+   "text": "Where the evidence stands: a strong, narrowband radio burst, on the sky for seventy-two seconds, never detected again \u2014 despite twenty-five years of instrument improvement. The fact base fits on one sheet of line-printer paper."
+  },
+  "b29": {
+   "start": 491.846,
+   "dur": 18.437,
+   "end": 510.283,
+   "segment": "S8",
+   "scene": "SC29",
+   "text": "What is not established: who, or what, sent it. Nothing has ever replicated the event, and replication is the currency science trades in. An extraterrestrial transmission cannot be ruled out. Neither can a rare natural phenomenon. Both remain hypotheses."
+  },
+  "b30": {
+   "start": 510.633,
+   "dur": 13.999,
+   "end": 524.632,
+   "segment": "S8",
+   "scene": "SC30",
+   "text": "Jerry Ehman, decades later, held the same line: The origin of the Wow! signal is still an open question for me. His discipline is the point of this film: I choose not to draw vast conclusions from half-vast data."
+  },
+  "b31": {
+   "start": 525.332,
+   "dur": 14.523,
+   "end": 539.855,
+   "segment": "S9",
+   "scene": "SC31",
+   "text": "Big Ear itself is gone. In 1998, the land was sold, and the telescope came down for a golf course and four hundred houses. What survives is paper: a page of characters, a red circle, and a word."
+  },
+  "b32": {
+   "start": 540.205,
+   "dur": 14.366,
+   "end": 554.571,
+   "segment": "S9",
+   "scene": "SC32",
+   "text": "The searches go on \u2014 new instruments, new surveys, wider bands. Every narrowband search is, in some sense, listening for another Wow!: seventy-two seconds of something impossible, that arrives once."
+  },
+  "b33": {
+   "start": 555.271,
+   "dur": 20.27,
+   "end": 575.541,
+   "segment": "S10",
+   "scene": "SC33",
+   "text": "Ehman wrote that he awaits additional signals like the Wow! source. So do the instruments, still listening tonight. If it was a beacon, it spoke for seventy-two seconds and has not repeated in fifty years. If it was nature, it is stranger than we have modeled. Either way \u2014 the file stays open."
+  },
+  "b34": {
+   "start": 575.891,
+   "dur": 21.895,
+   "end": 597.786,
+   "segment": "S10",
+   "scene": "SC34",
+   "text": "THE UNCLOSED FILE. The Wow! Signal \u2014 72 Seconds from Deep Space. Sources: bigear.org, the SETI Institute, and the published literature. Narration: synthetic voice. Visuals: code-generated, with public-domain archival material where credited. Some files never close."
+  }
+ },
+ "scenes": {
+  "SC01": {
+   "start": 0.0,
+   "end": 20.433333333333334,
+   "storyboard": "SC01"
+  },
+  "SC02": {
+   "start": 20.433333333333334,
+   "end": 34.1,
+   "storyboard": "SC02"
+  },
+  "SC03": {
+   "start": 34.1,
+   "end": 51.53333333333333,
+   "storyboard": "SC03"
+  },
+  "SC04": {
+   "start": 51.53333333333333,
+   "end": 71.9,
+   "storyboard": "SC04"
+  },
+  "SC05": {
+   "start": 71.9,
+   "end": 89.46666666666667,
+   "storyboard": "SC05"
+  },
+  "SC06": {
+   "start": 89.46666666666667,
+   "end": 100.2,
+   "storyboard": "SC06"
+  },
+  "SC07": {
+   "start": 100.2,
+   "end": 124.3,
+   "storyboard": "SC07"
+  },
+  "SC08": {
+   "start": 124.3,
+   "end": 138.9,
+   "storyboard": "SC08"
+  },
+  "SC09": {
+   "start": 138.9,
+   "end": 159.46666666666667,
+   "storyboard": "SC09"
+  },
+  "SC10": {
+   "start": 159.46666666666667,
+   "end": 173.23333333333332,
+   "storyboard": "SC10"
+  },
+  "SC11": {
+   "start": 173.23333333333332,
+   "end": 188.56666666666666,
+   "storyboard": "SC11"
+  },
+  "SC12": {
+   "start": 188.56666666666666,
+   "end": 203.13333333333333,
+   "storyboard": "SC12"
+  },
+  "SC13": {
+   "start": 203.13333333333333,
+   "end": 214.56666666666666,
+   "storyboard": "SC13"
+  },
+  "SC14": {
+   "start": 214.56666666666666,
+   "end": 228.9,
+   "storyboard": "SC14"
+  },
+  "SC15": {
+   "start": 228.9,
+   "end": 241.96666666666667,
+   "storyboard": "SC15"
+  },
+  "SC16": {
+   "start": 241.96666666666667,
+   "end": 256.03333333333336,
+   "storyboard": "SC16"
+  },
+  "SC17": {
+   "start": 256.03333333333336,
+   "end": 276.9,
+   "storyboard": "SC17"
+  },
+  "SC18": {
+   "start": 276.9,
+   "end": 298.56666666666666,
+   "storyboard": "SC18"
+  },
+  "SC19": {
+   "start": 298.56666666666666,
+   "end": 314.6,
+   "storyboard": "SC19"
+  },
+  "SC20": {
+   "start": 314.6,
+   "end": 332.06666666666666,
+   "storyboard": "SC20"
+  },
+  "SC21": {
+   "start": 332.06666666666666,
+   "end": 342.7,
+   "storyboard": "SC21"
+  },
+  "SC22": {
+   "start": 342.7,
+   "end": 365.9,
+   "storyboard": "SC22"
+  },
+  "SC23": {
+   "start": 365.9,
+   "end": 382.1,
+   "storyboard": "SC23"
+  },
+  "SC24": {
+   "start": 382.1,
+   "end": 405.8,
+   "storyboard": "SC24"
+  },
+  "SC25": {
+   "start": 405.8,
+   "end": 428.46666666666664,
+   "storyboard": "SC25"
+  },
+  "SC26": {
+   "start": 428.46666666666664,
+   "end": 448.6333333333333,
+   "storyboard": "SC26"
+  },
+  "SC27": {
+   "start": 448.6333333333333,
+   "end": 474.6666666666667,
+   "storyboard": "SC27"
+  },
+  "SC28": {
+   "start": 474.6666666666667,
+   "end": 491.5,
+   "storyboard": "SC28"
+  },
+  "SC29": {
+   "start": 491.5,
+   "end": 510.26666666666665,
+   "storyboard": "SC29"
+  },
+  "SC30": {
+   "start": 510.26666666666665,
+   "end": 524.6333333333333,
+   "storyboard": "SC30"
+  },
+  "SC31": {
+   "start": 524.6333333333333,
+   "end": 539.8666666666667,
+   "storyboard": "SC31"
+  },
+  "SC32": {
+   "start": 539.8666666666667,
+   "end": 554.5666666666667,
+   "storyboard": "SC32"
+  },
+  "SC33": {
+   "start": 554.5666666666667,
+   "end": 575.5333333333333,
+   "storyboard": "SC33"
+  },
+  "SC34": {
+   "start": 575.5333333333333,
+   "end": 600.0,
+   "storyboard": "SC34"
+  }
+ },
+ "assets": "ASSET_MANIFEST.json",
+ "audio": "shared/audio/AUDIO_MANIFEST.json",
+ "subtitles": "shared/subtitles/wow-signal.srt"
+}
