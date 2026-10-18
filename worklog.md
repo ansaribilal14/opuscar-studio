@@ -412,3 +412,17 @@ Work Log:
 Stage Summary:
 - ALL child issues #22-32 CLOSED with evidence. Parent #21 acceptance criteria met (three ~10-min renders independently produced+validated, comparison published, release verified, worklog/checkpoint updated).
 - Deliverable: owner watches 3 films from the Release and decides. Branch stays unmerged (operator's call per §17).
+
+---
+Task ID: 12-d
+Agent: Super Z (main agent)
+Task: Recovery drill (directive §16) + parent issue closure.
+
+Work Log:
+- DRILL: fresh `--depth 1 --branch feat/render-engine-shootout` clone at a NEW path (/home/z/my-project/recovery-drill/fresh-recovery2) recovered the task fully: HEAD 6556166 (matches pushed origin), CHECKPOINT contains the release tag + re-render commands, engines/{opuscar,hyperframes,hypit} sources + all shared editorial package + docs/RESULTS.json present and readable. Masters re-obtainable from the Release assets; Hypit re-render command recorded in CHECKPOINT.
+- Push incident during finalization: `git add -A` swept >100 MB binaries (narration master wav, HF assets, opuscar out/); GitHub pre-receive rejected; resolved by mixed-reset to the pushed base + selective re-commit + .gitignore rules (no force-push, no history rewrite of any pushed commit; the release tag d36774b was unaffected).
+- Parent #21 CLOSED after verifying all §17 acceptance criteria that apply to this run (see final response; three complete renders, validation, report, release with verified assets, worklog/checkpoint/issue closure).
+
+Stage Summary:
+- Full recovery from GitHub-only state VERIFIED (new clone → all task state + next actions).
+- Nothing duplicated: recovered branch == pushed branch; release == source tag.
