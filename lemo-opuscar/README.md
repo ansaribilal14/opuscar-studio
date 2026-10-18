@@ -4,8 +4,8 @@
 
 **English** · [简体中文](README.zh-CN.md)
 
-**<!--n-->43<!--/n--> film styles, each with a short film made entirely in code.**<br>
-**<!--n-->43<!--/n--> 种影片风格，每种都配一支完全用代码做出来的短片。**
+**<!--n-->44<!--/n--> film styles, each with a short film made entirely in code.**<br>
+**<!--n-->44<!--/n--> 种影片风格，每种都配一支完全用代码做出来的短片。**
 
 Pick a style, bring your own story, and let your coding agent direct the film.<br>
 选一个风格，带上你自己的故事，让你的编程 agent 来当导演。
@@ -164,6 +164,7 @@ Click a frame for its `STYLE.md`.
 </tr>
 <tr>
 <td width="33%" valign="top"><a href="styles/ascii-crt/STYLE.md"><img src="docs/frames/ascii-crt.jpg" alt="ASCII / CRT Terminal"></a><br><b>ASCII / CRT Terminal</b><br><i>Tranquility.log</i><br><sub>A moon-base AI wakes after forty years to a signal from Earth, and replies by drawing “home” in characters.</sub></td>
+<td width="33%" valign="top"><a href="styles/code-title-cards/STYLE.md"><img src="docs/frames/code-title-cards.jpg" alt="Code Title Cards"></a><br><b>Code Title Cards</b><br><i>Render It Free</i><br><sub>Five statements take a dark stage one at a time — each card is one centered line with a single acid-green word.</sub></td>
 </tr>
 </table>
 

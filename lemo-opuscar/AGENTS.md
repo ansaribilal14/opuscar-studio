@@ -31,12 +31,12 @@ If the user hasn't picked a style:
 - Link the gallery, where every style has its demo film: https://lemomo-ai.github.io/lemo-opuscar/
 
 <!-- style-list:start -->
-All 43 styles · 全部风格:
+All 44 styles · 全部风格:
 
 - **手绘与绘画 Hand-drawn & Painting** (7): 蜡笔儿童绘本 Crayon Picture Book, 水彩笔刷 Watercolor Brush, 中国水墨 Chinese Ink Wash, 油画厚涂 Impasto Oil Painting, 一笔画 One-line Drawing, 白板讲解 Whiteboard Explainer, 钢笔淡彩 Urban Sketch · Pen & Wash
 - **东方传统 East Asian Traditions** (4): 皮影戏 Shadow Puppetry, 浮世绘 Ukiyo-e, 红色窗花剪纸 Red Paper-cut, 纸雕灯影 Paper-cut Lightbox
 - **印刷与版画 Print & Printmaking** (5): Risograph 丝网印刷 Risograph Print, 复古半调案卷 Halftone Dossier, 木刻版画 Woodcut Print, 铜版画 Copperplate Engraving, 丝印旅行海报 Silkscreen Travel Poster
-- **图形与排版 Graphic & Type** (7): 瑞士动态排版 Swiss Motion Graphics, 60s 间谍片头 60s Spy Title Sequence, 装饰艺术 Art Deco, 蓝图 / 工程制图 Blueprint, 彩色玻璃窗 Stained Glass, 象形运动图形 Pictogram Motion, ASCII / CRT 终端 ASCII / CRT Terminal
+- **图形与排版 Graphic & Type** (8): 瑞士动态排版 Swiss Motion Graphics, 60s 间谍片头 60s Spy Title Sequence, 装饰艺术 Art Deco, 蓝图 / 工程制图 Blueprint, 彩色玻璃窗 Stained Glass, 象形运动图形 Pictogram Motion, ASCII / CRT 终端 ASCII / CRT Terminal, 代码标题卡 Code Title Cards
 - **信息与发布 Information & Keynote** (5): 数据叙事 Data Storytelling, 等距信息图 Isometric Infographic, 暗色科技发布 Dark Tech Keynote, 活体实机录屏 Living Screencast, 科幻全息界面 Sci-fi Hologram HUD
 - **卡通与动画 Cartoon & Anime** (4): 1930s 橡皮管卡通 1930s Rubber Hose Cartoon, 80 年代赛璐璐动画 80s Cel Anime, 科幻情景喜剧卡通 Sci-Fi Sitcom Toon, 50s 扁平卡通 Mid-century Cartoon
 - **游戏 Games** (4): 16-bit 像素 RPG 16-bit Pixel RPG, HD-2D, 微游戏快闪（瓦里奥制造式） Microgame Frenzy, 综艺节奏扁平 Game Show Flat
