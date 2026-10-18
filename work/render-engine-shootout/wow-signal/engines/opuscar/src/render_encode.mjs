@@ -51,8 +51,8 @@ for (const [k, p] of Object.entries(ASSETS)) {
 fs.mkdirSync(path.dirname(out), { recursive: true });
 const ffv = spawnSync("ffmpeg", ["-version"], { encoding: "utf8" });
 if (ffv.error) { console.error("ffmpeg not found"); process.exit(1); }
-const done = new Promise((res) => proc_done_res = res);
 let proc_done_res = null;
+const done = new Promise((res) => { proc_done_res = res; });
 const proc = spawn("ffmpeg",
   ["-nostdin", "-y", "-f", "image2pipe", "-vcodec", "mjpeg", "-framerate", String(fps),
    "-i", "-", "-c:v", "libx264", "-preset", "medium", "-crf", String(crf),
