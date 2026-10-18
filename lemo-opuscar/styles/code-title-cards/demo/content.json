@@ -1,0 +1,29 @@
+{
+  "targetDuration": 18.0,
+  "fps": 30,
+  "palette": {
+    "background": "#0b0b0f",
+    "ink": "#f4f2ec",
+    "accent": "#c8ff3d"
+  },
+  "font": {
+    "family": "Space Grotesk",
+    "weight": 700,
+    "size": 168,
+    "minSize": 72
+  },
+  "safeMargin": 144,
+  "fadeIn": 0.5,
+  "riseDistance": 40,
+  "fadeOut": 0.25,
+  "minimumHold": 1.2,
+  "holdIntercept": 0.35,
+  "wordsPerSecond": 3.2,
+  "lines": [
+    { "text": "Every frame is code", "accentWord": "code" },
+    { "text": "Nothing is filmed", "accentWord": "filmed" },
+    { "text": "Same input", "accentWord": "input" },
+    { "text": "Same pixels", "accentWord": "pixels" },
+    { "text": "Render it free", "accentWord": "free" }
+  ]
+}
