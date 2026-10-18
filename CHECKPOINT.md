@@ -5,45 +5,26 @@
 > brain; per-asset push is mandatory. FOREGROUND ONLY; keep bash < 9 min.
 > Never print the git token (lives in origin remote URL; programmatic use only).
 
-**Updated**: 2026-10-17 · **Phase**: SLATE COMPLETE — all four films released
+**Updated**: 2026-10-18 · **Phase**: code-title-cards style shipped (PR #20 open); slate complete
 
-## Studio slate (all on main, all released)
-| Film | Latest release | State |
-|---|---|---|
-| video-002 Zodiac | video-002-zodiac-v3.0.0 | released |
-| video-003 Isdal Woman | video-003-isdal-woman-v2.2.0 | released |
-| video-004 Dyatlov Pass | video-004-dyatlov-pass-v1.1.0 (period-photo edition) | released |
-| ostrich-plate | **ostrich-plate-v1.0.0** (2026-10-17 rebuild) | released |
+## Verified state (all pushed)
+- main = origin/main = e1f8145 (ostrich-plate v1.0.0; all four films released).
+- feat/code-title-cards @ 65af61d+ : style #55 code-title-cards complete — 32/32 tests,
+  film released (code-title-cards-v1.0.0), catalog regenerated, issues #18+#19 closed.
+- PR #20 OPEN (merge = operator's call). PR #17 confirmed closed/merged (rebase).
+- Deliverables also at download/code-title-cards/ (mp4 + poster + contact sheet).
 
-## What this session delivered (2026-10-17, "build the final videos")
-1. **video-004 v1.1.0** — the paused period-photo pass resumed and harvested:
-   - Root cause of the long-standing Wikimedia 429: the edge serves 200 to a neutral
-     descriptive UA while 429-ing the old self-described bot-phrased UA same-second.
-     `scripts/imgacq/common.py` UA -> ImgAcq/1.1 with contact line (49/49 tests green).
-   - 11 authentic PD assets acquired + human-verified (tent photograph + 8 case-volume
-     scans incl. the 16.III.59 "tent may have been cut open" resolution); tent photo
-     STAGED into the declared renderer slot (scene b1a, zero renderer changes).
-   - Full deterministic re-render (16/16 segments, 0 decode errors), gates green
-     (−16.0 LUFS, ASR 0.97 ×3, luma 0 flags, SRT byte-identical), released.
-2. **ostrich-plate v1.0.0** — the lost first film rebuilt from its preserved method:
-   - Subject authored on the burin engine; 4 magnified roundels; 88 BPM score in code
-     (Dm -> D major at the wash; all cues verified ±1 frame); house edge-tts narration;
-     3-layer mix; 1505-frame render; master 62.7s @ −13.8 LUFS, 0 decode errors.
-   - ASR gate PASS (0.83–1.00 ×6); cuecheck 0 mismatches; poster from the finished plate.
+## Environment facts (do not relearn the hard way)
+- PLAYWRIGHT_CHROME=/home/z/.cache/ms-playwright/chromium-1200/chrome-linux64/chrome (playwright-core pins newer).
+- **Worktree flipper is ACTIVE**: HEAD resets to main between/within commands; checkout -f
+  discards modified TRACKED files (untracked survive). Generation + add + commit must be
+  ONE atomic command. Verify `git branch --show-current` before every commit.
+- gitignore: demo font binaries (ttf/otf/woff/woff2) and demo jpg/pngs are NOT tracked;
+  only stills named styleframe.jpg / frame_* / modelsheet* / alt_* / engine* are tracked.
+- Existing styles' demos need their (gitignored) fonts fetched once before they render;
+  dark-keynote fonts restored 2026-10-18 (Inter/InterTight/JBMono from google/fonts).
+- node_modules reinstalled this session (playwright-core@1.64.1 + three). ffmpeg -nostdin + </dev/null always.
 
-## Environment facts (relearned this session, do not relearn the hard way)
-- Sample libraries are NOT in git: `sh tools/fetch.sh instruments vsco2ce|vcsl|salamander`
-  from the lemo-opuscar root (395/285/218 MB) before any core.audio score.
-- playwright-core pins a chromium build newer than the cache: launch with
-  `PLAYWRIGHT_CHROME=/home/z/.cache/ms-playwright/chromium-1200/chrome-linux64/chrome`.
-- Out-of-library film workspaces (work/<film>/) are served at /@film/ and may import
-  /core/... from the library root.
-- Wikimedia media host: neutral descriptive UA + contact works; the old UA string is
-  blocked. imgacq 1.1 handles it.
-
-## NEXT ACTION — no open production task
-The slate is complete. Candidate next moves (operator's call):
-- video-001 remains unassigned (ID reserved).
-- v1.1.x content options for video-004: stage the 8 verified case-document scans
-  (would need small scene-module additions — data alone cannot display them).
-- ostrich-plate verticals (4 shorts from the plate's beats) if a platform push is wanted.
+## NEXT ACTION — operator's call
+- Review + merge PR #20 (feat/code-title-cards → main). Then optionally: video-001
+  assignment, v1.1.x case-document pass for video-004, ostrich-plate verticals.
