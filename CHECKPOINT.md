@@ -63,3 +63,17 @@ The slate is complete. Candidate next moves (operator's call):
 narration (edge-tts Andrew −3%) + identical SRT + shared assets.
 **Guardrails**: production renderer/defaults untouched; PR #20 (code-title-cards) left
 for operator; no engine cross-crediting; honest failure reporting.
+
+### SESSION-RECOVERY UPDATE (2026-10-18, shootout session)
+- INCIDENT: the known worktree-flipper checked out main between command blocks; two
+  shootout scaffold commits (70b28b8, 1318a02) landed on main and were pushed.
+  REPAIR: commits preserved on feat/render-engine-shootout (ff-pushed), origin/main
+  force-restored to exact pre-accident e1f8145 with --force-with-lease. No other work
+  existed on either commit. Incident + repair recorded here and in worklog.
+- NEW WORKING CONVENTION (directive §1.1.4 "isolated worktree or clone"): all shootout
+  work happens in `/home/z/my-project/shootout-clone` (shared-object clone, checkout
+  pinned to feat/render-engine-shootout, verified flip-immune across command blocks).
+  The main working tree at /home/z/my-project stays on main and is left alone.
+- Background installs done this session: edge-tts (venv pip), lemo-opuscar
+  node_modules (playwright-core+three). Chromium 1200 cache present.
+- Engine audit clones go to /home/z/my-project/refs-shootout/ (outside both trees).
