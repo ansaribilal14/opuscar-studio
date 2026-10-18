@@ -47,3 +47,19 @@ The slate is complete. Candidate next moves (operator's call):
 - v1.1.x content options for video-004: stage the 8 verified case-document scans
   (would need small scene-module additions — data alone cannot display them).
 - ostrich-plate verticals (4 shorts from the plate's beats) if a platform push is wanted.
+
+---
+
+## ACTIVE TASK — RENDER-ENGINE SHOOTOUT (2026-10-18, parent issue #21)
+
+**Branch**: `feat/render-engine-shootout` · **Base**: main @ e1f8145
+**Project dir**: `work/render-engine-shootout/wow-signal/` (BRIEF.md committed)
+**Issues**: #21 parent · #22 audit · #23 research · #24 script/storyboard · #25 assets
+· #26 narration/audio · #27 Opuscar · #28 HyperFrames · #29 Hypit · #30 validation
+· #31 comparison · #32 release
+**Target**: three independent ~10-min renders of THE WOW! SIGNAL doc + release
+`render-engine-shootout-v1.0.0` (draft until final).
+**Spec**: 10:00 (9:59–10:01) · 1920×1080 · 30 fps · H.264 yuv420p · AAC stereo · shared
+narration (edge-tts Andrew −3%) + identical SRT + shared assets.
+**Guardrails**: production renderer/defaults untouched; PR #20 (code-title-cards) left
+for operator; no engine cross-crediting; honest failure reporting.

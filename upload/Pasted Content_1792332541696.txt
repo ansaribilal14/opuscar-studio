@@ -1,0 +1,750 @@
+MASTER TASK: THREE-ENGINE DOCUMENTARY PRODUCTION SHOOTOUT
+
+Opuscar Studio vs HyperFrames vs Hypit
+
+Project: The Unclosed File — The Wow! Signal: 72 Seconds from Deep Space
+
+Priority: HIGH
+Repository: "ansaribilal14/opuscar-studio"
+Primary objective: Produce three complete, independently rendered, approximately 10-minute documentary videos using three different rendering engines. Publish the finished videos and comparison evidence to a GitHub Release so the owner can personally review and compare them.
+
+This is a full documentary production task, not a trailer, teaser, 75-second demo, or rendering-only proof of concept.
+
+All three engines must independently produce the same complete film using the same approved creative specification, narration, timing, source assets, and sound design.
+
+---
+
+SECTION 1 — NON-NEGOTIABLE EXECUTION RULES
+
+1.1 GitHub is the durable source of truth
+
+The Z Super execution server is session-sensitive and may be reset, disconnected, or completely wiped.
+
+Never assume that local files, terminal sessions, environment state, running processes, or conversational context will survive.
+
+Follow these rules throughout the entire task:
+
+1. Inspect the current repository, branch, remotes, commit history, working tree, and remote synchronization state before making changes.
+2. Fetch the latest remote state and inspect all uncommitted work before switching branches or modifying files.
+3. Never overwrite or discard unknown user changes.
+4. Create or use a dedicated feature branch and preferably an isolated Git worktree or clone.
+5. Commit each coherent, validated milestone and push it to the correct remote branch immediately.
+6. Verify the remote commit hash after each significant push.
+7. Never rely on an unpushed local commit as the only backup.
+8. Never use repeated "git checkout -f", destructive resets, forced branch changes, or similar operations to work around unexpected environment changes.
+9. Before writing, committing, pushing, or publishing, verify that the repository and branch are the intended ones.
+10. If the branch unexpectedly changes, stop writing immediately, preserve the current work, inspect the actual Git state, and recover safely.
+11. Never commit secrets, credentials, tokens, caches, "node_modules", temporary files, or inappropriate generated media.
+12. Never claim that code is saved, pushed, released, tested, or complete unless actual tool output verifies that claim.
+
+If GitHub access is unavailable, preserve the local state and document the blocker. Resume synchronization when access returns.
+
+1.2 Mandatory GitHub Issue workflow
+
+Create a parent GitHub Issue for the complete shootout. Create child issues for the following workstreams, reusing existing issues when appropriate:
+
+- Engine audit and compatibility.
+- Historical research and fact-checking.
+- Script and storyboard.
+- Asset acquisition and licensing.
+- Shared narration, captions, and audio preparation.
+- Opuscar implementation.
+- HyperFrames implementation.
+- Hypit implementation.
+- Technical validation and regression tests.
+- Comparison report and performance measurements.
+- Release publishing and final verification.
+- Session recovery and worklog maintenance, if not already covered by project-wide procedures.
+
+Every issue must contain an objective, scope, acceptance criteria, dependencies, risks, verification plan, and relevant file or component references.
+
+Link relevant commits, branches, and pull requests to the issues.
+
+An issue is not complete merely because the code has been written. Close it only after its acceptance criteria have been verified, relevant documentation has been updated, and the work has been committed and pushed.
+
+If a renderer cannot complete the task, leave the issue open or explicitly mark it blocked according to the repository's workflow. Record the actual reason and next action.
+
+1.3 Mandatory session recovery
+
+Read and follow the project's existing "BRAIN.md", "CHECKPOINT.md", canonical "worklog.md" or "WORKLOG.md", project instructions, and relevant architecture documents.
+
+Maintain these records:
+
+- "CHECKPOINT.md": current task, issue number, branch, last verified remote commit, completed milestone, exact next action, test status, active jobs, blockers, and recovery commands.
+- "worklog.md": chronological engineering record of implementation, decisions, tests, failures, fixes, release work, and evidence.
+- "BRAIN.md": stable architectural knowledge, project conventions, verified discoveries, and lessons needed by future sessions.
+
+Do not create competing versions if equivalent canonical files already exist.
+
+Update checkpoints before risky operations, after meaningful milestones, before planned restarts, and whenever the next session would otherwise need to infer progress.
+
+Before ending a session:
+
+1. Preserve all safe progress.
+2. Update the worklog and checkpoint.
+3. Commit and push all coherent, recoverable changes.
+4. Verify remote synchronization.
+5. Record exact resume instructions.
+6. Record any long-running job's state and recovery requirements.
+
+A supervisor on a destroyed server cannot revive that server. Use durable remote state and a fresh execution environment for recovery after complete server loss.
+
+Do not claim that an automatic recovery mechanism works until it has been tested.
+
+1.4 Mandatory worklog quality
+
+After every completed task and meaningful milestone, deeply update the canonical worklog.
+
+Record:
+
+- Actual date and time, using the available environment timestamp.
+- Linked GitHub Issue.
+- Objective and starting state.
+- Files and components changed.
+- Architectural decisions and their rationale.
+- Exact test commands and observed results.
+- Test failures and root causes.
+- Visual and technical inspection results.
+- Runtime and dependency information.
+- Commit hashes, push status, and release references.
+- Remaining risks, limitations, and next steps.
+
+Do not invent test results, benchmarks, successful pushes, or completion status.
+
+---
+
+SECTION 2 — REPOSITORY RECONNAISSANCE
+
+Before implementation, inspect the existing Opuscar repository and relevant user-owned repositories.
+
+Potential learning sources include:
+
+- "bilal140202"
+- "ansaribilal14"
+- "superz1402"
+
+Discover accessible repositories using authenticated GitHub tools. Prioritize those containing rendering engines, Android applications, automation, agent workflows, media handling, reusable UI, build systems, and relevant recovery infrastructure.
+
+Inspect real source code, dependency manifests, architecture documentation, tests, build scripts, CI workflows, commit history, and release conventions. Do not assume a feature exists just because a README mentions it.
+
+For Opuscar, pay particular attention to:
+
+- "lemo-opuscar/core/"
+- "lemo-opuscar/styles/"
+- Existing style metadata and catalog generation.
+- Existing browser-based rendering and FFmpeg encoding.
+- Asset acquisition, provenance, and licence tracking.
+- Documentary-specific production code.
+- Current regression tests and release practices.
+- Existing "PLAYWRIGHT_CHROME" configuration and other environment requirements.
+
+Preserve the existing production pipeline. Do not modify previously released documentaries or replace the shared rendering engine as part of this experiment.
+
+Create a dedicated project directory and isolated implementations for the three engines, adapting the structure to the repository's actual conventions.
+
+---
+
+SECTION 3 — THE THREE ENGINES
+
+Implement three genuine rendering paths.
+
+Engine A: Opuscar Studio
+
+Use the existing Opuscar rendering engine and its established style conventions.
+
+Inspect the actual renderer contract, including the documented use of:
+
+- "window.render(t)"
+- "window.DUR"
+- "window.READY"
+- "window.TEXTS(t)"
+- Existing browser capture and FFmpeg tools.
+
+Reuse the current rendering architecture wherever appropriate.
+
+Do not create a new Opuscar renderer merely to make this experiment appear independent. The existing engine is the baseline.
+
+Engine B: HyperFrames
+
+Official repository:
+
+"https://github.com/heygen-com/hyperframes"
+
+Documentation:
+
+"https://hyperframes.app/docs/1-startup/2-quickstart"
+
+Rendering guide:
+
+"https://hyperframes.app/docs/3-guides/4-rendering"
+
+Inspect the current repository, official documentation, release version, actual CLI commands, dependencies, licensing, composition model, animation support, media tracks, audio handling, subtitles, rendering, diagnostics, and build workflow.
+
+Create a genuine HyperFrames project and use its supported authoring and rendering workflow.
+
+Do not merely install a package while continuing to render the video through Opuscar. HyperFrames must perform the actual composition and rendering for Engine B.
+
+Engine C: Hypit
+
+Official repository:
+
+"https://github.com/hypit-ai/hypit"
+
+Rendering/build documentation:
+
+"https://github.com/hypit-ai/hypit/blob/main/docs/quickstart/run.md"
+
+Inspect the actual source, current release, package requirements, authoring model, source language, build commands, result retrieval, rendering implementation, dependencies, and licence.
+
+Create a genuine Hypit project and use its supported authoring and build workflow.
+
+Do not merely submit a completed video created by another engine and call it a Hypit render.
+
+Do not assume that all features are free simply because the framework is open source. Identify external providers, model services, credentials, or paid integrations that the selected execution path may require.
+
+Prefer local or free capabilities. If a required capability is unavailable, document the limitation honestly.
+
+3.1 Shared orchestration, separate rendering
+
+Opuscar may orchestrate the overall task, manage assets, record provenance, run tests, prepare manifests, and publish the release.
+
+However, each engine must independently author and render its own video.
+
+Do not create a hybrid implementation in which one engine renders the footage and another engine is merely credited with the output.
+
+Keep all three implementations isolated and reproducible. Do not replace the default production renderer automatically after the comparison.
+
+---
+
+SECTION 4 — THE DOCUMENTARY
+
+4.1 Title
+
+THE WOW! SIGNAL — 72 Seconds from Deep Space
+
+Channel: The Unclosed File
+Language: English
+Genre: Scientific mystery / space documentary
+Format: Full-length narrated documentary
+Target duration: 10 minutes
+
+4.2 Editorial objective
+
+Produce a polished, suspenseful, evidence-led documentary about the 1977 Wow! Signal.
+
+The documentary should explain what was detected, why the signal attracted attention, what the famous annotation meant, what follow-up observations established, and why the origin remains unresolved.
+
+It must be scientifically responsible. Do not imply that extraterrestrial intelligence caused the signal, that aliens were detected, or that a hypothesis has been proven when the evidence does not support that claim.
+
+The film should feel like a carefully directed documentary rather than a generic slideshow or a series of static text cards.
+
+4.3 Historical research and fact-checking
+
+Before writing the final script, research the historical and scientific facts using authoritative sources.
+
+Prioritize:
+
+- The Big Ear Observatory and Ohio State University historical resources.
+- Original scientific papers and documented follow-up observations.
+- SETI Institute resources.
+- Reputable astronomy institutions and scientific publications.
+- NASA resources where directly relevant.
+- Reliable primary or archival sources for Jerry Ehman and the original observation.
+
+For every significant factual claim, record its source and supporting reference in the research notes.
+
+Distinguish clearly between:
+
+- Confirmed historical observations.
+- The signal's measured properties.
+- Scientific interpretations.
+- Proposed explanations.
+- Unresolved questions.
+
+Do not repeat unsupported internet folklore as established fact.
+
+If sources disagree, document the disagreement and use appropriately qualified wording in the script.
+
+Create:
+
+- "RESEARCH.md"
+- "SOURCE_NOTES.md"
+- "FACT_CHECK.md"
+- "SCRIPT.md"
+- "STORYBOARD.md"
+
+The research documentation must be committed to the repository.
+
+---
+
+SECTION 5 — FULL TEN-MINUTE REQUIREMENT
+
+Each engine must produce a complete approximately 10-minute documentary.
+
+A short preview, trailer, teaser, proof of concept, or 75-second sample does not satisfy this task.
+
+Target technical specification
+
+- Duration: 10:00 minutes.
+- Acceptable duration: 9:59–10:01, unless an alternative is explicitly approved.
+- Resolution: 1920 × 1080.
+- Aspect ratio: 16:9.
+- Frame rate: 30 fps.
+- Target frame count: approximately 18,000 frames.
+- Container: MP4.
+- Video codec: H.264.
+- Target pixel format: yuv420p.
+- Audio: stereo AAC.
+- Narration: one shared English narration recording.
+- Captions: identical English subtitle wording and timing.
+- Ending: identical closing card, branding, and credits.
+
+If an engine has a documented technical limitation, record it and attempt a compliant export or transparent normalization step. Do not silently weaken the delivery specification.
+
+Use the same narration and subtitle timing for all three videos.
+
+Narration duration gate
+
+A natural 10-minute narration generally requires a substantial script, often approximately 1,200–1,450 words depending on pacing, pauses, and delivery style.
+
+Use the actual prepared audio duration as the final authority.
+
+Do not artificially extend a short script with silence, repeated paragraphs, or empty scenes just to reach 10 minutes.
+
+Before rendering:
+
+1. Complete and fact-check the script.
+2. Generate or record the shared narration.
+3. Measure the actual narration duration.
+4. Prepare the subtitle file from the final script and actual timing.
+5. Freeze the timeline and audio manifests.
+6. Verify that the complete edit supports the target duration naturally.
+
+If the narration is too short, revise the content meaningfully before freezing the creative specification.
+
+---
+
+SECTION 6 — SHARED EDITORIAL TIMELINE
+
+Use the following structure as the starting point. Refine the timing to fit the approved script and audio, then freeze the final shared timeline before engine-specific implementation.
+
+Time| Segment| Editorial objective
+00:00–00:40| Cold open| Introduce the unexplained signal and establish intrigue.
+00:40–01:40| The observatory| Explain the Big Ear telescope and the historical context of 1977.
+01:40–02:50| The signal| Explain the observation and the famous printout.
+02:50–04:00| The annotation| Introduce Jerry Ehman and the significance of his handwritten “Wow!”
+04:00–05:20| Why it stood out| Explain the unusual characteristics and what scientists could infer.
+05:20–06:40| Follow-up observations| Discuss subsequent attempts to observe or explain the signal.
+06:40–08:00| Proposed explanations| Evaluate plausible hypotheses and their limitations.
+08:00–09:10| Evidence versus speculation| Separate established findings from unsupported conclusions.
+09:10–09:40| The unresolved question| Summarize what remains unknown.
+09:40–10:00| Closing and credits| Deliver a memorable final question and the channel identity.
+
+Create a canonical "TIMELINE.json" containing scene IDs, start and end times, narration references, subtitle references, visual descriptions, transition specifications, and asset identifiers.
+
+The three implementations must consume the same approved timeline data wherever practical.
+
+Any engine-specific adaptation must preserve the same editorial intent and timing.
+
+---
+
+SECTION 7 — VISUAL DIRECTION
+
+Create a cinematic scientific-mystery aesthetic.
+
+Use:
+
+- Deep navy and black backgrounds.
+- Restrained green and cyan signal accents.
+- Scientific data visualizations.
+- Radio telescope imagery.
+- Star maps and sky-coordinate graphics.
+- Archival photographs where licensed.
+- Carefully designed typography.
+- Controlled camera-like movement on still images.
+- Smooth, purposeful transitions.
+- Readable subtitles.
+- A consistent closing card and credits.
+
+Use code-generated graphics for original diagrams and visualizations where useful.
+
+Any reconstructed signal, simulated screen, or recreated archival material must be labelled or described appropriately. Do not imply that an illustrative recreation is original historical footage.
+
+Avoid repetitive animations, unnecessary effects, excessive zooming, generic AI-looking imagery, unreadable typography, and prolonged static slides.
+
+Create a visual system that can be implemented faithfully in all three rendering engines.
+
+All engines should receive the same visual references and asset manifest. Differences in rendering execution are allowed; differences in story content and source material are not.
+
+---
+
+SECTION 8 — SHARED ASSETS AND LICENSING
+
+Acquire all assets through lawful, documented sources.
+
+Prioritize free scientific archives, properly licensed images, public-domain materials where the status is verified, and original code-generated graphics.
+
+For each external asset, record:
+
+- Stable asset ID.
+- Source URL.
+- Creator or organization.
+- Original filename.
+- Local filename.
+- Exact licence or public-domain basis.
+- Attribution requirements.
+- Retrieval date.
+- SHA-256 checksum.
+- Intended scene.
+- Any known usage restrictions.
+
+Create "ASSET_MANIFEST.json" and a human-readable "ASSET_CREDITS.md".
+
+Use the existing Opuscar acquisition and provenance systems wherever practical.
+
+Do not assume an asset is free to reuse merely because it is accessible on the internet or hosted by a scientific institution.
+
+If the licence is unclear, replace the asset or exclude it.
+
+Prepare the asset collection once and share it across all three implementations. Do not independently source different images for each engine.
+
+Avoid paid stock media, paid image-generation services, and paid video-generation APIs.
+
+If original graphics are generated through code, include the source code in the repository.
+
+---
+
+SECTION 9 — AUDIO AND SUBTITLES
+
+Prepare one common audio package before renderer implementation.
+
+It should include:
+
+- Final narration.
+- Background music, if used.
+- Sound effects, if used.
+- Subtitle source file.
+- Audio timing manifest.
+- Source and licence information.
+- Duration and format metadata.
+
+Use one identical narration recording for all three engines.
+
+Use one identical music source and sound-effects set for all three engines.
+
+If suitable free local TTS is available, it may be used to prepare the narration. Record the tool, version, voice configuration, and generation method.
+
+Do not automatically use a paid provider.
+
+Ensure the mix is intelligible and that music does not obscure narration.
+
+Check clipping, abrupt cuts, silence, audio duration, and synchronization.
+
+Use identical subtitle text and timing. Each engine may implement subtitles differently, but the final editorial result should be equivalent.
+
+---
+
+SECTION 10 — IMPLEMENTATION AND TESTING PER ENGINE
+
+10.1 Engine A — Opuscar
+
+Create an isolated project using the existing Opuscar renderer.
+
+Use its documented scene, browser-capture, rendering, and FFmpeg workflows.
+
+Do not change the shared renderer or global encoding defaults just to accommodate this task.
+
+Build the complete 10-minute film and verify the result before proceeding.
+
+Commit and push the milestone.
+
+10.2 Engine B — HyperFrames
+
+Create an isolated HyperFrames project using the actual current documented workflow.
+
+Use its native authoring model and rendering system.
+
+Implement all scenes, transitions, subtitles, and audio synchronization using HyperFrames-supported capabilities.
+
+Verify the actual installed version and commands. Do not rely on outdated documentation or guessed CLI flags.
+
+Render the complete 10-minute film, verify the output, and commit and push the milestone.
+
+10.3 Engine C — Hypit
+
+Create an isolated Hypit project using its actual current authoring and build workflow.
+
+Verify the installed version, supported input formats, dependencies, rendering capabilities, and output retrieval procedure.
+
+Implement the complete documentary using Hypit itself.
+
+Do not submit an MP4 rendered by Opuscar or HyperFrames as the Hypit output.
+
+If the current Hypit workflow requires an external model provider for a particular feature, use a documented free/local alternative when possible. If that is not possible, record the blocker and its effect on the comparison.
+
+Respect Hypit's actual licence and attribution requirements.
+
+Render the complete 10-minute film, verify the output, and commit and push the milestone.
+
+10.4 No silent substitutions
+
+Never use one engine's output under another engine's filename.
+
+If an engine fails, preserve its source, logs, and checkpoint, investigate the problem, and report the actual result.
+
+Continue with the other engines where practical, but do not falsely claim that all three videos are complete.
+
+---
+
+SECTION 11 — TECHNICAL VALIDATION
+
+Validate every output independently.
+
+Use FFprobe, actual media decoding, representative frame inspection, and full-video review.
+
+Verify:
+
+- Actual duration.
+- Frame rate and frame count.
+- Resolution and aspect ratio.
+- H.264 codec and pixel format.
+- Audio codec, channel count, sample rate, and duration.
+- Audio/video synchronization.
+- Subtitle wording and timing.
+- Missing or corrupt frames.
+- Frozen or duplicated frames.
+- Unintended black frames and flashes.
+- Broken transitions.
+- Clipping or missing audio.
+- Readability of subtitles and credits.
+- Correct closing card and complete credits.
+
+Inspect the beginning, middle, end, transitions, and representative scenes throughout each film.
+
+Do not assume a successful command exit means the output is correct.
+
+Run relevant project tests and record actual results.
+
+Where feasible, render a short sequence twice with each engine to evaluate determinism. Distinguish byte-identical output from visually equivalent output.
+
+Do not claim determinism unless it has been measured.
+
+---
+
+SECTION 12 — FAIR PERFORMANCE COMPARISON
+
+Create a comparison report using actual measurements.
+
+Record the following for each engine:
+
+- Engine version.
+- Runtime and dependency versions.
+- Setup and configuration time.
+- Creative implementation time.
+- Render wall-clock time.
+- Peak memory use where measurable.
+- Final file size.
+- Build failures and retries.
+- Required manual interventions.
+- Test results.
+- Determinism observations.
+- Editing and reuse characteristics.
+- Known limitations.
+- External services and actual costs.
+- Time needed to recover from a simulated interruption, if tested.
+
+Keep asset research and preparation time separate from engine implementation and rendering time.
+
+Use the same hardware and comparable execution conditions where possible. Document any differences.
+
+Scoring rubric
+
+Score each category from 1 to 10, with written evidence:
+
+- Visual quality and cinematic motion: 25%.
+- Narration, subtitles, and audio synchronization: 15%.
+- Rendering reliability and technical correctness: 15%.
+- Editability and future reuse: 10%.
+- Render speed and resource efficiency: 10%.
+- Ease of authoring and debugging: 10%.
+- Recovery and reproducibility: 10%.
+- Cost and dependency burden: 5%.
+
+Do not invent scores before inspecting the finished outputs.
+
+The comparison report must separate objective measurements from subjective visual judgments.
+
+Do not select a winning engine automatically. The owner makes the final decision.
+
+---
+
+SECTION 13 — REQUIRED OUTPUT STRUCTURE
+
+Adapt the exact directory layout to the repository's established conventions, but maintain a clear separation between shared creative material, engine implementations, outputs, and reports.
+
+A possible structure is:
+
+"work/render-engine-shootout/wow-signal/"
+
+Shared creative material:
+
+- "BRIEF.md"
+- "RESEARCH.md"
+- "SOURCE_NOTES.md"
+- "FACT_CHECK.md"
+- "SCRIPT.md"
+- "STORYBOARD.md"
+- "TIMELINE.json"
+- "RENDER_SPEC.json"
+- "ASSET_MANIFEST.json"
+- "ASSET_CREDITS.md"
+- "AUDIO_MANIFEST.json"
+- "README.md"
+
+Separate implementations:
+
+- "engines/opuscar/"
+- "engines/hyperframes/"
+- "engines/hypit/"
+
+Each engine directory must include the source and build instructions needed to reproduce its own render, plus any appropriate configuration and test files.
+
+Reports:
+
+- "docs/RENDER_ENGINE_SHOOTOUT.md"
+- "docs/COMPARISON_REPORT.md"
+- "docs/RESULTS.json"
+
+Do not duplicate existing repository infrastructure or create conflicting manifests. Reuse established tools where appropriate.
+
+---
+
+SECTION 14 — REQUIRED RELEASE ASSETS
+
+Use clear, stable filenames:
+
+1. "wow-signal-opuscar.mp4"
+2. "wow-signal-hyperframes.mp4"
+3. "wow-signal-hypit.mp4"
+4. "wow-signal-opuscar-poster.jpg"
+5. "wow-signal-hyperframes-poster.jpg"
+6. "wow-signal-hypit-poster.jpg"
+7. "wow-signal-contact-sheet.jpg"
+8. "wow-signal-comparison-report.md"
+9. "wow-signal-results.json"
+10. "wow-signal-checksums.txt"
+
+Generate a useful contact sheet with representative frames from all three outputs, labelled with the engine name and corresponding time.
+
+Create one poster for each output.
+
+The comparison report must include the actual technical properties, measured render time, file size, visual observations, test results, and any known limitations.
+
+Do not commit unnecessarily large generated media into normal source history unless the repository explicitly requires that. Use GitHub Release assets for the videos and preview media.
+
+Keep the source, scripts, manifests, provenance, tests, and documentation in Git.
+
+---
+
+SECTION 15 — GITHUB RELEASE
+
+Create a clearly named release after the required outputs have passed the appropriate checks.
+
+Suggested tag:
+
+"render-engine-shootout-v1.0.0"
+
+Suggested title:
+
+The Wow! Signal — Three-Engine Documentary Comparison
+
+Publish the release in the correct Opuscar repository, not in any of the external engine repositories.
+
+The release description must explain:
+
+- The documentary subject.
+- Why three rendering engines were compared.
+- Which engine produced each file.
+- The actual video durations and technical specifications.
+- Where to find the comparison report.
+- Any known limitations or failed engines.
+- That the owner will watch and compare the videos personally.
+
+Upload the three complete videos, posters, contact sheet, comparison report, results JSON, and checksums.
+
+Verify every uploaded asset using authenticated GitHub tools or the GitHub API. Confirm the assets exist, have nonzero sizes, and are retrievable.
+
+Do not claim the release is complete until the remote release and its assets have been verified.
+
+If an engine is incomplete, do not misrepresent the release as containing three successful renders. Keep the release as a draft until the required results are ready, or clearly label the incomplete state if an explicitly useful partial release is approved.
+
+---
+
+SECTION 16 — RECOVERY DRILL
+
+Before declaring the session-survival workflow reliable, perform a safe recovery test in an isolated branch or disposable working directory.
+
+1. Create a small test issue and checkpoint.
+2. Make a harmless change.
+3. Test, commit, and push it.
+4. Simulate an interrupted session without deleting or corrupting the primary repository.
+5. Start a fresh working session or isolated clone.
+6. Recover the task using GitHub, the issue, checkpoint, and worklog.
+7. Verify the branch, commit, task state, and next action.
+8. Confirm that completed work is not duplicated.
+9. Record the evidence and any failure in the worklog.
+
+Never delete the only copy of uncommitted work to test recovery.
+
+Distinguish between recovery from a fresh session on the same server and recovery from complete local storage loss.
+
+---
+
+SECTION 17 — FINAL ACCEPTANCE CRITERIA
+
+The complete task is ready for owner review only when all applicable criteria are satisfied:
+
+- [ ] The parent and child GitHub Issues are correctly tracked.
+- [ ] The actual current versions and requirements of all three engines have been audited.
+- [ ] The historical research and script have been fact-checked.
+- [ ] The shared timeline and asset manifest are frozen.
+- [ ] Asset provenance and usage rights are documented.
+- [ ] The narration and subtitles are prepared and shared.
+- [ ] Three separate renderer implementations exist.
+- [ ] Three complete, approximately 10-minute MP4 videos have been rendered independently.
+- [ ] Each video passes technical checks and visual inspection.
+- [ ] Audio, narration, subtitles, and timing are consistent across the versions.
+- [ ] Actual performance and reliability measurements are recorded.
+- [ ] The comparison report and results JSON are complete.
+- [ ] The source code and documentation are committed and pushed.
+- [ ] The release contains all required assets.
+- [ ] Release assets have been remotely verified.
+- [ ] The worklog and checkpoint reflect the actual final state.
+- [ ] GitHub Issues are closed only when their completion criteria have been satisfied.
+- [ ] The owner can easily watch all three films and make the final choice.
+
+A shorter demo does not satisfy the full-length requirement. If a renderer cannot complete the full video, report it honestly and preserve the evidence.
+
+Do not merge changes into the production branch or change Opuscar's default rendering engine automatically.
+
+---
+
+SECTION 18 — FINAL RESPONSE TO THE OWNER
+
+After the task is completed, provide:
+
+1. The GitHub Release URL.
+2. Direct links to all three full-length MP4 files.
+3. The three poster links and contact-sheet link.
+4. The comparison report and results JSON.
+5. Actual engine and dependency versions.
+6. Measured render times and file sizes.
+7. Test results and technical verification evidence.
+8. GitHub Issue and pull request links.
+9. The final pushed commit hash and remote verification status.
+10. Any incomplete work, compatibility issues, or remaining limitations.
+11. A short viewing guide that lets the owner compare the videos immediately.
+
+Do not require the owner to inspect the source code before watching the results.
+
+Final principle: produce three genuinely independent, full-length documentary renders, preserve every milestone in GitHub, verify every claim, publish the complete review package, and let the owner decide which engine should power future documentaries.
