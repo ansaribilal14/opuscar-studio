@@ -51,11 +51,14 @@ for (const [k, p] of Object.entries(ASSETS)) {
 fs.mkdirSync(path.dirname(out), { recursive: true });
 const ffv = spawnSync("ffmpeg", ["-version"], { encoding: "utf8" });
 if (ffv.error) { console.error("ffmpeg not found"); process.exit(1); }
+const done = new Promise((res) => proc_done_res = res);
+let proc_done_res = null;
 const proc = spawn("ffmpeg",
   ["-nostdin", "-y", "-f", "image2pipe", "-vcodec", "mjpeg", "-framerate", String(fps),
    "-i", "-", "-c:v", "libx264", "-preset", "medium", "-crf", String(crf),
    "-pix_fmt", "yuv420p", "-movflags", "+faststart", out],
   { stdio: ["pipe", "inherit", "inherit"] });
+proc.once("close", (c) => proc_done_res && proc_done_res(c));
 
 function renderFrame(t) {
   const win = tl.scenes.find((s) => t >= s.start && t < s.end) || tl.scenes[tl.scenes.length - 1];
@@ -79,5 +82,6 @@ for (let f = first; f <= last; f++) {
   }
 }
 proc.stdin.end();
-await new Promise((r) => proc.on("close", (c) => { if (c !== 0) process.exit(c); }));
+const code = await done;
+if (code !== 0) process.exit(code);
 console.log(`rendered frames ${first}..${last} -> ${out}`);
