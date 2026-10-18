@@ -2,8 +2,21 @@
   "format": "hypit.runtime-local@1",
   "dataRoot": ".hypit/execution",
   "endpoints": {
-    "media.local": { "use": "@hypit/media-local", "config": { "defaultConcurrency": 2 } },
-    "html.local": { "use": "@hypit/provider-html-local", "config": { "workers": 2, "defaultConcurrency": 1 } }
+    "media.local": {
+      "use": "@hypit/media-local",
+      "config": {
+        "defaultConcurrency": 2
+      }
+    },
+    "html.local": {
+      "use": "@hypit/provider-html-local",
+      "config": {
+        "workers": 2,
+        "defaultConcurrency": 1,
+        "processTimeoutMs": 5400000,
+        "frameTimeoutMs": 60000
+      }
+    }
   },
   "bindings": {
     "@hypit/html-program@1#rasterize-visual": "html.local",
