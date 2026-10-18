@@ -96,3 +96,12 @@ frozen spec = TIMELINE.json/RENDER_SPEC.json; SRT 149 cues; 2 PD printout scans 
 (assets/printout_close.jpg, printout_page.jpg). Renders dir per engine = build/ + out/
 (OUT OF GIT, too big — release assets only). Hypit runtime browser cached at
 ~/.cache/hypit/html-rasterizer; HF chrome at ~/.cache/puppeteer.
+
+### SHOOTOUT FINAL STATE (2026-10-18 ~21:00) — ALL CHILD ISSUES CLOSED
+- **RELEASE PUBLISHED + VERIFIED**: https://github.com/ansaribilal14/opuscar-studio/releases/tag/render-engine-shootout-v1.0.0
+  tag → d36774b · 10 assets (3 mp4 + 3 posters + contact sheet + report + results + checksums) verified via API.
+- Issues #22-#32 all CLOSED with evidence comments. Parent #21 ready to close (acceptance criteria met).
+- Masters (local only, in shootout-clone): engines/{opuscar,hyperframes,hypit}/out/wow-signal-<engine>.mp4 — all 13/13 gates, byte-identical determinism measured.
+- Hypit full build id: bld_20261018T185843073Z_86A50CAE4C (result repo in engines/hypit/.hypit/, local).
+- Recovery: fresh clone of feat/render-engine-shootout contains all editorial+engine sources; masters re-obtainable from the Release; Hypit re-render = `cd engines/hypit && cp ../../shared/audio/narration_program.wav ../../shared/assets/*.jpg assets/ && cp ../../shared/audio/blocks assets/blocks/ -r && hypit runtime use ./hypit.runtime.json && hypit build runs/final.svrun --follow` (runtime profile has 90-min timeout).
+- NEXT ACTION: none mandatory. Optional follow-ups: Hypit component-package upgrade (code-drawn scenes); PR feat/render-engine-shootout → main is the OPERATOR's call (per directive §17: do not merge to production automatically).

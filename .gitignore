@@ -12,3 +12,10 @@ work/ostrich-plate/voices/_*.mp3
 work/ostrich-plate/voices/*.wav
 work/ostrich-plate/mix.wav
 upload/*.txt is session input, not repo content
+work/render-engine-shootout/wow-signal/engines/*/out/
+work/render-engine-shootout/wow-signal/engines/*/build*/
+work/render-engine-shootout/wow-signal/engines/hyperframes/assets/
+work/render-engine-shootout/wow-signal/engines/hypit/assets/
+work/render-engine-shootout/wow-signal/release/
+work/render-engine-shootout/wow-signal/shared/audio/narration_program.wav
+work/render-engine-shootout/wow-signal/shared/audio/edge_tmp/

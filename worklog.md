@@ -395,3 +395,20 @@ Work Log:
 Stage Summary:
 - Branch feat/render-engine-shootout @ (see push history); ALL evidence comments on issues #22-28.
 - 2 of 3 full renders complete and gate-green; Hypit next (#29), then validation (#30), comparison (#31), release (#32), recovery drill (§16).
+
+---
+Task ID: 12-c
+Agent: Super Z (main agent)
+Task: Shootout completion — Engine C master, validation/determinism, comparison report, release publishing, recovery drill.
+
+Work Log:
+- Engine C (#29): genuine Hypit 0.3.1 film — gen_author.py → authors/main.svml (34 scene windows × archival clips + visual:Motion; 34 mediaop:Normalize audio clips at frozen windows; Film→html:Video). SVML contract lessons: frame-quantized windows (1/30s not expressible in decimal), structured values must precede references, Normalize port is `<id>.media`, media ops import. 60s pilot built+verified, then FULL build: rasterize timed out at provider default processTimeoutMs=30min (needed ~35) → raised to 90min in runtime profile; build survived CLI detach via local runtime daemon (status polling). Master: 600.0s, 18000/18000f, H.264 1080p30 yuv420p, AAC; loudnorm −16 LUFS at delivery (engine mux is −21.3); 13/13 gates; ASR 0.93-0.94.
+- Validation (#30): validate.py (13-gate §11 matrix as code) — 13/13 ALL GREEN ×3 engines. Determinism MEASURED: byte-identical sha256 on independent re-renders ×3 engines. Contact sheet (3×6 labelled), checksums (10).
+- Comparison (#31): COMPARISON_REPORT.md (objective/subjective separated, no winner chosen) + RESULTS.json (versions, times: render 16/14/45 min, sizes 81/46/224 MB, $0 cost) + umbrella doc.
+- Release (#32): draft created w/ full notes → 10 assets uploaded (351 MB, 6-17s each) → verified via API (exact sizes + live retrieval + ftyp check) → PUBLISHED. https://github.com/ansaribilal14/opuscar-studio/releases/tag/render-engine-shootout-v1.0.0 (tag at d36774b).
+- Recovery drill (§16): fresh --depth-1 clone at a NEW path recovered feat/render-engine-shootout @ d36774b with all editorial sources; final CHECKPOINT records re-render commands; no duplicated work (branch state matches pushed HEAD).
+- Disk hygiene: Hypit raw + HF intermediates deleted after use (container has ~8 GB; release assets live on GitHub, not git).
+
+Stage Summary:
+- ALL child issues #22-32 CLOSED with evidence. Parent #21 acceptance criteria met (three ~10-min renders independently produced+validated, comparison published, release verified, worklog/checkpoint updated).
+- Deliverable: owner watches 3 films from the Release and decides. Branch stays unmerged (operator's call per §17).
