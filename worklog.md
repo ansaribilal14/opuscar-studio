@@ -373,3 +373,25 @@ Stage Summary:
 - Release: https://github.com/ansaribilal14/opuscar-studio/releases/tag/ostrich-plate-v1.0.0
 - THE ENTIRE SLATE IS NOW RELEASED: video-002 v3.0.0, video-003 v2.2.0, video-004 v1.1.0, ostrich-plate v1.0.0.
 - Method note: out-of-library film workspaces mount at /@film/ and can import /core/...; PLAYWRIGHT_CHROME must point at the cached chromium (build 1200) since playwright-core pins a newer build.
+
+---
+Task ID: 12
+Agent: Super Z (main agent)
+Task: MASTER TASK — three-engine documentary shootout "The Wow! Signal" (parent #21): recon, issue tree, audits+smokes, full editorial package, Engine A+B complete renders.
+
+Work Log:
+- Repo recon: local clone 100+ commits stale vs origin (mode-only artifacts from container reset #N); ff to e1f8145. feat/code-title-cards (Task 12 of prior session) shipped w/ issues #18/#19, PR #20 OPEN (operator's call, untouched).
+- INCIDENT: worktree-flipper checked out main between command blocks; 2 scaffold commits landed on main and were pushed. REPAIR: commits ff-moved to feat/render-engine-shootout; origin/main force-restored to exact e1f8145 (--force-with-lease). All shootout work moved to ISOLATED CLONE /home/z/my-project/shootout-clone (flip-immune, verified across command blocks).
+- Issue tree: parent #21 + children #22-32 created w/ objective/scope/criteria/deps/risks/verification.
+- Audits (#22): HyperFrames 0.8.171 (Apache-2.0, Node>=22) + Hypit 0.3.1 (mod Apache-2.0, Node>=22.15; extends docs/HYPIT_ENGINE_AUDIT.md) — BOTH installed + smoke-rendered locally, zero credentials: HF 1080p30 3s H.264 PASS; Hypit SVML 640x360 3s PASS (build ~7s, all steps "local, no Provider charge").
+- Research (#23): bigear.org 30th report (Ehman primary) + Wikipedia + arXiv:2408.08513 + SETI Institute → RESEARCH/SOURCE_NOTES/FACT_CHECK (25-claim ledger, wording rules, 37s-myth + frequency-typo debunk points).
+- Editorial (#24): SCRIPT v1.0-FROZEN 34 blocks/1345 words/583.1s measured (2 honest trim passes 764→661→583s); STORYBOARD 34-scene engine-neutral visual system; TIMELINE.json 600.0s exact; RENDER_SPEC.json.
+- Audio (#26): edge-tts Andrew −3% per block + WordBoundary timings; AUDIO_MANIFEST (sha256); word-timed SRT 149 cues; narration_program.wav 600.0s −16 LUFS; ASR QC PASS (coverage 0.75-0.95; faster-whisper; PyAV19 bypass via ffmpeg PCM).
+- Assets (#25): imgacq discovery+download+ledger; 2 PD Commons printout scans approved (authentic_verified after full-size visual inspection) + staged + committed; Flickr derivative EXCLUDED honestly; 4 invalid/noise refusals recorded. ASSET_MANIFEST.json + ASSET_CREDITS.md.
+- Engine A (#27 DONE): isolated canvas-provider workspace (studio production path per VIDEO_ENGINE_ARCHITECTURE.md); timeline.js reads frozen TIMELINE.json+SRT; 34 scenes (seeded PRNG, deterministic); build_seg.sh 10×1800f integrity-gated; assemble.sh concat+range-normalize+mux; FINAL: 600.000s, 18000/18000f, H.264 1080p30 yuv420p tv, AAC 48k stereo, 0 decode errors, −16.0 LUFS, ASR 0.91-0.94. ~95s/segment (~20fps node-canvas).
+- Engine B (#28 DONE): genuine HyperFrames 0.8.171 — src/generate.mjs emits index.html + 10 segment compositions from frozen package (34 scenes data-* timing, 149 caption clips, GSAP window.__timelines seeked per frame, narration <audio>); 10×60s renders (60-89s each, software-GL screenshot-capture fallback documented) → concat+normalize → 600.03s, 18000/18000f, yuv420p tv, AAC, 0 decode errors, ASR 0.93-0.94. Gotchas fixed: audio element needs id; tween literals need eval→objects; DrawSVG premium plugin replaced by dashoffset; test subdir needs assets symlink.
+- Lessons: bg jobs die at command end → per-segment foreground; HF lint -c is SLOW (spawns Chrome, ~60s); node-canvas v3 API = registerFont (no GlobalFonts); edge-tts block cache via text-hash files.
+
+Stage Summary:
+- Branch feat/render-engine-shootout @ (see push history); ALL evidence comments on issues #22-28.
+- 2 of 3 full renders complete and gate-green; Hypit next (#29), then validation (#30), comparison (#31), release (#32), recovery drill (§16).

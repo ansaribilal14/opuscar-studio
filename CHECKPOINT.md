@@ -77,3 +77,22 @@ for operator; no engine cross-crediting; honest failure reporting.
 - Background installs done this session: edge-tts (venv pip), lemo-opuscar
   node_modules (playwright-core+three). Chromium 1200 cache present.
 - Engine audit clones go to /home/z/my-project/refs-shootout/ (outside both trees).
+
+### SHOOTOUT STATE (updated 2026-10-18 late session — READ THIS FIRST)
+**Issues closed with evidence:** #22 (audit), #23 (research), #24 (script/storyboard/timeline),
+#25 (assets), #26 (narration/audio), #27 (Opuscar DONE), #28 (HyperFrames DONE).
+**Remaining:** #29 Hypit implementation (STARTED — smoke passed earlier; full film next),
+#30 validation matrix, #31 comparison report, #32 release. Plus directive §16 recovery drill.
+**Deliverables on disk (local clone /home/z/my-project/shootout-clone, branch
+feat/render-engine-shootout):**
+- engines/opuscar/out/wow-signal-opuscar.mp4 (600.000s, 18000f, gates green, −16.0 LUFS)
+- engines/hyperframes/out/wow-signal-hyperframes.mp4 (600.03s, 18000f, gates green)
+- engines/hypit/ — smoke project proven at /home/z/my-project/smoke/hypit-smoke (MP4 OK);
+  full film NOT yet authored. Component SDK (@hypit/composition 0.1.0 etc.) IS on npm.
+**Engine renders use per-segment foreground commands (sandbox kills bg jobs at command
+end; renders 60–95s per segment fit the 9-min bash limit; do NOT nohup).**
+**Key facts:** narration master = shared/audio/narration_program.wav (600.0s, −16 LUFS);
+frozen spec = TIMELINE.json/RENDER_SPEC.json; SRT 149 cues; 2 PD printout scans staged
+(assets/printout_close.jpg, printout_page.jpg). Renders dir per engine = build/ + out/
+(OUT OF GIT, too big — release assets only). Hypit runtime browser cached at
+~/.cache/hypit/html-rasterizer; HF chrome at ~/.cache/puppeteer.
