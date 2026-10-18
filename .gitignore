@@ -1,13 +1,1 @@
-skills/
-node_modules/
-.env
-frames/
-build/
-download/**/*.mp4
-work/ostrich-plate/out/
-work/ostrich-plate/ostrich-plate.mp4
-work/ostrich-plate/music/score.wav
-work/ostrich-plate/music/stems/
-work/ostrich-plate/voices/_*.mp3
-work/ostrich-plate/voices/*.wav
-work/ostrich-plate/mix.wav
+tmp/
