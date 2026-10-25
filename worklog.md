@@ -426,3 +426,24 @@ Work Log:
 Stage Summary:
 - Full recovery from GitHub-only state VERIFIED (new clone → all task state + next actions).
 - Nothing duplicated: recovered branch == pushed branch; release == source tag.
+
+---
+Task ID: 12-b
+Agent: main (Super Z)
+Task: Shootout v2 — respond to operator rejection of all three v1 films ("All three videos are tooooo bad and shit"); rebuild all three engines to the PAPER & SKY design brief and release render-engine-shootout-v2.0.0.
+
+Work Log:
+- Ground truth re-established after container reset: repo re-cloned to feat/render-engine-shootout @ b26631d (QA-V1-REJECTION verdict + v2 brief already committed); the operator has NO shell/restart access — everything published to GitHub only.
+- Shared audio rebuilt deterministically (shared/audio/build_narration_mix.py): 34 frozen edge-tts blocks placed at frozen offsets, 600.000 s, −16.0 LUFS / TP −3.0 dB (audio FROZEN per brief; identical in all three films).
+- Engine A (Opuscar, flagship): support2.mjs "PAPER & SKY" system (skyBase night gradient + milky way + 3-layer parallax starfield + Big Ear panorama; paperBase light-table world w/ tractor-feed, rule lines, typewriter rows; hand-wobble pen strokes; light-leak transitions; 44 px captions; channel mark) + all 34 scenes rewritten (hero >=55 %, build-ins, global push). 3 probe-fix rounds (SC02 Wow overlap, SC17 orbit math, 12 caption-band collisions; recon labels moved top-right). 10x60 s segments integrity-gated, assembled: 600.000 s, 18,000 f, −16.1 LUFS, 0 decode errors.
+- Engine B (HyperFrames 0.8.171): generate.mjs fully rewritten — CSS sky/paper environments, GSAP builds + per-scene push, GSAP INLINED, caption 44 px all-newlines (v1 truncation fix), clean 20x30 s segment re-basing (v1 seam-overlap fix). Root-caused the "Cannot set properties of undefined (setting 'parent')" crash: nested tween tuples destroyed by flat(2) — replaced with shape-aware flatten. 20 segments rendered (2 parallel per bash call), assembled: 600.037 s, −16.1 LUFS, 0 errors.
+- Engine C (Hypit 0.3.1 local runtime): plates/gen_plates.py (Pillow, deterministic): 34 bg environments + 34 fg hero plates + 149 caption strips; gen_author.py v2: two-layer parallax clips (bg 1.00->1.06, fg 1.03->1.09), caption strips in bottom band, frozen audio windows. SVML lessons encoded: Frame values are EDGE coords; unique window per clip; fit=contain; extent+frame both required. Full 600 s single build timed out at the rasterizer's 30-min default -> split into 5 part builds (boundaries at scene+narration gaps), concat'd. Caught+fixed a caption-index misalignment (media ids vs filtered window ids) that briefly shipped wrong captions in parts 2-5; all parts re-rendered. loudnorm delivery pass (-16.0 LUFS). Master: 600.076 s, 0 errors.
+- v2 type-size gate enforcement: found the source-credit label at 32 px (< 34 px gate) — fixed in all three codebases and ALL THREE FILMS FULLY RE-RENDERED (A 10 segs, B 20 segs, C 5 parts).
+- Validation: directive §11 matrix 13/13 PASS x3; v2 gates measured on 12 probes/engine: mean active-grid coverage 0.75/0.77/0.79 (>=0.55), 0 void frames, type min 34 px, caption band clean, motifs present.
+- Release render-engine-shootout-v2.0.0 created on the repo (not the engine repos): 3 masters + 3 posters + labelled contact sheet + comparison report + results JSON + checksums; all 10 assets remote-verified (nonzero sizes, HTTP 200 download).
+- Per-asset push discipline maintained throughout; checkpoint updated.
+
+Stage Summary:
+- Release: https://github.com/ansaribilal14/opuscar-studio/releases/tag/render-engine-shootout-v2.0.0
+- All three films: ~600 s, 1080p30, −16 LUFS, identical narration/subtitles/closing card; owner decides the winner (no auto-pick).
+- Key reusable lessons: hyperframes tween tuples need shape-aware flatten (flat(2) dissolves tuples); hyperframes renders 2-per-call in parallel fit the bash cap; hypit part-builds around scene+narration gaps avoid rasterizer timeouts AND audio cuts; always rm stale export targets before hypit get.
