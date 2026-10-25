@@ -1,0 +1,287 @@
+<?svml using="@hypit/markup@1"?>
+<svml>
+  <import as="time" from="@hypit/timeline-author@1"/>
+  <import as="media" from="@hypit/media@1"/>
+  <import as="mediaop" from="@hypit/media-operations@1"/>
+  <import as="visual" from="@hypit/visual-track@1"/>
+  <import as="audio" from="@hypit/audio-track@1"/>
+  <import as="space" from="@hypit/spatial@1"/>
+  <import as="film" from="@hypit/film@1"/>
+  <import as="html" from="@hypit/html-video@1"/>
+  <import as="recipes" source="../recipes/recipes.svs"/>
+
+  <space:Canvas id="screen" width="1920" height="1080"/>
+  <space:Extent id="ext_full" width="1920" height="1080"/>
+  <space:Extent id="ext_cap" width="1920" height="220"/>
+  <space:Frame id="fr_full" within={screen.bounds} left="0%" top="0%" right="100%" bottom="100%"/>
+  <space:Frame id="fr_cap" within={screen.bounds} left="0%" top="84%" right="100%" bottom="99.5%"/>
+  <media:Image id="bg-SC01" src="../plates/build/bg_SC01.png"/>
+  <media:Image id="fg-SC01" src="../plates/build/fg_SC01.png"/>
+  <media:Image id="bg-SC02" src="../plates/build/bg_SC02.png"/>
+  <media:Image id="fg-SC02" src="../plates/build/fg_SC02.png"/>
+  <media:Image id="bg-SC03" src="../plates/build/bg_SC03.png"/>
+  <media:Image id="fg-SC03" src="../plates/build/fg_SC03.png"/>
+  <media:Image id="bg-SC04" src="../plates/build/bg_SC04.png"/>
+  <media:Image id="fg-SC04" src="../plates/build/fg_SC04.png"/>
+  <media:Image id="bg-SC05" src="../plates/build/bg_SC05.png"/>
+  <media:Image id="fg-SC05" src="../plates/build/fg_SC05.png"/>
+  <media:Image id="bg-SC06" src="../plates/build/bg_SC06.png"/>
+  <media:Image id="fg-SC06" src="../plates/build/fg_SC06.png"/>
+  <media:Image id="bg-SC07" src="../plates/build/bg_SC07.png"/>
+  <media:Image id="fg-SC07" src="../plates/build/fg_SC07.png"/>
+  <media:Image id="cap0001" src="../plates/build/caps/cap_0001.png"/>
+  <media:Image id="cap0002" src="../plates/build/caps/cap_0002.png"/>
+  <media:Image id="cap0003" src="../plates/build/caps/cap_0003.png"/>
+  <media:Image id="cap0004" src="../plates/build/caps/cap_0004.png"/>
+  <media:Image id="cap0005" src="../plates/build/caps/cap_0005.png"/>
+  <media:Image id="cap0006" src="../plates/build/caps/cap_0006.png"/>
+  <media:Image id="cap0007" src="../plates/build/caps/cap_0007.png"/>
+  <media:Image id="cap0008" src="../plates/build/caps/cap_0008.png"/>
+  <media:Image id="cap0009" src="../plates/build/caps/cap_0009.png"/>
+  <media:Image id="cap0010" src="../plates/build/caps/cap_0010.png"/>
+  <media:Image id="cap0011" src="../plates/build/caps/cap_0011.png"/>
+  <media:Image id="cap0012" src="../plates/build/caps/cap_0012.png"/>
+  <media:Image id="cap0013" src="../plates/build/caps/cap_0013.png"/>
+  <media:Image id="cap0014" src="../plates/build/caps/cap_0014.png"/>
+  <media:Image id="cap0015" src="../plates/build/caps/cap_0015.png"/>
+  <media:Image id="cap0016" src="../plates/build/caps/cap_0016.png"/>
+  <media:Image id="cap0017" src="../plates/build/caps/cap_0017.png"/>
+  <media:Image id="cap0018" src="../plates/build/caps/cap_0018.png"/>
+  <media:Image id="cap0019" src="../plates/build/caps/cap_0019.png"/>
+  <media:Image id="cap0020" src="../plates/build/caps/cap_0020.png"/>
+  <media:Image id="cap0021" src="../plates/build/caps/cap_0021.png"/>
+  <media:Image id="cap0022" src="../plates/build/caps/cap_0022.png"/>
+  <media:Image id="cap0023" src="../plates/build/caps/cap_0023.png"/>
+  <media:Image id="cap0024" src="../plates/build/caps/cap_0024.png"/>
+  <media:Image id="cap0025" src="../plates/build/caps/cap_0025.png"/>
+  <media:Image id="cap0026" src="../plates/build/caps/cap_0026.png"/>
+  <media:Image id="cap0027" src="../plates/build/caps/cap_0027.png"/>
+  <media:Image id="cap0028" src="../plates/build/caps/cap_0028.png"/>
+  <media:Image id="cap0029" src="../plates/build/caps/cap_0029.png"/>
+  <media:Image id="cap0030" src="../plates/build/caps/cap_0030.png"/>
+  <media:Image id="cap0031" src="../plates/build/caps/cap_0031.png"/>
+  <media:Image id="cap0032" src="../plates/build/caps/cap_0032.png"/>
+  <media:Audio id="abb01" src="../assets/blocks/b01.wav"/>
+  <media:Audio id="abb02" src="../assets/blocks/b02.wav"/>
+  <media:Audio id="abb03" src="../assets/blocks/b03.wav"/>
+  <media:Audio id="abb04" src="../assets/blocks/b04.wav"/>
+  <media:Audio id="abb05" src="../assets/blocks/b05.wav"/>
+  <media:Audio id="abb06" src="../assets/blocks/b06.wav"/>
+
+  <time:Clock id="clock" frame-rate="30"/>
+  <time:Timeline id="tl" clock={clock} end="3723f">
+    <time:Window id="wbb01" from="0f" for="613f"/>
+    <time:Window id="wbb02" from="623f" for="400f"/>
+    <time:Window id="wbb03" from="1033f" for="513f"/>
+    <time:Window id="wbb04" from="1567f" for="590f"/>
+    <time:Window id="wbb05" from="2168f" for="516f"/>
+    <time:Window id="wbb06" from="2694f" for="312f"/>
+    <time:Window id="wsSC01" from="0f" for="613f"/>
+    <time:Window id="wsSC01f" from="0f" for="613f"/>
+    <time:Window id="wsSC02" from="613f" for="410f"/>
+    <time:Window id="wsSC02f" from="613f" for="410f"/>
+    <time:Window id="wsSC03" from="1023f" for="523f"/>
+    <time:Window id="wsSC03f" from="1023f" for="523f"/>
+    <time:Window id="wsSC04" from="1546f" for="611f"/>
+    <time:Window id="wsSC04f" from="1546f" for="611f"/>
+    <time:Window id="wsSC05" from="2157f" for="527f"/>
+    <time:Window id="wsSC05f" from="2157f" for="527f"/>
+    <time:Window id="wsSC06" from="2684f" for="322f"/>
+    <time:Window id="wsSC06f" from="2684f" for="322f"/>
+    <time:Window id="wsSC07" from="3006f" for="717f"/>
+    <time:Window id="wsSC07f" from="3006f" for="717f"/>
+    <time:Window id="wc0001" from="3f" for="128f"/>
+    <time:Window id="wc0002" from="132f" for="126f"/>
+    <time:Window id="wc0003" from="258f" for="143f"/>
+    <time:Window id="wc0004" from="401f" for="123f"/>
+    <time:Window id="wc0005" from="537f" for="71f"/>
+    <time:Window id="wc0006" from="625f" for="92f"/>
+    <time:Window id="wc0007" from="717f" for="127f"/>
+    <time:Window id="wc0008" from="852f" for="27f"/>
+    <time:Window id="wc0009" from="898f" for="120f"/>
+    <time:Window id="wc0010" from="1037f" for="137f"/>
+    <time:Window id="wc0011" from="1174f" for="133f"/>
+    <time:Window id="wc0012" from="1307f" for="138f"/>
+    <time:Window id="wc0013" from="1457f" for="89f"/>
+    <time:Window id="wc0014" from="1570f" for="140f"/>
+    <time:Window id="wc0015" from="1710f" for="144f"/>
+    <time:Window id="wc0016" from="1854f" for="126f"/>
+    <time:Window id="wc0017" from="1985f" for="122f"/>
+    <time:Window id="wc0018" from="2108f" for="48f"/>
+    <time:Window id="wc0019" from="2171f" for="111f"/>
+    <time:Window id="wc0020" from="2283f" for="122f"/>
+    <time:Window id="wc0021" from="2405f" for="136f"/>
+    <time:Window id="wc0022" from="2541f" for="122f"/>
+    <time:Window id="wc0023" from="2663f" for="23f"/>
+    <time:Window id="wc0024" from="2699f" for="128f"/>
+    <time:Window id="wc0025" from="2827f" for="132f"/>
+    <time:Window id="wc0026" from="2959f" for="46f"/>
+    <time:Window id="wc0027" from="3019f" for="114f"/>
+    <time:Window id="wc0028" from="3134f" for="112f"/>
+    <time:Window id="wc0029" from="3254f" for="139f"/>
+    <time:Window id="wc0030" from="3393f" for="131f"/>
+    <time:Window id="wc0031" from="3524f" for="135f"/>
+    <time:Window id="wc0032" from="3659f" for="64f"/>
+  </time:Timeline>
+
+  <mediaop:Normalize id="nbb01" source={abb01} video="none" audio="default" span-authority="audio" clock={clock}/>
+  <mediaop:Normalize id="nbb02" source={abb02} video="none" audio="default" span-authority="audio" clock={clock}/>
+  <mediaop:Normalize id="nbb03" source={abb03} video="none" audio="default" span-authority="audio" clock={clock}/>
+  <mediaop:Normalize id="nbb04" source={abb04} video="none" audio="default" span-authority="audio" clock={clock}/>
+  <mediaop:Normalize id="nbb05" source={abb05} video="none" audio="default" span-authority="audio" clock={clock}/>
+  <mediaop:Normalize id="nbb06" source={abb06} video="none" audio="default" span-authority="audio" clock={clock}/>
+
+  <visual:Motion id="mbSC01">
+    <visual:Pose at="start" scale="1.00" opacity="0"/>
+    <visual:Pose at="15f" scale="1.01" opacity="1"/>
+    <visual:Pose at="598f" scale="1.05" opacity="1"/>
+    <visual:Pose at="end" scale="1.06" opacity="0"/>
+  </visual:Motion>
+  <visual:Motion id="mfSC01">
+    <visual:Pose at="start" scale="1.03" x="0" opacity="0"/>
+    <visual:Pose at="15f" scale="1.04" x="-8" opacity="1"/>
+    <visual:Pose at="598f" scale="1.08" x="10" opacity="1"/>
+    <visual:Pose at="end" scale="1.09" x="12" opacity="0"/>
+  </visual:Motion>
+  <visual:Motion id="mbSC02">
+    <visual:Pose at="start" scale="1.00" opacity="0"/>
+    <visual:Pose at="15f" scale="1.01" opacity="1"/>
+    <visual:Pose at="395f" scale="1.05" opacity="1"/>
+    <visual:Pose at="end" scale="1.06" opacity="0"/>
+  </visual:Motion>
+  <visual:Motion id="mfSC02">
+    <visual:Pose at="start" scale="1.03" x="0" opacity="0"/>
+    <visual:Pose at="15f" scale="1.04" x="-8" opacity="1"/>
+    <visual:Pose at="395f" scale="1.08" x="10" opacity="1"/>
+    <visual:Pose at="end" scale="1.09" x="12" opacity="0"/>
+  </visual:Motion>
+  <visual:Motion id="mbSC03">
+    <visual:Pose at="start" scale="1.00" opacity="0"/>
+    <visual:Pose at="15f" scale="1.01" opacity="1"/>
+    <visual:Pose at="507f" scale="1.05" opacity="1"/>
+    <visual:Pose at="end" scale="1.06" opacity="0"/>
+  </visual:Motion>
+  <visual:Motion id="mfSC03">
+    <visual:Pose at="start" scale="1.03" x="0" opacity="0"/>
+    <visual:Pose at="15f" scale="1.04" x="-8" opacity="1"/>
+    <visual:Pose at="507f" scale="1.08" x="10" opacity="1"/>
+    <visual:Pose at="end" scale="1.09" x="12" opacity="0"/>
+  </visual:Motion>
+  <visual:Motion id="mbSC04">
+    <visual:Pose at="start" scale="1.00" opacity="0"/>
+    <visual:Pose at="15f" scale="1.01" opacity="1"/>
+    <visual:Pose at="596f" scale="1.05" opacity="1"/>
+    <visual:Pose at="end" scale="1.06" opacity="0"/>
+  </visual:Motion>
+  <visual:Motion id="mfSC04">
+    <visual:Pose at="start" scale="1.03" x="0" opacity="0"/>
+    <visual:Pose at="15f" scale="1.04" x="-8" opacity="1"/>
+    <visual:Pose at="596f" scale="1.08" x="10" opacity="1"/>
+    <visual:Pose at="end" scale="1.09" x="12" opacity="0"/>
+  </visual:Motion>
+  <visual:Motion id="mbSC05">
+    <visual:Pose at="start" scale="1.00" opacity="0"/>
+    <visual:Pose at="15f" scale="1.01" opacity="1"/>
+    <visual:Pose at="511f" scale="1.05" opacity="1"/>
+    <visual:Pose at="end" scale="1.06" opacity="0"/>
+  </visual:Motion>
+  <visual:Motion id="mfSC05">
+    <visual:Pose at="start" scale="1.03" x="0" opacity="0"/>
+    <visual:Pose at="15f" scale="1.04" x="-8" opacity="1"/>
+    <visual:Pose at="511f" scale="1.08" x="10" opacity="1"/>
+    <visual:Pose at="end" scale="1.09" x="12" opacity="0"/>
+  </visual:Motion>
+  <visual:Motion id="mbSC06">
+    <visual:Pose at="start" scale="1.00" opacity="0"/>
+    <visual:Pose at="15f" scale="1.01" opacity="1"/>
+    <visual:Pose at="307f" scale="1.05" opacity="1"/>
+    <visual:Pose at="end" scale="1.06" opacity="0"/>
+  </visual:Motion>
+  <visual:Motion id="mfSC06">
+    <visual:Pose at="start" scale="1.03" x="0" opacity="0"/>
+    <visual:Pose at="15f" scale="1.04" x="-8" opacity="1"/>
+    <visual:Pose at="307f" scale="1.08" x="10" opacity="1"/>
+    <visual:Pose at="end" scale="1.09" x="12" opacity="0"/>
+  </visual:Motion>
+  <visual:Motion id="mbSC07">
+    <visual:Pose at="start" scale="1.00" opacity="0"/>
+    <visual:Pose at="15f" scale="1.01" opacity="1"/>
+    <visual:Pose at="701f" scale="1.05" opacity="1"/>
+    <visual:Pose at="end" scale="1.06" opacity="0"/>
+  </visual:Motion>
+  <visual:Motion id="mfSC07">
+    <visual:Pose at="start" scale="1.03" x="0" opacity="0"/>
+    <visual:Pose at="15f" scale="1.04" x="-8" opacity="1"/>
+    <visual:Pose at="701f" scale="1.08" x="10" opacity="1"/>
+    <visual:Pose at="end" scale="1.09" x="12" opacity="0"/>
+  </visual:Motion>
+  <visual:Motion id="mcap">
+    <visual:Pose at="start" opacity="0"/>
+    <visual:Pose at="4f" opacity="1"/>
+    <visual:Pose at="end" opacity="1"/>
+  </visual:Motion>
+
+  <visual:Track id="picture" timeline={tl.timeline}>
+    <visual:Clip id="SC01-bg" image={bg-SC01} extent={ext_full} during={tl.wsSC01} z="5" fit="cover" frame={fr_full} motion={mbSC01}/>
+    <visual:Clip id="SC01-fg" image={fg-SC01} extent={ext_full} during={tl.wsSC01f} z="10" fit="cover" frame={fr_full} motion={mfSC01}/>
+    <visual:Clip id="SC02-bg" image={bg-SC02} extent={ext_full} during={tl.wsSC02} z="5" fit="cover" frame={fr_full} motion={mbSC02}/>
+    <visual:Clip id="SC02-fg" image={fg-SC02} extent={ext_full} during={tl.wsSC02f} z="10" fit="cover" frame={fr_full} motion={mfSC02}/>
+    <visual:Clip id="SC03-bg" image={bg-SC03} extent={ext_full} during={tl.wsSC03} z="5" fit="cover" frame={fr_full} motion={mbSC03}/>
+    <visual:Clip id="SC03-fg" image={fg-SC03} extent={ext_full} during={tl.wsSC03f} z="10" fit="cover" frame={fr_full} motion={mfSC03}/>
+    <visual:Clip id="SC04-bg" image={bg-SC04} extent={ext_full} during={tl.wsSC04} z="5" fit="cover" frame={fr_full} motion={mbSC04}/>
+    <visual:Clip id="SC04-fg" image={fg-SC04} extent={ext_full} during={tl.wsSC04f} z="10" fit="cover" frame={fr_full} motion={mfSC04}/>
+    <visual:Clip id="SC05-bg" image={bg-SC05} extent={ext_full} during={tl.wsSC05} z="5" fit="cover" frame={fr_full} motion={mbSC05}/>
+    <visual:Clip id="SC05-fg" image={fg-SC05} extent={ext_full} during={tl.wsSC05f} z="10" fit="cover" frame={fr_full} motion={mfSC05}/>
+    <visual:Clip id="SC06-bg" image={bg-SC06} extent={ext_full} during={tl.wsSC06} z="5" fit="cover" frame={fr_full} motion={mbSC06}/>
+    <visual:Clip id="SC06-fg" image={fg-SC06} extent={ext_full} during={tl.wsSC06f} z="10" fit="cover" frame={fr_full} motion={mfSC06}/>
+    <visual:Clip id="SC07-bg" image={bg-SC07} extent={ext_full} during={tl.wsSC07} z="5" fit="cover" frame={fr_full} motion={mbSC07}/>
+    <visual:Clip id="SC07-fg" image={fg-SC07} extent={ext_full} during={tl.wsSC07f} z="10" fit="cover" frame={fr_full} motion={mfSC07}/>
+    <visual:Clip id="cap0001" image={cap0001} extent={ext_cap} frame={fr_cap} during={tl.wc0001} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0002" image={cap0002} extent={ext_cap} frame={fr_cap} during={tl.wc0002} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0003" image={cap0003} extent={ext_cap} frame={fr_cap} during={tl.wc0003} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0004" image={cap0004} extent={ext_cap} frame={fr_cap} during={tl.wc0004} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0005" image={cap0005} extent={ext_cap} frame={fr_cap} during={tl.wc0005} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0006" image={cap0006} extent={ext_cap} frame={fr_cap} during={tl.wc0006} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0007" image={cap0007} extent={ext_cap} frame={fr_cap} during={tl.wc0007} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0008" image={cap0008} extent={ext_cap} frame={fr_cap} during={tl.wc0008} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0009" image={cap0009} extent={ext_cap} frame={fr_cap} during={tl.wc0009} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0010" image={cap0010} extent={ext_cap} frame={fr_cap} during={tl.wc0010} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0011" image={cap0011} extent={ext_cap} frame={fr_cap} during={tl.wc0011} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0012" image={cap0012} extent={ext_cap} frame={fr_cap} during={tl.wc0012} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0013" image={cap0013} extent={ext_cap} frame={fr_cap} during={tl.wc0013} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0014" image={cap0014} extent={ext_cap} frame={fr_cap} during={tl.wc0014} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0015" image={cap0015} extent={ext_cap} frame={fr_cap} during={tl.wc0015} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0016" image={cap0016} extent={ext_cap} frame={fr_cap} during={tl.wc0016} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0017" image={cap0017} extent={ext_cap} frame={fr_cap} during={tl.wc0017} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0018" image={cap0018} extent={ext_cap} frame={fr_cap} during={tl.wc0018} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0019" image={cap0019} extent={ext_cap} frame={fr_cap} during={tl.wc0019} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0020" image={cap0020} extent={ext_cap} frame={fr_cap} during={tl.wc0020} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0021" image={cap0021} extent={ext_cap} frame={fr_cap} during={tl.wc0021} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0022" image={cap0022} extent={ext_cap} frame={fr_cap} during={tl.wc0022} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0023" image={cap0023} extent={ext_cap} frame={fr_cap} during={tl.wc0023} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0024" image={cap0024} extent={ext_cap} frame={fr_cap} during={tl.wc0024} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0025" image={cap0025} extent={ext_cap} frame={fr_cap} during={tl.wc0025} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0026" image={cap0026} extent={ext_cap} frame={fr_cap} during={tl.wc0026} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0027" image={cap0027} extent={ext_cap} frame={fr_cap} during={tl.wc0027} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0028" image={cap0028} extent={ext_cap} frame={fr_cap} during={tl.wc0028} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0029" image={cap0029} extent={ext_cap} frame={fr_cap} during={tl.wc0029} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0030" image={cap0030} extent={ext_cap} frame={fr_cap} during={tl.wc0030} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0031" image={cap0031} extent={ext_cap} frame={fr_cap} during={tl.wc0031} z="30" fit="contain" motion={mcap}/>
+    <visual:Clip id="cap0032" image={cap0032} extent={ext_cap} frame={fr_cap} during={tl.wc0032} z="30" fit="contain" motion={mcap}/>
+  </visual:Track>
+
+  <audio:Track id="mix" timeline={tl.timeline}>
+    <audio:Clip id="acb01" source={nbb01.media} during={tl.wbb01}/>
+    <audio:Clip id="acb02" source={nbb02.media} during={tl.wbb02}/>
+    <audio:Clip id="acb03" source={nbb03.media} during={tl.wbb03}/>
+    <audio:Clip id="acb04" source={nbb04.media} during={tl.wbb04}/>
+    <audio:Clip id="acb05" source={nbb05.media} during={tl.wbb05}/>
+    <audio:Clip id="acb06" source={nbb06.media} during={tl.wbb06}/>
+  </audio:Track>
+
+  <film:Film id="main" canvas={screen.canvas} timeline={tl.timeline} appearance={recipes.film.film}>
+    <film:Track source={picture.visual}/>
+    <film:Track source={mix.audio}/>
+  </film:Film>
+  <html:Video id="final" composition={main.composition} timeline={tl.timeline}/>
+</svml>

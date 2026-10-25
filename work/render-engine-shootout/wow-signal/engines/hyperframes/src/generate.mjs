@@ -532,7 +532,7 @@ const CSS = `
   /* shared */
   .cmark{position:absolute;left:48px;top:44px;font-size:36px;color:${P.ink};font-weight:700;letter-spacing:2px;}
   .cmark i{display:inline-block;width:6px;height:44px;background:${P.crimson};margin-right:20px;vertical-align:middle;}
-  .recon{position:absolute;right:48px;top:52px;font-size:32px;color:rgba(157,176,200,0.72);font-family:'Carlito',sans-serif;}
+  .recon{position:absolute;right:48px;top:52px;font-size:34px;color:rgba(157,176,200,0.72);font-family:'Carlito',sans-serif;}
   .chip2{position:absolute;border:3px solid;padding:12px 28px;font-weight:700;letter-spacing:1px;font-family:'Carlito',sans-serif;white-space:nowrap;}
   .disp .tcrule,.tcrule{position:absolute;left:36%;width:28%;height:8px;background:${P.crimson};}
   .sigbar{position:absolute;height:22px;border:3px solid ${P.signal};background:rgba(255,255,255,0.07);}

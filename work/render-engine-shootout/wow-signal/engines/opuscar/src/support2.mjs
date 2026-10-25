@@ -364,7 +364,7 @@ export function vignette2(ctx, W, H, strength = 0.5) {
 
 // reconstruction label (top-right — keeps the bottom caption band clear)
 export function recon2(ctx, W, H, text = "RECONSTRUCTION") {
-  ctx.font = fnt("body", 32);
+  ctx.font = fnt("body", 34);
   ctx.fillStyle = "rgba(157,176,200,0.72)";
   ctx.textAlign = "right"; ctx.textBaseline = "alphabetic";
   ctx.fillText(text, W - 48, 84);

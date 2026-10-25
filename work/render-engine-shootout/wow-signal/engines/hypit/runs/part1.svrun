@@ -1,5 +1,5 @@
 <?svml using="@hypit/markup/run@1"?>
 <svrun version="1">
-  <author source="../authors/t1.svml"/>
+  <author source="../authors/part1.svml"/>
   <target output="final.video"/>
 </svrun>

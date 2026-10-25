@@ -10,9 +10,22 @@ import json
 import os
 
 PILOT = "--pilot" in os.environ.get("HYPIOPT", "")
+PART = os.environ.get("HYPIPART")  # "K:START:END" — part render with re-based windows
 tl = json.load(open("../../TIMELINE.json"))
 blocks, scenes = tl["blocks"], tl["scenes"]
 order = sorted(blocks)
+if PART:
+    _k, _s, _e = PART.split(":")
+    PSTART, PEND = float(_s), float(_e)
+    # scenes: clip to part and re-base
+    scenes = {}
+    for k, w in tl["scenes"].items():
+        s0, e0 = max(w["start"], PSTART), min(w["end"], PEND)
+        if e0 - s0 > 0.05:
+            scenes[k] = {"start": s0 - PSTART, "end": e0 - PSTART}
+    blocks = {k: b for k, b in tl["blocks"].items() if b["start"] >= PSTART and b["start"] + b["dur"] <= PEND + 0.001}
+    blocks = {k: {"start": b["start"] - PSTART, "dur": b["dur"]} for k, b in blocks.items()}
+    order = sorted(blocks)
 if PILOT:
     LIMIT = 60.0
     scenes = {k: v for k, v in scenes.items() if v["end"] <= LIMIT}
@@ -38,6 +51,11 @@ for chunk in srt:
     cues.append((s, e))
 if CUE_LIMIT is not None:
     cues = [c for c in cues if c[1] <= CUE_LIMIT]
+if PART:
+    cues = [(i + 1, max(s, PSTART) - PSTART, min(e, PEND) - PSTART)
+            for i, (s, e) in enumerate(cues) if min(e, PEND) - max(s, PSTART) >= 0.5]
+else:
+    cues = [(i + 1, s, e) for i, (s, e) in enumerate(cues)]
 
 lines = []
 A = lines.append
@@ -61,13 +79,14 @@ A('  <space:Frame id="fr_cap" within={screen.bounds} left="0%" top="84%" right="
 for sc in sorted(scenes):
     A(f'  <media:Image id="bg-{sc}" src="../plates/build/bg_{sc}.png"/>')
     A(f'  <media:Image id="fg-{sc}" src="../plates/build/fg_{sc}.png"/>')
-for i in range(1, len(cues) + 1):
-    A(f'  <media:Image id="cap{i:04d}" src="../plates/build/caps/cap_{i:04d}.png"/>')
+for _idx, _s, _e in cues:
+    A(f'  <media:Image id="cap{_idx:04d}" src="../plates/build/caps/cap_{_idx:04d}.png"/>')
 for bid in order:
     A(f'  <media:Audio id="ab{bid}" src="../assets/blocks/{bid}.wav"/>')
 A("")
 A('  <time:Clock id="clock" frame-rate="30"/>')
-A('  <time:Timeline id="tl" clock={clock} end="' + ('1800f' if PILOT else '18000f') + '">')
+_ENDF = 1800 if PILOT else (round((PEND - PSTART) * 30) if PART else 18000)
+A('  <time:Timeline id="tl" clock={clock} end="' + str(_ENDF) + 'f">')
 FPS = 30
 def fq(t):
     return round(t * FPS)
@@ -80,9 +99,9 @@ for sc in sorted(scenes):
     st, en = fq(w["start"]), fq(w["end"])
     A(f'    <time:Window id="ws{sc}" from="{st}f" for="{en-st}f"/>')
     A(f'    <time:Window id="ws{sc}f" from="{st}f" for="{en-st}f"/>')
-for i, (s, e) in enumerate(cues):
+for _j, (_idx, s, e) in enumerate(cues):
     st, en = fq(s), fq(e)
-    A(f'    <time:Window id="wc{i+1:04d}" from="{st}f" for="{max(1,en-st)}f"/>')
+    A(f'    <time:Window id="wc{_j+1:04d}" from="{st}f" for="{max(1,en-st)}f"/>')
 A("  </time:Timeline>")
 A("")
 for bid in order:
@@ -122,8 +141,8 @@ for sc in sorted(scenes):
       f'z="5" fit="cover" frame={{fr_full}} motion={{mb{sc}}}/>')
     A(f'    <visual:Clip id="{sc}-fg" image={{fg-{sc}}} extent={{ext_full}} during={{tl.ws{sc}f}} '
       f'z="10" fit="cover" frame={{fr_full}} motion={{mf{sc}}}/>')
-for i in range(len(cues)):
-    A(f'    <visual:Clip id="cap{i+1:04d}" image={{cap{i+1:04d}}} extent={{ext_cap}} frame={{fr_cap}} during={{tl.wc{i+1:04d}}} '
+for _j, (_idx, s, e) in enumerate(cues):
+    A(f'    <visual:Clip id="cap{_j+1:04d}" image={{cap{_idx:04d}}} extent={{ext_cap}} frame={{fr_cap}} during={{tl.wc{_j+1:04d}}} '
       f'z="30" fit="contain" motion={{mcap}}/>')
 A("  </visual:Track>")
 A("")
@@ -139,5 +158,6 @@ A("  </film:Film>")
 A('  <html:Video id="final" composition={main.composition} timeline={tl.timeline}/>')
 A("</svml>")
 os.makedirs("authors", exist_ok=True)
-open("authors/pilot.svml" if PILOT else "authors/main.svml", "w").write("\n".join(lines) + "\n")
-print(f"authors/{'pilot' if PILOT else 'main'}.svml written: {len(lines)} lines")
+_name = "authors/pilot.svml" if PILOT else (f"authors/part{PART.split(':')[0]}.svml" if PART else "authors/main.svml")
+open(_name, "w").write("\n".join(lines) + "\n")
+print(f"{_name} written: {len(lines)} lines")

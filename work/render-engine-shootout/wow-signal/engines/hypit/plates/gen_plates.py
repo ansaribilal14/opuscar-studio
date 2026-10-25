@@ -175,7 +175,7 @@ def channel_mark(d):
     d.text((72, 75), "THE UNCLOSED FILE", font=f, fill=INK, anchor="lm")
 
 def recon(d, s="RECONSTRUCTION"):
-    f = font(FC, 32)
+    f = font(FC, 34)
     d.text((W - 48, 84), s, font=f, fill=(157, 176, 200, 185), anchor="rm")
 
 def chip(d, x, y, s, color, size=38):
