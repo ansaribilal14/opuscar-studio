@@ -1,68 +1,67 @@
-# COMPARISON REPORT — Three-Engine Documentary Shootout
+# COMPARISON REPORT — Three-Engine Shootout v2 (PAPER & SKY)
 
-**Film:** *THE WOW! SIGNAL — 72 Seconds from Deep Space* (The Unclosed File)
-**Date:** 2026-10-18 · **Repo:** ansaribilal14/opuscar-studio · **Branch:** `feat/render-engine-shootout`
-**Method note:** every number below is measured on this container (2 CPU / 3 GB RAM / Node 24.21.0 / ffmpeg 7.1.5). Objective measurements and subjective observations are separated. Asset research/preparation time (shared, ≈3 h) is excluded from engine times. **The owner decides the winner; this report does not.**
+**Film:** The Wow! Signal — 72 Seconds from Deep Space (The Unclosed File)
+**Release:** `render-engine-shootout-v2.0.0` · **Supersedes:** v1.0.0 (rejected by the owner 2026-10-19; evidence in `docs/QA-V1-REJECTION.md`)
+**Verdict policy:** the owner watches and decides; this report records measurements, not a winner.
 
-## 1. What each engine actually did
+## Why v2 exists
 
-| | **A — Opuscar Studio** | **B — HyperFrames** | **C — Hypit** |
+The owner rejected all three v1 films ("All three videos are tooooo bad and shit"). The
+measured root cause was the SHARED creative spec, not the engines: 34 static slide-like
+layouts, 26–30 px text, compositions occupying ≤35 % of frame, one flat background for
+every act, and (Engine C) 600 s of two drifting scans with no titles, captions or end
+card. v2 therefore redesigned the shared spec first — "PAPER & SKY": two visual worlds
+(night sky / light-table paper), type ≥34 px, hero compositions ≥55 %, per-scene motion,
+act contrast, recurring motifs — then re-implemented all three engines against it with
+the SAME frozen narration, timeline, SRT and archival assets. Audio was frozen: identical
+narration program (edge-tts en-US-AndrewMultilingualNeural) in all three films.
+
+## Objective measurements (identical hardware, container with 2 vCPU / 4 GB cgroup)
+
+| Metric | A — Opuscar (studio v4) | B — HyperFrames 0.8.171 | C — Hypit 0.3.1 |
 |---|---|---|---|
-| Version | studio canvas provider (node-canvas 3, ffmpeg 7.1.5) — the repo's documented film path | **hyperframes 0.8.171** (npm, Apache-2.0) | **@hypit/hypit 0.3.1** (npm, mod. Apache-2.0) |
-| Authoring | 34 `renderFrame(ctx,W,H,tl,t)` scene modules; timeline.js reads the frozen TIMELINE.json | generated HTML composition (data-* timing) + GSAP timelines seeked per frame | generated SVML (scene windows, `visual:Motion`, normalized audio clips) → Film → html:Video |
-| Render mechanism | node-canvas frames → JPEG streamed to x264 | headless-Chrome frame capture → x264 + audio mix | chrome rasterize per frame → mux (media-local) |
-| Input parity | frozen TIMELINE.json + shared SRT + shared narration + 2 PD scans | identical | identical |
-| External services / cost | none / $0 | none / $0 (local render; no credits) | none / $0 (all steps "local, no Provider charge") |
-
-## 2. Measured delivery (all three pass the frozen spec)
-
-| Metric | Opuscar | HyperFrames | Hypit |
-|---|---|---|---|
-| Duration | 600.000 s | 600.033 s | 600.000 s |
-| Frames | 18000/18000 | 18000/18000 | 18000/18000 |
-| Video | H.264 1920×1080 30 fps yuv420p tv | same | same |
-| Audio | AAC 48 kHz stereo | same | same |
+| Master | wow-signal-opuscar.mp4 (184 MB) | wow-signal-hyperframes.mp4 (121 MB) | wow-signal-hypit.mp4 (132 MB) |
+| Duration | 600.000 s | 600.037 s | 600.076 s |
+| Frames | 18 000 @ 30 fps | 18 000 @ 30 fps | 18 000 @ 30 fps |
+| Video | H.264 yuv420p tv, 1080p | H.264 yuv420p tv, 1080p | H.264 yuv420p tv, 1080p |
+| Audio | AAC 48 kHz stereo, −16.1 LUFS | AAC 48 kHz stereo, −16.1 LUFS | AAC 48 kHz stereo, −16.0 LUFS |
 | Full decode | 0 errors | 0 errors | 0 errors |
-| Loudness | −16.0 LUFS | −16.0 LUFS | −16.0 LUFS (delivery-normalized; engine mux is −21.3) |
-| A/V delta | 0.000 s | 0.000 s | 0.000 s |
-| Gate matrix | **13/13** | **13/13** | **13/13** |
-| File size | 81.3 MB | 45.7 MB | 224.0 MB |
-| Determinism | **byte-identical** (300-frame ×2) | **byte-identical** (60 s ×2) | **byte-identical** (60 s build+export ×2) |
+| Directive §11 matrix | 13/13 PASS | 13/13 PASS | 13/13 PASS |
+| v2 coverage (mean active grid, 12 probes) | 0.75 | 0.77 | 0.79 |
+| v2 void frames (flat background) | 0 | 0 | 0 |
+| v2 type minimum | 34 px (source-credit) | 34 px (source-credit) | 34 px (source-credit) |
+| External services / cost | none / $0 | none / $0 | none / $0 |
 
-## 3. Measured production times (minutes, this container)
+Render strategy (all foreground, sandbox-capped): A — 10 × 60 s segments, node-canvas
+frame stream to x264, ~4.7 min/segment; B — 20 × 30 s segment compositions rendered by
+`hyperframes render` (2 workers), ~8.5 min/segment pair; C — 5 daemon builds (124.1 /
+117.7 / 123.9 / 108.8 / 125.5 s) exported and concat'd, then a loudnorm delivery pass.
 
-| Phase | Opuscar | HyperFrames | Hypit |
-|---|---|---|---|
-| Setup/install | 5 | 20 (npm CLI + Chrome download 601 MB + build_system) | 25 (npm CLI + own Chrome + runtime up) |
-| Creative implementation (scenes/captions/audio wiring) | ~150 | ~150 (same shared spec; HTML/GSAP authoring generator) | ~150 (SVML authoring generator; the shortest authoring surface once the model is learned) |
-| Render wall-clock | **~16** (10×95 s, ~20 fps) | **~14** (10×60 s segments, 60–89 s each) | **~45** (~9.4 fps rasterize + mux; one 30-min provider timeout found & fixed) |
-| Debug/interventions | 2 scene fixes pre-render; TDZ + close-race fixes | audio-id lint error; tween-literal parse; premium-plugin replaced; disk-capture fallback noted | 5 SVML contract lessons (frame-extent quantization, declaration order, `.media` port); timeout knob |
+## Editorial equality (verified)
 
-## 4. Visual observations (subjective — owner's judgment)
+Same 34-scene windows (TIMELINE.json), same narration program, same burned subtitle
+wording/timing (149 cues), same archival printout scans with on-screen credits, same
+closing card text and credits. Differences are rendering execution only.
 
-- **Opuscar**: the richest visual execution — archival scans with Ken Burns, code-drawn diagrams (beam-transit arch, ladder, spectrum, ledgers, coordinates), reconstruction labels, film grain. Readable burned captions. Closing card + credits clean.
-- **HyperFrames**: visually close to Opuscar for card/diagram scenes (HTML/CSS is a natural fit); archival pans via GSAP; caption styling comfortable. Slightly flatter motion range than A in practice; the software-GL fallback adds no visible artifacts.
-- **Hypit**: honest, clean, archival-motif treatment — the printout scans with slow pushes, scene fades; **no code-drawn diagrams in this delivery** (built-in primitives only; the component-package upgrade path is documented). Subtitles are packaged (SRT) rather than burned in this delivery. The film is complete and parity-faithful in story/narration/timing; visual richness is the delta.
+## Per-engine character (subjective, for the owner's viewing)
 
-## 5. Reliability & recovery characteristics
+- **A — Opuscar (flagship):** every element is drawn per-frame in code — hand-wobble red
+  pen, progressive arch draws, staggered build-ins, animated grain. Richest motion of
+  the three; the studio's own engine contract (`render(t)`).
+- **B — HyperFrames:** the same design system authored as HTML/CSS + GSAP timelines.
+  Cleanest typography rendering (browser text stack); determinism via frame-seek.
+- **C — Hypit:** the same design system rendered as deterministic plates, composited by
+  Hypit's SVML runtime with parallax motion poses and caption clips. Most conservative
+  motion; strongest archival presentation (full-bleed graded scans).
 
-- **Opuscar**: per-segment integrity gates (frame count + full decode + git-HEAD guard) make any failure locally re-runnable in ~95 s. Deterministic re-render proven (byte-identical).
-- **HyperFrames**: no range/resume flags → segment compositions used (each an independent render); lint/validate tooling caught real authoring errors pre-render; byte-identical.
-- **Hypit**: result repository + local runtime daemon kept the build alive across CLI detaches (recoverable polling); one provider timeout knob; build retry after fix reused cached steps; byte-identical.
+## Known limitations (recorded honestly)
 
-## 6. Editability & reuse
-
-- **Opuscar**: scenes are plain JS modules over one timeline — direct and diffable; new films copy the workspace pattern (house-standard).
-- **HyperFrames**: HTML/CSS compositions are highly editable (any web tooling); generator keeps timing in the frozen package; strong ecosystem (catalog blocks, lint/check/inspect tooling).
-- **Hypit**: SVML is compact and the compile-graph model makes timing edits surgical; code-drawn visuals require author-packages (SDK on npm; examples excellent but contract-heavy for newcomers).
-
-## 7. Costs & dependencies
-
-Zero-cost, credential-free for all three on this container. Dependency footprints: Opuscar = node-canvas + ffmpeg (present); HyperFrames = npm CLI + Chrome-for-Testing (~600 MB cache); Hypit = npm CLI + chrome-headless-shell (~350 MB) + pnpm-free local runtime. Hypit's license adds conditions (no multi-tenant hosting; no commercial redistribution as a component; logo/copyright preservation in CLI-derived surfaces) — none implicated by this run; outputs are ours.
-
-## 8. Failures & honesty ledger
-
-- Opuscar: two pre-render visual fixes (SC04 geometry, SC34 spacing) — caught by the 16-still probe.
-- HyperFrames: `init` hangs in sandbox (manual authoring); screenshot-capture fallback (BeginFrame) documented by the engine itself; disk-capture failure on the LAST determinism run → freed intermediates, switched to streaming workers=1.
-- Hypit: 30-min `processTimeoutMs` defect (found on the 18k-frame build; raised to 90 min — a config knob); SVML lessons (quantize to frames; declare values before references; consume `.media` port) recorded.
-- No engine failed finally; no substitution between engines occurred at any point.
+- C's Hypit primitive set has no text component — plates carry the typography
+  (deterministic Pillow assets, committed source). Motion is clip-level (Ken Burns),
+  not per-element animation.
+- B renders via screenshot capture (SwiftShader) — the slowest path per frame of the
+  three; pinned 0.8.171 (0.x churn).
+- Loudness normalization for C is a delivery pass over the concat (the Hypit mux did
+  not hit −16 LUFS natively).
+- v1.0.0 masters remain on the old tag for reference; v1 is NOT withdrawable (immutable
+  release), superseded by this one.

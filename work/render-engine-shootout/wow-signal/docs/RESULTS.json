@@ -1,69 +1,55 @@
 {
-  "project": "render-engine-shootout — The Wow! Signal (The Unclosed File)",
-  "generated": "2026-10-18",
-  "repository": "ansaribilal14/opuscar-studio",
-  "branch": "feat/render-engine-shootout",
-  "shared_spec": {
-    "duration_target_s": 600.0,
-    "resolution": "1920x1080", "fps": 30, "video_codec": "h264",
-    "pixel_format": "yuv420p", "audio": "aac stereo 48kHz",
-    "loudness_target_lufs": -16, "narration": "shared edge-tts en-US-AndrewMultilingualNeural rate -3%",
-    "subtitles": "shared word-timed SRT, 149 cues", "assets": "2 PD Commons printout scans + code-generated graphics"
+ "film": "The Wow! Signal \u2014 72 Seconds from Deep Space (The Unclosed File)",
+ "release_tag": "render-engine-shootout-v2.0.0",
+ "design_system": "PAPER & SKY v2 (rebuild after operator rejection of v1.0.0; see docs/QA-V1-REJECTION.md)",
+ "shared": {
+  "narration": "edge-tts en-US-AndrewMultilingualNeural, frozen 34 blocks / 600.0s program",
+  "subtitles": "identical word-timed SRT (149 cues), burned per engine",
+  "loudness_target": "-16 LUFS",
+  "spec": "1920x1080 30fps H.264 yuv420p AAC stereo"
+ },
+ "engines": {
+  "opuscar": {
+   "version": "studio engine v4 (node-canvas render(t) provider, in-repo)",
+   "master": "wow-signal-opuscar.mp4",
+   "bytes": 184297797,
+   "gates_13": "13/13 PASS",
+   "loudness_lufs": -16.1,
+   "duration_s": 600.0,
+   "v2_coverage_mean_active_grid": 0.752,
+   "v2_void_frames": 0,
+   "v2_type_min_px": 34,
+   "notes": "flagship procedural implementation; every element drawn per frame in code"
   },
-  "engines": {
-    "opuscar": {
-      "engine_version": "studio canvas provider (node-canvas 3.x, ffmpeg 7.1.5); repo production path per VIDEO_ENGINE_ARCHITECTURE.md",
-      "runtime": "Node v24.21.0",
-      "implementation": "isolated workspace; timeline.js consumes frozen TIMELINE.json + shared SRT; 34 deterministic scene modules (seeded PRNG)",
-      "setup_time_min": 5,
-      "creative_implementation_time_min": 150,
-      "render_wall_clock_min": 16,
-      "render_detail": "10 segments x 1800 frames, ~95 s/segment (~20 fps), integrity-gated per segment",
-      "file_size_bytes": 81305250,
-      "validation": "docs/validation-opuscar.json (13/13 gates)",
-      "determinism": "BYTE-IDENTICAL (two independent 300-frame renders, sha256 equal)",
-      "external_services": "none", "cost_usd": 0,
-      "notes": "yuvj420p native (JPEG frames) normalized to yuv420p tv at final encode; loudnorm applied in mix"
-    },
-    "hyperframes": {
-      "engine_version": "hyperframes 0.8.171 (npm; Apache-2.0)",
-      "runtime": "Node v24.21.0; chrome-headless-shell via @puppeteer/browsers; software GL",
-      "implementation": "src/generate.mjs emits index.html + 10 segment compositions (data-* timing, GSAP window.__timelines seeked per frame, 149 caption clips, narration <audio>); renders by `hyperframes render`",
-      "setup_time_min": 20,
-      "creative_implementation_time_min": 150,
-      "render_wall_clock_min": 14,
-      "render_detail": "10 x 60s segment compositions, 60-89 s each (software-GL screenshot-capture fallback documented by engine), concat + normalize",
-      "file_size_bytes": 45722312,
-      "validation": "docs/validation-hyperframes.json (13/13 gates)",
-      "determinism": "BYTE-IDENTICAL (segment_05 rendered twice, sha256 equal)",
-      "external_services": "none", "cost_usd": 0,
-      "notes": "`hyperframes init` hung in sandbox (manual authoring used); no range/resume flags -> segment compositions (each a complete HyperFrames render)"
-    },
-    "hypit": {
-      "engine_version": "@hypit/hypit 0.3.1 (npm; modified Apache-2.0)",
-      "runtime": "Node v24.21.0; @hypit/provider-html-local (chrome-headless-shell 152) + @hypit/media-local (ffmpeg 7.1.5)",
-      "implementation": "gen_author.py emits authors/main.svml from frozen TIMELINE.json (34 scene windows: archival clips w/ visual:Motion; 34 normalized narration clips; Film -> html:Video); `hypit check/plan/build --follow/get`",
-      "setup_time_min": 25,
-      "creative_implementation_time_min": 150,
-      "render_wall_clock_min": 45,
-      "render_detail": "71-step local build; rasterization ~9.4 fps (~32 min) + audio render + mux; ONE infra defect fixed (processTimeoutMs default 30 min < 35 min needed -> raised to 90 min in runtime profile)",
-      "file_size_bytes": 224049434,
-      "validation": "docs/validation-hypit.json (13/13 gates)",
-      "determinism": "BYTE-IDENTICAL (60 s pilot built+exported twice, sha256 equal)",
-      "external_services": "none", "cost_usd": 0,
-      "notes": "visuals use built-in primitives (archival imagery + typed motion); code-drawn scene graphics need a project author-package (documented upgrade path, not completed in session) — visual-execution delta recorded honestly"
-    }
+  "hyperframes": {
+   "version": "0.8.171 (npm, Apache-2.0)",
+   "master": "wow-signal-hyperframes.mp4",
+   "bytes": 121225567,
+   "gates_13": "13/13 PASS",
+   "loudness_lufs": -16.1,
+   "duration_s": 600.037,
+   "v2_coverage_mean_active_grid": 0.773,
+   "v2_void_frames": 0,
+   "v2_type_min_px": 34,
+   "notes": "genuine HyperFrames composition (HTML/CSS/GSAP inlined); 20x30s render units; v1 caption truncation + seam overlap eliminated"
   },
-  "validation_matrix": {
-    "gates_per_engine": 13,
-    "gates": ["duration 599-601", "frames 17970-18030", "resolution", "aspect", "codec h264", "pix_fmt yuv420p", "fps 30", "audio aac/48k/stereo", "av sync", "full decode 0 errors", "loudness -16±2", "no unintended black", "no unintended stalls"],
-    "results": {"opuscar": "13/13", "hyperframes": "13/13", "hypit": "13/13"}
-  },
-  "editorial_parity": {
-    "narration": "identical recording (shared narration_program.wav placements)",
-    "subtitles": "identical word-timed SRT (burned in A/B; packaged for C)",
-    "timeline": "identical frozen TIMELINE.json",
-    "closing_card": "identical content (engine-specific rendering)",
-    "assets": "identical 2 PD scans + code-generated graphics per engine"
+  "hypit": {
+   "version": "@hypit/hypit 0.3.1 local runtime (modified Apache-2.0)",
+   "master": "wow-signal-hypit.mp4",
+   "bytes": 131561927,
+   "gates_13": "13/13 PASS",
+   "loudness_lufs": -16.0,
+   "duration_s": 600.076,
+   "v2_coverage_mean_active_grid": 0.792,
+   "v2_void_frames": 0,
+   "v2_type_min_px": 34,
+   "notes": "genuine Hypit SVML author; deterministic Pillow plates composited by Hypit with motion poses; 5-part daemon builds concat'd; loudnorm delivery pass"
   }
+ },
+ "checksums_sha256": {
+  "opuscar": "47aa7635f8713a6542c0f875fbac80aa141a7422248987f4ebc8e2e1b74413dd",
+  "hyperframes": "4bc513f685e4f1dba2e819be377f360114e63e442e14de2380fdd82118e5b756",
+  "hypit": "ceb6e231242dba8f3daa12480fe42921640a2430618be5509caf3ed4a6f5237e"
+ },
+ "external_costs": "zero (all local render paths, no cloud services)"
 }
