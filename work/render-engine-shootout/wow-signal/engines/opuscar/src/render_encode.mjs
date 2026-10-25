@@ -8,7 +8,7 @@ import { spawn, spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { buildTimeline, cueAt, W as TW, H as TH, ASSETS } from "./timeline.js";
-import { caption } from "./support.mjs";
+import { caption2 } from "./support2.mjs";
 import * as A from "./scenes_a.mjs";
 import * as B from "./scenes_b.mjs";
 import * as C from "./scenes_c.mjs";
@@ -66,7 +66,7 @@ function renderFrame(t) {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   fn(ctx, W, H, t, win, imgs);
   const cue = cueAt(t);
-  if (cue) caption(ctx, W, H, cue);
+  if (cue) caption2(ctx, W, H, cue);
 }
 
 const t0 = Date.now();
